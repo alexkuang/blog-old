@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: misc | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/misc/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2013-10-10T21:28:58-04:00</updated>
+  <id>http://alexkuang.github.io/</id>
+  <author>
+    <name><![CDATA[Alex Kuang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Test]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/10/10/test/"/>
+    <updated>2013-10-10T21:20:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/10/10/test</id>
+    <content type="html"><![CDATA[<p>Testing, one two one two.</p>
+
+<p>Trolls in a tantrum cause terrible trouble.</p>
+
+<p>``` coffeescript Coffeescript Tricks start:51 mark:52,54-55</p>
+
+<h1>Given an alphabet:</h1>
+
+<p>alphabet = &lsquo;abcdefghijklmnopqrstuvwxyz&rsquo;</p>
+
+<h1>Iterate over part of the alphabet:</h1>
+
+<p>console.log letter for letter in alphabet[4..8]
+```</p>
+
+<p>``` scala Discover if a number is prime <a href="http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/">http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/</a> Source Article
+class Fixnum
+  def prime?</p>
+
+<pre><code>('1' * self) !~ /^1?$|^(11+?)\1+$/
+</code></pre>
+
+<p>  end
+end
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
