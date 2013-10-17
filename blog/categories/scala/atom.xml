@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: scala | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/scala/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2013-10-17T07:17:51-04:00</updated>
+  <id>http://alexkuang.github.io/</id>
+  <author>
+    <name><![CDATA[Alex Kuang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fibonacci Stream]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream/"/>
+    <updated>2013-10-17T07:15:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream</id>
+    <content type="html"><![CDATA[<p>I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
+to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy
+to sync to 2.1 at the moment.  As such, everyone will have to settle for this plain jane snippet:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// e.g., fibStream.take(5)</span>
+</span><span class='line'><span class="k">def</span> <span class="n">fibStream</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">def</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev1</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">,</span> <span class="n">prev2</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="n">prev1</span> <span class="o">#::</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev2</span><span class="o">,</span> <span class="n">prev1</span> <span class="o">+</span> <span class="n">prev2</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">loop</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Nothing fancy, just one of many possible variations of the fibonacci sequence.  This one is done via a <code>Stream</code>,
+which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream">More here</a>).</p>
+
+<p>Will probably write more about the why/how of the nested loop <code>def</code> (mostly for my own reference), but for now I think
+the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
+though.</p>
+]]></content>
+  </entry>
+  
+</feed>
