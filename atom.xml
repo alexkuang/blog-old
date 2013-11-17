@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-10-19T21:57:27-04:00</updated>
+  <updated>2013-11-17T14:06:23-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Roast Leg of Lamb]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/11/17/roast-leg-of-lamb/"/>
+    <updated>2013-11-17T12:32:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/11/17/roast-leg-of-lamb</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Leg-of-Lamb/i-q4M6vbN/0/L/DSC_2277-L.jpg"></p>
+
+<p>Last weekend I saw a giant leg of New Zealand lamb that looked way too good to pass up, crazy Whole Foods prices or not.
+Huge roasted joints of meat are always a win with me but I strongly prefer bone in; there&rsquo;s just so much more flavor
+that way.  I took the basic steps from <a href="http://www.youtube.com/watch?v=5qvEdCmD8Pk">this video</a> by Thomas Keller, using
+an oven temp of 325 for ~1hr and frenching the tip of the bone to aid in carving.  I finished the last few minutes with
+a cranked up broiler to really get a nice crust on the surface.</p>
+
+<p>There was one problem I had with the conventional wisdom, though: laying the herbs on/around the meat and just seasoning
+the surface doesn&rsquo;t seem like it would be enough to really get that taste in there, especially with something this
+thick.  So I took a cue from how cloves are used in ham, substituting the cloves for garlic and the ham joint for a lamb
+leg.  Spearing the garlic with small sprigs of rosemary added just the right extra punch, and ended up staining the
+garlic green as a bonus.</p>
+
+<p>I would consider this experiment a success.  Embedding the garlic really gets the flavor into the meat, and the rosemary
+adds a lot to the presentation as well. If nothing else, it can be an excuse to crack some Monty Python shrubbery jokes
+at the dinner table.  Chances to do that don&rsquo;t come around nearly as often as they should.</p>
+
+<p>(More photos can be found <a href="http://waffleparadox.smugmug.com/Food/Leg-of-Lamb/">here</a>)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fibonacci Stream]]></title>
