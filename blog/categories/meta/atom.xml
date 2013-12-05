@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: misc | alex kuang]]></title>
-  <link href="http://alexkuang.github.io/blog/categories/misc/atom.xml" rel="self"/>
+  <title><![CDATA[Category: meta | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/meta/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2013-12-04T20:15:33-05:00</updated>
   <id>http://alexkuang.github.io/</id>
@@ -39,38 +39,6 @@ inspiration and nobody will read it (or <em>especially</em> if nobody will read 
 bully the other (much bigger) cats, knock over bowls and trash bags, attack everything like the king of the jungle, and
 just generally be an unabashed little snot.  But she&rsquo;s disarmingly adorable, so naturally none of that matters in the
 slightest.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First post]]></title>
-    <link href="http://alexkuang.github.io/blog/2013/10/10/first-post/"/>
-    <updated>2013-10-10T22:00:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2013/10/10/first-post</id>
-    <content type="html"><![CDATA[<p>&hellip; Or, &ldquo;How I Chose a Blog Platform.&rdquo;</p>
-
-<p>Multiple people have said that I should get back into writing, so I guess I&rsquo;m back into the blogging scene now.  It&rsquo;s
-true I did have a food blog before a particular work project completely pole-axed it, and I would love to start it up
-again.  The problem is that WordPress has always been a bit cumbersome for me so this time around I wanted something
-different.  Plus I&rsquo;ve been meaning to get into the whole tech/misc blogging thing.  So I set out to find something that:</p>
-
-<ol>
-<li>Is easy to write in.  I&rsquo;d been fascinated by the idea of blogging in Markdown, so preferably that.</li>
-<li>Could render code snippets / do syntax highlighting in most major languages.</li>
-<li>Could display pictures with reasonable flexibility and prettiness.</li>
-<li>Supported some form of organization based on categories/tags.</li>
-</ol>
-
-
-<p><a href="https://telegr.am/">telegr.am</a> was a strong contender for a while, since it uses Markdown and is written in <code>Scala</code> and
-thus would have been familiar ground, but sadly it was missing in some key features.  All the other frameworks I found
-were either lackluster, pay-only, or required self-deployment on a server, which I&rsquo;m clearly too lazy to do nowadays.
-Thus I came to settle on <a href="http://octopress.org/">Octopress</a>, a framework based on <a href="http://jekyllrb.com/">Jekyll</a> which I
-had already played with for my personal site before.  Thus far it fits the bill nearly perfectly, with the only rub
-being the heavy dependency on git (or in my particular case, github).  But that isn&rsquo;t really a problem unless I ever
-want a blog with non-technical contributors, so that bridge can be crossed when the time comes.</p>
-
-<p>TL;DR &ndash; New blog.  Pardon the appearance during construction.</p>
 ]]></content>
   </entry>
   
