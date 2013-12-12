@@ -4,7 +4,7 @@
   <title><![CDATA[Category: programming | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-12-11T19:57:02-05:00</updated>
+  <updated>2013-12-11T20:03:01-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -47,9 +47,10 @@ blocks properly and maybe we can finally get to that chest over there.  Oh wait,
 water level back BEFORE moving the second block&hellip;</em></p>
 
 <p>Sound familiar?  The hardest dungeons' mechanics tend to use some piece of outside state to introduce exponentially more
-complex interactions between the existing items that Link already has access to.  And that&rsquo;s welcome, even enjoyable,
-when I&rsquo;m playing Zelda.  But I have no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing
-what I want it to.</p>
+complex interactions between the existing items that Link already has access to.  Interactions that now depend not only
+on the current environment, but also the configuration of surrounding environments, plus very likely the order that
+everything was done as well.  Keeping track of all that is welcome, even enjoyable, when I&rsquo;m playing Zelda.  But I have
+no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing what I want it to.</p>
 ]]></content>
   </entry>
   
