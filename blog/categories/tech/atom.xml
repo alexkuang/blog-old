@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-12-09T20:20:38-05:00</updated>
+  <updated>2013-12-11T19:57:02-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Zelda as a Metaphor for Complexity]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/"/>
+    <updated>2013-12-11T18:29:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity</id>
+    <content type="html"><![CDATA[<p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
+my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
+which could take upwards of hours (Water Temple, I&rsquo;m looking at you) to complete on the first run.  One of them jumps to
+mind particularly: The Forest Temple, a dungeon you encounter in the early-mid game immediately after gaining access to
+adult Link.</p>
+
+<p>At first glance, it seems like a completely normal dungeon&mdash;You&rsquo;ve got your wolves, you&rsquo;ve got your carnivorous plants,
+and the obvious puzzle in the form of 4 torches that have to be lit.  Fairly straightforward, until the game hits you
+with this:</p>
+
+<p><img class="center" src="/images/forest-temple-hallway.jpg"></p>
+
+<p>The first time you hit the twisting hallway, you have to follow it as-is to the other side, your perspective being
+warped, to end up in a room with you standing on its &ldquo;wall&rdquo;.  On the &ldquo;floor&rdquo; is a chest, inaccessible in your current
+state, and further on is a door you don&rsquo;t have the key to.  After a few more rooms and a battle with some wolves, you
+end up with the bow which allows you to hit a switch to un-twist the hallway, bringing a completely new
+perspective to the rooms&mdash;Most obviously, the chest from the earlier &ldquo;floor&rdquo; is now reachable, and after a little
+contemplation and a lot of climbing, you get the key to the previously locked door&hellip;  <em>Which you can&rsquo;t access until you
+re-twist the hallway.</em></p>
+
+<p>This simple sequence is, in essence, what makes the classical Zelda dungeons challenging and oh so much fun.  In
+addition to an &ldquo;item of the moment&rdquo;, each area contains an inventive mechanic that completely changes the landscape
+of the entire dungeon.  A room is completely different when your perspective is rotated, platforms become traversable
+after you flood the floor with sand, and so on.  It&rsquo;s no longer just <em>Push a block over here</em>, it&rsquo;s <em>Push a block over
+here to change the water level so we can push that other block, and then change the water level back to align the two
+blocks properly and maybe we can finally get to that chest over there.  Oh wait, that didn&rsquo;t work, maybe if I switch the
+water level back BEFORE moving the second block&hellip;</em></p>
+
+<p>Sound familiar?  The hardest dungeons' mechanics tend to use some piece of outside state to introduce exponentially more
+complex interactions between the existing items that Link already has access to.  And that&rsquo;s welcome, even enjoyable,
+when I&rsquo;m playing Zelda.  But I have no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing
+what I want it to.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A Neophyte's Take on Scala]]></title>
