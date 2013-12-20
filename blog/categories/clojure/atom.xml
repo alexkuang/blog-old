@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: clojure | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/clojure/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2013-12-20T13:06:58-05:00</updated>
+  <id>http://alexkuang.github.io/</id>
+  <author>
+    <name><![CDATA[Alex Kuang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Clojure First Impressions]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions/"/>
+    <updated>2013-12-20T14:05:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions</id>
+    <content type="html"><![CDATA[<p>After achieving some measure of familiarity with Scala, and with newfound copious amounts of free time, I decided I
+wanted to see more of what the functional world had to offer.  The obvious choices were Haskell and Clojure; but while
+Haskell has the upper hand in functional purity and a crazy advanced type system, I like to think I&rsquo;m a pragmatic guy at
+heart and Clojure seemed more practical.  I haven&rsquo;t worked with it too extensively, but my experience so far can be
+summarized by two words: Simple and composable.</p>
+
+<h4>The language</h4>
+
+<p>Clojure is a refreshingly simple language.  Despite my last foray into a Lisp being about half a decade ago, the
+learning curve was much gentler than I&rsquo;d expected.  Maybe it&rsquo;s because I was already in a functional programming
+mindset, but the straightforward syntax and <a href="http://clojure-doc.org/">abundance</a>
+<a href="http://clojure.org/getting_started">of</a> <a href="http://clojure.org/cheatsheet">documentation</a> probably helped.  And on a
+completely subjective level: <code>iDislikeCamelCase</code>, and <code>clojure-case-is-pretty-neat</code>.</p>
+
+<h4>The ecosystem</h4>
+
+<p>Of course, the overall enjoyability of using a language doesn&rsquo;t depend solely on the core language, but also the
+libraries and toolchain available.  Most of the libraries I&rsquo;ve seen keep in line with the design of the language: super
+lightweight, super simple, super composable, and as a result super easy to ramp up on and use.  Theoretically that
+should just describe all good library design in general, but I feel like the clojure community takes it especially to
+heart.</p>
+
+<p>Compojure, for example, chose to implement its url
+<a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">destructuring</a> to closely follow the destructuring
+available in stock Clojure <code>let</code>s expressions.  I can&rsquo;t help but draw the comparison to Scala, where I&rsquo;d be more likely
+to find that url decomposition exists only in the form of an exotic DSL.  Another huge example for me is the difference
+between the simplicity of the Clojure build tool Leiningen and the craziness of Scala&rsquo;s SBT.  Sorry SBT&mdash;You work very
+well, but I&rsquo;d rather not have to google what the <code>&lt;++=</code> operator does every time I touch the build.</p>
+
+<h4>With vim</h4>
+
+<p>One of my original reasons for leaning clojure was its close integration with
+<a href="http://www.chris-granger.com/lighttable/">LightTable</a>.  As it turns out, the functionality I liked could be
+replicated in vim with <a href="https://github.com/tpope/vim-fireplace">fireplace.vim</a>&rsquo;s quasi-insta-repl and insta-doc, due in
+no small part to leiningen and nrepl&rsquo;s awesomeness.
+<a href="https://github.com/kien/rainbow_parentheses.vim">Rainbow parentheses</a> is also pretty cool, and has been useful enough
+that I will probably keep it on even when I don&rsquo;t have to deal with the hardcore levels of parens in Lisps:</p>
+
+<p><img class="center" src="/images/rainbow-parens.png"></p>
+
+<h4>Overall</h4>
+
+<p>If programming languages could be graded on usability, Clojure would get full marks.  It has been a breath of fresh air
+after dealing with the crazy complexity in Scala.  Undoubtedly working through the latter had a part in making the
+former much easier, and Scala will always have a place with me, but for now I find myself slowly joining the rest of the
+Clojure bandwagon.</p>
+]]></content>
+  </entry>
+  
+</feed>
