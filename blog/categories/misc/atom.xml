@@ -4,7 +4,7 @@
   <title><![CDATA[Category: misc | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/misc/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-12-20T13:06:58-05:00</updated>
+  <updated>2013-12-21T08:28:09-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Les Iterables]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/21/les-iterables/"/>
+    <updated>2013-12-21T08:16:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/21/les-iterables</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/les-iterables.jpg" width="500"></p>
+
+<p><blockquote><p>Not very uplifting&hellip;</p><footer><strong>David Pollak</strong></footer></blockquote>
+<blockquote><p>Slick production values.</p><footer><strong>Jan Christopher Vogt</strong></footer></blockquote>
+<blockquote><p>Wonderful acting!</p><footer><strong>Jonas Boner</strong></footer></blockquote></p>
+
+<p><em>(Sorry guys, saw this in <a href="http://reddit.com/r/scala">/r/scala</a> and kind of had to.)</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jab, jab]]></title>
