@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-12-23T07:49:18-05:00</updated>
+  <updated>2013-12-23T10:25:32-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -188,7 +188,7 @@ again, which is not a good sign.  This is consistent with my personal experience
 in the super-hacks at around that time, so everything is probably due for another refactor.</p>
 
 <p>In closing, I&rsquo;d like to remark that while this post was pretty monolithic and it took a lot of text to explain
-everything for the first time, in real lift this command probably took about 2-3 minutes to write.  And that&rsquo;s what I
+everything for the first time, in real life this command probably took about 2-3 minutes to write.  And that&rsquo;s what I
 find these utils are really really good at&mdash;Quick dirty answers to the little &ldquo;I wonder&hellip;&rdquo; / &ldquo;What if&hellip;&rdquo; questions
 that tend to pop up while coding.</p>
 ]]></content>
