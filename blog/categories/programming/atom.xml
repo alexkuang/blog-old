@@ -4,7 +4,7 @@
   <title><![CDATA[Category: programming | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-12-21T08:28:09-05:00</updated>
+  <updated>2013-12-23T07:43:12-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,183 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[CMD Misadventures - Codebase Size]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size/"/>
+    <updated>2013-12-23T06:50:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size</id>
+    <content type="html"><![CDATA[<p>After watching the <a href="https://www.destroyallsoftware.com/talks/wat">wat</a> talk and trolling my friends with the
+<a href="https://www.destroyallsoftware.com/talks/a-whole-new-world">aneditor</a> talk for about the 200th time, I decided to
+finally purchase one season of the Destroy All Software screencasts, despite the (IMHO) steep price tag and my financial
+destitution.  (So far?  Totally worth it.  But a full review of the screencasts is neither here nor there.)</p>
+
+<p>I&rsquo;ve always been a big fan of the unix power tools&mdash;<code>find</code>, <code>grep</code>, <code>xargs</code>, and so forth, but one thing that had never
+occurred to me for some insane reason is to combine them with git to extract some interesting information about your
+codebase.  And so inspired by the recent DAS talks, I decided to go diving into my biggest scala project for
+insights about its code size.</p>
+
+<p>One of the most common problems that code size can indicate is the presence of &ldquo;god classes&rdquo; or libraries, which know
+and do way too much and thus are correspondingly bigger than the rest of the code by orders of magnitude.  This command
+was relatively simple and does not involve git, so here it is in its entirety:</p>
+
+<p>```bash
+alexkuang@Orion [00:00:00] [~foobar/src/main/scala] [master]
+&ndash;> % find . -type f -name &ldquo;*.scala&rdquo; | while read file; do wc -l $file; done | sort -n</p>
+
+<pre><code>   9 ./com/foobar/models/Permission.scala
+  11 ./com/foobar/util/LocParams.scala
+  14 ./com/foobar/util/OrgSettings.scala
+  16 ./com/foobar/security/package.scala
+  17 ./com/foobar/scripts/ReloadStageDB.scala
+  18 ./com/foobar/scripts/oneoff/InitSchema.scala
+  # ...
+ 231 ./com/foobar/js/Calendar.scala
+ 247 ./com/foobar/persistence/Access.scala
+ 287 ./com/foobar/snippet/BookingCalendar.scala
+ 307 ./com/foobar/lib/Registration.scala
+ 319 ./com/foobar/lib/Scheduler.scala
+</code></pre>
+
+<p>```</p>
+
+<p>The output was slightly interesting, but nothing groundbreaking.  300 lines is not ideal to me, but manageable.  Broken
+down quickly, <code>find #...</code> finds all files inside the current directory ending in &lsquo;.scala&rsquo;, reads each file in, and
+passes it off to wc -l, which does a linecount on the file, whitespace and all.  <code>sort</code> does what its name implies, with
+<code>-n</code> making it sort <code>1 2 3 11</code> instead of <code>1 11 2 3</code>.  The information was slightly cool, but as a hack it&rsquo;s not very
+interesting, so let&rsquo;s throw some git in there to try to get a sense of how fast the codebase has grown over time.  After
+all, superlinear growth is usually indicative of a ton of repeition and therefore unnecessary code complexity.</p>
+
+<!-- more -->
+
+
+<p>First, starting with walking the git repo.  <code>git rev-list &lt;branch&gt;</code> should do what we want it to, but in the case of
+larger repos it the list can get a bit unwieldy/huge.  Enter <code>awk</code>, which lets you do a bunch of neat things with your
+text but most importantly has an easy variable for line number, of all things <em>(note to self: learn2awk better?)</em>, thus:
+<code>awk 'NR % &lt;n&gt; == 0'</code> for to get only every nth revision list.  Combine that with the same reading as above, and do a
+similar scala file find with a linecount, and the command is as follows: <em>(Yes, in this particular project I dev&rsquo;d right
+in master instead of using a nvie-style git-flow.  Bad developer, bad!)</em></p>
+
+<p><code>bash
+git rev-list master | awk 'NR % 20 == 0' | while read revhash; do git checkout -q $revhash | \  
+&amp;&amp; find . -name '*.scala' | xargs cat | wc -l; done
+</code></p>
+
+<p>The more finicky among us might comment right about now that the command is already pretty huge and nigh unreadable if
+revisited in about two weeks&mdash;and he&rsquo;d be right.  But this is a quick one-off hack for some interesting info (something
+that unix tools are absolutely amazing at), and if I cared that much I&rsquo;d probably write a real script, or at least
+re-format it into a proper bash function.</p>
+
+<p>So the above command gives us a bunch of line counts which is useful, but it doesn&rsquo;t really give us a sense of the
+progression.  At this point I&rsquo;d usually either 1) compose some huge complicated thing that kept track of the current
+line AND the previous in an attempt to do math, or 2) give up and write a real script for it later, but one of the DAS
+videos showed something that was completely new to me: using <code>jot</code> to create a chart.  Even if I learned nothing else,
+this alone made everything worth it.  Very quickly&hellip;</p>
+
+<p>```bash
+&ndash;> % jot &ndash; 1 5</p>
+
+<h1>print range 1 to 5</h1>
+
+<p>5
+&ndash;> % jot -b &lsquo;*&rsquo; &ndash; 1 5</p>
+
+<h1>range 1 to 5, printing &lsquo;*&rsquo; instead</h1>
+
+<p>*
+*
+*
+*
+*
+&ndash;> % jot -b &lsquo;*&rsquo; &ndash; 1 5 | xargs</p>
+
+<h1>For all its magic, xargs just chunks up your input to be used as args.</h1>
+
+<hr />
+
+<p>&ndash;> % jot -b &lsquo;*&rsquo; &ndash; 1 5 | xargs | tr -d &lsquo; &rsquo;</p>
+
+<h1>And tr to translate.  Side note: as a recovering Perl user, it slightly annoys me that there&rsquo;s a tr util but not an s</h1>
+
+<h1>util.  But I guess that&rsquo;s what sed is for&hellip;?</h1>
+
+<hr />
+
+<p>```</p>
+
+<p>And now all that&rsquo;s left is to combine the <code>jot</code> magic with the above command by reading a the linecount into a variable
+called <code>lines</code>, using that in the <code>jot</code> call, and printing everything out.  In the interest of full disclosure, here&rsquo;s
+the final command along with the output from my project:</p>
+
+<p><code>``bash
+-&gt; % git rev-list master | awk 'NR % 20 == 0' | while read revhash; do git checkout -q $revhash &amp;&amp; \  
+find . -name '*.scala' | xargs cat | wc -l | \  
+read lines &amp;&amp; ((hashes = $lines / 100)) &amp;&amp; \  
+echo "</code>jot -b &lsquo;#&rsquo; &ndash; 1 $hashes | xargs | tr -d &lsquo; &rsquo;` $lines"; done</p>
+
+<h6>################################################### 5700</h6>
+
+<h6>############################################### 5333</h6>
+
+<h6>############################################# 5151</h6>
+
+<h6>######################################### 4796</h6>
+
+<h6>####################################### 4530</h6>
+
+<h6>############################### 3786</h6>
+
+<h6>############################# 3528</h6>
+
+<h6>############################## 3660</h6>
+
+<h6>############################## 3615</h6>
+
+<h6>########################## 3208</h6>
+
+<h6>###################### 2848</h6>
+
+<h6>###################### 2832</h6>
+
+<h6>###################### 2855</h6>
+
+<h6>##################### 2786</h6>
+
+<h6>################## 2418</h6>
+
+<h6>############### 2186</h6>
+
+<h6>############ 1834</h6>
+
+<h6>########## 1664</h6>
+
+<h6>######## 1412</h6>
+
+<h6>###### 1270</h6>
+
+<h6>##### 1179</h6>
+
+<h6>## 892</h6>
+
+<h6>651</h6>
+
+<h4>420</h4>
+
+<h1>138</h1>
+
+<p>```</p>
+
+<p>The growth at the beginning looked pretty normal, and I must say I&rsquo;m slightly happy that around the middle it remained
+constant, and even took a slight dip afterwards.  After the dip though it seems like the growth started shooting up
+again, which is not a good sign.  This is consistent with my personal experience, as I recall starting to really throw
+in the super-hacks at around that time, so everything is probably due for another refactor.</p>
+
+<p>In closing, I&rsquo;d like to remark that while this post was pretty monolithic and it took a lot of text to explain
+everything for the first time, in real lift this command probably took about 2-3 minutes to write.  And that&rsquo;s what I
+find these utils are really really good at&mdash;Quick dirty answers to the little &ldquo;I wonder&hellip;&rdquo; / &ldquo;What if&hellip;&rdquo; questions
+that tend to pop up while coding.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Clojure First Impressions]]></title>
