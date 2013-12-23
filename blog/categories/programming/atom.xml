@@ -4,7 +4,7 @@
   <title><![CDATA[Category: programming | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-12-23T07:47:29-05:00</updated>
+  <updated>2013-12-23T07:49:18-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -90,7 +90,11 @@ this alone made everything worth it.  Very quickly&hellip;</p>
 
 <h1>print range 1 to 5</h1>
 
-<p>5
+<p>1
+2
+3
+4
+5
 &ndash;> % jot -b &lsquo;*&rsquo; &ndash; 1 5</p>
 
 <h1>range 1 to 5, printing &lsquo;*&rsquo; instead</h1>
