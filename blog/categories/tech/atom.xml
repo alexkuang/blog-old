@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-12-23T07:45:28-05:00</updated>
+  <updated>2013-12-23T07:47:29-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -65,7 +65,7 @@ all, superlinear growth is usually indicative of a ton of repeition and therefor
 <p>First, starting with walking the git repo.  <code>git rev-list &lt;branch&gt;</code> should do what we want it to, but in the case of
 larger repos it the list can get a bit unwieldy/huge.  Enter <code>awk</code>, which lets you do a bunch of neat things with your
 text but most importantly has an easy variable for line number, of all things <em>(note to self: learn2awk better?)</em>, thus:
-<code>awk 'NR % &lt;n&gt; == 0'</code> for to get only every nth revision list.  Combine that with the same reading as above, and do a
+<code>awk 'NR % &lt;n&gt; == 0'</code> to get only every nth revision list.  Combine that with the same reading as above, and do a
 similar scala file find with a linecount, and the command is as follows: <em>(Yes, in this particular project I dev&rsquo;d right
 in master instead of using a nvie-style git-flow.  Bad developer, bad!)</em></p>
 
