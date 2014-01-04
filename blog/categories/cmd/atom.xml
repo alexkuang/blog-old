@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cmd | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/cmd/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2013-12-23T10:25:32-05:00</updated>
+  <updated>2014-01-04T11:54:52-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -57,7 +57,7 @@ down quickly, <code>find #...</code> finds all files inside the current director
 passes it off to wc -l, which does a linecount on the file, whitespace and all.  <code>sort</code> does what its name implies, with
 <code>-n</code> making it sort <code>1 2 3 11</code> instead of <code>1 11 2 3</code>.  The information was slightly cool, but as a hack it&rsquo;s not very
 interesting, so let&rsquo;s throw some git in there to try to get a sense of how fast the codebase has grown over time.  After
-all, superlinear growth is usually indicative of a ton of repeition and therefore unnecessary code complexity.</p>
+all, superlinear growth is usually indicative of a ton of repetition and therefore unnecessary code complexity.</p>
 
 <!-- more -->
 
