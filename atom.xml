@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-01-28T07:07:33-05:00</updated>
+  <updated>2014-02-05T10:35:57-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[IAP and Mobile]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile/"/>
+    <updated>2014-02-03T21:43:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile</id>
+    <content type="html"><![CDATA[<p>In-app purchases and the free-to-play model have long been anathema to self-declared &ldquo;real gamers&rdquo; everywhere, but the
+recent release (or re-release?) of classics like Tales of Phantasia and Dungeon Keeper seems to have brought yet
+another wave of angry discussion to the forefront.  Understandably, people
+<a href="http://www.baekdal.com/opinion/how-inapp-purchases-has-destroyed-the-industry/">are</a>
+<a href="http://kotaku.com/a-cancer-thats-eroding-the-market-reactions-to-eas-1515121353">very</a>
+<a href="http://www.escapistmagazine.com/articles/view/editorials/reviews/10956-Dungeon-Keeper-Mobile-Review-Wallet-Reaper">angry</a>
+<a href="http://toucharcade.com/2014/01/27/tales-of-phantasia-review/">that</a> their beloved classics are being turned into f2p
+&ldquo;cash farms&rdquo;, but personally I think saying the model is &ldquo;destroying the industry&rdquo; is a bit hyperbolic.</p>
+
+<p>In response, toucharcade recently published a post pointing out an article that takes a <a href="http://toucharcade.com/2014/02/03/iap-isnt-actually-destroying-the-games-industry/">stance to the
+contrary</a>.  The original piece is
+definitely worth a read to anyone who cares about the topic; it makes a number of good arguments regarding pricing
+pressures and facing a realistic economy for the unprecedented levels of competition on iOS.  But it also notes that the
+concept of paying for more content&mdash;the &ldquo;original IAP&rdquo;&mdash;dates back to the beginning of the industry with coin op arcade
+machines.  This seems like a valid comparison superficially, but as someone who&rsquo;s shelled out way too many quarters on
+the likes of Gauntlet Dark Legacy I feel like there are two fundamental differences that this argument glosses over.</p>
+
+<p>First: arcade games always had a large skill component.  It might take a while to get good enough, but it was always
+possible to beat the game consistently on sheer skill alone.  The game might have been hard, but the balance was never
+so broken as to render completion impossible without the extra coins.  Second: in the cases of the most nefarious IAPs,
+you&rsquo;re not paying to spend more time with the game; you&rsquo;re paying for the exact opposite.  When an IAP does nothing but
+shorten a timer or increase a premium resource, you&rsquo;re essentially paying more money to decrease the time you spend with
+the game.  All &ldquo;Skinner&rsquo;s Box From Hell&rdquo; arguments aside, that is probably what I object to the most.  I don&rsquo;t have an
+indiscriminate hatred for the f2p model&mdash;there are definitely cases of it being executed well&mdash;but I have a fundamental
+problem with paying more for less.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Raclette - Week 4, Things You Hated as a Kid]]></title>
