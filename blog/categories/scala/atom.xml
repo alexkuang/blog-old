@@ -4,7 +4,7 @@
   <title><![CDATA[Category: scala | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-02-10T23:00:27-05:00</updated>
+  <updated>2014-02-22T20:57:22-08:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Les Iterables]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/21/les-iterables/"/>
-    <updated>2013-12-21T08:16:00-05:00</updated>
+    <updated>2013-12-21T08:16:00-08:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/21/les-iterables</id>
     <content type="html"><![CDATA[<p><img class="center" src="/images/les-iterables.jpg" width="500"></p>
 
@@ -31,7 +31,7 @@
   <entry>
     <title type="html"><![CDATA[A Neophyte's Take on Scala]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala/"/>
-    <updated>2013-12-09T18:12:00-05:00</updated>
+    <updated>2013-12-09T18:12:00-08:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala</id>
     <content type="html"><![CDATA[<p>A <a href="http://overwatering.org/blog/2013/12/scala-1-star-would-not-program-again/">blog post</a> has recently been making the
 rounds in all the usual programming fora&mdash;/r/programming, hackernews, and so on&mdash;even eliciting a
@@ -153,7 +153,7 @@ language and ecosystem mature, they will hopefully become less and less of a pro
   <entry>
     <title type="html"><![CDATA[Fibonacci Stream]]></title>
     <link href="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream/"/>
-    <updated>2013-10-17T07:15:00-04:00</updated>
+    <updated>2013-10-17T07:15:00-07:00</updated>
     <id>http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream</id>
     <content type="html"><![CDATA[<p>I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
 to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy

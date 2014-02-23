@@ -9,7 +9,9 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Not very uplifting&#8230;David Pollak Slick production values.Jan Christopher Vogt Wonderful acting!Jonas Boner (Sorry guys, saw this in /r/scala &hellip;">
+  <meta name="description" content="After watching the wat talk and trolling my friends with the
+aneditor talk for about the 200th time, I decided to
+finally purchase one season of the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +86,97 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/12/23/cmd-misadventures-codebase-size/">CMD Misadventures - Codebase Size</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-23T06:50:00-08:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After watching the <a href="https://www.destroyallsoftware.com/talks/wat">wat</a> talk and trolling my friends with the
+<a href="https://www.destroyallsoftware.com/talks/a-whole-new-world">aneditor</a> talk for about the 200th time, I decided to
+finally purchase one season of the Destroy All Software screencasts, despite the (IMHO) steep price tag and my financial
+destitution.  (So far?  Totally worth it.  But a full review of the screencasts is neither here nor there.)</p>
+
+<p>I&rsquo;ve always been a big fan of the unix power tools&mdash;<code>find</code>, <code>grep</code>, <code>xargs</code>, and so forth&mdash;but the DAS talks introduced
+an idea that had never occurred to me for some insane reason: combine them with git to extract some interesting
+information about your codebase.  And so, I decided to go diving into my biggest scala project for insights about its
+code size.</p>
+
+<p>One of the most common problems that code size can indicate is the presence of &ldquo;god classes&rdquo; or libraries, which know
+and do way too much and thus are correspondingly bigger than the rest of the code by orders of magnitude.  This command
+was relatively simple and does not involve git, so here it is in its entirety:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>alexkuang@Orion <span class="o">[</span>00:00:00<span class="o">]</span> <span class="o">[</span>~foobar/src/main/scala<span class="o">]</span> <span class="o">[</span>master<span class="o">]</span>
+</span><span class='line'>-&gt; % find . -type f -name <span class="s2">&quot;*.scala&quot;</span> | <span class="k">while </span><span class="nb">read </span>file; <span class="k">do </span>wc -l <span class="nv">$file</span>; <span class="k">done</span> | sort -n
+</span><span class='line'>       9 ./com/foobar/models/Permission.scala
+</span><span class='line'>      11 ./com/foobar/util/LocParams.scala
+</span><span class='line'>      14 ./com/foobar/util/OrgSettings.scala
+</span><span class='line'>      16 ./com/foobar/security/package.scala
+</span><span class='line'>      17 ./com/foobar/scripts/ReloadStageDB.scala
+</span><span class='line'>      18 ./com/foobar/scripts/oneoff/InitSchema.scala
+</span><span class='line'>      <span class="c"># ...</span>
+</span><span class='line'>     231 ./com/foobar/js/Calendar.scala
+</span><span class='line'>     247 ./com/foobar/persistence/Access.scala
+</span><span class='line'>     287 ./com/foobar/snippet/BookingCalendar.scala
+</span><span class='line'>     307 ./com/foobar/lib/Registration.scala
+</span><span class='line'>     319 ./com/foobar/lib/Scheduler.scala
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output was slightly interesting, but nothing groundbreaking.  300 lines is not ideal to me, but manageable.  Broken
+down quickly, <code>find #...</code> finds all files inside the current directory ending in &lsquo;.scala&rsquo;, reads each file in, and
+passes it off to wc -l, which does a linecount on the file, whitespace and all.  <code>sort</code> does what its name implies, with
+<code>-n</code> making it sort <code>1 2 3 11</code> instead of <code>1 11 2 3</code>.  The information was slightly cool, but as a hack it&rsquo;s not very
+interesting, so let&rsquo;s throw some git in there to try to get a sense of how fast the codebase has grown over time.  After
+all, superlinear growth is usually indicative of a ton of repetition and therefore unnecessary code complexity.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/23/cmd-misadventures-codebase-size/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/12/21/les-iterables/">Les Iterables</a></h1>
     
     
@@ -100,7 +193,7 @@
   
 
 
-<time datetime="2013-12-21T08:16:00-05:00" pubdate data-updated="true">Dec 21<span>st</span>, 2013</time>
+<time datetime="2013-12-21T08:16:00-08:00" pubdate data-updated="true">Dec 21<span>st</span>, 2013</time>
         
       </p>
     
@@ -147,7 +240,7 @@
   
 
 
-<time datetime="2013-12-20T14:05:00-05:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
+<time datetime="2013-12-20T14:05:00-08:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
         
       </p>
     
@@ -228,7 +321,7 @@ Clojure bandwagon.</p>
   
 
 
-<time datetime="2013-12-11T18:29:00-05:00" pubdate data-updated="true">Dec 11<span>th</span>, 2013</time>
+<time datetime="2013-12-11T18:29:00-08:00" pubdate data-updated="true">Dec 11<span>th</span>, 2013</time>
         
       </p>
     
@@ -296,7 +389,7 @@ no wish to be dealing with such things when I&rsquo;m trying to make sure my cod
   
 
 
-<time datetime="2013-12-09T18:12:00-05:00" pubdate data-updated="true">Dec 9<span>th</span>, 2013</time>
+<time datetime="2013-12-09T18:12:00-08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2013</time>
         
       </p>
     
@@ -360,7 +453,7 @@ possible does not mean it should be done all the time.</p>
   
 
 
-<time datetime="2013-12-04T19:04:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2013</time>
+<time datetime="2013-12-04T19:04:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2013</time>
         
       </p>
     
@@ -416,7 +509,7 @@ slightest.</p>
   
 
 
-<time datetime="2013-11-17T12:32:00-05:00" pubdate data-updated="true">Nov 17<span>th</span>, 2013</time>
+<time datetime="2013-11-17T12:32:00-08:00" pubdate data-updated="true">Nov 17<span>th</span>, 2013</time>
         
       </p>
     
@@ -470,7 +563,7 @@ at the dinner table.  Chances to do that don&rsquo;t come around nearly as often
   
 
 
-<time datetime="2013-10-17T07:15:00-04:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time>
+<time datetime="2013-10-17T07:15:00-07:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time>
         
       </p>
     
@@ -528,7 +621,7 @@ though.</p>
   
 
 
-<time datetime="2013-10-15T21:50:00-04:00" pubdate data-updated="true">Oct 15<span>th</span>, 2013</time>
+<time datetime="2013-10-15T21:50:00-07:00" pubdate data-updated="true">Oct 15<span>th</span>, 2013</time>
         
       </p>
     
@@ -569,7 +662,7 @@ already taken, here&rsquo;s a picture of a big bowl of beef with kimchi and rice
   
 
 
-<time datetime="2013-10-10T22:00:00-04:00" pubdate data-updated="true">Oct 10<span>th</span>, 2013</time>
+<time datetime="2013-10-10T22:00:00-07:00" pubdate data-updated="true">Oct 10<span>th</span>, 2013</time>
         
       </p>
     
@@ -622,6 +715,10 @@ want a blog with non-technical contributors, so that bridge can be crossed when 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/22/jamaican-beef-patty-week-6-jamaican/">Jamaican Beef Patty - Week 6, Jamaican</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/10/im-baaaaack/">I&#8217;m baaaaack</a>
       </li>
     
@@ -635,10 +732,6 @@ want a blog with non-technical contributors, so that bridge can be crossed when 
     
       <li class="post">
         <a href="/blog/2014/01/28/raclette-week-4-things-you-hated-as-a-kid/">Raclette - Week 4, Things You Hated as a Kid</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/26/adventures-with-mail-dot-app-gremlins/">Adventures with Mail.app Gremlins</a>
       </li>
     
   </ul>

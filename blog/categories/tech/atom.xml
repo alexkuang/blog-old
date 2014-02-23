@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-02-10T23:00:27-05:00</updated>
+  <updated>2014-02-22T20:57:22-08:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[IAP and Mobile]]></title>
     <link href="http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile/"/>
-    <updated>2014-02-03T21:43:00-05:00</updated>
+    <updated>2014-02-03T21:43:00-08:00</updated>
     <id>http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile</id>
     <content type="html"><![CDATA[<p>In-app purchases and the free-to-play model have long been anathema to self-declared &ldquo;real gamers&rdquo; everywhere, but the
 recent release (or re-release?) of classics like Tales of Phantasia and Dungeon Keeper seems to have brought yet
@@ -49,7 +49,7 @@ problem with paying more for less.</p>
   <entry>
     <title type="html"><![CDATA[Adventures with Mail.app Gremlins]]></title>
     <link href="http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins/"/>
-    <updated>2014-01-26T09:05:00-05:00</updated>
+    <updated>2014-01-26T09:05:00-08:00</updated>
     <id>http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins</id>
     <content type="html"><![CDATA[<h4>Background</h4>
 
@@ -112,7 +112,7 @@ be more diligent in setting up auto-forwarding even for email addresses I don&rs
   <entry>
     <title type="html"><![CDATA[CMD Misadventures - Codebase Size]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size/"/>
-    <updated>2013-12-23T06:50:00-05:00</updated>
+    <updated>2013-12-23T06:50:00-08:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size</id>
     <content type="html"><![CDATA[<p>After watching the <a href="https://www.destroyallsoftware.com/talks/wat">wat</a> talk and trolling my friends with the
 <a href="https://www.destroyallsoftware.com/talks/a-whole-new-world">aneditor</a> talk for about the 200th time, I decided to
@@ -293,7 +293,7 @@ that tend to pop up while coding.</p>
   <entry>
     <title type="html"><![CDATA[Clojure First Impressions]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions/"/>
-    <updated>2013-12-20T14:05:00-05:00</updated>
+    <updated>2013-12-20T14:05:00-08:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions</id>
     <content type="html"><![CDATA[<p>After achieving some measure of familiarity with Scala, and with newfound copious amounts of free time, I decided I
 wanted to see more of what the functional world had to offer.  The obvious choices were Haskell and Clojure; but while
@@ -347,7 +347,7 @@ Clojure bandwagon.</p>
   <entry>
     <title type="html"><![CDATA[Zelda as a Metaphor for Complexity]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/"/>
-    <updated>2013-12-11T18:29:00-05:00</updated>
+    <updated>2013-12-11T18:29:00-08:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity</id>
     <content type="html"><![CDATA[<p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
 my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
