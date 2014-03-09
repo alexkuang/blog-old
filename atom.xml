@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-02-28T21:04:49-08:00</updated>
+  <updated>2014-03-08T22:43:01-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -14,9 +14,40 @@
 
   
   <entry>
+    <title type="html"><![CDATA[New Belt!]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/03/08/new-belt/"/>
+    <updated>2014-03-08T21:59:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/03/08/new-belt</id>
+    <content type="html"><![CDATA[<p>Normally I try to keep the &ldquo;dear diary&rdquo; factor on the blog low.  But in all the bustle of settling back into the east
+coast with a new work arrangement, I all but forgot about the whole blogging thing until roughly 2 minutes ago.  So if
+you&rsquo;re one of the ones who reads this for what little informational value I manage to provide, or are otherwise
+uninterested in participating in this rare bout of masturbatory self-congratulations, here&rsquo;s your cue.</p>
+
+<p>Still here?  So&hellip;  I got my blue belt in BJJ recently.  For anyone unfamiliar, it&rsquo;s basically the &ldquo;hurrah, you&rsquo;re no
+longer a rookie&rdquo; rank, and in all seriousness this is one of my prouder moments.  Why?  Because of all my regular
+activities, BJJ is the one where I have absolutely no talent whatsoever.  Seriously.  It took me a solid 2 years to get
+to this point, and every day of that was spent with the mat being wiped by my face.  Ask anyone at the gym: I still get
+rag-dolled on a regular basis.</p>
+
+<p>Now, as a software developer (and all-around lazy nerd) I have a propensity to approach most problems by a) finding an
+easier way to do it, b) deciding it&rsquo;s not worth the time, or c) see (a).  It&rsquo;s an approach that works for software, for
+games, and probably for most challenges you&rsquo;re likely to find in the first world.  But it&rsquo;s great having proof that
+sometimes you just have to show up and grind through and that&rsquo;s the only way to improve.  It&rsquo;s a reminder that
+surprisingly often, the only actual obstacle is just you being a giant chicken and unwilling to leave your comfort zone.</p>
+
+<p>So, as the kid who couldn&rsquo;t do a single push-up and ran a 13 minute mile in school, I&rsquo;d like to give myself a pat on the
+back for managing to get this far.  And despite all the split lips, swollen fingers, and sprained joints, I sure hope I
+get a lot farther in the future.</p>
+
+<p>Oh, and&hellip;  I kind of lied about the lack of material.  I had another 52-weeks post lined up, but the experiment failed
+horribly.  I&rsquo;m just buying time so I can do a second iteration and save SOME face, so&hellip;  Look forward to that one.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Corn with Miso Butter - Week 6, Poaching]]></title>
     <link href="http://alexkuang.github.io/blog/2014/02/28/corn-with-miso-butter-week-6-poaching/"/>
-    <updated>2014-02-28T20:34:00-08:00</updated>
+    <updated>2014-02-28T20:34:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/02/28/corn-with-miso-butter-week-6-poaching</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Miso-Corn/i-RCTZjJw/0/L/DSC_2447-L.jpg"></p>
 
@@ -83,7 +114,7 @@ pre-yolk-pop:</p>
   <entry>
     <title type="html"><![CDATA[Jamaican Beef Patty - Week 6, Jamaican]]></title>
     <link href="http://alexkuang.github.io/blog/2014/02/22/jamaican-beef-patty-week-6-jamaican/"/>
-    <updated>2014-02-22T13:02:00-08:00</updated>
+    <updated>2014-02-22T13:02:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/02/22/jamaican-beef-patty-week-6-jamaican</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Jamaican-Beef-Patty/i-gFrttbp/0/L/DSC_2467-L.jpg"></p>
 
@@ -119,7 +150,7 @@ crust starch just grosses me out.</p>
   <entry>
     <title type="html"><![CDATA[I'm baaaaack]]></title>
     <link href="http://alexkuang.github.io/blog/2014/02/10/im-baaaaack/"/>
-    <updated>2014-02-10T20:56:00-08:00</updated>
+    <updated>2014-02-10T20:56:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/02/10/im-baaaaack</id>
     <content type="html"><![CDATA[<p>It&rsquo;s been nearly two years since I&rsquo;ve done any serious baking and pastry work.  One part of it was graduating into a
 full-time job that meant most of my time would be spent away in an office instead of at home keeping an eye on my dough
@@ -147,7 +178,7 @@ overall it could have been much worse.</p>
   <entry>
     <title type="html"><![CDATA[Panna Cotta with Apple Compote - Week 5, Vanilla]]></title>
     <link href="http://alexkuang.github.io/blog/2014/02/08/panna-cotta-with-apple-compote-week-5-vanilla/"/>
-    <updated>2014-02-08T10:52:00-08:00</updated>
+    <updated>2014-02-08T10:52:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/02/08/panna-cotta-with-apple-compote-week-5-vanilla</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Panna-Cotta-with-Apple/i-gpKW6cR/0/L/DSC_2421-L.jpg"></p>
 
@@ -244,7 +275,7 @@ sugar syrup that I&rsquo;ve steeped with cardamom pods.</li>
   <entry>
     <title type="html"><![CDATA[IAP and Mobile]]></title>
     <link href="http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile/"/>
-    <updated>2014-02-03T21:43:00-08:00</updated>
+    <updated>2014-02-03T21:43:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile</id>
     <content type="html"><![CDATA[<p>In-app purchases and the free-to-play model have long been anathema to self-declared &ldquo;real gamers&rdquo; everywhere, but the
 recent release (or re-release?) of classics like Tales of Phantasia and Dungeon Keeper seems to have brought yet
@@ -277,7 +308,7 @@ problem with paying more for less.</p>
   <entry>
     <title type="html"><![CDATA[Raclette - Week 4, Things You Hated as a Kid]]></title>
     <link href="http://alexkuang.github.io/blog/2014/01/28/raclette-week-4-things-you-hated-as-a-kid/"/>
-    <updated>2014-01-28T06:44:00-08:00</updated>
+    <updated>2014-01-28T06:44:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/01/28/raclette-week-4-things-you-hated-as-a-kid</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Oneshots/i-gvTHKVq/0/L/DSC_2393-L.jpg"></p>
 
@@ -304,7 +335,7 @@ plate.</p>
   <entry>
     <title type="html"><![CDATA[Adventures with Mail.app Gremlins]]></title>
     <link href="http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins/"/>
-    <updated>2014-01-26T09:05:00-08:00</updated>
+    <updated>2014-01-26T09:05:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins</id>
     <content type="html"><![CDATA[<h4>Background</h4>
 
@@ -370,7 +401,7 @@ be more diligent in setting up auto-forwarding even for email addresses I don&rs
   <entry>
     <title type="html"><![CDATA[Chicken Shahi Korma - Week 3, One Pot]]></title>
     <link href="http://alexkuang.github.io/blog/2014/01/19/chicken-shahi-week-3-one-pot/"/>
-    <updated>2014-01-19T10:06:00-08:00</updated>
+    <updated>2014-01-19T10:06:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/01/19/chicken-shahi-week-3-one-pot</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Chicken-Shahi-Korma/i-KPv4qLJ/0/L/DSC_2381-L.jpg"></p>
 
@@ -456,7 +487,7 @@ even better after sitting around for a day or two.</p>
   <entry>
     <title type="html"><![CDATA[Pierogi - Week 2, Polish]]></title>
     <link href="http://alexkuang.github.io/blog/2014/01/13/pierogi-week-2-polish/"/>
-    <updated>2014-01-13T11:07:00-08:00</updated>
+    <updated>2014-01-13T11:07:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/01/13/pierogi-week-2-polish</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Pierogi/i-JHfpDKq/0/L/DSC_2369-L.jpg"></p>
 
@@ -549,7 +580,7 @@ might change my mind.  Adding bacon is never a bad idea.</p>
   <entry>
     <title type="html"><![CDATA[Ramen Cake - Week 1, Eggs]]></title>
     <link href="http://alexkuang.github.io/blog/2014/01/06/ramen-cake-week-1-eggs/"/>
-    <updated>2014-01-06T13:05:00-08:00</updated>
+    <updated>2014-01-06T13:05:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/01/06/ramen-cake-week-1-eggs</id>
     <content type="html"><![CDATA[<p><em>&mdash;Or, really ghetto okonomiyaki&hellip;</em></p>
 
@@ -608,7 +639,7 @@ into faces after a few minutes.</p>
   <entry>
     <title type="html"><![CDATA[Ramen Stock]]></title>
     <link href="http://alexkuang.github.io/blog/2014/01/04/ramen-stock/"/>
-    <updated>2014-01-04T11:45:00-08:00</updated>
+    <updated>2014-01-04T11:45:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2014/01/04/ramen-stock</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been sick as a dog for the last couple of days, so I guess this week I&rsquo;ll keep it light.  Since it&rsquo;s about 0
 degrees F outside right now, what better time to mention ramen?</p>
@@ -626,7 +657,7 @@ few hours, and boom.  Stock.  If it&rsquo;s not feasible to leave the stove on, 
   <entry>
     <title type="html"><![CDATA[CMD Misadventures - Codebase Size]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size/"/>
-    <updated>2013-12-23T06:50:00-08:00</updated>
+    <updated>2013-12-23T06:50:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size</id>
     <content type="html"><![CDATA[<p>After watching the <a href="https://www.destroyallsoftware.com/talks/wat">wat</a> talk and trolling my friends with the
 <a href="https://www.destroyallsoftware.com/talks/a-whole-new-world">aneditor</a> talk for about the 200th time, I decided to
@@ -833,7 +864,7 @@ that tend to pop up while coding.</p>
   <entry>
     <title type="html"><![CDATA[Les Iterables]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/21/les-iterables/"/>
-    <updated>2013-12-21T08:16:00-08:00</updated>
+    <updated>2013-12-21T08:16:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/21/les-iterables</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://alexkuang.github.io/images/les-iterables.jpg" width="500"></p>
 
@@ -853,7 +884,7 @@ that tend to pop up while coding.</p>
   <entry>
     <title type="html"><![CDATA[Clojure First Impressions]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions/"/>
-    <updated>2013-12-20T14:05:00-08:00</updated>
+    <updated>2013-12-20T14:05:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions</id>
     <content type="html"><![CDATA[<p>After achieving some measure of familiarity with Scala, and with newfound copious amounts of free time, I decided I
 wanted to see more of what the functional world had to offer.  The obvious choices were Haskell and Clojure; but while
@@ -907,7 +938,7 @@ Clojure bandwagon.</p>
   <entry>
     <title type="html"><![CDATA[Zelda as a Metaphor for Complexity]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/"/>
-    <updated>2013-12-11T18:29:00-08:00</updated>
+    <updated>2013-12-11T18:29:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity</id>
     <content type="html"><![CDATA[<p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
 my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
@@ -948,7 +979,7 @@ no wish to be dealing with such things when I&rsquo;m trying to make sure my cod
   <entry>
     <title type="html"><![CDATA[A Neophyte's Take on Scala]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala/"/>
-    <updated>2013-12-09T18:12:00-08:00</updated>
+    <updated>2013-12-09T18:12:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala</id>
     <content type="html"><![CDATA[<p>A <a href="http://overwatering.org/blog/2013/12/scala-1-star-would-not-program-again/">blog post</a> has recently been making the
 rounds in all the usual programming fora&mdash;/r/programming, hackernews, and so on&mdash;even eliciting a
@@ -1072,7 +1103,7 @@ language and ecosystem mature, they will hopefully become less and less of a pro
   <entry>
     <title type="html"><![CDATA[Jab, jab]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/04/jab/"/>
-    <updated>2013-12-04T19:04:00-08:00</updated>
+    <updated>2013-12-04T19:04:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/04/jab</id>
     <content type="html"><![CDATA[<p>In the past, my biggest problem with blogging has always been with finding something to write about.  Every time an idea
 came, I&rsquo;d recall the original post that inspired it, or have one miraculously pop up on google upon doing more
@@ -1101,7 +1132,7 @@ slightest.</p>
   <entry>
     <title type="html"><![CDATA[Roast Leg of Lamb]]></title>
     <link href="http://alexkuang.github.io/blog/2013/11/17/roast-leg-of-lamb/"/>
-    <updated>2013-11-17T12:32:00-08:00</updated>
+    <updated>2013-11-17T12:32:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/11/17/roast-leg-of-lamb</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Leg-of-Lamb/i-q4M6vbN/0/L/DSC_2277-L.jpg"></p>
 
@@ -1128,7 +1159,7 @@ at the dinner table.  Chances to do that don&rsquo;t come around nearly as often
   <entry>
     <title type="html"><![CDATA[Fibonacci Stream]]></title>
     <link href="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream/"/>
-    <updated>2013-10-17T07:15:00-07:00</updated>
+    <updated>2013-10-17T07:15:00-04:00</updated>
     <id>http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream</id>
     <content type="html"><![CDATA[<p>I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
 to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy
@@ -1153,20 +1184,6 @@ which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.sca
 <p>Will probably write more about the why/how of the nested loop <code>def</code> (mostly for my own reference), but for now I think
 the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
 though.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Big Bowl O Beef]]></title>
-    <link href="http://alexkuang.github.io/blog/2013/10/15/big-bowl-o-beef/"/>
-    <updated>2013-10-15T21:50:00-07:00</updated>
-    <id>http://alexkuang.github.io/blog/2013/10/15/big-bowl-o-beef</id>
-    <content type="html"><![CDATA[<p>I wanted to test out how images worked with the blog, but had nothing imminent to write about.  Since kittens are
-already taken, here&rsquo;s a picture of a big bowl of beef with kimchi and rice.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Bowl-O-Beef-2013/i-FtTgtWC/0/L/DSC_2245-L.jpg"></p>
-
-<p>Not too bad.</p>
 ]]></content>
   </entry>
   
