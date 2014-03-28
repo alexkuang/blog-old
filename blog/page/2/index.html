@@ -9,8 +9,8 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="One thing I&rsquo;ve noticed about the weekly food challenges is that it syncs very well with my new self-imposed weekly post
-quota. This works out &hellip;">
+  <meta name="description" content="Background Usually I don&rsquo;t care too much if an email or two gets dropped en route. Between spam filters and sometimes-spotty
+(cough, mobile) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,99 @@ quota. This works out &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/26/adventures-with-mail-dot-app-gremlins/">Adventures With Mail.app Gremlins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-26T09:05:00-05:00" pubdate data-updated="true">Jan 26<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>Background</h4>
+
+<p>Usually I don&rsquo;t care too much if an email or two gets dropped en route.  Between spam filters and sometimes-spotty
+(cough, mobile) connections, it&rsquo;s not too much of a stretch to assume that things get lost once in a great while.  But
+recently I was trying to set up an interview on the other side of the country, so naturally I paid a little more
+attention than usual.  Everything was going quite well, correspondence was zipping back and forth, and I&rsquo;d even bought a
+plane ticket for the trip.  But then a lull came when it was time to receive confirmation for hotel arrangements and a
+rough schedule for the interview process.</p>
+
+<p>Unbeknownst to me, the HR rep had already tried to send the information twice at this point, but for some
+reason the emails weren&rsquo;t landing in my inbox.  I sent one last-ditch follow-up when my flight was boarding, and got a
+reply with the info (thankfully) right before the plane took off.  Along with the reply, the HR rep mentioned that the
+previous emails she&rsquo;d sent had gone to <code>waffles@mochify.com</code>. <em>(aside: While <code>waffles@mochify.com</code> isn&rsquo;t the first email
+I&rsquo;d give out professionally, I&rsquo;m thankful it wasn&rsquo;t something like <code>sexbadger69@gmail.com</code> &hellip;  Actually, now I wonder
+if that address is open &hellip;)</em></p>
+
+<h4>The technical details</h4>
+
+<p>This was an old address that I&rsquo;d added to my various devices previously, but then removed for inactivity; I certainly
+didn&rsquo;t recall sending any recent email from it.  But when I logged in to check the inbox, lo and behold the missing
+emails were staring me in the face, along with a few others that had been &ldquo;dropped&rdquo; not too long ago.  Something smelled
+fishy.  I checked over my Sent box for my regular email to no avail; all the correspondence was there, with the correct
+<code>From</code>s and <code>To</code>s.  I ended up having to dig into the plain-text of the mime header to spot the issue:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>From: Alex Kuang &lt;[...]&gt;
+</span><span class='line'>Content-Type: multipart/alternative;
+</span><span class='line'>    boundary="Apple-Mail=_7DA4001C-0AA1-48BD-80F5-00ACDBCCAE9C"
+</span><span class='line'>    Message-Id: &lt;ADFD0F4C-6FE0-41F5-AA68-EF8E9845B360@gmail.com&gt;
+</span><span class='line'>    Mime-Version: 1.0 (Mac OS X Mail 6.6 \(1510\))
+</span><span class='line'>    X-Smtp-Server: smtp.gmail.com:waffles@mochify.com
+</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>X-Smtp? What?</em>  After a bit of googling I discovered that Mail.app on the Mac keeps a list of outgoing smtp servers
+associated with your mail accounts, which you can see in Preferences &ndash;> Accounts &ndash;> &ldquo;Outgoing Mail Server&rdquo; &ndash;> Edit SMTP
+Server List.  The problem is, the entry with the association persists <strong>even after an account is removed from the
+list</strong>: when I checked my smtp list, it included an entry for mochify as well as a few other one-off addresses that I&rsquo;d
+added and removed in similar fashion.  Most of my email (including <code>mochify.com</code>) is handled by google apps, which means
+that the smtp server the entries pointed to were all <code>smtp.gmail.com</code>, and the only difference was the
+username/authentication associated.</p>
+
+<p>So what ended up happening here was that I&rsquo;d sent the email from my regular account through Mail.app so it still carried
+the correct <code>From</code>/etc.  However, for reasons unknown, the outgoing smtp entry for that account did not work at
+that moment.  Since <code>mochify</code>&rsquo;s smtp entry pointed at the same <code>smtp.gmail.com</code> server, I&rsquo;m willing to bet that Mail.app
+decided it was a perfectly good fallback, added the <code>X-Smtp-Server</code> MIME header, and sent the email causing this weird
+reply-to behavior.</p>
+
+<p>There is a checkbox in account preferences that will lock you into using one-and-only-one smtp server and prevent this
+from happening, but honestly after this ordeal I will probably just be even more biased towards composing my email using
+the web gmail ui.  I&rsquo;m just glad that everything worked out in the end, and anyway this is a good reminder that I should
+be more diligent in setting up auto-forwarding even for email addresses I don&rsquo;t plan on using.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -635,62 +728,6 @@ possible does not mean it should be done all the time.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/04/jab/">Jab, Jab</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-04T19:04:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the past, my biggest problem with blogging has always been with finding something to write about.  Every time an idea
-came, I&rsquo;d recall the original post that inspired it, or have one miraculously pop up on google upon doing more
-research.  Inevitably the post would be articulate, well-researched, and laden with comments from impressed readers to
-boot.  And I would hit control+w, convinced that I don&rsquo;t have anything to add; even if I did, I&rsquo;m an awful writer and
-nobody reads my blog anyway.</p>
-
-<p>But writing is an Important Skill, one that I&rsquo;d very much like to improve.  I&rsquo;m certainly not going to get any better by
-<em>not</em> doing it, and <a href="http://weknowmemes.com/2012/05/sucking-at-something-is-the-first-step-to-becoming/">everyone has to start somewhere</a>: keep practicing, keep
-drilling, keep jabbing away, and eventually you&rsquo;ll probably make progress.  I remember an old post of Jeff Atwood&rsquo;s
-where his only advice was to <a href="http://www.codinghorror.com/blog/2007/10/how-to-achieve-ultimate-blog-success-in-one-easy-step.html">pick a schedule</a> and stick
-with it.  Maybe it&rsquo;s about time I did just that.  <strong>One post a week</strong>, even if the topic sounds asinine and I&rsquo;m low on
-inspiration and nobody will read it (or <em>especially</em> if nobody will read it?).</p>
-
-<p>With all that said, I&rsquo;d like to introduce my newest housemate, <a href="http://waffleparadox.smugmug.com/Animals/Zelda">Zelda</a>.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Animals/Zelda/i-rNGBWHH/0/L/DSC_2268-L.jpg"></p>
-
-<p>She arrived with all of 3 days&#8217; notice, and is at just about that age where kittens tend to be terrible people.  She&rsquo;ll
-bully the other (much bigger) cats, knock over bowls and trash bags, attack everything like the king of the jungle, and
-just generally be an unabashed little snot.  But she&rsquo;s disarmingly adorable, so naturally none of that matters in the
-slightest.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -708,6 +745,10 @@ slightest.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/23/anime-boston-2014/">Anime Boston 2014</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/22/hipster-garlic-bread-week-9-garlic/">Hipster Garlic Bread - Week 9, Garlic</a>
       </li>
     
@@ -721,10 +762,6 @@ slightest.</p>
     
       <li class="post">
         <a href="/blog/2014/02/28/corn-with-miso-butter-week-7-poaching/">Corn with Miso Butter - Week 7, Poaching</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/22/jamaican-beef-patty-week-6-jamaican/">Jamaican Beef Patty - Week 6, Jamaican</a>
       </li>
     
   </ul>
