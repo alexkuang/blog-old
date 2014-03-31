@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-03-27T22:54:14-04:00</updated>
+  <updated>2014-03-30T22:02:18-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Curry Chicken Galantine]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/03/30/curry-chicken-galantine/"/>
+    <updated>2014-03-30T21:30:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/03/30/curry-chicken-galantine</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Curry-Chicken-Galantine/i-K79mZTH/0/L/DSC_2867-L.jpg"></p>
+
+<p><em>What?!  A food post that isn&rsquo;t themed?!</em>  That&rsquo;s right.  While the 52weeks deal resulted in consistency, doing only
+those posts all the time got a bit stale, so I decided to go a bit off the beaten path.  This dish was inspired by what
+is still one of the coolest videos I&rsquo;ve ever seen: <a href="https://www.youtube.com/watch?v=kAekQ5fzfGM">Jacques Pepin deboning an entire chicken</a>.
+A Galantine is a French (big surprise) technique where all of the bones are removed from a chicken, but the meat and
+skin is kept intact like the remains of some sort of creepy skinwalker type transformation.   Everything is then
+stuffed, rolled up, and roasted.</p>
+
+<p>Despite its simplicity, it&rsquo;s one of the coolest techniques I have ever seen, and it makes carving much much easier
+since you don&rsquo;t have any bones to contend with while grappling a hot chicken fresh out of the oven.  I&rsquo;ve only done this
+a few times, and it&rsquo;s already become my de-facto method for preparing whole chicken&mdash;the cool factor, the corpse
+desecration, the ease of plating&hellip;  What&rsquo;s not to like?</p>
+
+<!-- more -->
+
+
+<h3>Why Curry</h3>
+
+<p>For this particular chicken, I decided to combine a thoroughly French technique with thoroughly un-French
+flavors&mdash;Curry.</p>
+
+<p>Even though I&rsquo;m all elitist and tend mix my own spices nowadays, my childhood was spent eating curries made with instant
+powder mixes.  (<em>For the record, nothing wrong with curry powder mixes, assuming they&rsquo;re made from actual spices&hellip;</em>)
+The most common of these was Madras Curry, particularly <a href="http://vietwah.com/Joomla/components/com_virtuemart/shop_image/product/fab54182fc7c87449f726b0e7cb3bec9.jpg">this brand</a>.
+If the image link breaks, just google &ldquo;Ca Ri An Do&rdquo;.  It&rsquo;s a pretty unremarkable curry based heavily in turmeric,
+definitely tending more towards the mild flavors that the Chinese/Japanese tend to flavor rather than the ripping hot
+Vindaloo style you can see with some of the Indian curries.</p>
+
+<p>But one of the problems I&rsquo;ve always had with this one in particular was that the sauce would have to get really thick
+for the flavor to come out in the chicken.  In this past I&rsquo;d done this with judicious (read: heavy-handed) use of cream,
+starch from potatoes, and reduction of liquid, but it never really got to the level I would have liked.  So when I was
+thinking about variations on a Galantine, doing a stuffing with this curry powder was just about the first thing that
+came to mind.</p>
+
+<h3>The Chicken</h3>
+
+<p>I can&rsquo;t possibly explain the technique behind a Galantine as well as the man himself, so if you didn&rsquo;t click on the
+video link above, I suggest you do.  Go on.  I&rsquo;ll even put it down here as well.</p>
+
+<p><a href="https://www.youtube.com/watch?v=kAekQ5fzfGM">Link</a></p>
+
+<p>Watched it?  Good.  Pretty awesome, isn&rsquo;t it?  The stuffing is pretty simple:</p>
+
+<ol>
+<li>Finely dice yukon potatoes and carrots, and boil until tender</li>
+<li>Mash up with a fork, dumping in generous helpings of curry powder and a pinch of salt</li>
+<li>Add a touch of heavy cream for consistency, and because cream is delicious.</li>
+</ol>
+
+
+<p>In essence it was a rustic mashed potato.  I&rsquo;m sure a super fancy restaurant could do a potato and carrot puree or
+something, but ain&rsquo;t nobody got time for that in this kitchen.  Stuff the chicken, truss it up, dust it with more curry
+powder and salt, and stick it in the oven.  I stole my roasting technique from Thomas Keller&mdash;450 for ~25 minutes, then
+370 until the internal temp of the thickest part of the thigh is 160&mdash;but really, whatever works.  Afterwards I just
+made a sauce by deglazing the stuff in the roasting pan with some cream, and&mdash;<em>voila!</em></p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Curry-Chicken-Galantine/i-46XNmjz/0/L/DSC_2864-L.jpg"></p>
+
+<p>Some people might say this technique is a bit old fashioned, but screw them.  Clearly they&rsquo;ve never deboned a chicken
+with their hands&mdash;It&rsquo;s like ripping off a scab, except a million times more satisfying.  And delicious.  And chicken
+wing lollipops?  Come on.  Ridiculous.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Anime Boston 2014]]></title>
@@ -1220,130 +1290,6 @@ complex interactions between the existing items that Link already has access to.
 on the current environment, but also the configuration of surrounding environments, and probably the order that
 everything was done as well.  Keeping track of all that is welcome, even enjoyable, when I&rsquo;m playing Zelda.  But I have
 no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing what I want it to.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A Neophyte's Take on Scala]]></title>
-    <link href="http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala/"/>
-    <updated>2013-12-09T18:12:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala</id>
-    <content type="html"><![CDATA[<p>A <a href="http://overwatering.org/blog/2013/12/scala-1-star-would-not-program-again/">blog post</a> has recently been making the
-rounds in all the usual programming fora&mdash;/r/programming, hackernews, and so on&mdash;even eliciting a
-<a href="https://groups.google.com/forum/#!topic/scala-debate/153H3Ya4Nxk">response</a> from Scala&rsquo;s creator himself.  There&rsquo;s a
-lot of discussion both productive and inflammatory out there already, but I thought I&rsquo;d jot down my perspective on the
-common points as someone who: 1. picked scala up relatively recently (2.9.2 and 2.10), 2. has worked with it for a few
-months on the side, and 3. comes from a background of dynamic languages.</p>
-
-<h4>Long Compile Times</h4>
-
-<p>I can definitely see where this is coming from.  Scala&rsquo;s compile times can be pretty long, though I had pegged that as
-the cost of using a compiled language anyway.  I, at least, felt a marked increase in times upgrading from <code>2.9.2</code> to
-<code>2.10</code>, presumably from the slew of new features like macros.  However, it seems that <code>2.11</code> will thankfully be
-<a href="http://java.dzone.com/articles/state-scala-2013">focused</a> on compiler optimizations.  In the meantime, I&rsquo;ve found that
-judicious use of some of Scala&rsquo;s heavier features (such as implicits) keeps the compile times manageable.
-<a href="http://zeroturnaround.com/software/jrebel/">JRebel</a> has been a godsend as well for hot-reloading in incremental
-compilation, and they do offer a personal Scala license for free.  Without JRebel my life as a scala user would have
-been a lot harder.</p>
-
-<h4>Opaque Syntax</h4>
-
-<p>I agree completely here.  Scala&rsquo;s flexibility in parsing + its allowance of symbolic method names obviously allows for a
-lot of flexibility.  This allows the construction of all sorts of DSLs; whether these DSLs end up being expressive or
-just plain confusing, is another thing altogether.  In this case, I&rsquo;d have to say that just because something is
-possible does not mean it should be done all the time.</p>
-
-<!-- more -->
-
-
-<p>The original post mentions that their build script&rsquo;s syntax seemed to be all over the place; I&rsquo;m assuming they were
-referring to the de facto scala build tool, <a href="http://www.scala-sbt.org/">sbt</a>.  While it&rsquo;s great in a lot of ways, I
-personally am not a big fan of their heavy use of symbolic names either.  Just as an example, a relatively simple build
-file for one of my personal projects already has all of the following:</p>
-
-<figure class='code'><figcaption><span>build.sbt </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">testOptions</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">+=</span> <span class="o">(...)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">resourceGenerators</span> <span class="n">in</span> <span class="nc">Compile</span> <span class="o">&lt;+=</span> <span class="o">(...)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>All of them are obviously for adding to some sort of sequence, but still different enough to trip you up.  And this is
-still relatively shallow territory&mdash;I haven&rsquo;t even mentioned the insanity that comes with more advanced libraries, like
-the <a href="http://stackoverflow.com/questions/14472310/pronounceable-names-for-scalaz-operators">fish operator</a>.</p>
-
-<p>In Odersky&rsquo;s google groups thread, he mentions a proposal for requiring an equivalent alphabetical alias for all
-symbolic methods.  I hope that goes through.  If nothing else, it&rsquo;ll make the methods easier to google.</p>
-
-<h4>Documentation</h4>
-
-<p>As with any budding technology, documentation tends to lag behind development.  However, language and core library
-documentation has improved immensely even in the time since I picked up Scala, so many kudos to the typesafe team for
-that.  However, the third-party libraries still have a way to go; as helpful and educational as it may be, source code
-should <em>not</em> be the go-to method for research.</p>
-
-<h4>Types and Case Classes</h4>
-
-<p>Here&rsquo;s where I have to respectfully disagree completely with the original post.  I <em>love</em> types and case classes.  Being
-able to encode logic in your types that would otherwise have ended up as boilerplate-y edge case checking, <em>and</em> having
-the compiler do it for you instead of maintaining the extra tests, is a win in my book.  Coming from a dynamic web
-background, having a compiler do some of these checks for me was a breath of fresh air, especially since it doesn&rsquo;t come
-at the cost of extreme clunkiness a la Java.</p>
-
-<p>And case classes / <a href="http://learnyouahaskell.com/making-our-own-types-and-typeclasses">algebraic data types</a> are the
-bee&rsquo;s knees.  Between the <code>copy</code> method and the free pattern matching, I don&rsquo;t see how case classes do anything but get
-rid of repetition.  Forgive the simplistic example:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">model</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">version</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Extraction, conditionals, and assignment, all done succinctly</span>
-</span><span class='line'><span class="k">def</span> <span class="n">calcType</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span> <span class="k">match</span> <span class="o">{</span>
-</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="s">&quot;hp&quot;</span><span class="o">,</span> <span class="s">&quot;20B&quot;</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">&quot;financial&quot;</span>
-</span><span class='line'>  <span class="c1">// ...</span>
-</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">&quot;Calculator: %s %s %s is of unknown type&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span>
-</span><span class='line'><span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// No custom methods/etc needed</span>
-</span><span class='line'><span class="k">def</span> <span class="n">upgrade</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">version</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">version</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Overall impressions</h4>
-
-<p>Despite its flaws, I&rsquo;ve really enjoyed working with Scala and it will probably remain a part of my toolbox.  Its
-flexibility and power makes it a great gen-purpose language, especially in its type system and ability to combine
-functional programming with OO.  It sits in the JVM, which means interoperability with the existing mammoth Java
-ecosystem comes with just a little bit of glue code.  And more importantly, it means that if I should pick up Clojure in
-the future, interoperability with THAT will not be too far off either, knock on wood.</p>
-
-<p>That said, it&rsquo;s not by any means a perfect language.  The same flexibility that makes it great to use can often result
-in convoluted APIs, and it&rsquo;s very easy to shoot yourself in the foot.  Living in the JVM also means the language has to
-deal with things like type erasure; that results in some annoying limitations, especially if you&rsquo;re looking to use scala
-in a more advanced functional capacity (see <a href="https://github.com/scalaz/scalaz">scalaz</a>).  And lastly&hellip;  Scala, at least
-to me, is one of those tools that feels natural once you&rsquo;re used to it, but requires a significant mental shift to fully
-grok&mdash;I wouldn&rsquo;t want to be plopped into scala on a fresh project with a one month deadline.  Ideally, there should be
-some better documentation to help bridge that gap.</p>
-
-<p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
-language and ecosystem mature, they will hopefully become less and less of a problem.</p>
 ]]></content>
   </entry>
   
