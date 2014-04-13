@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-03-30T22:02:18-04:00</updated>
+  <updated>2014-04-12T23:04:53-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Shepherd's Pie - Week 10, Australian]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/04/12/shepherds-pie-week-10-australian/"/>
+    <updated>2014-04-12T22:37:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/04/12/shepherds-pie-week-10-australian</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Shepherds-Pie/i-hnc6sSv/0/L/DSC_2915-L.jpg"></p>
+
+<p>Alright, so I cheated a little bit.  Despite extensive (not really) research, I couldn&rsquo;t find anything in the top google
+results for Australian that really clicked.  At least, anything using conventional ingredients; I didn&rsquo;t quite get the
+chance to special-order some kangaroo.  Since I&rsquo;m told meat pies are popular in Australia and the lamb was technically
+from there, it still counts&hellip;  Right?</p>
+
+<!-- more -->
+
+
+<p>Even though it&rsquo;s technically an Aussie theme, I went with a more british twist on the ingredients, especially with the
+Worcestershire sauce.  The following makes enough to modestly feed 4 off a pretty decent size tray.  <em>No, I don&rsquo;t have
+exact dimensions for the tray, it&rsquo;s a meat pie, eyeball it FFS.</em></p>
+
+<ul>
+<li>1 lb ground lamb</li>
+<li>1 lb yellow potato, heavy cream</li>
+<li>Stock, preferably beef</li>
+<li>A dash (or 3) Worcestershire sauce</li>
+<li>1 tbsp tomato paste</li>
+<li>Carrots &lsquo;n peas (or other vegetables)</li>
+<li>Garlic</li>
+<li>Thyme</li>
+</ul>
+
+
+<p>First off, the meez.  Chop up the garlic, pick the thyme leaves, and finely dice the vegetables, if applicable.  In my
+case, it&rsquo;s more like &ldquo;take the bag out of the freezer.&rdquo;  Seriously, for carrots and peas in something like meat pie,
+frozen works best.</p>
+
+<p>Put a nice heavy pan on the stove and get it ripping hot.  Add the lamb and garlic, and let the meat get some color.
+Don&rsquo;t jab at it or anything for the first few minutes; we want it to fry, not boil.</p>
+
+<p>After it gets a nice dark brown color, start stirring and breaking it apart into tiny pieces.  When it&rsquo;s done, you
+should hear sizzling from fat, not hissing from steam&mdash;this should take 10, 15 minutes or so.</p>
+
+<p>Stir in the worcestershire sauce and tomato paste, then add the thyme and beef stock.  How much beef stock is pretty
+subjective: I use just enough to mix with the tomato paste for a gravy-ish texture.  The key is not so little that
+everything is dry, but not so much that it bubbles over in the oven.  If I had to guess, I&rsquo;d say it&rsquo;s just shy of 2
+cups, but perhaps a picture of the end product would be helpful?</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Shepherds-Pie/i-kZsbxX3/0/L/DSC_2895-L.jpg"></p>
+
+<p>Put a lid on, and let it simmer on very low heat for at least 30-40 minutes, preferably an hour, just to let everything
+come together.  Alternately, popping the pan in the oven at ~300-350 also works.</p>
+
+<p>Preheat the oven to 400.  While the meat is going and the oven is warming, prepare the mash.  I really hope I don&rsquo;t have
+to provide detailed instructions for that&hellip;  If that&rsquo;s needed, there&rsquo;s always google.</p>
+
+<p>When the meat is done, stick it in a tray and spread the mash on top.  Score with a fork for effect, if desired.  Then
+stick into the oven again for about 30 minutes to finish everything off and brown the top a bit.  For presentation, I
+bet some eggwash would help with the browning, but I&rsquo;ve never found it necessary.</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Shepherds-Pie/i-qMkv5Mz/0/L/DSC_2908-L.jpg"></p>
+
+<p>In this particular attempt, I added a bit too much stock and it ended up bubbling out onto the potato.  Still delicious,
+though.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Curry Chicken Galantine]]></title>
@@ -1249,47 +1314,6 @@ that I will probably keep it on even when I don&rsquo;t have to deal with the ha
 after dealing with the crazy complexity in Scala.  Undoubtedly working through the latter had a part in making the
 former much easier, and Scala will always have a place with me, but for now I find myself slowly joining the rest of the
 Clojure bandwagon.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Zelda as a Metaphor for Complexity]]></title>
-    <link href="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/"/>
-    <updated>2013-12-11T18:29:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity</id>
-    <content type="html"><![CDATA[<p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
-my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
-which could take upwards of hours (Water Temple, I&rsquo;m looking at you) to complete on the first run.  One of them jumps to
-mind particularly: The Forest Temple, a dungeon you encounter in the early-mid game immediately after gaining access to
-adult Link.</p>
-
-<p>At first glance, it seems like a completely normal dungeon&mdash;You&rsquo;ve got your wolves, you&rsquo;ve got your carnivorous plants,
-and the obvious puzzle in the form of 4 torches that have to be lit.  Fairly straightforward, until the game hits you
-with this:</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/forest-temple-hallway.jpg"></p>
-
-<p>The first time you hit the twisting hallway, you have to follow it as-is to the other side, your perspective being
-warped, to end up in a room with you standing on its &ldquo;wall&rdquo;.  On the &ldquo;floor&rdquo; is a chest, inaccessible in your current
-state, and further on is a door you don&rsquo;t have the key to.  After a few more rooms and a battle with some wolves, you
-end up with the bow which allows you to hit a switch to un-twist the hallway, bringing a completely new
-perspective to the rooms&mdash;Most obviously, the chest from the earlier &ldquo;floor&rdquo; is now reachable, and after a little
-contemplation and a lot of climbing, you get the key to the previously locked door&hellip;  <em>Which you can&rsquo;t access until you
-re-twist the hallway.</em></p>
-
-<p>This simple sequence is, in essence, what makes the classical Zelda dungeons challenging and oh so much fun.  In
-addition to an &ldquo;item of the moment&rdquo;, each area contains an inventive mechanic that completely changes the landscape
-of the entire dungeon.  A room is completely different when your perspective is rotated, platforms become traversable
-after you flood the floor with sand, and so on.  It&rsquo;s no longer just <em>Push a block over here</em>, it&rsquo;s <em>Push a block over
-here to change the water level so we can push that other block, and then change the water level back to align the two
-blocks properly and maybe we can finally get to that chest over there.  Oh wait, that didn&rsquo;t work, maybe if I switch the
-water level back BEFORE moving the second block&hellip;</em></p>
-
-<p>Sound familiar?  The hardest dungeons&#8217; mechanics tend to use some piece of outside state to introduce exponentially more
-complex interactions between the existing items that Link already has access to.  Interactions that now depend not only
-on the current environment, but also the configuration of surrounding environments, and probably the order that
-everything was done as well.  Keeping track of all that is welcome, even enjoyable, when I&rsquo;m playing Zelda.  But I have
-no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing what I want it to.</p>
 ]]></content>
   </entry>
   
