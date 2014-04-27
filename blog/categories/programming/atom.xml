@@ -4,7 +4,7 @@
   <title><![CDATA[Category: programming | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-04-23T23:37:06-04:00</updated>
+  <updated>2014-04-26T22:28:43-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hack Days Are Awesome]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome/"/>
+    <updated>2014-04-26T15:32:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome</id>
+    <content type="html"><![CDATA[<p>Earlier this week, we had a &ldquo;hack day&rdquo; at work.  Or more precisely, two hack days.  I think the name is pretty
+self-explanatory&mdash;work on whatever you want, which can be something helpful to or completely unrelated to your currently
+assigned tasks, as long as it&rsquo;s something interesting.  Now, &ldquo;hack time&rdquo; is a pretty established institution in the
+software world, especially amongst the hip startuppy companies.  I&rsquo;m sure everyone has heard of Google&rsquo;s &ldquo;20% time&rdquo; idea
+by now, and the story of Microsoft&rsquo;s Xbox starting as a side-project.  Proponents (especially those who are trying to
+pitch a business case to managers with varying degrees of pointy-haired-ness) cite building camaraderie, stimulating
+creativity, and increasing morale as some of the biggest benefits.</p>
+
+<p>None of this is news.  But I came away this week with a surprising realization.  When coding professionally for business
+use cases, things like resilience and stability are often at the top of the requirement list&mdash;Or at least, I&rsquo;d really
+hope so.  If it&rsquo;s not, kindly give me the name of your company so I know what stock to not buy ;).  To this end, coding
+is never as simple as just sitting down and banging away at a keyboard.  It involves testing, discussions, design,
+thinking, more testing, more thinking, and so on and so forth.</p>
+
+<p>Don&rsquo;t get me wrong.  These are all very, very good things.  But I, at least, was surprised at how nice it was to just
+sit down and bang away at a keyboard with abandon.  It sounds rather obvious in hindsight, but compared to the usual
+rigorously managed process of software development at work, it&rsquo;s super liberating to just cowboy out some code with no
+considerations other than speed and getting the job done.  And what&rsquo;s more, I realized that I had constrained myself to
+the same careful management in all of my personal projects as well, especially when prototyping out potential MVPs and
+such.  Again&mdash;Definitely a good thing, in most cases.  But after this week I&rsquo;m thinking that injecting some &ldquo;hack
+day&rdquo;-ish time into my personal projects is in order, if for no reason other than to let the crazy out.</p>
+
+<p><strong>tl;dr</strong> &ndash; Hack days are awesome.  I should do more of them.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[CMD Misadventures - Codebase Size]]></title>
@@ -408,36 +439,6 @@ some better documentation to help bridge that gap.</p>
 
 <p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
 language and ecosystem mature, they will hopefully become less and less of a problem.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fibonacci Stream]]></title>
-    <link href="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream/"/>
-    <updated>2013-10-17T07:15:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream</id>
-    <content type="html"><![CDATA[<p>I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
-to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy
-to sync to 2.1 at the moment.  As such, everyone will have to settle for this plain jane snippet:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// e.g., fibStream.take(5)</span>
-</span><span class='line'><span class="k">def</span> <span class="n">fibStream</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
-</span><span class='line'>  <span class="k">def</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev1</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">,</span> <span class="n">prev2</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="n">prev1</span> <span class="o">#::</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev2</span><span class="o">,</span> <span class="n">prev1</span> <span class="o">+</span> <span class="n">prev2</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">loop</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Nothing fancy, just one of many possible variations of the fibonacci sequence.  This one is done via a <code>Stream</code>,
-which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream">More here</a>).</p>
-
-<p>Will probably write more about the why/how of the nested loop <code>def</code> (mostly for my own reference), but for now I think
-the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
-though.</p>
 ]]></content>
   </entry>
   
