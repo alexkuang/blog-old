@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-05-02T22:01:18-04:00</updated>
+  <updated>2014-05-02T22:06:10-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -31,7 +31,7 @@ familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed post
 
 <h3>The Start</h3>
 
-<p>Since I had all the posts in html form, using <code>set :paste</code> and copy-pasting from the browser seemed the most
+<p>Since I had all the posts in html form, using <code>:set paste</code> and copy-pasting from the browser seemed the most
 straightforward.  Or at least, more straightforward than trying to manually un-mangle everything in the post after being
 wrung through wordpress.  For most of the posts, the paste result looked something like this:</p>
 
