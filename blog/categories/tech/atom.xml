@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-04-26T22:28:43-04:00</updated>
+  <updated>2014-05-02T21:57:57-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,185 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Some CH Backport vimporn]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn/"/>
+    <updated>2014-05-02T20:45:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn</id>
+    <content type="html"><![CDATA[<p>In some ways, the curehappiness backports came at the perfect time, since I&rsquo;d been looking for something to sharpen my
+vim skills on.  Technically I work in vim day-to-day, but usually the rest of the mental activity involved with coding
+end up pushing my vim-awareness more to the side than I&rsquo;d like.  This backport, however, was heavy on repetition but
+otherwise braindead, so it made the perfect set of practice exercises.  And since I had such fun (hey, it was a really
+boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else finds this useful&mdash;or even better, has suggestions
+to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
+familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
+
+<!-- more -->
+
+
+<h3>The Start</h3>
+
+<p>Since I had all the posts in html form, using <code>set :paste</code> and copy-pasting from the browser seemed the most
+straightforward.  Or at least, more straightforward than trying to manually un-mangle everything in the post after being
+wrung through wordpress.  For most of the posts, the paste result looked something like this:</p>
+
+<p><img class="center" src="/images/ch-backport-vim/start.png" width="598" height="440"></p>
+
+<p>Not too awful, but the TODO is obvious:</p>
+
+<ol>
+<li>Needs a banner image</li>
+<li>Lines need to be wrapped (not strictly necessary, but personal pet peeve)</li>
+<li>Ingredients + Methodology need to be de-dented</li>
+<li>Ingredients needs to be an unordered list</li>
+<li>Methodology needs to be an ordered list.</li>
+</ol>
+
+
+<p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
+markdown, that&rsquo;s pretty trivial.</p>
+
+<h3>Banner image</h3>
+
+<p>This bit was easy.  I have a plugin installed called <code>vim-snipmate</code> (check it out
+<a href="https://github.com/garbas/vim-snipmate">here</a>) that&rsquo;s just built for stuff like this.  Simply put, defining the snippet
+below:</p>
+
+<p>```
+snippet img</p>
+
+<pre><code>Error processing input, expected syntax: {% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | "title text" ["alt text"]] %}
+</code></pre>
+
+<p>```</p>
+
+<p>allowed me to type <code>img&lt;TAB&gt;</code> and it would insert <code>{% img center %}</code>, with my cursor right after the <code>center</code> and ready
+to drop in my picture url.</p>
+
+<h3>Wrapping lines</h3>
+
+<p>vim has a normal mode command, <code>gq</code>, that does this quite well.  Personally I like using visual line mode (<code>V</code>) to
+select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to wrap a block) works as well.</p>
+
+<p><img class="center" src="/images/ch-backport-vim/gq-before.png" width="598" height="440"></p>
+
+<p><img class="center" src="/images/ch-backport-vim/gq-after.png" width="598" height="440"></p>
+
+<p>I only wrapped the plain paragraphs here, as there is still some fancy dedenting and formatting to do with the Ingredients
+and Methodology sections first.</p>
+
+<h3>De-denting</h3>
+
+<p>The vim command for de-denting is <code>&lt;</code>.  Once again, combining with visual line mode or a motion (ex: <code>&lt;}</code>) makes it
+quick and easy.  (Just in case&mdash;Yes, <code>&gt;</code> is the command for indenting)</p>
+
+<h3>Ingredients => Unordered List</h3>
+
+<p>This one, I&rsquo;ll admit, is a little snazzy.  I used the lesser-known cousin of visual and visual line mode, visual block
+mode (accessed via <code>&lt;Ctrl&gt;-V</code>).  Once selecting the first characters of the lines I wanted with visual block, I could
+hit <code>&lt;Shift-I&gt;</code> to drop into insert mode before current character, <code>-</code> to insert what I wanted, then <code>&lt;ESC&gt;</code> to apply
+to everything in the selection.</p>
+
+<p><img class="center" src="/images/ch-backport-vim/ul-before.png" width="598" height="440"></p>
+
+<p><img class="center" src="/images/ch-backport-vim/ul-during.png" width="598" height="440"></p>
+
+<p><img class="center" src="/images/ch-backport-vim/ul-after.png" width="598" height="440"></p>
+
+<p>Note that this is also a great way to mass-comment blocks of code in languages that only support single line comments
+with <code>#</code> or whatnot.</p>
+
+<h3>Methodology => Ordered List</h3>
+
+<p>And of course, the best is for last.  Ordered lists in markdown, logically, can be formatted something like this:</p>
+
+<p><code>
+1. item 1
+2. item 2
+3. item 3
+</code></p>
+
+<p>However, it&rsquo;s actually possible to cheat and still get ordered list output by doing:</p>
+
+<p><code>
+1. item 1
+1. item 2
+1. item 3
+</code></p>
+
+<p>It turns out that the markdown spec doesn&rsquo;t care about the order of the numbering as long as the lines begin with
+numbers in that format.  So technically, I could use the same trick as the Ingredients Unordered List except inserting
+<code>1.</code>, and I&rsquo;d be done.</p>
+
+<p>&hellip;  But where&rsquo;s the fun in that?</p>
+
+<p>So here&rsquo;s another tidbit: in vim, if you place the cursor over a number and hit <code>&lt;Ctrl&gt;-A</code> in normal mode, it increments
+the number.  In a very smart way, too&mdash;it takes into account all of the digits, not just the one under the cursor.
+Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of recorded keystrokes that can be repeated).</p>
+
+<p>Rather than explain in long form, it seems easier just paste the sequence and annotate it.</p>
+
+<p>```sh
+qq<sup>yaWjP</sup>^^Aq # Complete keystroke sequence</p>
+
+<pre><code>         # Note that ^A is one character--see below for details
+</code></pre>
+
+<p>qq   # Start recording keystrokes into the q register
+^    # Go to first non-blank character of line
+yaW  # yank (copy) a Word&mdash;Capital W means a &ldquo;word&rdquo; is terminated only by spaces, not punctuation like &ldquo;&ndash;&rdquo;
+j    # Go down a line
+P^   # Paste before cursor, then go back to first non-blank character
+^A   # Increment number
+q    # Stop recording
+```</p>
+
+<p>It ends up looking something like this, played out:</p>
+
+<p><img class="center" src="/images/ch-backport-vim/mac-1.png" width="598" height="440"></p>
+
+<p><img class="center" src="/images/ch-backport-vim/mac-2.png" width="598" height="440"></p>
+
+<p><img class="center" src="/images/ch-backport-vim/mac-3.png" width="598" height="440"></p>
+
+<p><em>(Aside: I should start making gifs again for stuff like this&hellip;  Perhaps another day when I have more time.)</em></p>
+
+<p>Once the macro is recorded, it can be played back via <code>@q</code>, or whichever register it was recorded into.  More
+importantly, because it resets to the right positions in the lines and moves down automatically, it can actually be
+repeated!  e.g., <code>2@q</code> turns this:</p>
+
+<p><code>
+1. item 1
+item 2
+item 3
+</code></p>
+
+<p>into this:</p>
+
+<p><code>
+1. item 1
+2. item 2
+3. item 3
+</code></p>
+
+<p>Writing macros to position in a looping way like this is another post altogether, but suffice to say this saved a TON of
+time over multiple posts.  Granted, it still depends on the <code>1.</code> being inserted manually, but that&rsquo;s pretty trivial I
+think.</p>
+
+<p>Another neat thing that might not immediately be obvious is that regular yanking (or copying, if you will) goes into the
+same registers as macro recordings.  So you can use <code>"qp</code> to paste the contents of your macro into a buffer to map it to
+keys or functions (ex: <code>nnoremap &lt;leader&gt;o ^yaW[...]</code>).</p>
+
+<p>Furthermore, this means that if a recording goes wrong, you can just paste it out, edit it, then select and <code>"qy</code> (or
+similar) to yank back the edited form.  The only caveat is that certain characters like <code>^A</code> may paste out and LOOK like
+two characters, but is infact only one character.  Not a big deal if you&rsquo;re just yanking and replacing text, but it can
+be a weird GOTCHA if you&rsquo;re trying to write a macro by hand or something.  (In this particular case, the <code>^A</code> character
+can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, but it pays to watch out in general for stuff like this)</p>
+
+<p>So there you have it, ladies and gentlemen&mdash;My idea of fun on a Sunday afternoon&hellip;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hack Days Are Awesome]]></title>
@@ -318,60 +497,6 @@ in the super-hacks at around that time, so everything is probably due for anothe
 everything for the first time, in real life this command probably took about 2-3 minutes to write.  And that&rsquo;s what I
 find these utils are really really good at&mdash;Quick dirty answers to the little &ldquo;I wonder&hellip;&rdquo; / &ldquo;What if&hellip;&rdquo; questions
 that tend to pop up while coding.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Clojure First Impressions]]></title>
-    <link href="http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions/"/>
-    <updated>2013-12-20T14:05:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions</id>
-    <content type="html"><![CDATA[<p>After achieving some measure of familiarity with Scala, and with newfound copious amounts of free time, I decided I
-wanted to see more of what the functional world had to offer.  The obvious choices were Haskell and Clojure; but while
-Haskell has the upper hand in functional purity and a crazy advanced type system, I like to think I&rsquo;m a pragmatic guy at
-heart and Clojure seemed more practical.  I haven&rsquo;t worked with it too extensively, but my experience so far can be
-summarized by two words: Simple and composable.</p>
-
-<h4>The language</h4>
-
-<p>Clojure is a refreshingly simple language.  Despite my last foray into a Lisp being about half a decade ago, the
-learning curve was much gentler than I&rsquo;d expected.  Maybe it&rsquo;s because I was already in a functional programming
-mindset, but the straightforward syntax and <a href="http://clojure-doc.org/">abundance</a>
-<a href="http://clojure.org/getting_started">of</a> <a href="http://clojure.org/cheatsheet">documentation</a> probably helped.  And on a
-completely subjective level: <code>iDislikeCamelCase</code>, and <code>clojure-case-is-pretty-neat</code>.</p>
-
-<h4>The ecosystem</h4>
-
-<p>Of course, the overall enjoyability of using a language doesn&rsquo;t depend solely on the core language, but also the
-libraries and toolchain available.  Most of the libraries I&rsquo;ve seen keep in line with the design of the language: super
-lightweight, super simple, super composable, and as a result super easy to ramp up on and use.  Theoretically that
-should just describe all good library design in general, but I feel like the clojure community takes it especially to
-heart.</p>
-
-<p>Compojure, for example, chose to implement its url
-<a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">destructuring</a> to closely follow the destructuring
-available in stock Clojure <code>let</code>s expressions.  I can&rsquo;t help but draw the comparison to Scala, where I&rsquo;d be more likely
-to find that url decomposition exists only in the form of an exotic DSL.  Another huge example for me is the difference
-between the simplicity of the Clojure build tool Leiningen and the craziness of Scala&rsquo;s SBT.  Sorry SBT&mdash;You work very
-well, but I&rsquo;d rather not have to google what the <code>&lt;++=</code> operator does every time I touch the build.</p>
-
-<h4>With vim</h4>
-
-<p>One of my original reasons for leaning clojure was its close integration with
-<a href="http://www.chris-granger.com/lighttable/">LightTable</a>.  As it turns out, the functionality I liked could be
-replicated in vim with <a href="https://github.com/tpope/vim-fireplace">fireplace.vim</a>&rsquo;s quasi-insta-repl and insta-doc, due in
-no small part to leiningen and nrepl&rsquo;s awesomeness.
-<a href="https://github.com/kien/rainbow_parentheses.vim">Rainbow parentheses</a> is also pretty cool, and has been useful enough
-that I will probably keep it on even when I don&rsquo;t have to deal with the hardcore levels of parens in Lisps:</p>
-
-<p><img class="center" src="/images/rainbow-parens.png"></p>
-
-<h4>Overall</h4>
-
-<p>If programming languages could be graded on usability, Clojure would get full marks.  It has been a breath of fresh air
-after dealing with the crazy complexity in Scala.  Undoubtedly working through the latter had a part in making the
-former much easier, and Scala will always have a place with me, but for now I find myself slowly joining the rest of the
-Clojure bandwagon.</p>
 ]]></content>
   </entry>
   
