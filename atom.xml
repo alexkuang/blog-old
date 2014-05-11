@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-05-02T22:06:10-04:00</updated>
+  <updated>2014-05-10T21:22:05-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Funny Thing About Quitting]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/05/10/the-funny-thing-about-quitting/"/>
+    <updated>2014-05-10T20:53:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/05/10/the-funny-thing-about-quitting</id>
+    <content type="html"><![CDATA[<p>We were shooting the shit in the gym on Thursday, when the subject of wasted memberships came up.  As I&rsquo;m sure is common
+in any other type of service with a monthly membership, we apparently have a fair amount of people who pay for an
+unlimited pass but only show up once every two weeks or so.  Or even people who pay for a membership and just don&rsquo;t show
+up at all.  This isn&rsquo;t such a big deal at a place where the monthly fee is $10, but for BJJ gyms in metropolitan areas,
+the costs tend to fall somewhere between $100-$200 / month.</p>
+
+<p>That&rsquo;s a pretty significant amount of money.  So why would people spend it for a service they&rsquo;re not bothering to use?
+Sure, there&rsquo;s a &ldquo;one year&rdquo; contract for the gym, but owners tend to be understanding most of the time, and the effort in
+canceling that is pretty trivial.  I think the real barrier is in the way people think about quitting.</p>
+
+<p>When we pick up a hobby and things get serious, it starts working its way into our definitions of ourselves.  This is
+especially true for something like jiu jitsu, which involves a heavy investment and intrinsically comes with rewards
+like &ldquo;higher self confidence&rdquo;, but it also applies to anything from learning a new language to picking up an instrument
+to experimenting with painting.</p>
+
+<p>So it&rsquo;s only natural that when life starts getting in the way, we cling onto that image.  Maybe we go from every day to
+only a few times a week.  Then once a week.  Then once a month.  Then <em>&ldquo;Oh yeah, I&rsquo;m learning to speak Spanish, but
+it&rsquo;s been a few months since I&rsquo;ve had the chance to practice&hellip;&rdquo;</em>  But we rarely ever cross the threshold into
+consciously declaring that we&rsquo;ve quit.  Are you still really playing the guitar if it&rsquo;s been six months since you&rsquo;ve
+touched it?  One year?  Three?</p>
+
+<p>Canceling a membership requires the conscious decision that <em>yes, I&rsquo;ve quit</em>.  But we&rsquo;ve never really seem to cross that
+point.  It&rsquo;s always one rationalization after another.  Perhaps if we&rsquo;re could be more honest with ourselves, we could
+save a lot of the resources that that costs us, whether that be a monthly membership fee that could be better put
+towards something else, or the energy and creativity spent in thinking up justifications for ourselves.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some CH Backport vimporn]]></title>
@@ -1211,99 +1244,6 @@ the steam.)</em>:</p>
 
 <p>When everything is ready, serve with basmati rice or a nice piece of flatbread.  And yes, like most curries, this tastes
 even better after sitting around for a day or two.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pierogi - Week 2, Polish]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/01/13/pierogi-week-2-polish/"/>
-    <updated>2014-01-13T11:07:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/01/13/pierogi-week-2-polish</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Pierogi/i-JHfpDKq/0/L/DSC_2369-L.jpg"></p>
-
-<p>Week 2&rsquo;s theme is Polish, a cuisine that I basically have never touched, or so I thought.  According to the
-<a href="http://www.reddit.com/r/52weeksofcooking/comments/1ujvk2/week_2_introduction_thread_polish/">introduction thread</a>,
-Polish food involves a lot of meat and potatoes, and the list of example foods included golabki which I&rsquo;d made a bunch
-of times already under its Russian name golubtsy.  But choosing that felt too much like cheating, so I went with pierogi
-instead.</p>
-
-<p>Since I had only heard of the term pierogi and had no idea what it actually was or what was involved, the first obvious
-stop was Google.  A few quick searches revealed that it was the polish equivalent of a filled dumpling/ravioli, and the potato
-filling + sour cream in the skin distinguished it from all the other types of dumplings I had seen.  Since the skin
-was a bit more foreign and required some resting time, I decided to start with that first.</p>
-
-<!-- more -->
-
-
-<h4>Skin</h4>
-
-<p>Normally I&rsquo;m the first guy to start screaming about scales and precise weights when anything involves dough, but for
-things like dumplings I believe that approximations are perfectly fine, and a scale is probably excessive.
-Nevertheless, since this was the first time I decided to jot down some numbers for consistency&rsquo;s sake:</p>
-
-<ul>
-<li>250g flour (~2 cups)</li>
-<li>50g softened/melted butter (~&frac14; cup)</li>
-<li>160g sour cream (~&frac12; cup)</li>
-<li>1 egg</li>
-<li>pinch of salt</li>
-</ul>
-
-
-<p>I combined the flour with the egg and salt to make a crumbly mixture, then added the butter and sour cream.  The dough
-incorporated very easily after a few minutes of working, and was very pliable.  I let it rest for about 30 minutes while
-I prepared the filling.  Resting only made the dough even softer because of the relaxing gluten; I also suspect that the
-sour cream has a loosening effect like a weaker version of ascorbic acid in puff pastry dough, but I&rsquo;m not 100% on that
-so don&rsquo;t quote me.</p>
-
-<h4>Filling</h4>
-
-<p>The filling was exceedingly simple.  I just boiled up some yellow potatoes, and mashed them without liquid.  The
-seasoning was salt, pepper, and shredded sharp cheddar; I&rsquo;d say the cheddar was somewhere around 1/3 to &frac12; of the
-volume of mash that I had.  After everything was mixed, I stepped away for a cup of coffee (and to let the filling fall
-to room temp so it wasn&rsquo;t burning hot, if you care about that sort of thing).</p>
-
-<p>After the filling was prepared and cooled, I rolled out the dough into a ~1/8 inch sheet.  I aimed for something a
-little bit thicker than ravioli skins, but not by much.  But since I didn&rsquo;t have a dough cutter and actually needed
-circular skins, I decided to use a drinking glass instead:</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Pierogi/i-QX4VMGK/0/L/DSC_2337-L.jpg"></p>
-
-<p>After pressing out all the rounds, there was a non-trivial amount of dough scrap left which I felt bad about.  I was
-feeling daring so I just re-worked and re-rolled it to get as many rounds as possible; the only thing I&rsquo;d note here is
-that an additional resting period is necessary for the gluten to re-relax, so I&rsquo;d recommend filling the pressed rounds
-while waiting for that to happen.  Or, for the more lazy amongst us, I suppose the scraps could just be cut up and saved
-to be dropped in soup or something&hellip;  But who wants to do that?</p>
-
-<p>Wrapping is fairly easy.  Just fold the skin over a small mound of the potato mixture then press the edges together
-with your fingers.  If the edges don&rsquo;t stick, you probably over-floured your board or something, so add a bit of water
-to help it along.  To really seal things in and make them look prettier, press the edges again with the tines of a fork.
-(For those who really care, the gallery at the bottom of the post has how much filling I used for each)</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Pierogi/i-c2DwTKD/0/L/DSC_2353-L.jpg"></p>
-
-<p>A few of them are slightly lopsided, but not too bad for a first batch.</p>
-
-<h4>Impressions</h4>
-
-<p>Most sources online recommend boiling the pierogis and then frying them with butter and onions to serve.  Since these
-are essentially potatoes in dough, I thought they&rsquo;d need a bit of help so I used roughly sliced shallots instead, and
-added some kielbasa on the side.  Can&rsquo;t have a &ldquo;meat and potatoes&rdquo; style meal without the meat.</p>
-
-<p>I think the biggest surprise was that pierogis are really &ldquo;go big or go home&rdquo;.  The quantities above are enough to make
-roughly 20 skins, or a full two dozen if you really want to stretch it.  The filling needed for that amount of skin
-could probably be made from one decent sized yellow potato, <em>maybe</em> two.  And since nobody wants to boil and mash one
-potato, that means that you have to make about 100 at once for it to be worth the time.  Alternatively this could
-probably be a nice use for leftovers of regular mashed potato, but probably not if you like your mash really creamy.</p>
-
-<p>I can&rsquo;t really speak to authenticity or anything since I&rsquo;ve never actually had pierogis, but I thought they were pretty
-nice taste-wise.  Personally they reminded me of fried ravioli, except slightly thicker and more rustic.  I went in
-expecting a super heavy mouthful of starch, but the texture was surprisingly light and the sour cream in the skin helped
-things along.  I still don&rsquo;t think I&rsquo;d eat these alone, at least not the variety filled with just potato and
-cheese&mdash;Even with the shallots, the dish needed the extra punch from the kielbasa.  However, some bacon in the filling
-might change my mind.  Adding bacon is never a bad idea.</p>
-
-<p>(Full gallery <a href="http://waffleparadox.smugmug.com/Food/Pierogi">here</a>)</p>
 ]]></content>
   </entry>
   
