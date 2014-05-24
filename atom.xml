@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-05-10T21:31:21-04:00</updated>
+  <updated>2014-05-23T21:45:44-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why I Preferred Dark Souls I]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/05/23/why-i-preferred-dark-souls-i/"/>
+    <updated>2014-05-23T21:24:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/05/23/why-i-preferred-dark-souls-i</id>
+    <content type="html"><![CDATA[<p>Dark Souls 2 is a great game.  Let&rsquo;s get that out of the way.  I&rsquo;ve logged low 3 digits in hours of gameplay, and made
+it through the game multiple times.  The combat system is tuned, there&rsquo;s a ton of content, and multiplayer is pretty fun
+(or at least, it was at the levels I hung around).  But I still prefer the original, and Demon&rsquo;s Souls, over it.</p>
+
+<!-- more -->
+
+
+<p>The biggest turn-off in DS2 was the shift in design goals.  The dripping atmosphere and rich world were always the
+primary draws in the franchise, and the difficulty took a back seat (relatively speaking) as a tool to work towards that
+goal.  In DS2, it felt more like the developers&#8217; primary goal was &ldquo;HOW CAN WE MAKE THIS HARDER?&rdquo;  This was evidenced in
+the way combat shifted towards the many-vs-one paradigm; not only with regular enemies, but with the bosses as well.
+The Skeleton Lords, the Dragon Knights, the Looking Glass Knight, Twin Pursuers, Ruin Sentinels&hellip;  &ldquo;How can we make
+this harder?  Let&rsquo;s just put more enemies in.&rdquo;  Not only is the repetition insulting, aiming for &ldquo;hard&rdquo; is just
+completely missing the point.</p>
+
+<p>Take the DS1 fight with Artorias.  It&rsquo;s such a fan favorite not only because it was ridiculously hard, but because the
+entire fight was steeped in the world&rsquo;s lore.  After fighting Sif, going through the Abyss, and reading bits and pieces
+from the game&rsquo;s NPCs about the fall of Artorias the Abysswalker, his charge towards the player holds a gravity that
+couldn&rsquo;t be matched by even 20 Pursuers.  Seriously, <a href="https://www.youtube.com/watch?v=ctW277Kpcv0">check it</a>.</p>
+
+<p>Speaking of the lore, that&rsquo;s another big point of contention with me.  I feel like there&rsquo;s a big difference between lore
+and plot.  Lore is the background of the world.  It&rsquo;s the story behind each NPC, each item, each location, and it&rsquo;s
+great for it to be subtle and nebulous.  A richly built, subtly woven world gives the player an opportunity to explore
+and really dive into the atmosphere of everything.</p>
+
+<p>The plot, however, is simply the thread of the story that drives the player&rsquo;s main progression, and needs to be very
+clear cut.  Another concrete example, as spoiler-free as possible: In DS1, the player embarks on a quest to re-light the
+first flame on the request of a dying man in the asylum.  On his quest to do that, he awakens a primordial serpent, and
+the progression from there differs, ending with the player either re-kindling the first flame or leaving it to die.  The
+story is pretty straightforward there, and at any given point you&rsquo;re pretty clear about the motivations of your
+character.</p>
+
+<p>In contrast, DS2 opens up with something about a curse in Drangleic and how you must go there, <strong>only to
+never revisit the topic</strong>.  No seriously, what the hell is that?  They make this whole deal with the old ladies about
+the curse of Drangleic, and then you get there and it becomes about finding the 4 Great Souls and King Vendrick?  And
+then I guess somehow you&rsquo;re supposed to realize that oh right, after finding the king you need to travel through certain
+memories to retrieve certain knowledge, and oh by the way SHADOWY RULER.  If that sounds confusing because I&rsquo;m trying to
+leave out spoilers, don&rsquo;t worry&mdash;It&rsquo;s not much better with the characters and specifics filled in.</p>
+
+<p>Beyond even the toning down of the art, this lack of direction was, to put it politely, a huge buzz-kill.  I understand
+that a lot of these decisions were made to bring the franchise to a wider audience, since Demon&rsquo;s Souls was a rather
+niche title with relatively limited commercial success.  But seriously guys.  DS2 was like watered down tea to DS1 +
+DeS&#8217; black coffee.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coi]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/05/15/coi/"/>
+    <updated>2014-05-15T19:58:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/05/15/coi</id>
+    <content type="html"><![CDATA[<p><img class="center" src="https://scontent-a-lga.xx.fbcdn.net/hphotos-prn2/t1.0-9/10366159_10152435781269470_5551473906445502316_n.jpg" width="500" height="500"></p>
+
+<p>Of course it&rsquo;s just after I dish out a healthy dose of self-deprecation about restaurant writing that I feel compelled
+to write about another restaurant.  So I&rsquo;ll keep it short.</p>
+
+<p>I went to Daniel Patterson&rsquo;s Coi recently.  The only thing I can say about the food is that it wasn&rsquo;t overtly
+over-the-top.  Nor was it deliberately modernist or filled with crazy techniques using chemicals I can&rsquo;t pronounce.  But
+it was very very delicious and still managed to surprise me.  I can&rsquo;t overstate how awesome this is, and would recommend
+the trip to anyone given to spending unhealthy amounts of money on food.</p>
+
+<p>Also bought a signed copy of the book while I was there.  I can&rsquo;t wait to read it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Funny Thing About Quitting]]></title>
@@ -1092,158 +1162,6 @@ potatoes and melting some cheese (I recommend using a toaster oven or a broiler)
 plate.</p>
 
 <p>But despite its simplicity, raclette had a large effect on expanding my worldview in food, so&hellip;  There it is.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Adventures with Mail.app Gremlins]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins/"/>
-    <updated>2014-01-26T09:05:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins</id>
-    <content type="html"><![CDATA[<h4>Background</h4>
-
-<p>Usually I don&rsquo;t care too much if an email or two gets dropped en route.  Between spam filters and sometimes-spotty
-(cough, mobile) connections, it&rsquo;s not too much of a stretch to assume that things get lost once in a great while.  But
-recently I was trying to set up an interview on the other side of the country, so naturally I paid a little more
-attention than usual.  Everything was going quite well, correspondence was zipping back and forth, and I&rsquo;d even bought a
-plane ticket for the trip.  But then a lull came when it was time to receive confirmation for hotel arrangements and a
-rough schedule for the interview process.</p>
-
-<p>Unbeknownst to me, the HR rep had already tried to send the information twice at this point, but for some
-reason the emails weren&rsquo;t landing in my inbox.  I sent one last-ditch follow-up when my flight was boarding, and got a
-reply with the info (thankfully) right before the plane took off.  Along with the reply, the HR rep mentioned that the
-previous emails she&rsquo;d sent had gone to <code>waffles@mochify.com</code>. <em>(aside: While <code>waffles@mochify.com</code> isn&rsquo;t the first email
-I&rsquo;d give out professionally, I&rsquo;m thankful it wasn&rsquo;t something like <code>sexbadger69@gmail.com</code> &hellip;  Actually, now I wonder
-if that address is open &hellip;)</em></p>
-
-<h4>The technical details</h4>
-
-<p>This was an old address that I&rsquo;d added to my various devices previously, but then removed for inactivity; I certainly
-didn&rsquo;t recall sending any recent email from it.  But when I logged in to check the inbox, lo and behold the missing
-emails were staring me in the face, along with a few others that had been &ldquo;dropped&rdquo; not too long ago.  Something smelled
-fishy.  I checked over my Sent box for my regular email to no avail; all the correspondence was there, with the correct
-<code>From</code>s and <code>To</code>s.  I ended up having to dig into the plain-text of the mime header to spot the issue:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>From: Alex Kuang &lt;[...]&gt;
-</span><span class='line'>Content-Type: multipart/alternative;
-</span><span class='line'>    boundary="Apple-Mail=_7DA4001C-0AA1-48BD-80F5-00ACDBCCAE9C"
-</span><span class='line'>    Message-Id: &lt;ADFD0F4C-6FE0-41F5-AA68-EF8E9845B360@gmail.com&gt;
-</span><span class='line'>    Mime-Version: 1.0 (Mac OS X Mail 6.6 \(1510\))
-</span><span class='line'>    X-Smtp-Server: smtp.gmail.com:waffles@mochify.com
-</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
-
-
-<p><em>X-Smtp? What?</em>  After a bit of googling I discovered that Mail.app on the Mac keeps a list of outgoing smtp servers
-associated with your mail accounts, which you can see in Preferences &ndash;> Accounts &ndash;> &ldquo;Outgoing Mail Server&rdquo; &ndash;> Edit SMTP
-Server List.  The problem is, the entry with the association persists <strong>even after an account is removed from the
-list</strong>: when I checked my smtp list, it included an entry for mochify as well as a few other one-off addresses that I&rsquo;d
-added and removed in similar fashion.  Most of my email (including <code>mochify.com</code>) is handled by google apps, which means
-that the smtp server the entries pointed to were all <code>smtp.gmail.com</code>, and the only difference was the
-username/authentication associated.</p>
-
-<p>So what ended up happening here was that I&rsquo;d sent the email from my regular account through Mail.app so it still carried
-the correct <code>From</code>/etc.  However, for reasons unknown, the outgoing smtp entry for that account did not work at
-that moment.  Since <code>mochify</code>&rsquo;s smtp entry pointed at the same <code>smtp.gmail.com</code> server, I&rsquo;m willing to bet that Mail.app
-decided it was a perfectly good fallback, added the <code>X-Smtp-Server</code> MIME header, and sent the email causing this weird
-reply-to behavior.</p>
-
-<p>There is a checkbox in account preferences that will lock you into using one-and-only-one smtp server and prevent this
-from happening, but honestly after this ordeal I will probably just be even more biased towards composing my email using
-the web gmail ui.  I&rsquo;m just glad that everything worked out in the end, and anyway this is a good reminder that I should
-be more diligent in setting up auto-forwarding even for email addresses I don&rsquo;t plan on using.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Chicken Shahi Korma - Week 3, One Pot]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/01/19/chicken-shahi-week-3-one-pot/"/>
-    <updated>2014-01-19T10:06:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/01/19/chicken-shahi-week-3-one-pot</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Chicken-Shahi-Korma/i-KPv4qLJ/0/L/DSC_2381-L.jpg"></p>
-
-<p>One thing I&rsquo;ve noticed about the weekly food challenges is that it syncs very well with my new self-imposed weekly post
-quota.  This works out nicely for me, but at the same time it provides a very convenient cop-out from having to write
-anything new, e.g. about tech.  While at the end of the day I&rsquo;m still writing more than I would have, I&rsquo;m wondering if
-it&rsquo;d be a good idea to stop counting these towards the weekly quota, or only count them partially.  Another option would
-be to pick and choose which challenges to limit the volume, but cherry-picking challenges is for weenies.  Thoughts for
-the future, I guess.</p>
-
-<p>At any rate, the &ldquo;point&rdquo; of this week&rsquo;s theme is simplicity&mdash;Getting good flavor out of an easy set up, i.e. &ldquo;one pot&rdquo;.
-It seemed like a good time to test out my burgeoning indian food skills, but as it turns out the most complicated part
-was just the combination of the spices.</p>
-
-<!-- more -->
-
-
-<h4>Ingredients</h4>
-
-<ul>
-<li>Large spices
-
-<ul>
-<li>8 green cardamom pods</li>
-<li>6 cloves</li>
-<li>3-inch stick of cinnamon</li>
-<li>3 bay leaves</li>
-</ul>
-</li>
-<li>Small spices
-
-<ul>
-<li>1 tsp ground cumin</li>
-<li>1 tsp ground coriander</li>
-<li>&frac14; tsp ground cayenne</li>
-</ul>
-</li>
-<li>4 lb chicken thighs</li>
-<li>1 cup plain yogurt</li>
-<li>Handful of chopped cilantro</li>
-<li>Handful of slivered blanched almonds</li>
-</ul>
-
-
-<p>Normally for non-baking work I prefer to cook by taste and instinct rather than measuring too precisely.  But in this
-case spices can be quite strong, and it&rsquo;ll probably take years before I could do that effectively, so it&rsquo;s better to be
-on the safe side.  For the curious, here&rsquo;s roughly what the spice setup looks like for 4 lb of chicken:</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Chicken-Shahi-Korma/i-JzpM4D6/0/L/DSC_2372-L.jpg"></p>
-
-<p>I like cilantro so I tend to put in a bit extra; most people will probably want a bit less than what&rsquo;s shown above.
-Another quick note is that the chicken thighs should preferably come with skin and bone; again, just more flavor that
-way.  You could do it with boneless skinless thighs, or even breasts, but come on.</p>
-
-<p>There really isn&rsquo;t much to this, technique-wise:</p>
-
-<ol>
-<li><p>First, combine the small spices and cilantro with the yogurt, then season the chicken pieces with salt and pepper.</p></li>
-<li><p>Heat up a healthy amount of oil in your pot, then toss in the large spices and give them a quick stir.  Start
-browning the chicken on medium-high heat.  The browning can be done in a separate pan, but 1) you&rsquo;d be missing out on
-the flavor from the brown bits at the bottom, and 2) the theme is &ldquo;one pot&rdquo; and that&rsquo;d be cheating.  Don&rsquo;t
-over-crowd&mdash;You really want the color on there, so work in multiple batches if necessary.  By the time the chicken&rsquo;s
-done, the kitchen should already be smelling delicious.</p></li>
-<li><p>Remove all the chicken from the pot, keeping the oil from frying, and toss in some almonds.  As soon as they start
-browning, re-add all the chicken along with any juices that may have appeared.  Add the yogurt sauce and give it a good
-mix, then cover and let everything simmer on low for 20 minutes or so.</p></li>
-<li><p>When ready, turn the heat back up and let the sauce reduce.  Stir gently once in a while to make sure nothing is
-burning and sticking.  The final thickness of the sauce is ultimately preference, but in western terms it should at
-<em>least</em> pass the &ldquo;coat the back of the spoon&rdquo; test and then some.</p></li>
-</ol>
-
-
-<p>And since this is, after all, &ldquo;one pot&rdquo;, here is a picture of everything in one pot <em>(excuse the desaturation, I blame
-the steam.)</em>:</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Chicken-Shahi-Korma/i-M9sWXcq/0/L/DSC_2379-L.jpg"></p>
-
-<p>When everything is ready, serve with basmati rice or a nice piece of flatbread.  And yes, like most curries, this tastes
-even better after sitting around for a day or two.</p>
 ]]></content>
   </entry>
   
