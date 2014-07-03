@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-06-20T19:51:17-04:00</updated>
+  <updated>2014-07-03T15:52:54-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,99 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Caramelized Lemongrass Chicken]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/07/03/caramelized-lemongrass-chicken/"/>
+    <updated>2014-07-03T15:06:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/07/03/caramelized-lemongrass-chicken</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Caramelized-Lemongrass-Chicken/i-FBL6Qgb/0/L/DSC_3055-L.jpg"></p>
+
+<p>I don&rsquo;t make this as often as I should, since to be honest prepping lemongrass is kind of a pain even with a food
+processor.  But when I do make the effort, it&rsquo;s totally worth it.  The refreshing flavors of lemongrass play really well
+with the rich, strong flavors of caramel and chicken.  Plus, who doesn&rsquo;t like fish sauce?  Make sure to use the brand
+with the crabs, though; otherwise, what&rsquo;s the point?</p>
+
+<ul>
+<li>1 lb boneless chicken thighs</li>
+<li>4 stalks of lemongrass</li>
+<li>1 yellow onion, chopped</li>
+<li>2 Tbs sugar, 2 Tbs high heat oil</li>
+<li>2 tsp fish sauce</li>
+<li>4 cloves minced garlic</li>
+<li>cilantro</li>
+<li>scallions</li>
+<li>whole chilies</li>
+<li>salt, pepper</li>
+</ul>
+
+
+<p>Start off with prepping the lemongrass.  Cut the bottoms off the stalks as well as the tops, right where they start
+turning dark green.  Bash them a few times with the back of your knife (or a brick, I guess), and slice into thin rings.
+Then run your knife through the thin rings a few times to end up with a fine mince.  This is probably the most painful
+and labor-intensive part of this entire dish, but it&rsquo;s important.  Bruising and chopping the lemongrass in this way
+is essential to releasing the flavor, but at the same time nobody wants to pick big pieces of lemongrass out of their
+teeth.  For the lazy/economical among us, I&rsquo;m sure a few pulses in the food processor would also work.  I&rsquo;ve also been
+told you can buy pulverized lemongrass frozen, but&hellip;  Come on.  If you&rsquo;re reading this blog, you obviously have the
+time to do some proper prep.</p>
+
+<p>Cut the chicken thighs into small &frac12; to 1-inch cubes.  If the thighs came with skin, great; keep it, it helps with
+flavor.  If not, that&rsquo;s alright too I suppose.  Personally, I just buy thighs with bone and skin on, and just debone
+myself.  And as with most of these types of dishes, I&rsquo;m morally obligated to note that trying to substitute chicken
+breast here is a capital offense.  Thighs just have so much more flavor.</p>
+
+<p>Season the chicken with salt, pepper, and a few tablespoons of the chopped lemongrass, and set it aside for a few
+minutes.  In the meantime, heat the oil in a large skillet over medium-high heat until it&rsquo;s shimmery and just about to
+smoke.  Add the sugar, which should melt with some stirring after a minute or two.  Keep stirring, and wait for the
+sugar syrup to turn brown and caramel-y.  At no point should the mixture smoke: If it does, the pan&rsquo;s gotten too hot,
+and should be taken off the heat for a bit.</p>
+
+<p>Stir in the rest of the chopped lemongrass, the onion, and the garlic, and fry for a few minutes.  Crank the heat all
+the way up and throw in the chicken.  After a minute, throw in the chilies, and keep cooking until the chicken&rsquo;s done.
+Take the pan off the heat, then add the fish sauce.  (Hint: Make sure to save the fish sauce for when the high heat
+cooking is done, or else it&rsquo;ll smell up the joint.)  Finish with chopped scallions and chopped cilantro.</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Caramelized-Lemongrass-Chicken/i-FHVvjDS/0/L/DSC_3045-L.jpg"></p>
+
+<p>With a solid bowl of white rice, this amount of chicken is probably good for serving about 3-4 people, depending on
+appetite needs and size.  For this particular run, I ended up with a bowl of vermicelli, with julienned cucumbers and
+mint on the side.  Topped with more fish sauce.  Having no exposure to any sort of Vietnamese home culture, I can&rsquo;t
+really speak to this dish&rsquo;s authenticity or anything like that.  I mean, I&rsquo;m sure some Vietnamese food icon is rolling
+in their grave over my use of fish sauce and vermicelli, but at least it&rsquo;s delicious.</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Caramelized-Lemongrass-Chicken/i-5CjWGbk/0/L/DSC_3063-L.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bracket Expansion in the Shell]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell/"/>
+    <updated>2014-06-25T18:58:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell</id>
+    <content type="html"><![CDATA[<p>Just a quick post to show of a neat little trick for those who are more command-line-driven: bracket expansion.</p>
+
+<p>Basically, bracket expansion means that <code>some-string-called-{x,y}-here</code> desugars in the shell to
+<code>some-string-called-x-here some-string-called-y-here</code>.  This is especially useful if, say, you&rsquo;re in a Java-like
+directory structure and you accidentally placed your source class in your test folder, and you need to move it back:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># desugars into mv src/test/java/com/foobar/app/Class.java src/main/java/com/foobar/app/Class.java</span>
+</span><span class='line'>mv src/<span class="o">{</span><span class="nb">test</span>,main<span class="o">}</span>/java/com/foobar/app/Class.java
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or if you&rsquo;ve already committed to source control, this also works quite nicely with <code>git mv</code>.  Another nice example from
+recent memory is, say, if you were cleaning up some directories nested by date and wanted to only wipe a few months:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm /posts/2014/<span class="o">{</span>01,03,06,07<span class="o">}</span>/*.html
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Anyway, just a quick little post for a neat little trick.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA["Fuck It Friday" - Weeks 12 + 13, Street Food + Potatoes]]></title>
@@ -1026,109 +1119,6 @@ get a lot farther in the future.</p>
 
 <p>Oh, and&hellip;  I kind of lied about the lack of material.  I had another 52-weeks post lined up, but the experiment failed
 horribly.  I&rsquo;m just buying time so I can do a second iteration and save SOME face, so&hellip;  Look forward to that one.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Corn with Miso Butter - Week 7, Poaching]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/02/28/corn-with-miso-butter-week-7-poaching/"/>
-    <updated>2014-02-28T20:34:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/02/28/corn-with-miso-butter-week-7-poaching</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Miso-Corn/i-RCTZjJw/0/L/DSC_2447-L.jpg"></p>
-
-<p>It&rsquo;s my last day on my trip to the West Coast, and I&rsquo;ve just finished packing, so what better time to make sure I meet
-my self-imposed weekly blog quota?</p>
-
-<p>I&rsquo;ll be perfectly honest here: I find poaching to be kind of boring in and of itself.  Most of the time I see it used
-as an excuse for health nuts to abandon any semblance of flavor, and I&rsquo;d be lying if I said I wouldn&rsquo;t likely prefer
-whatever is being served to be deep fried instead.  That said, there are cases where poaching a protein can be
-delicious.  Salmon is usually a good bet, and poaching a whole chicken can make for some awesome soup as long as
-care is taken not to overcook it.  I chose to go with something simpler this week&mdash;a poached egg&mdash;since it&rsquo;s dead easy
-and there&rsquo;s very little that matches the luxury of a runny yolk.  The corn with miso butter for this particular setup is
-shamelessly stolen from David Chang&rsquo;s <em>Mind of a Chef</em>.  (Which, by the way, for anyone who hasn&rsquo;t watched&mdash;I highly
-recommend it.)</p>
-
-<!-- more -->
-
-
-<h2>Egg</h2>
-
-<p>Since the theme is technically poaching, I&rsquo;ll lead with the egg.  Plus, it makes the timing a bit easier.  The process
-is super simple&mdash;A few inchaes of simmering water with a few drops of vinegar, 2.5 &ndash; 3 minutes depending on the size of the
-egg.  I&rsquo;d err towards 3 for large eggs straight from the fridge.  Just a few notes for those of us who are
-poaching-challenged:</p>
-
-<ul>
-<li>Use only a few inches of water; if the water is too deep, that just gives the egg more room to scatter as it falls.</li>
-<li>Yes, the vineger helps.  The acid helps bind the proteins in the water, and makes life a tiny bit easier.</li>
-<li>No, the taste won&rsquo;t carry over to the egg unless half the bottle&rsquo;s gone into the pot; a light drizzle is plenty
-enough.</li>
-<li>Making a whirlpool and dropping the egg into the middle may help it stick together as well.  I find that a bit hit or
-miss, personally.</li>
-<li>After poaching, the egg should be kept in cold/icy water.  This will stop the cooking and conveniently wash off
-whatever traces of vinegar happen to linger.</li>
-</ul>
-
-
-<h2>Corn</h2>
-
-<p>Take 1 tsp room-temp butter with 1 tsp white (<em>shiro</em>) miso and beat the crap out of them until everything is mixed
-together.  No, seriously&mdash;beat it like it&rsquo;s been saying uncouth things about your mother.  There should be no streaks
-left.  (If, like me, any readers happen to fall into the intersection between <em>lazy</em> and <em>keeps butter in the fridge</em>,
-microwaving a few seconds helps soften things up&hellip;)</p>
-
-<p>Next, crisp up some bacon in the pan, and set aside on paper towels to dry.  I guess technically you could skip the
-bacon here&hellip;  If you <strong>hate happiness</strong>.  Either way, make sure to drain the pan of the bacon fat.  The miso will be
-plenty salty even without the help of bacon fat.  Bring the pan back up to searing heat, and add a drizzle of canola
-oil.  Fry up about 2 cups of corn kernels until they start browning.  If the kernels start popping and leaping around,
-dial the heat back a little&mdash;think roast corn, not popcorn.</p>
-
-<p>After it starts browning, add the miso butter.  Wait a few seconds and really enjoy the smell of that, then deglaze with
-a bit of water or any stock that happens to be lying around.  Toss another few times, then plate with the bacon, the
-poached egg, and some chopped scallions.</p>
-
-<p>Seriously dead simple, and probably one of the best &ldquo;bang for buck&rdquo; dishes I can think of.  Here&rsquo;s the dish
-pre-yolk-pop:</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Miso-Corn/i-wNF2Mq7/0/L/DSC_2444-L.jpg"></p>
-
-<p>&hellip; and a few more pictures <a href="http://waffleparadox.smugmug.com/Food/Miso-Corn">here</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jamaican Beef Patty - Week 6, Jamaican]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/02/22/jamaican-beef-patty-week-6-jamaican/"/>
-    <updated>2014-02-22T13:02:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/02/22/jamaican-beef-patty-week-6-jamaican</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Jamaican-Beef-Patty/i-gFrttbp/0/L/DSC_2467-L.jpg"></p>
-
-<p>Living out of a hotel room in San Francisco makes it pretty hard to complete any sort of themed cooking challenge.
-Luckily, I had the wherewithal to go one or two challenges ahead and snap up some appropriate pictures.  Unluckily, I
-was a dunce and left the notes on the ingredient amounts at home&hellip;  Times like this I wish that Octopress had a proper
-draft feature so I could just write the entire post out ahead of time.  As it is, everyone will have to settle for a
-<a href="http://waffleparadox.smugmug.com/Food/Jamaican-Beef-Patty/i-LsmL2g8">photo</a> of the meez for &frac12; lb of beef, and some
-quick notes from memory:</p>
-
-<ul>
-<li>The seasonings in the photo are salt, allspice, paprika, garlic, scotch bonnets, and thyme.  Basically, the beginnings
-of a slightly ghetto jerk seasoning.</li>
-<li>The crust was built kind of like your standard shortcrust pie dough.  The only thing is that I found a lot of places
-recommending vegetable shortening.  We don&rsquo;t abide by shortening in my house, so I just replaced it with a slightly
-smaller quantity of butter.  It also contained a bit of turmeric, hence the brilliant yellow color.</li>
-<li>Prep was simple: saute everything, wrap in dough, bake at 375 for about 25 minutes.</li>
-</ul>
-
-
-<p>The result tasted just about how you&rsquo;d expect the above combination to taste: like a curry beef pie.  I&rsquo;d shaped these
-into a rough slightly-bigger-than-pierogi sort of shape, but that left an unsatisfying amount of filling per bite.  Next
-time I&rsquo;d probably go with something like McDonald&rsquo;s Apple Pie size.</p>
-
-<p>Unfortunately, even with that hypothetical improvement I found the patties a bit flat and boring.  I guess it&rsquo;s because
-curry meat pie-like constructs were a mainstay of my childhood, and most of the time the Chinese version was made with
-puff pastry which I vastly prefer to shortcrust.  Plus, I&rsquo;ve read that the most common way to eat the Jamaican patties
-is stuffed inside coco-bread (a soft roll made with coconut milk), and the thought of the bread starch on top of the
-crust starch just grosses me out.</p>
 ]]></content>
   </entry>
   

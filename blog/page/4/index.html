@@ -9,7 +9,8 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Not very uplifting&#8230;David Pollak Slick production values.Jan Christopher Vogt Wonderful acting!Jonas Boner (Sorry guys, saw this in /r/scala &hellip;">
+  <meta name="description" content="I&rsquo;ve been sick as a dog for the last couple of days, so I guess this week I&rsquo;ll keep it light. Since it&rsquo;s about 0
+degrees F outside &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +79,142 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/04/ramen-stock/">Ramen Stock</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-04T11:45:00-05:00" pubdate data-updated="true">Jan 4<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve been sick as a dog for the last couple of days, so I guess this week I&rsquo;ll keep it light.  Since it&rsquo;s about 0
+degrees F outside right now, what better time to mention ramen?</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Oneshots/i-7f9FtLM/0/L/photo-L.jpg"></p>
+
+<p>The above was made with pork belly, spinach, and pickled mushrooms.  I&rsquo;ll probably write everything up in more detail
+when I&rsquo;m feeling more prolific, but I&rsquo;d like to take this chance to mention that a great use for the leftover bones
+(say, from a roast leg of lamb, or a chicken carcass) is ramen stock.  Just roast the bones in the oven and stick them
+in a pot with a few aromatics and vegetables: onions, leeks, carrots, mushrooms, and so on.  Leave it to simmer for a
+few hours, and boom.  Stock.  If it&rsquo;s not feasible to leave the stove on, a crock pot would probably work just as well.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/23/cmd-misadventures-codebase-size/">CMD Misadventures - Codebase Size</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-23T06:50:00-05:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After watching the <a href="https://www.destroyallsoftware.com/talks/wat">wat</a> talk and trolling my friends with the
+<a href="https://www.destroyallsoftware.com/talks/a-whole-new-world">aneditor</a> talk for about the 200th time, I decided to
+finally purchase one season of the Destroy All Software screencasts, despite the (IMHO) steep price tag and my financial
+destitution.  (So far?  Totally worth it.  But a full review of the screencasts is neither here nor there.)</p>
+
+<p>I&rsquo;ve always been a big fan of the unix power tools&mdash;<code>find</code>, <code>grep</code>, <code>xargs</code>, and so forth&mdash;but the DAS talks introduced
+an idea that had never occurred to me for some insane reason: combine them with git to extract some interesting
+information about your codebase.  And so, I decided to go diving into my biggest scala project for insights about its
+code size.</p>
+
+<p>One of the most common problems that code size can indicate is the presence of &ldquo;god classes&rdquo; or libraries, which know
+and do way too much and thus are correspondingly bigger than the rest of the code by orders of magnitude.  This command
+was relatively simple and does not involve git, so here it is in its entirety:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>alexkuang@Orion <span class="o">[</span>00:00:00<span class="o">]</span> <span class="o">[</span>~foobar/src/main/scala<span class="o">]</span> <span class="o">[</span>master<span class="o">]</span>
+</span><span class='line'>-&gt; % find . -type f -name <span class="s2">&quot;*.scala&quot;</span> | <span class="k">while </span><span class="nb">read </span>file; <span class="k">do </span>wc -l <span class="nv">$file</span>; <span class="k">done</span> | sort -n
+</span><span class='line'>       9 ./com/foobar/models/Permission.scala
+</span><span class='line'>      11 ./com/foobar/util/LocParams.scala
+</span><span class='line'>      14 ./com/foobar/util/OrgSettings.scala
+</span><span class='line'>      16 ./com/foobar/security/package.scala
+</span><span class='line'>      17 ./com/foobar/scripts/ReloadStageDB.scala
+</span><span class='line'>      18 ./com/foobar/scripts/oneoff/InitSchema.scala
+</span><span class='line'>      <span class="c"># ...</span>
+</span><span class='line'>     231 ./com/foobar/js/Calendar.scala
+</span><span class='line'>     247 ./com/foobar/persistence/Access.scala
+</span><span class='line'>     287 ./com/foobar/snippet/BookingCalendar.scala
+</span><span class='line'>     307 ./com/foobar/lib/Registration.scala
+</span><span class='line'>     319 ./com/foobar/lib/Scheduler.scala
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output was slightly interesting, but nothing groundbreaking.  300 lines is not ideal to me, but manageable.  Broken
+down quickly, <code>find #...</code> finds all files inside the current directory ending in &lsquo;.scala&rsquo;, reads each file in, and
+passes it off to wc -l, which does a linecount on the file, whitespace and all.  <code>sort</code> does what its name implies, with
+<code>-n</code> making it sort <code>1 2 3 11</code> instead of <code>1 11 2 3</code>.  The information was slightly cool, but as a hack it&rsquo;s not very
+interesting, so let&rsquo;s throw some git in there to try to get a sense of how fast the codebase has grown over time.  After
+all, superlinear growth is usually indicative of a ton of repetition and therefore unnecessary code complexity.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/23/cmd-misadventures-codebase-size/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -548,174 +685,6 @@ already taken, here&rsquo;s a picture of a big bowl of beef with kimchi and rice
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/10/first-post/">First Post</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-10T22:00:00-04:00" pubdate data-updated="true">Oct 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>&hellip; Or, &ldquo;How I Chose a Blog Platform.&rdquo;</p>
-
-<p>Multiple people have said that I should get back into writing, so I guess I&rsquo;m back into the blogging scene now.  It&rsquo;s
-true I did have a food blog before a particular work project completely pole-axed it, and I would love to start it up
-again.  The problem is that WordPress has always been a bit cumbersome for me so this time around I wanted something
-different.  Plus I&rsquo;ve been meaning to get into the whole tech/misc blogging thing.  So I set out to find something that:</p>
-
-<ol>
-<li>Is easy to write in.  I&rsquo;d been fascinated by the idea of blogging in Markdown, so preferably that.</li>
-<li>Could render code snippets / do syntax highlighting in most major languages.</li>
-<li>Could display pictures with reasonable flexibility and prettiness.</li>
-<li>Supported some form of organization based on categories/tags.</li>
-</ol>
-
-
-<p><a href="https://telegr.am/">telegr.am</a> was a strong contender for a while, since it uses Markdown and is written in <code>Scala</code> and
-thus would have been familiar ground, but sadly it was missing in some key features.  All the other frameworks I found
-were either lackluster, pay-only, or required self-deployment on a server, which I&rsquo;m clearly too lazy to do nowadays.
-Thus I came to settle on <a href="http://octopress.org/">Octopress</a>, a framework based on <a href="http://jekyllrb.com/">Jekyll</a> which I
-had already played with for my personal site before.  Thus far it fits the bill nearly perfectly, with the only rub
-being the heavy dependency on git (or in my particular case, github).  But that isn&rsquo;t really a problem unless I ever
-want a blog with non-technical contributors, so that bridge can be crossed when the time comes.</p>
-
-<p>TL;DR &ndash; New blog.  Pardon the appearance during construction.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/01/chinese-braised-beef-shank/">Chinese Braised Beef Shank</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-01T12:00:00-05:00" pubdate data-updated="true">Dec 1<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5>This is a backport from my old blog.  Please see <a href="http://alexkuang.com/blog/2014/04/26/ch-backports/">this post</a> for more details.</h5>
-
-<blockquote><p>This was the first actual post I&rsquo;d written in a while that wasn&rsquo;t a banal restaurant review, in an attempt to start up
-the whole blogging in thing again.  Too bad Meaningful Use at work started really kicking in at that time, and I
-realized how much of a painful time suck it was to wrangle wordpress, so this was the last post on the old blog before I
-took the server down and stopped writing altogether.  It&rsquo;s all very sad.</p></blockquote>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-RKjGV2B/0/L/DSC_1888-L.jpg"></p>
-
-<p>Braised beef shank is another favorite from my childhood that I commonly found as an appetizer at banquet-style dinners,
-though it isn&rsquo;t really a braised dish in the traditional western sense.  It isn&rsquo;t served with the braising liquid, and
-it doesn&rsquo;t aim to fall apart on the fork; quite the opposite, actually.  The shank is boiled in a mixture of soy sauce
-and aromatic spices, then sliced thinly and served cold.  The end result is a great example of a cut of meat that is
-usually tough and cheap being transformed into something wonderfully flavorful by a bit of time and ingenuity.</p>
-
-<h3>Ingredients</h3>
-
-<ul>
-<li>Two beef shanks</li>
-<li>1.5 cup dark soy sauce</li>
-<li>3 cups water</li>
-<li>6 star anise</li>
-<li>1 stick cinnamon</li>
-<li>10-12 sichuan peppercorns</li>
-<li>5 cloves</li>
-<li>1 inch piece peeled ginger</li>
-<li>2-3 pieces rock sugar; otherwise, 2 tbsp table sugar</li>
-</ul>
-
-
-<h3>Methodology</h3>
-
-<ol>
-<li>Bring a pot of water to a boil, and simmer the meat in it for about 5 minutes, then rinse with cold water.  This
-helps get rid of some of the gameyness and clean up the flavor a little.</li>
-<li>Place everything (the meat, soy sauce, water, and spices) into a pot and bring to a boil.
-<img class="center" src="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-td3L4V7/0/M/DSC_1873-M.jpg"></li>
-<li>Simmer on a low heat for about 2-3 hours.</li>
-<li>Let everything cool, and stick it in the fridge overnight.  This step is not optional; the beef shanks will be
-infinitely easier to slice once cooled, and the extra time will let the flavors soak in properly.  In addition, the
-tendons in the shank will have time to set, adding to its unique chewy texture.</li>
-<li>Slice thinly against the grain of the shank.  If you&rsquo;re not sure which way that is, think of taking cross-sections of
-a tree, except instead of counting the rings this time you&rsquo;re looking to see the meat fibers and bits of tendon.
-Make sure the slices are thin, about 1/8 inch or thinner.  Beef shank is a naturally tough cut; the thinner the
-slices, the shorter the meat sinews, the easier it will be to eat.</li>
-<li>Serve cold, preferably with a drizzle of sesame oil or some sesame seeds on top, maybe a few chopped scallions.  Or
-just dunk it into a hot bowl of noodle soup, whatever works.</li>
-<li>(Optional) Save the braising liquid to use as the base for a future project.</li>
-</ol>
-
-
-<h3>Notes</h3>
-
-<p>Although I provide a list of ingredients, it is by no means gospel; everyone I&rsquo;ve ever known has used slightly different
-ingredients in slightly varying amounts.  Likewise, it&rsquo;s not the end of the world if a few ingredients are missing or
-have to be substituted, although all of the above list should be available at any decent Chinese grocer, or Amazon when
-all else fails.  Dark soy sauce, which is similar to light soy sauce except fermented with a few extra ingredients and
-for longer, yielding a richer and less salty product, can ostensibly be replaced with regular soy sauce and more sugar
-(caveat: I&rsquo;ve never tried this myself, so I have no idea how it will go&mdash;most places that sell soy sauce will sell dark
-soy sauce anyway).  Rock sugar can be replaced by table sugar with negligible difference.  Other aromatics like
-cardamom, fivespice powder, or orange peel can be mixed in.  I would really caution against adding too many cloves,
-though; they have a tendency to overpower other ingredients very quickly.</p>
-
-<p>The other thing worth mentioning is that the braising liquid can also work for other meats.  Chicken thighs and
-drumsticks work with this flavor very well, and eggs can be used as well as sort of variation on tea eggs.  A personal
-favorite of mine is pork tongue (I recommend the same boiling + slicing procedure, though with thicker slices and served
-hot), which arguably works even better than beef shank.  It has an awesome flavor in addition to being available in
-plentiful supply for a cheap price, and I love the insane contrast between a horror-movie-esque pork tongue sitting on
-the cutting board and the same tongue ready to serve and neatly sliced on a plate moments later.  Seriously though, pork
-tongue has an amazing flavor and texture, and everyone should try it at least once.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-7G8b3n2/0/L/DSC_1879-L.jpg"></p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-Vj8PVDn/0/L/DSC_1883-L.jpg"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -733,6 +702,14 @@ tongue has an amazing flavor and texture, and everyone should try it at least on
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/07/03/caramelized-lemongrass-chicken/">Caramelized Lemongrass Chicken</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/25/bracket-expansion-in-the-shell/">Bracket Expansion in the Shell</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/16/fuck-it-its-friday-weeks-12-13/">&#8220;Fuck It Friday&#8221; - Weeks 12 + 13, Street Food + Potatoes</a>
       </li>
     
@@ -742,14 +719,6 @@ tongue has an amazing flavor and texture, and everyone should try it at least on
     
       <li class="post">
         <a href="/blog/2014/06/05/follow-the-honey/">Follow The Honey</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/27/oysters-with-lemon-pearls-week-11-molecular/">Oysters with Lemon Pearls - Week 11 Molecular</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/23/why-i-preferred-dark-souls-i/">Why I Preferred Dark Souls I</a>
       </li>
     
   </ul>

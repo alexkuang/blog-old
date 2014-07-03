@@ -4,7 +4,7 @@
   <title><![CDATA[Category: programming | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-06-20T19:51:17-04:00</updated>
+  <updated>2014-07-03T15:52:54-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bracket Expansion in the Shell]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell/"/>
+    <updated>2014-06-25T18:58:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell</id>
+    <content type="html"><![CDATA[<p>Just a quick post to show of a neat little trick for those who are more command-line-driven: bracket expansion.</p>
+
+<p>Basically, bracket expansion means that <code>some-string-called-{x,y}-here</code> desugars in the shell to
+<code>some-string-called-x-here some-string-called-y-here</code>.  This is especially useful if, say, you&rsquo;re in a Java-like
+directory structure and you accidentally placed your source class in your test folder, and you need to move it back:</p>
+
+<p>```bash</p>
+
+<h1>desugars into mv src/test/java/com/foobar/app/Class.java src/main/java/com/foobar/app/Class.java</h1>
+
+<p>mv src/{test,main}/java/com/foobar/app/Class.java
+```</p>
+
+<p>Or if you&rsquo;ve already committed to source control, this also works quite nicely with <code>git mv</code>.  Another nice example from
+recent memory is, say, if you were cleaning up some directories nested by date and wanted to only wipe a few months:</p>
+
+<p><code>bash
+rm /posts/2014/{01,03,06,07}/*.html
+</code></p>
+
+<p>Anyway, just a quick little post for a neat little trick.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello, Hardware World!]]></title>
@@ -293,47 +322,6 @@ that I will probably keep it on even when I don&rsquo;t have to deal with the ha
 after dealing with the crazy complexity in Scala.  Undoubtedly working through the latter had a part in making the
 former much easier, and Scala will always have a place with me, but for now I find myself slowly joining the rest of the
 Clojure bandwagon.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Zelda as a Metaphor for Complexity]]></title>
-    <link href="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/"/>
-    <updated>2013-12-11T18:29:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity</id>
-    <content type="html"><![CDATA[<p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
-my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
-which could take upwards of hours (Water Temple, I&rsquo;m looking at you) to complete on the first run.  One of them jumps to
-mind particularly: The Forest Temple, a dungeon you encounter in the early-mid game immediately after gaining access to
-adult Link.</p>
-
-<p>At first glance, it seems like a completely normal dungeon&mdash;You&rsquo;ve got your wolves, you&rsquo;ve got your carnivorous plants,
-and the obvious puzzle in the form of 4 torches that have to be lit.  Fairly straightforward, until the game hits you
-with this:</p>
-
-<p><img class="center" src="/images/forest-temple-hallway.jpg"></p>
-
-<p>The first time you hit the twisting hallway, you have to follow it as-is to the other side, your perspective being
-warped, to end up in a room with you standing on its &ldquo;wall&rdquo;.  On the &ldquo;floor&rdquo; is a chest, inaccessible in your current
-state, and further on is a door you don&rsquo;t have the key to.  After a few more rooms and a battle with some wolves, you
-end up with the bow which allows you to hit a switch to un-twist the hallway, bringing a completely new
-perspective to the rooms&mdash;Most obviously, the chest from the earlier &ldquo;floor&rdquo; is now reachable, and after a little
-contemplation and a lot of climbing, you get the key to the previously locked door&hellip;  <em>Which you can&rsquo;t access until you
-re-twist the hallway.</em></p>
-
-<p>This simple sequence is, in essence, what makes the classical Zelda dungeons challenging and oh so much fun.  In
-addition to an &ldquo;item of the moment&rdquo;, each area contains an inventive mechanic that completely changes the landscape
-of the entire dungeon.  A room is completely different when your perspective is rotated, platforms become traversable
-after you flood the floor with sand, and so on.  It&rsquo;s no longer just <em>Push a block over here</em>, it&rsquo;s <em>Push a block over
-here to change the water level so we can push that other block, and then change the water level back to align the two
-blocks properly and maybe we can finally get to that chest over there.  Oh wait, that didn&rsquo;t work, maybe if I switch the
-water level back BEFORE moving the second block&hellip;</em></p>
-
-<p>Sound familiar?  The hardest dungeons' mechanics tend to use some piece of outside state to introduce exponentially more
-complex interactions between the existing items that Link already has access to.  Interactions that now depend not only
-on the current environment, but also the configuration of surrounding environments, and probably the order that
-everything was done as well.  Keeping track of all that is welcome, even enjoyable, when I&rsquo;m playing Zelda.  But I have
-no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing what I want it to.</p>
 ]]></content>
   </entry>
   
