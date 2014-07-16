@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-07-03T15:55:30-04:00</updated>
+  <updated>2014-07-16T15:57:21-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,130 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[asciinema]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/07/16/asciinema/"/>
+    <updated>2014-07-16T15:40:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/07/16/asciinema</id>
+    <content type="html"><![CDATA[<p>I was tooling around the other day and discovered a service called <a href="https://asciinema.org">asciinema</a> which provides
+terminalcasts&mdash;essentially, &ldquo;screencasts&rdquo; with terminal I/O.  This is awesome for a few reasons.</p>
+
+<p>From a content consumer&rsquo;s standpoint, it&rsquo;s often hard to follow a blog post that&rsquo;s trying to outline a command line tip,
+or a vim tip, for the simple fact that the static nature of writing alone isn&rsquo;t optimal for showing the flow between
+&ldquo;steps&rdquo; (commands, keystrokes, what have you) and &ldquo;output&rdquo; (what you&rsquo;re supposed to see after executing commands).
+Having a dynamic format for demos helps with this greatly.  Sure, there are screencasts, but that involves dealing with
+videos and their associated heavy Flash Player bullshit.  asciinema is rendered with just bits of html and js.</p>
+
+<p>From a wannabe content producer&rsquo;s standpoint&hellip;  Writing is <em>hard</em>.  Writing while crafting appropriate examples is
+harder.  Doing all that while struggling with capturing the nature of the examples in plain text?  No thanks.
+Again&mdash;Yes, there is the option of screencasts, but those are painful to set up.  Screencasts means worrying about
+things like capturing software, background audio, What Tab Do I Have Open In My Browser, and Will Video Compression
+Screw My Text Legibility.  As a consummately lazy person who only wants to do short self-contained clips for now&hellip;
+That&rsquo;s way too big of a barrier.  asciinema is easy&mdash;Just install, then <code>asciinema rec</code> from the terminal and <code>&lt;CTRL-D&gt;</code>
+to exit and upload.</p>
+
+<p>And embedding takes 2 seconds&mdash;Check it!</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/10785.js" id="asciicast-10785" async></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA['MURICA - Ribs]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/07/11/murica-ribs/"/>
+    <updated>2014-07-11T21:32:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/07/11/murica-ribs</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Murica-Ribs/i-NJP5Mrc/0/L/DSC_3131-L.jpg"></p>
+
+<p>It is one of my greatest regrets as a Super Manly-Man that my current living situation is prohibitive against the
+construction of fire pits, or even the ownership of so much as a grill.  And it is a travesty that on the Fourth of
+July&mdash;one of the meatiest holidays of the meatiest of countries (&lsquo;MURICAAAAA)&mdash;I had to settle for a measly oven for my
+ribs.  But alas, one must make do.</p>
+
+<!-- more -->
+
+
+<p>As far as ribs done in a scrawny house-oven go, these were actually pretty good; I basically stole the entire thing
+wholesale from an episode of Good Eats.  While I wouldn&rsquo;t say braised ribs inspire me to go out and slay bears, I&rsquo;d say
+all in all it could have turned out a lot worse.</p>
+
+<h2>Meat</h2>
+
+<ul>
+<li>2 racks of ribs</li>
+</ul>
+
+
+<h2>Spice Rub</h2>
+
+<ul>
+<li>8 parts (I used a &frac14; cup per &ldquo;part&rdquo;) brown sugar</li>
+<li>3 parts kosher salt (halve that if you insist on using table salt, you heathen)</li>
+<li>1 part Chili P</li>
+<li>1 part &ldquo;everything else&rdquo;</li>
+</ul>
+
+
+<h2>Everything Else</h2>
+
+<p>A great big mix of&hellip;</p>
+
+<ul>
+<li>Old Bay</li>
+<li>Dried Thyme</li>
+<li>Cayenne Pepper</li>
+<li>Black Pepper</li>
+<li>Onion Powder</li>
+</ul>
+
+
+<h2>Braising Liquid</h2>
+
+<ul>
+<li>1 cup white while</li>
+<li>2 Tb white wine vinegar</li>
+<li>A few cloves of garlic, crushed</li>
+<li>drizzle of honey</li>
+</ul>
+
+
+<p>Combine everything in the Spice Rub and make sure to mix well.  I ended up mixing and storing it in a few Ball jars,
+since this stuff will keep forever.  Cover the ribs in it.  Seriously, don&rsquo;t be shy with the spice either&mdash;what are you,
+a communist?</p>
+
+<p>After the ribs are completely coated, wrap them in aluminum foil.  First seal up the foil lengthwise, then roll up the
+ends to make a neat little package.  If you&rsquo;re paranoid like me, you can double-layer the foil.  Stick this in the
+fridge overnight.</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Murica-Ribs/i-J847KwB/0/L/DSC_3069-L.jpg"></p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Murica-Ribs/i-4MR872V/0/L/DSC_3074-L.jpg"></p>
+
+<p>Several beers and a good night&rsquo;s sleep later, wake up and groggily pre-heat your oven to 225F.  Put everything for the
+Braising Liquid into a saucepan, and bring to a simmer.  Remove the ribs, unroll one of the foil ends, and dump the
+braising liquid into the foil packages.  It&rsquo;s kind of like feeding a pet, if your pet were aluminum and you were
+planning on eating its insides.</p>
+
+<p>Place everything onto a metal tray, and the tray into the oven.  Wait for 2 &frac12; to 3 hours, then remove and unwrap the
+ribs.  Drain the braising liquid into a saucepan.</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Murica-Ribs/i-N6TLMVp/0/L/DSC_3079-L.jpg"></p>
+
+<p>Reduce the liquid in the pan until it reaches a sauce-like consistency.  We&rsquo;re talking about well past the french
+&ldquo;spoon-back-coating&rdquo; level; look for something closer to a thick glaze.</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Murica-Ribs/i-ZVPCzzC/0/L/DSC_3086-L.jpg"></p>
+
+<p>Slather the sauce onto the ribs, then stick them under a broiler for a few minutes.  Marvel at the excellent color and
+sizzling goodness.</p>
+
+<p>Slice, cover with more sauce, and garnish with copious amounts of Independence.  Potato salad might also work.</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Murica-Ribs/i-qX9g7j3/0/L/DSC_3138-L.jpg"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Caramelized Lemongrass Chicken]]></title>
@@ -988,140 +1112,6 @@ the size of the bread.</li>
 
 
 <p><img class="center" src="http://waffleparadox.smugmug.com/Food/Hipster-Garlic-Bread/i-BSbTwgh/0/L/DSC_2576-L.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Instant Ramen Gnocchi - Week 8, TV Show Inspired]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/03/11/instant-ramen-gnocchi-week-8-tv-show-inspired/"/>
-    <updated>2014-03-11T22:19:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/03/11/instant-ramen-gnocchi-week-8-tv-show-inspired</id>
-    <content type="html"><![CDATA[<p><em>(In which I am served a massive slice of humble pie)</em></p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Instant-Ramen-Gnocchi/i-HPM7fVm/0/L/DSC_2602-L.jpg"></p>
-
-<p><em>Mind of a Chef</em> is not just great background noise for getting work done, it also pads out the list of cool and
-unusual things I&rsquo;d like to try in the kitchen.  Out of all the things I&rsquo;d seen on the show, making gnocchi out of ramen
-seemed among the most unusual and also among the simplest, so I decided it would be a prime target for this week&rsquo;s &ldquo;TV
-Show Inspired&rdquo; theme.</p>
-
-<!-- more -->
-
-
-<h2>The Failure</h2>
-
-<p>Because of its apparent simplicity, I decided to take this on on the night before my flight.  In an uncharacteristic
-bout of hubris, my thoughts went something like&hellip; <em>It&rsquo;s just instant ramen blended with milk, right?  No need for a
-methodical approach or anything, just toss everything in.</em>  Of course, as the Universe is wont to do, my sloppiness was
-rewarded promptly with miserable failure.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Instant-Ramen-Gnocchi/i-mzq93d8/0/L/DSC_2469-L.jpg"></p>
-
-<p>I started off by boiling the ramen in milk, and dumping all of it into a food processor with a bunch of egg yolks.  The
-first hint that things were off probably should have come at this stage.  The dough held a consistency that was closer
-to batter than anything, and there were far too many lumps to be normal.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Instant-Ramen-Gnocchi/i-FsDKq22/0/L/DSC_2470-L.jpg"></p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Instant-Ramen-Gnocchi/i-fNZCkgb/0/L/DSC_2474-L.jpg"></p>
-
-<p>As anyone who isn&rsquo;t an idiot should have predicted <em>(ahem)</em>, as soon as the mixture was piped into boiling water, it
-completely fell apart.  Even reducing the pot to a bare simmer, it could not hold together at all, and just ended up a
-lumpy mess.  I tried frying the results of this, and piping the raw batter straight into the pan, but there&rsquo;s just no
-fighting physics.</p>
-
-<p>The best that could have happened here would have been something resembling a grit cake, and that would require some
-stabilization in the way of flour / eggs / what-have-you, which I didn&rsquo;t have since I&rsquo;d cleaned out my food supplies in
-preparation for my 2-week trip the next day.  &hellip;  Yep.</p>
-
-<p>On hindsight, it&rsquo;s pretty easy to spot the things that went wrong:</p>
-
-<ul>
-<li>First off, the ramen should not have been boiled.  By the time it&rsquo;s finished boiling, it&rsquo;s already absorbed all the
-liquid it can, which means that it will not integrate with any more that&rsquo;s added, no matter how much time it spends in
-the food processor.</li>
-<li>Along the lines of the above, I should have used much much less liquid, since I want barely enough to turn the ramen
-into a dough.</li>
-<li>The eggs yolks were added way too soon into the mixture.  The residual heat from the boiling liquid probably cooked
-the yolks before they could be integrated, resulting in more of lumps and robbing the dough of any thickening effects
-from the yolks overall.</li>
-</ul>
-
-
-<h2>The Retry</h2>
-
-<p>With that spectacular SNAFU under my belt, I&rsquo;d resolved that I&rsquo;d make another proper attempt as soon as I touched back
-down in Boston.  Luckily, this time went much better&mdash;Good enough to actually write out, in fact.  Here are the
-ingredients I eventually settled on:</p>
-
-<ul>
-<li>500ml whole milk</li>
-<li>4 egg yolks</li>
-<li>2 packs instant ramen (I used Nong Shim, ~119g apiece)</li>
-</ul>
-
-
-<p>First off, boil 500ml milk.  Break the ramen bricks up and soak them in the milk.  There should be just barely enough
-milk to cover.  Take the ramen out as soon as they become pliable enough to no longer be considered bricks&mdash;this should
-only take a minute, two tops.  Dump the ramen with ~200ml of the milk into a food processor, and blend until it reaches
-a dough-like consistency.  <em>(Note: I have a decently sturdy Cuisinart, and the dough had enough thickness to make it
-move, so I&rsquo;d say aim for something along those lines)</em>  When everything is mixed together and cool enough to touch, add
-the egg yolks and give it another few pulses to incorporate.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Instant-Ramen-Gnocchi/i-SFK4xfS/0/L/DSC_2584-L.jpg"></p>
-
-<p>Now that looks like a proper dough.  Bring a large pot of salted water to boil, then scoop the dough into a pastry bag
-(a ziploc with the corner cut out also works).  Pipe out an inch or so at a time into the water, slicing pieces off with
-a straight edge.  I used the back of a paring knife for this part.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Instant-Ramen-Gnocchi/i-mrqgdF2/0/L/DSC_2589-L.jpg"></p>
-
-<p>Never have I been so glad to see my food looking like poo in a toilet.</p>
-
-<p>As soon as the pieces start floating, get them onto a greased plate.  Fry in butter, then serve as preferred.</p>
-
-<h2>Impressions</h2>
-
-<p>DISCLAIMER: I realized soon after tasting these that I have not actually had potato gnocchi before, so I have nothing to
-draw a comparison to.  I&rsquo;ll make it a point to get some from Whole Foods or something ASAP.</p>
-
-<p>Overall the gnocchi had a very interesting texture.  For reasons unknown, I&rsquo;d always expected these to have more bite or
-chew to them, but they tasted more creamy than anything.  Simultaneously, they were much heavier than I thought they
-would be.  No big surprise here, since they&rsquo;re just pulverized starch and milk.  In the headline picture I served them
-with pork belly and spinach, and for my second portion I used pork and miso corn.  Both times I was going for a sort of
-&ldquo;deconstructed ramen&rdquo; theme, which worked out fairly well.  The only thing I&rsquo;d change is the portion size&mdash;Something
-this heavy is much better suited as an appetizer or a first course.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[New Belt!]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/03/08/new-belt/"/>
-    <updated>2014-03-08T21:59:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/03/08/new-belt</id>
-    <content type="html"><![CDATA[<p>Normally I try to keep the &ldquo;dear diary&rdquo; factor on the blog low.  But in all the bustle of settling back into the east
-coast with a new work arrangement, I all but forgot about the whole blogging thing until roughly 2 minutes ago.  So if
-you&rsquo;re one of the ones who reads this for what little informational value I manage to provide, or are otherwise
-uninterested in participating in this rare bout of masturbatory self-congratulations, here&rsquo;s your cue.</p>
-
-<p>Still here?  So&hellip;  I got my blue belt in BJJ recently.  For anyone unfamiliar, it&rsquo;s basically the &ldquo;hurrah, you&rsquo;re no
-longer a rookie&rdquo; rank, and in all seriousness this is one of my prouder moments.  Why?  Because of all my regular
-activities, BJJ is the one where I have absolutely no talent whatsoever.  Seriously.  It took me a solid 2 years to get
-to this point, and every day of that was spent with the mat being wiped by my face.  Ask anyone at the gym: I still get
-rag-dolled on a regular basis.</p>
-
-<p>Now, as a software developer (and all-around lazy nerd) I have a propensity to approach most problems by a) finding an
-easier way to do it, b) deciding it&rsquo;s not worth the time, or c) see (a).  It&rsquo;s an approach that works for software, for
-games, and probably for most challenges you&rsquo;re likely to find in the first world.  But it&rsquo;s great having proof that
-sometimes you just have to show up and grind through and that&rsquo;s the only way to improve.  It&rsquo;s a reminder that
-surprisingly often, the only actual obstacle is just you being a giant chicken and unwilling to leave your comfort zone.</p>
-
-<p>So, as the kid who couldn&rsquo;t do a single push-up and ran a 13 minute mile in school, I&rsquo;d like to give myself a pat on the
-back for managing to get this far.  And despite all the split lips, swollen fingers, and sprained joints, I sure hope I
-get a lot farther in the future.</p>
-
-<p>Oh, and&hellip;  I kind of lied about the lack of material.  I had another 52-weeks post lined up, but the experiment failed
-horribly.  I&rsquo;m just buying time so I can do a second iteration and save SOME face, so&hellip;  Look forward to that one.</p>
 ]]></content>
   </entry>
   
