@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-08-02T15:12:47-04:00</updated>
+  <updated>2014-10-18T20:55:34-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Baby's First Alfred Workflow]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow/"/>
+    <updated>2014-10-18T15:32:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow</id>
+    <content type="html"><![CDATA[<p>Lately I&rsquo;ve been spending a lot of my work time staring at <a href="http://aws.amazon.com/cloudwatch/">CloudWatch</a> metrics.
+Particularly, we have a <a href="http://aws.amazon.com/kinesis/">Kinesis</a> application that publishes metrics on how long a
+record spends hanging around in the stream before getting picked up by our processor.  The problem is that the metric is
+published in milliseconds, which while precise, is not exactly human-readable for large enough durations.</p>
+
+<p>I&rsquo;ve been a huge fan of <a href="http://www.alfredapp.com/">Alfred</a> for a while, and I use its quick-launch and custom search
+functions nearly constantly.  I only recently got around to ponying up for the powerpack, which lets you define custom
+&ldquo;workflows&rdquo;, so I figured&mdash;why not use a workflow to convert the milliseconds to something more readable?</p>
+
+<!-- more -->
+
+
+<p>The Alfred workflow UI is basically a fancy flow chart.  It allows you to string together elements for input,
+actions, and output&mdash;Kind of like a graphical representation of a unix pipe.  The final product of the workflow looked
+something like this:</p>
+
+<p><img class="center" src="/images/alf-flow.png"></p>
+
+<p>The first step is to define a keyword, which is how this workflow will be invoked in the alfred menu:</p>
+
+<p><img class="center" src="/images/alf-keyword.png"></p>
+
+<p>All this means is that I can use <code>mr (x)</code> to invoke the workflow, where x is some parameter.  <code>{query}</code> is just Alfred&rsquo;s
+magic string for&mdash;you guessed it&mdash;injecting <code>argv</code>.  In this case, it updates the &lsquo;preview&rsquo; item in the dropdown as the
+argstring is entered.</p>
+
+<p>The actual script itself is simple and super hacked together in python, but the UI here is still worth showing.  Note the
+use of {query}:</p>
+
+<p><img class="center" src="/images/alf-py.png"></p>
+
+<p>In addition to python, the &ldquo;run script&rdquo; element also supports bash, ruby, and all manner of things up to and including Perl.</p>
+
+<p>And, the final product:</p>
+
+<p><img class="center" src="/images/alf-demo.png"></p>
+
+<p><img class="center" src="/images/alf-print.png"></p>
+
+<p>There are a few optimizations I can see immediately (for example, the &lsquo;large print&rsquo; output seems a bit kludgy), but it&rsquo;s
+not bad for a few minutes' work!</p>
+
+<p>And while this script was relatively simple, there&rsquo;s tons more to be explored.  In addition to running a script, Alfred
+also supports other actions such as opening an application, running a web search, running iTunes, and then some.  And
+for output, Alfred can do things like copy to clipboard or post to the Mac&rsquo;s Notification Center.  Really, it&rsquo;s like a
+graphical scripting language on steroids with easy interaction with OS X.  I&rsquo;ve seen some projects lately for more
+accessible coding via graphical interfaces; Alfred&rsquo;s approach is a pretty good start as far as I&rsquo;m concerned.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[asciinema]]></title>
@@ -278,39 +333,6 @@ such.  Again&mdash;Definitely a good thing, in most cases.  But after this week 
 day&rdquo;-ish time into my personal projects is in order, if for no reason other than to let the crazy out.</p>
 
 <p><strong>tl;dr</strong> &ndash; Hack days are awesome.  I should do more of them.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[IAP and Mobile]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile/"/>
-    <updated>2014-02-03T21:43:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile</id>
-    <content type="html"><![CDATA[<p>In-app purchases and the free-to-play model have long been anathema to self-declared &ldquo;real gamers&rdquo; everywhere, but the
-recent release (or re-release?) of classics like Tales of Phantasia and Dungeon Keeper seems to have brought yet
-another wave of angry discussion to the forefront.  Understandably, people
-<a href="http://www.baekdal.com/opinion/how-inapp-purchases-has-destroyed-the-industry/">are</a>
-<a href="http://kotaku.com/a-cancer-thats-eroding-the-market-reactions-to-eas-1515121353">very</a>
-<a href="http://www.escapistmagazine.com/articles/view/editorials/reviews/10956-Dungeon-Keeper-Mobile-Review-Wallet-Reaper">angry</a>
-<a href="http://toucharcade.com/2014/01/27/tales-of-phantasia-review/">that</a> their beloved classics are being turned into f2p
-&ldquo;cash farms&rdquo;, but personally I think saying the model is &ldquo;destroying the industry&rdquo; is a bit hyperbolic.</p>
-
-<p>In response, toucharcade recently published a post pointing out an article that takes a <a href="http://toucharcade.com/2014/02/03/iap-isnt-actually-destroying-the-games-industry/">stance to the
-contrary</a>.  The original piece is
-definitely worth a read to anyone who cares about the topic; it makes a number of good arguments regarding pricing
-pressures and facing a realistic economy for the unprecedented levels of competition on iOS.  But it also notes that the
-concept of paying for more content&mdash;the &ldquo;original IAP&rdquo;&mdash;dates back to the beginning of the industry with coin op arcade
-machines.  This seems like a valid comparison superficially, but as someone who&rsquo;s shelled out way too many quarters on
-the likes of Gauntlet Dark Legacy I feel like there are two fundamental differences that this argument glosses over.</p>
-
-<p>First: arcade games always had a large skill component.  It might take a while to get good enough, but it was always
-possible to beat the game consistently on sheer skill alone.  The game might have been hard, but the balance was never
-so broken as to render completion impossible without the extra coins.  Second: in the cases of the most nefarious IAPs,
-you&rsquo;re not paying to spend more time with the game; you&rsquo;re paying for the exact opposite.  When an IAP does nothing but
-shorten a timer or increase a premium resource, you&rsquo;re essentially paying more money to decrease the time you spend with
-the game.  All &ldquo;Skinner&rsquo;s Box From Hell&rdquo; arguments aside, that is probably what I object to the most.  I don&rsquo;t have an
-indiscriminate hatred for the f2p model&mdash;there are definitely cases of it being executed well&mdash;but I have a fundamental
-problem with paying more for less.</p>
 ]]></content>
   </entry>
   
