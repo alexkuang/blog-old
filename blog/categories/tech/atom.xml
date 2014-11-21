@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-10-18T21:03:02-04:00</updated>
+  <updated>2014-11-20T21:27:42-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Vim Visual Block Mode]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/"/>
+    <updated>2014-11-20T18:33:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode</id>
+    <content type="html"><![CDATA[<p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
+snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
+aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
+discussion.</p>
+
+<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
+<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
+changes that entails.  While I&rsquo;m sure it&mdash;or something similar&mdash;will make a comeback, in the meantime I decided to
+try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
+I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
+incentive for me to be proactive in learning new things to talk about.</p>
+
+<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
+attention&mdash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
+always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
+what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Baby's First Alfred Workflow]]></title>
@@ -302,37 +330,6 @@ be a weird GOTCHA if you&rsquo;re trying to write a macro by hand or something. 
 can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, but it pays to watch out in general for stuff like this)</p>
 
 <p>So there you have it, ladies and gentlemen&mdash;My idea of fun on a Sunday afternoon&hellip;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hack Days Are Awesome]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome/"/>
-    <updated>2014-04-26T15:32:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome</id>
-    <content type="html"><![CDATA[<p>Earlier this week, we had a &ldquo;hack day&rdquo; at work.  Or more precisely, two hack days.  I think the name is pretty
-self-explanatory&mdash;work on whatever you want, which can be something helpful to or completely unrelated to your currently
-assigned tasks, as long as it&rsquo;s something interesting.  Now, &ldquo;hack time&rdquo; is a pretty established institution in the
-software world, especially amongst the hip startuppy companies.  I&rsquo;m sure everyone has heard of Google&rsquo;s &ldquo;20% time&rdquo; idea
-by now, and the story of Microsoft&rsquo;s Xbox starting as a side-project.  Proponents (especially those who are trying to
-pitch a business case to managers with varying degrees of pointy-haired-ness) cite building camaraderie, stimulating
-creativity, and increasing morale as some of the biggest benefits.</p>
-
-<p>None of this is news.  But I came away this week with a surprising realization.  When coding professionally for business
-use cases, things like resilience and stability are often at the top of the requirement list&mdash;Or at least, I&rsquo;d really
-hope so.  If it&rsquo;s not, kindly give me the name of your company so I know what stock to not buy ;).  To this end, coding
-is never as simple as just sitting down and banging away at a keyboard.  It involves testing, discussions, design,
-thinking, more testing, more thinking, and so on and so forth.</p>
-
-<p>Don&rsquo;t get me wrong.  These are all very, very good things.  But I, at least, was surprised at how nice it was to just
-sit down and bang away at a keyboard with abandon.  It sounds rather obvious in hindsight, but compared to the usual
-rigorously managed process of software development at work, it&rsquo;s super liberating to just cowboy out some code with no
-considerations other than speed and getting the job done.  And what&rsquo;s more, I realized that I had constrained myself to
-the same careful management in all of my personal projects as well, especially when prototyping out potential MVPs and
-such.  Again&mdash;Definitely a good thing, in most cases.  But after this week I&rsquo;m thinking that injecting some &ldquo;hack
-day&rdquo;-ish time into my personal projects is in order, if for no reason other than to let the crazy out.</p>
-
-<p><strong>tl;dr</strong> &ndash; Hack days are awesome.  I should do more of them.</p>
 ]]></content>
   </entry>
   

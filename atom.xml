@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-10-18T21:03:02-04:00</updated>
+  <updated>2014-11-20T21:27:42-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Vim Visual Block Mode]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/"/>
+    <updated>2014-11-20T18:33:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode</id>
+    <content type="html"><![CDATA[<p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
+snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
+aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
+discussion.</p>
+
+<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
+<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
+changes that entails.  While I&rsquo;m sure it&mdash;or something similar&mdash;will make a comeback, in the meantime I decided to
+try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
+I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
+incentive for me to be proactive in learning new things to talk about.</p>
+
+<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
+attention&mdash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
+always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
+what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Baby's First Alfred Workflow]]></title>
@@ -961,71 +989,6 @@ whole 3 lb needs to be done at once, 45 minutes would probably be safer.  Give t
 fresh herbs.  Scallions are usually a pretty good bet, but I like cilantro too.</p>
 
 <p><img class="center" src="http://waffleparadox.smugmug.com/Food/Honey-Soy-Wings/i-VS3Xmzp/0/L/DSC_2918-L.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Shepherd's Pie - Week 10, Australian]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/04/12/shepherds-pie-week-10-australian/"/>
-    <updated>2014-04-12T22:37:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/04/12/shepherds-pie-week-10-australian</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Shepherds-Pie/i-hnc6sSv/0/L/DSC_2915-L.jpg"></p>
-
-<p>Alright, so I cheated a little bit.  Despite extensive (not really) research, I couldn&rsquo;t find anything in the top google
-results for Australian that really clicked.  At least, anything using conventional ingredients; I didn&rsquo;t quite get the
-chance to special-order some kangaroo.  Since I&rsquo;m told meat pies are popular in Australia and the lamb was technically
-from there, it still counts&hellip;  Right?</p>
-
-<!-- more -->
-
-
-<p>Even though it&rsquo;s technically an Aussie theme, I went with a more british twist on the ingredients, especially with the
-Worcestershire sauce.  The following makes enough to modestly feed 4 off a pretty decent size tray.  <em>No, I don&rsquo;t have
-exact dimensions for the tray, it&rsquo;s a meat pie, eyeball it FFS.</em></p>
-
-<ul>
-<li>1 lb ground lamb</li>
-<li>1 lb yellow potato, heavy cream</li>
-<li>Stock, preferably beef</li>
-<li>A dash (or 3) Worcestershire sauce</li>
-<li>1 tbsp tomato paste</li>
-<li>Carrots &lsquo;n peas (or other vegetables)</li>
-<li>Garlic</li>
-<li>Thyme</li>
-</ul>
-
-
-<p>First off, the meez.  Chop up the garlic, pick the thyme leaves, and finely dice the vegetables, if applicable.  In my
-case, it&rsquo;s more like &ldquo;take the bag out of the freezer.&rdquo;  Seriously, for carrots and peas in something like meat pie,
-frozen works best.</p>
-
-<p>Put a nice heavy pan on the stove and get it ripping hot.  Add the lamb and garlic, and let the meat get some color.
-Don&rsquo;t jab at it or anything for the first few minutes; we want it to fry, not boil.</p>
-
-<p>After it gets a nice dark brown color, start stirring and breaking it apart into tiny pieces.  When it&rsquo;s done, you
-should hear sizzling from fat, not hissing from steam&mdash;this should take 10, 15 minutes or so.</p>
-
-<p>Stir in the worcestershire sauce and tomato paste, then add the thyme and beef stock.  How much beef stock is pretty
-subjective: I use just enough to mix with the tomato paste for a gravy-ish texture.  The key is not so little that
-everything is dry, but not so much that it bubbles over in the oven.  If I had to guess, I&rsquo;d say it&rsquo;s just shy of 2
-cups, but perhaps a picture of the end product would be helpful?</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Shepherds-Pie/i-kZsbxX3/0/L/DSC_2895-L.jpg"></p>
-
-<p>Put a lid on, and let it simmer on very low heat for at least 30-40 minutes, preferably an hour, just to let everything
-come together.  Alternately, popping the pan in the oven at ~300-350 also works.</p>
-
-<p>Preheat the oven to 400.  While the meat is going and the oven is warming, prepare the mash.  I really hope I don&rsquo;t have
-to provide detailed instructions for that&hellip;  If that&rsquo;s needed, there&rsquo;s always google.</p>
-
-<p>When the meat is done, stick it in a tray and spread the mash on top.  Score with a fork for effect, if desired.  Then
-stick into the oven again for about 30 minutes to finish everything off and brown the top a bit.  For presentation, I
-bet some eggwash would help with the browning, but I&rsquo;ve never found it necessary.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Shepherds-Pie/i-qMkv5Mz/0/L/DSC_2908-L.jpg"></p>
-
-<p>In this particular attempt, I added a bit too much stock and it ended up bubbling out onto the potato.  Still delicious,
-though.</p>
 ]]></content>
   </entry>
   
