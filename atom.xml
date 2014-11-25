@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-11-20T21:42:19-05:00</updated>
+  <updated>2014-11-25T18:08:22-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,102 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Bash Bangs]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs/"/>
+    <updated>2014-11-25T17:40:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs</id>
+    <content type="html"><![CDATA[<p>This week I wanted to do a quick tip on some neat functionality in bash (and other bash-like shells), the bang commands.</p>
+
+<p>Let&rsquo;s say you have some long important command that you want to run.  You run it, only to discover that you need sudo
+privileges.  For situations like this, <code>!!</code> (entire last command) can be a great time-saver.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>1 2 3 4 5
+</span><span class='line'>1 2 3 4 5 <span class="c"># let&#39;s pretend echo throws an error too and wants sudo for some reason</span>
+</span><span class='line'><span class="nv">$ </span>sudo !!
+</span><span class='line'>sudo <span class="nb">echo </span>1 2 3 4 5
+</span><span class='line'>Password:
+</span><span class='line'>1 2 3 4 5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used without overwriting the &ldquo;last
+command&rdquo; history.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>1 2 3 4 5
+</span><span class='line'>1 2 3 4 5
+</span><span class='line'><span class="nv">$ </span>!!:p
+</span><span class='line'><span class="nb">echo </span>1 2 3 4 5
+</span><span class='line'><span class="nv">$ </span>sudo !!
+</span><span class='line'>sudo <span class="nb">echo </span>1 2 3 4 5
+</span><span class='line'>Password:
+</span><span class='line'>1 2 3 4 5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bang commands also extend to the individual parts of the last command you ran.  The most basic form of this is <code>echo
+!:[n]</code>, where [n] is the nth word in the command, indexed from 0.  There are also shortcuts: <code>!^</code> gives the first arg
+(like <code>!:1</code>) and <code>!$</code> gives the last arg.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:1
+</span><span class='line'><span class="nb">echo </span>a
+</span><span class='line'>a
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'><span class="nv">$ </span>!:5:p <span class="c"># :p works with any bangs!</span>
+</span><span class='line'>e
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:5
+</span><span class='line'><span class="nb">echo </span>e
+</span><span class='line'>e
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !<span class="err">$</span>
+</span><span class='line'><span class="nb">echo </span>e
+</span><span class='line'>e
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> &ndash;>
+<code>rm -r !$</code>).  Plus, it&rsquo;s the easiest sequence to hit, finger-wise.</p>
+
+<p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
+e.g. <code>sudo !!&lt;TAB&gt;</code> gets replaced with <code>sudo echo 1 2 3 4 5</code> in place.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thing of the Week: Vim Visual Block Mode]]></title>
@@ -947,48 +1043,6 @@ medium-lowish heat.</p>
 <p>Overall this turned out pretty well.  There wasn&rsquo;t much deviation from &ldquo;standard biryani procedure&rdquo;, which basically
 just involves cubed meat instead of a whole bird.  The biggest pain was getting the meat off the chicken at the end: it
 came off, but took some effort.  Perhaps a longer cooking time, or more moisture to cook the chicken with, next time?</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Garlic Soy Chicken Wings]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/04/17/garlic-soy-chicken-wings/"/>
-    <updated>2014-04-17T20:15:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/04/17/garlic-soy-chicken-wings</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Honey-Soy-Wings/i-ZfrmLNX/0/L/DSC_2936-L.jpg"></p>
-
-<p>Yes, I&rsquo;m going to be <em>that</em> Asian who posts a chicken wing recipe involving some combination of garlic, soy, and honey.
-Next thing you know I&rsquo;ll be writing book reviews for the Joy Luck Club and acting in sketches about Tiger Moms.  Though
-I suppose the latter would be pretty entertaining&hellip;</p>
-
-<p>This isn&rsquo;t the first chicken wing recipe I&rsquo;ve posted <em>(note to self: still need to port those old entries over&hellip;)</em>, but
-it is a pretty quick and easy one.  The only awkward part is that in situations like this, it&rsquo;s not worth the effort to
-not make a ton, but then everything takes a while to eat&hellip;  But I think that&rsquo;s a pretty good problem to have.</p>
-
-<!-- more -->
-
-
-<ul>
-<li>3 lb chicken wings</li>
-<li>1 cup vegetable oil</li>
-<li>&frac14; cup honey</li>
-<li>&frac14; cup soy sauce</li>
-<li>&frac14; cup Shaoxing wine</li>
-<li>4 cloves garlic</li>
-<li>1 tbsp brown sugar</li>
-<li>Pinch of salt</li>
-</ul>
-
-
-<p>To prepare, mix all the sauce ingredients together, and toss the chicken in.  If you&rsquo;re feeling really bored, jab them a
-few times to help the sauce seep in.  Mix evenly, then let it sit in the fridge overnight.  In my experience, the wings
-can be kept this way for up to 3 days&mdash;I&rsquo;d vouch for longer, but they&rsquo;re generally eaten in that time frame.</p>
-
-<p>When ready, pre-heat the oven to 375, and bake for about 30 minutes.  Do note that I usually cook in batches, so if the
-whole 3 lb needs to be done at once, 45 minutes would probably be safer.  Give them a quick toss on the stove with some
-fresh herbs.  Scallions are usually a pretty good bet, but I like cilantro too.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Honey-Soy-Wings/i-VS3Xmzp/0/L/DSC_2918-L.jpg"></p>
 ]]></content>
   </entry>
   

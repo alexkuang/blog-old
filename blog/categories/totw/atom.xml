@@ -4,7 +4,7 @@
   <title><![CDATA[Category: totw | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/totw/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-11-20T21:42:19-05:00</updated>
+  <updated>2014-11-25T18:08:22-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Bash Bangs]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs/"/>
+    <updated>2014-11-25T17:40:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs</id>
+    <content type="html"><![CDATA[<p>This week I wanted to do a quick tip on some neat functionality in bash (and other bash-like shells), the bang commands.</p>
+
+<p>Let&rsquo;s say you have some long important command that you want to run.  You run it, only to discover that you need sudo
+privileges.  For situations like this, <code>!!</code> (entire last command) can be a great time-saver.</p>
+
+<p><code>sh
+$ echo 1 2 3 4 5
+1 2 3 4 5 # let's pretend echo throws an error too and wants sudo for some reason
+$ sudo !!
+sudo echo 1 2 3 4 5
+Password:
+1 2 3 4 5
+</code></p>
+
+<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used without overwriting the &ldquo;last
+command&rdquo; history.</p>
+
+<p><code>sh
+$ echo 1 2 3 4 5
+1 2 3 4 5
+$ !!:p
+echo 1 2 3 4 5
+$ sudo !!
+sudo echo 1 2 3 4 5
+Password:
+1 2 3 4 5
+</code></p>
+
+<p>Bang commands also extend to the individual parts of the last command you ran.  The most basic form of this is <code>echo
+!:[n]</code>, where [n] is the nth word in the command, indexed from 0.  There are also shortcuts: <code>!^</code> gives the first arg
+(like <code>!:1</code>) and <code>!$</code> gives the last arg.</p>
+
+<p><code>sh
+$ echo a b c d e
+a b c d e
+$ echo !:1
+echo a
+a
+$ echo a b c d e
+a b c d e
+$ !:5:p # :p works with any bangs!
+e
+$ echo !:5
+echo e
+e
+$ echo a b c d e
+a b c d e
+$ echo !$
+echo e
+e
+</code></p>
+
+<p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> &ndash;>
+<code>rm -r !$</code>).  Plus, it&rsquo;s the easiest sequence to hit, finger-wise.</p>
+
+<p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
+e.g. <code>sudo !!&lt;TAB&gt;</code> gets replaced with <code>sudo echo 1 2 3 4 5</code> in place.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thing of the Week: Vim Visual Block Mode]]></title>
