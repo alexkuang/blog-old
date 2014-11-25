@@ -118,8 +118,10 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>1 2 3 4 5
 </span><span class='line'>1 2 3 4 5 <span class="c"># let&#39;s pretend echo throws an error too and wants sudo for some reason</span>
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span>sudo !!
 </span><span class='line'>sudo <span class="nb">echo </span>1 2 3 4 5
 </span><span class='line'>Password:
@@ -138,10 +140,14 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>1 2 3 4 5
 </span><span class='line'>1 2 3 4 5
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span>!!:p
 </span><span class='line'><span class="nb">echo </span>1 2 3 4 5
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span>sudo !!
 </span><span class='line'>sudo <span class="nb">echo </span>1 2 3 4 5
 </span><span class='line'>Password:
@@ -170,20 +176,32 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
 </span><span class='line'>a b c d e
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:1
 </span><span class='line'><span class="nb">echo </span>a
 </span><span class='line'>a
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
 </span><span class='line'>a b c d e
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span>!:5:p <span class="c"># :p works with any bangs!</span>
 </span><span class='line'>e
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:5
 </span><span class='line'><span class="nb">echo </span>e
 </span><span class='line'>e
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
 </span><span class='line'>a b c d e
+</span><span class='line'>
 </span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !<span class="err">$</span>
 </span><span class='line'><span class="nb">echo </span>e
 </span><span class='line'>e
