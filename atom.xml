@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2014-11-25T18:08:22-05:00</updated>
+  <updated>2014-11-25T18:09:28-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -38,8 +38,8 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used without overwriting the &ldquo;last
-command&rdquo; history.</p>
+<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used to print it without overwriting the
+&ldquo;last command&rdquo; history.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
