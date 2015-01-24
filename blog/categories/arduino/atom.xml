@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+<<<<<<< HEAD
   <title><![CDATA[Category: Arduino | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/arduino/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
+=======
+  <title><![CDATA[Category: arduino | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/arduino/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2014-11-25T18:11:22-05:00</updated>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -24,6 +31,7 @@ microcontrollers, and this really gave me a kick in the pants to get started.  S
 around, I decided to buy an arduino starter kit with all sorts of buttons, lights, and doo-dads, but not enough power to
 actually fry anything (I hope).  I still can&rsquo;t tell my head from my ass, but so far I can make a button turn on an LED.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -34,6 +42,11 @@ actually fry anything (I hope).  I still can&rsquo;t tell my head from my ass, b
 
 <p>Next step: world domination!</p>
 
+=======
+<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Other/Camera-Awesome-Photos/i-h59QFDb/0/L/CA_06051420063663-L.jpg">http://waffleparadox.smugmug.com/Other/Camera-Awesome-Photos/i-h59QFDb/0/L/CA_06051420063663-L.jpg</a>"></p>
+
+<p>Next step: world domination!</p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   

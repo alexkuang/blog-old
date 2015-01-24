@@ -1,4 +1,10 @@
 User-agent: *
+<<<<<<< HEAD
 Disallow:
 
 Sitemap: http://alexkuang.github.io/sitemap.xml
+=======
+Disallow: 
+
+Sitemap: http://alexkuang.github.io/sitemap.xml 
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04

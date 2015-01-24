@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+<<<<<<< HEAD
   <title><![CDATA[Category: Tech | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
+=======
+  <title><![CDATA[Category: tech | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/tech/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2014-11-25T18:11:22-05:00</updated>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -14,6 +21,7 @@
 
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: `gn` in Vim]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/gn-in-vim/"/>
     <updated>2015-01-24T11:53:51-05:00</updated>
@@ -75,10 +83,83 @@ that, but there’s no reason anyone shouldn’t be using the latest on their pe
 and the <a href="https://github.com/terryma/vim-multiple-cursors">associated vim plugin</a>.  It seems like it&rsquo;s in a different
 spirit than <code>gn</code>, but still a very cool way of thinking about operating on search results that I had not seen before.</p>
 
+=======
+    <title type="html"><![CDATA[Thing of the Week: Bash Bangs]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs/"/>
+    <updated>2014-11-25T17:40:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs</id>
+    <content type="html"><![CDATA[<p>This week I wanted to do a quick tip on some neat functionality in bash (and other bash-like shells), the bang commands.</p>
+
+<p>Let&rsquo;s say you have some long important command that you want to run.  You run it, only to discover that you need sudo
+privileges.  For situations like this, <code>!!</code> (entire last command) can be a great time-saver.</p>
+
+<p>```sh
+$ echo 1 2 3 4 5
+1 2 3 4 5 # let&rsquo;s pretend echo throws an error too and wants sudo for some reason</p>
+
+<p>$ sudo !!
+sudo echo 1 2 3 4 5
+Password:
+1 2 3 4 5
+```</p>
+
+<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used to print it without overwriting the
+&ldquo;last command&rdquo; history.</p>
+
+<p>```sh
+$ echo 1 2 3 4 5
+1 2 3 4 5</p>
+
+<p>$ !!:p
+echo 1 2 3 4 5</p>
+
+<p>$ sudo !!
+sudo echo 1 2 3 4 5
+Password:
+1 2 3 4 5
+```</p>
+
+<p>Bang commands also extend to the individual parts of the last command you ran.  The most basic form of this is <code>echo
+!:[n]</code>, where [n] is the nth word in the command, indexed from 0.  There are also shortcuts: <code>!^</code> gives the first arg
+(like <code>!:1</code>) and <code>!$</code> gives the last arg.</p>
+
+<p>```sh
+$ echo a b c d e
+a b c d e</p>
+
+<p>$ echo !:1
+echo a
+a</p>
+
+<p>$ echo a b c d e
+a b c d e</p>
+
+<p>$ !:5:p # :p works with any bangs!
+e</p>
+
+<p>$ echo !:5
+echo e
+e</p>
+
+<p>$ echo a b c d e
+a b c d e</p>
+
+<p>$ echo !$
+echo e
+e
+```</p>
+
+<p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> &ndash;>
+<code>rm -r !$</code>).  Plus, it&rsquo;s the easiest sequence to hit, finger-wise.</p>
+
+<p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
+e.g. <code>sudo !!&lt;TAB&gt;</code> gets replaced with <code>sudo echo 1 2 3 4 5</code> in place.</p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: Thread Macro (01/07/15)]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/thread-macro/"/>
     <updated>2015-01-24T11:53:42-05:00</updated>
@@ -222,11 +303,37 @@ neat features of the same sort like <a href="https://clojuredocs.org/clojure.cor
 various derivations of the K combinator.  Of course, googling k-combinators led to a pretty
 <a href="http://en.wikipedia.org/wiki/SKI_combinator_calculus">heavy looking wiki page</a>, so I was referred to
 <a href="http://combinators.info/">http://combinators.info/</a> , which I have been trying to get through since.</p>
+=======
+    <title type="html"><![CDATA[Thing of the Week: Vim Visual Block Mode]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/"/>
+    <updated>2014-11-20T18:33:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode</id>
+    <content type="html"><![CDATA[<p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
+snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
+aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
+discussion.</p>
+
+<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
+<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
+changes that entails.  While I&rsquo;m sure it&mdash;or something similar&mdash;will make a comeback, in the meantime I decided to
+try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
+I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
+incentive for me to be proactive in learning new things to talk about.</p>
+
+<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
+attention&mdash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
+always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
+what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 ]]></content>
   </entry>
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: The Silver Searcher (12/17/14)]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/the-silver-searcher/"/>
     <updated>2015-01-24T11:53:21-05:00</updated>
@@ -308,10 +415,64 @@ files that you don’t necessarily care about, e.g. Tags files, third-party depe
 workflow.  My initial search turned up ack, which then led to ag.  As far as I can tell, feature-wise they’re
 comparable; I eventually settled on ag just ‘cause the command requires less typing.</p>
 
+=======
+    <title type="html"><![CDATA[Baby's First Alfred Workflow]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow/"/>
+    <updated>2014-10-18T15:32:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow</id>
+    <content type="html"><![CDATA[<p>Lately I&rsquo;ve been spending a lot of my work time staring at <a href="http://aws.amazon.com/cloudwatch/">CloudWatch</a> metrics.
+Particularly, we have a <a href="http://aws.amazon.com/kinesis/">Kinesis</a> application that publishes metrics on how long a
+record spends hanging around in the stream before getting picked up by our processor.  The problem is that the metric is
+published in milliseconds, which while precise, is not exactly human-readable for large enough durations.</p>
+
+<p>I&rsquo;ve been a huge fan of <a href="http://www.alfredapp.com/">Alfred</a> for a while, and I use its quick-launch and custom search
+functions nearly constantly.  I only recently got around to ponying up for the powerpack, which lets you define custom
+&ldquo;workflows&rdquo;, so I figured&mdash;why not use a workflow to convert the milliseconds to something more readable?</p>
+
+<!-- more -->
+
+
+<p>The Alfred workflow UI is basically a fancy flow chart.  It allows you to string together elements for input,
+actions, and output&mdash;Kind of like a graphical representation of a unix pipe.  The final product of the workflow looked
+something like this:</p>
+
+<p><img class="center" src="/images/alf-flow.png"></p>
+
+<p>The first step is to define a keyword, which is how this workflow will be invoked in the alfred menu:</p>
+
+<p><img class="center" src="/images/alf-keyword.png"></p>
+
+<p>All this means is that I can use <code>mr (x)</code> to invoke the workflow, where x is some parameter.  <code>{query}</code> is just Alfred&rsquo;s
+magic string for&mdash;you guessed it&mdash;injecting <code>argv</code>.  In this case, it updates the &lsquo;preview&rsquo; item in the dropdown as the
+argstring is entered.</p>
+
+<p>The actual script itself is simple and super hacked together in python, but the UI here is still worth showing.  Note the
+use of {query}:</p>
+
+<p><img class="center" src="/images/alf-py.png"></p>
+
+<p>In addition to python, the &ldquo;run script&rdquo; element also supports bash, ruby, and all manner of things up to and including Perl.</p>
+
+<p>And, the final product:</p>
+
+<p><img class="center" src="/images/alf-demo.png"></p>
+
+<p><img class="center" src="/images/alf-print.png"></p>
+
+<p>There are a few optimizations I can see immediately (for example, the &lsquo;large print&rsquo; output seems a bit kludgy), but it&rsquo;s
+not bad for a few minutes' work!</p>
+
+<p>And while this script was relatively simple, there&rsquo;s tons more to be explored.  In addition to running a script, Alfred
+also supports other actions such as opening an application, running a web search, running iTunes, and then some.  And
+for output, Alfred can do things like copy to clipboard or post to the Mac&rsquo;s Notification Center.  Really, it&rsquo;s like a
+graphical scripting language on steroids with easy interaction with OS X.  I&rsquo;ve seen some projects lately for more
+accessible coding via graphical interfaces; Alfred&rsquo;s approach is a pretty good start as far as I&rsquo;m concerned.</p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: Vim % Expansion (12/10/14)]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/vim-expansion/"/>
     <updated>2015-01-24T11:52:53-05:00</updated>
@@ -438,11 +599,38 @@ needed.</p>
 
 
 <p>Hope that’s useful / mildly interesting!</p>
+=======
+    <title type="html"><![CDATA[asciinema]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/07/16/asciinema/"/>
+    <updated>2014-07-16T15:40:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/07/16/asciinema</id>
+    <content type="html"><![CDATA[<p>I was tooling around the other day and discovered a service called <a href="https://asciinema.org">asciinema</a> which provides
+terminalcasts&mdash;essentially, &ldquo;screencasts&rdquo; with terminal I/O.  This is awesome for a few reasons.</p>
+
+<p>From a content consumer&rsquo;s standpoint, it&rsquo;s often hard to follow a blog post that&rsquo;s trying to outline a command line tip,
+or a vim tip, for the simple fact that the static nature of writing alone isn&rsquo;t optimal for showing the flow between
+&ldquo;steps&rdquo; (commands, keystrokes, what have you) and &ldquo;output&rdquo; (what you&rsquo;re supposed to see after executing commands).
+Having a dynamic format for demos helps with this greatly.  Sure, there are screencasts, but that involves dealing with
+videos and their associated heavy Flash Player bullshit.  asciinema is rendered with just bits of html and js.</p>
+
+<p>From a wannabe content producer&rsquo;s standpoint&hellip;  Writing is <em>hard</em>.  Writing while crafting appropriate examples is
+harder.  Doing all that while struggling with capturing the nature of the examples in plain text?  No thanks.
+Again&mdash;Yes, there is the option of screencasts, but those are painful to set up.  Screencasts means worrying about
+things like capturing software, background audio, What Tab Do I Have Open In My Browser, and Will Video Compression
+Screw My Text Legibility.  As a consummately lazy person who only wants to do short self-contained clips for now&hellip;
+That&rsquo;s way too big of a barrier.  asciinema is easy&mdash;Just install, then <code>asciinema rec</code> from the terminal and <code>&lt;CTRL-D&gt;</code>
+to exit and upload.</p>
+
+<p>And embedding takes 2 seconds&mdash;Check it!</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/10785.js" id="asciicast-10785" async></script>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 ]]></content>
   </entry>
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: Scala Enrichment (12/03/14)]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/scala-enrichment/"/>
     <updated>2015-01-24T11:52:37-05:00</updated>
@@ -636,6 +824,33 @@ of anything, it&rsquo;s probably best not to go overboard.  :)</p>
 Then folks got all up in arms about the political correctness of the word &ldquo;pimp&rdquo;, so now the common term is
 &ldquo;enrichment&rdquo;.</p>
 
+=======
+    <title type="html"><![CDATA[Bracket Expansion in the Shell]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell/"/>
+    <updated>2014-06-25T18:58:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell</id>
+    <content type="html"><![CDATA[<p>Just a quick post to show of a neat little trick for those who are more command-line-driven: bracket expansion.</p>
+
+<p>Basically, bracket expansion means that <code>some-string-called-{x,y}-here</code> desugars in the shell to
+<code>some-string-called-x-here some-string-called-y-here</code>.  This is especially useful if, say, you&rsquo;re in a Java-like
+directory structure and you accidentally placed your source class in your test folder, and you need to move it back:</p>
+
+<p>```bash</p>
+
+<h1>desugars into mv src/test/java/com/foobar/app/Class.java src/main/java/com/foobar/app/Class.java</h1>
+
+<p>mv src/{test,main}/java/com/foobar/app/Class.java
+```</p>
+
+<p>Or if you&rsquo;ve already committed to source control, this also works quite nicely with <code>git mv</code>.  Another nice example from
+recent memory is, say, if you were cleaning up some directories nested by date and wanted to only wipe a few months:</p>
+
+<p><code>bash
+rm /posts/2014/{01,03,06,07}/*.html
+</code></p>
+
+<p>Anyway, just a quick little post for a neat little trick.</p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   

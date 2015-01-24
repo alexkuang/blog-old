@@ -74,7 +74,11 @@
 				<element name="bufferIcon" src="bufferIcon.png" />
 			</elements>
 		</component>
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 		<component name="dock">
 			<settings>
 				<setting name="fontcolor" value="0xFFFFFF" />
@@ -112,4 +116,8 @@
 
 	</components>
 
+<<<<<<< HEAD
 </skin>
+=======
+</skin>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04

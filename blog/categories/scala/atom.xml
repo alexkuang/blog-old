@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+<<<<<<< HEAD
   <title><![CDATA[Category: Scala | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
+=======
+  <title><![CDATA[Category: scala | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/scala/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2014-11-25T18:11:22-05:00</updated>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -14,6 +21,7 @@
 
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: Scala Enrichment (12/03/14)]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/scala-enrichment/"/>
     <updated>2015-01-24T11:52:37-05:00</updated>
@@ -211,10 +219,13 @@ Then folks got all up in arms about the political correctness of the word &ldquo
   </entry>
   
   <entry>
+=======
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <title type="html"><![CDATA[Les Iterables]]></title>
     <link href="http://alexkuang.github.io/blog/2013/12/21/les-iterables/"/>
     <updated>2013-12-21T08:16:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/21/les-iterables</id>
+<<<<<<< HEAD
     <content type="html"><![CDATA[<p><img class="center" src="http://alexkuang.github.io/images/les-iterables.jpg" width="500"></p>
 
 
@@ -237,6 +248,15 @@ Then folks got all up in arms about the political correctness of the word &ldquo
 
 <p><em>(Sorry guys, saw this in <a href="http://reddit.com/r/scala">/r/scala</a> and kind of had to.)</em></p>
 
+=======
+    <content type="html"><![CDATA[<p><img class="center" src="/images/les-iterables.jpg" width="500"></p>
+
+<p><blockquote><p>Not very uplifting&hellip;</p><footer><strong>David Pollak</strong></footer></blockquote>
+<blockquote><p>Slick production values.</p><footer><strong>Jan Christopher Vogt</strong></footer></blockquote>
+<blockquote><p>Wonderful acting!</p><footer><strong>Jonas Boner</strong></footer></blockquote></p>
+
+<p><em>(Sorry guys, saw this in <a href="http://reddit.com/r/scala">/r/scala</a> and kind of had to.)</em></p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
@@ -246,12 +266,17 @@ Then folks got all up in arms about the political correctness of the word &ldquo
     <updated>2013-12-09T18:12:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala</id>
     <content type="html"><![CDATA[<p>A <a href="http://overwatering.org/blog/2013/12/scala-1-star-would-not-program-again/">blog post</a> has recently been making the
+<<<<<<< HEAD
 rounds in all the usual programming fora&ndash;/r/programming, hackernews, and so on&ndash;even eliciting a
+=======
+rounds in all the usual programming fora&mdash;/r/programming, hackernews, and so on&mdash;even eliciting a
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <a href="https://groups.google.com/forum/#!topic/scala-debate/153H3Ya4Nxk">response</a> from Scala&rsquo;s creator himself.  There&rsquo;s a
 lot of discussion both productive and inflammatory out there already, but I thought I&rsquo;d jot down my perspective on the
 common points as someone who: 1. picked scala up relatively recently (2.9.2 and 2.10), 2. has worked with it for a few
 months on the side, and 3. comes from a background of dynamic languages.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -260,6 +285,10 @@ months on the side, and 3. comes from a background of dynamic languages.</p>
 
 
 
+=======
+<h4>Long Compile Times</h4>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>I can definitely see where this is coming from.  Scala&rsquo;s compile times can be pretty long, though I had pegged that as
 the cost of using a compiled language anyway.  I, at least, felt a marked increase in times upgrading from <code>2.9.2</code> to
 <code>2.10</code>, presumably from the slew of new features like macros.  However, it seems that <code>2.11</code> will thankfully be
@@ -269,6 +298,7 @@ judicious use of some of Scala&rsquo;s heavier features (such as implicits) keep
 compilation, and they do offer a personal Scala license for free.  Without JRebel my life as a scala user would have
 been a lot harder.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -277,11 +307,16 @@ been a lot harder.</p>
 
 
 
+=======
+<h4>Opaque Syntax</h4>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>I agree completely here.  Scala&rsquo;s flexibility in parsing + its allowance of symbolic method names obviously allows for a
 lot of flexibility.  This allows the construction of all sorts of DSLs; whether these DSLs end up being expressive or
 just plain confusing, is another thing altogether.  In this case, I&rsquo;d have to say that just because something is
 possible does not mean it should be done all the time.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -290,20 +325,31 @@ possible does not mean it should be done all the time.</p>
 
 
 
+=======
+<!-- more -->
+
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>The original post mentions that their build script&rsquo;s syntax seemed to be all over the place; I&rsquo;m assuming they were
 referring to the de facto scala build tool, <a href="http://www.scala-sbt.org/">sbt</a>.  While it&rsquo;s great in a lot of ways, I
 personally am not a big fan of their heavy use of symbolic names either.  Just as an example, a relatively simple build
 file for one of my personal projects already has all of the following:</p>
 
+<<<<<<< HEAD
 
 
 
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>build.sbt </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+=======
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>build.sbt </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
+<<<<<<< HEAD
 </pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">testOptions</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">+=</span> <span class="o">(...)</span>
@@ -332,11 +378,30 @@ symbolic methods.  I hope that goes through.  If nothing else, it&rsquo;ll make 
 
 
 
+=======
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span> <span class="o">&amp;</span><span class="n">hellip</span><span class="o">;</span> <span class="o">)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">testOptions</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">+=</span> <span class="o">(&amp;</span><span class="n">hellip</span><span class="o">;)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">resourceGenerators</span> <span class="n">in</span> <span class="nc">Compile</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;+=</span> <span class="o">(&amp;</span><span class="n">hellip</span><span class="o">;)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>All of them are obviously for adding to some sort of sequence, but still different enough to trip you up.  And this is
+still relatively shallow territory&mdash;I haven&rsquo;t even mentioned the insanity that comes with more advanced libraries, like
+the <a href="http://stackoverflow.com/questions/14472310/pronounceable-names-for-scalaz-operators">fish operator</a>.</p>
+
+<p>In Odersky&rsquo;s google groups thread, he mentions a proposal for requiring an equivalent alphabetical alias for all
+symbolic methods.  I hope that goes through.  If nothing else, it&rsquo;ll make the methods easier to google.</p>
+
+<h4>Documentation</h4>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>As with any budding technology, documentation tends to lag behind development.  However, language and core library
 documentation has improved immensely even in the time since I picked up Scala, so many kudos to the typesafe team for
 that.  However, the third-party libraries still have a way to go; as helpful and educational as it may be, source code
 should <em>not</em> be the go-to method for research.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -345,23 +410,34 @@ should <em>not</em> be the go-to method for research.</p>
 
 
 
+=======
+<h4>Types and Case Classes</h4>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Here&rsquo;s where I have to respectfully disagree completely with the original post.  I <em>love</em> types and case classes.  Being
 able to encode logic in your types that would otherwise have ended up as boilerplate-y edge case checking, <em>and</em> having
 the compiler do it for you instead of maintaining the extra tests, is a win in my book.  Coming from a dynamic web
 background, having a compiler do some of these checks for me was a breath of fresh air, especially since it doesn&rsquo;t come
 at the cost of extreme clunkiness a la Java.</p>
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>And case classes / <a href="http://learnyouahaskell.com/making-our-own-types-and-typeclasses">algebraic data types</a> are the
 bee&rsquo;s knees.  Between the <code>copy</code> method and the free pattern matching, I don&rsquo;t see how case classes do anything but get
 rid of repetition.  Forgive the simplistic example:</p>
 
+<<<<<<< HEAD
 
 
 
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+=======
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -372,6 +448,7 @@ rid of repetition.  Forgive the simplistic example:</p>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
+<<<<<<< HEAD
 </pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">model</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">version</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">// Extraction, conditionals, and assignment, all done succinctly</span>
@@ -393,20 +470,41 @@ rid of repetition.  Forgive the simplistic example:</p>
 
 
 
+=======
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">model</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">version</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;//</span> <span class="nc">Extraction</span><span class="o">,</span> <span class="n">conditionals</span><span class="o">,</span> <span class="n">and</span> <span class="n">assignment</span><span class="o">,</span> <span class="n">all</span> <span class="n">done</span> <span class="n">succinctly</span>
+</span><span class='line'><span class="k">def</span> <span class="n">calcType</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="n">hp</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="mi">20</span><span class="n">B</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;,</span> <span class="mi">1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="n">financial</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;</span>
+</span><span class='line'>  <span class="c1">// &amp;hellip;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="nc">Calculator</span><span class="k">:</span> <span class="kt">%s</span> <span class="kt">%s</span> <span class="kt">%s</span> <span class="kt">is</span> <span class="kt">of</span> <span class="kt">unknown</span> <span class="k">type</span><span class="kt">&amp;rdquo</span><span class="o">;.</span><span class="n">format</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span>
+</span><span class='line'><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;//</span> <span class="nc">No</span> <span class="n">custom</span> <span class="n">methods</span><span class="o">/</span><span class="n">etc</span> <span class="n">needed</span>
+</span><span class='line'><span class="k">def</span> <span class="n">upgrade</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">version</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">version</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h4>Overall impressions</h4>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Despite its flaws, I&rsquo;ve really enjoyed working with Scala and it will probably remain a part of my toolbox.  Its
 flexibility and power makes it a great gen-purpose language, especially in its type system and ability to combine
 functional programming with OO.  It sits in the JVM, which means interoperability with the existing mammoth Java
 ecosystem comes with just a little bit of glue code.  And more importantly, it means that if I should pick up Clojure in
 the future, interoperability with THAT will not be too far off either, knock on wood.</p>
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>That said, it&rsquo;s not by any means a perfect language.  The same flexibility that makes it great to use can often result
 in convoluted APIs, and it&rsquo;s very easy to shoot yourself in the foot.  Living in the JVM also means the language has to
 deal with things like type erasure; that results in some annoying limitations, especially if you&rsquo;re looking to use scala
 in a more advanced functional capacity (see <a href="https://github.com/scalaz/scalaz">scalaz</a>).  And lastly&hellip;  Scala, at least
 to me, is one of those tools that feels natural once you&rsquo;re used to it, but requires a significant mental shift to fully
+<<<<<<< HEAD
 grok&ndash;I wouldn&rsquo;t want to be plopped into scala on a fresh project with a one month deadline.  Ideally, there should be
 some better documentation to help bridge that gap.</p>
 
@@ -416,6 +514,13 @@ some better documentation to help bridge that gap.</p>
 <p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
 language and ecosystem mature, they will hopefully become less and less of a problem.</p>
 
+=======
+grok&mdash;I wouldn&rsquo;t want to be plopped into scala on a fresh project with a one month deadline.  Ideally, there should be
+some better documentation to help bridge that gap.</p>
+
+<p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
+language and ecosystem mature, they will hopefully become less and less of a problem.</p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
@@ -428,10 +533,14 @@ language and ecosystem mature, they will hopefully become less and less of a pro
 to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy
 to sync to 2.1 at the moment.  As such, everyone will have to settle for this plain jane snippet:</p>
 
+<<<<<<< HEAD
 
 
 
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+=======
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -441,14 +550,19 @@ to sync to 2.1 at the moment.  As such, everyone will have to settle for this pl
 </span><span class='line'>  <span class="k">def</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev1</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">,</span> <span class="n">prev2</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="n">prev1</span> <span class="o">#::</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev2</span><span class="o">,</span> <span class="n">prev1</span> <span class="o">+</span> <span class="n">prev2</span><span class="o">)</span>
 </span><span class='line'>  <span class="n">loop</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
 </span><span class='line'><span class="o">}</span>
+<<<<<<< HEAD
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 
+=======
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>Nothing fancy, just one of many possible variations of the fibonacci sequence.  This one is done via a <code>Stream</code>,
 which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream">More here</a>).</p>
 
+<<<<<<< HEAD
 
 
 
@@ -456,6 +570,11 @@ which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.sca
 the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
 though.</p>
 
+=======
+<p>Will probably write more about the why/how of the nested loop <code>def</code> (mostly for my own reference), but for now I think
+the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
+though.</p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   

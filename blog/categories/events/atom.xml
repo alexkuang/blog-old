@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+<<<<<<< HEAD
   <title><![CDATA[Category: Events | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/events/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
+=======
+  <title><![CDATA[Category: events | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/events/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2014-11-25T18:11:22-05:00</updated>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -18,6 +25,7 @@
     <link href="http://alexkuang.github.io/blog/2014/03/23/anime-boston-2014/"/>
     <updated>2014-03-23T21:39:00-04:00</updated>
     <id>http://alexkuang.github.io/blog/2014/03/23/anime-boston-2014</id>
+<<<<<<< HEAD
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-8K2GL55/0/L/DSC_2822-L.jpg"></p>
 
 
@@ -32,11 +40,22 @@ long.</em></p>
 
 
 
+=======
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-8K2GL55/0/L/DSC_2822-L.jpg">http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-8K2GL55/0/L/DSC_2822-L.jpg</a>"></p>
+
+<p>It&rsquo;s been years since I&rsquo;ve been to Anime Boston, or any other sort of nerdy/geeky gathering.  Maybe it was me drifting
+away from the subculture and slowly becoming a filthy casual.  Maybe it was moving 40 miles &lt;&ndash; that way and not having a
+car.  Or maybe it was the fact that they switched from nifty plastic convention badges to the slightly ghetto
+paper-in-sleeve setup that they still had going this year.  For those who remember the cards&mdash;<em>yes, it&rsquo;s been that
+long.</em></p>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>So when I was dropping by Copley this weekend to revisit some old watering holes and found out the convention was in
 town, I figured why not?  I had some time to kill, and the registration lines looked pretty short.  I ended up only
 staying the afternoon since my con-going stamina isn&rsquo;t what it used to be <em>(refer above to casual status)</em>, but here are
 some quick impressions.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -54,20 +73,32 @@ some quick impressions.</p>
 
 
 
+=======
+<!-- more -->
+
+
+<h3>Attack on Titan</h3>
+
+<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-QzFKFvb/0/L/DSC_2842-L.jpg">http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-QzFKFvb/0/L/DSC_2842-L.jpg</a>"></p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>To the surprise of absolutely nobody there, there was a lot of Attack on Titan this year.  Hell, even I managed to watch
 it, and I&rsquo;ve been living under a proverbial anime rock.  Of course, there are the requisite calls of &ldquo;BEST ANIME EVER&rdquo;,
 but I&rsquo;m not convinced that will hold after a few years.  Yes, it&rsquo;s solid.  And yes, it&rsquo;s a breath of fresh air in a sea of
 Naruto and Bleach and all that.</p>
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>At the end of the day, it&rsquo;s easy to tell good anime from bad, but a bit harder to predict whether they will have staying
 power a la Cowboy Bebop, or slowly fizzle out.  In fact, I remember the exact same &ldquo;BEST ANIME&rdquo; calls around Full Metal
 Alchemist the last time I went to AnimeBoston, and the accompanying tide of Ed &lsquo;n Al Elric cosplays.  This Saturday?  I
 don&rsquo;t think I saw even two.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -76,10 +107,15 @@ don&rsquo;t think I saw even two.</p>
 
 
 
+=======
+<h3>Cosplays</h3>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Speaking of cosplays, on the whole they have gotten a lot better.  I think as anime fandom grows and evolves, it becomes
 less and less acceptable to &ldquo;cosplay&rdquo; by taping together a few pieces of felt and slapping on a $2 wig.  I see a lot
 more creativity and a lot more effort all around, and that&rsquo;s a win for everyone.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -102,11 +138,21 @@ more creativity and a lot more effort all around, and that&rsquo;s a win for eve
 
 
 
+=======
+<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-GBxtNQn/0/L/DSC_2815-L.jpg">http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-GBxtNQn/0/L/DSC_2815-L.jpg</a>"></p>
+
+<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-xCZTxB4/0/L/DSC_2847-L.jpg">http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-xCZTxB4/0/L/DSC_2847-L.jpg</a>"></p>
+
+<h3>Alpacas</h3>
+
+<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-q353B9K/0/L/DSC_2768-L.jpg">http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-q353B9K/0/L/DSC_2768-L.jpg</a>"></p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>Alpacas were a big deal this year.  Like really big.  &ldquo;Women want to be with you, men want to become you&rdquo; big.  I have
 no idea why.  As far as I can tell they&rsquo;re not from any particular franchise or anything, it&rsquo;s just something that
 happened.  &hellip;  Yeah, I got nothing.  They are pretty cute though.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -115,11 +161,16 @@ happened.  &hellip;  Yeah, I got nothing.  They are pretty cute though.</p>
 
 
 
+=======
+<h3>MARCO?!  POLO!!</h3>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>In the sea of new, it was comforting to see some old standbys were still alive and well, like the &ldquo;MARCO POLO&rdquo; meme.  I
 know some people have problems with it <em>(dude, why are you at a convention center full of people if you have noise
 issues?)</em>, but I find it comforting.  Kind of.  Discomfortingly awkward when someone tries to start and nobody bothers
 responding I guess.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -127,11 +178,15 @@ responding I guess.</p>
 
 
 
+=======
+<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-X9wkwZh/0/L/DSC_2826-L.jpg">http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/i-X9wkwZh/0/L/DSC_2826-L.jpg</a>"></p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>Also the stair high fives.  I actually don&rsquo;t remember 100% whether this was a thing years ago, but I&rsquo;m choosing to don
 my rose-colored glasses and say it is.  Nothing says camaraderie through shared interests like high-fiving strangers on
 an escalator.</p>
 
+<<<<<<< HEAD
 
 
 
@@ -145,10 +200,17 @@ an escalator.</p>
 
 
 
+=======
+<p>I do wish the spontaneous Hare Hare Yukai dance parties still happened though&hellip;</p>
+
+<h3>Terrorists</h3>
+
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>My least favorite part of the con by far was the newly instituted bag checks.  Apparently they were new this year, and I
 think I&rsquo;m not the only one who wasn&rsquo;t a fan.  I&rsquo;m told it was the Mayor&rsquo;s office&rsquo;s idea.  While I understand the safety
 risks of having this many people in one place at once, I just wish the process worked a bit better.  As the day went on
 and more swag was had, it became progressively more and more difficult to go back and forth between &ldquo;convention&rdquo; and
+<<<<<<< HEAD
 &ldquo;non-convention&rdquo; areas for food/coffee/what have you&ndash;and God help you if you have any techie-looking equipment in
 complicated bags.  It was like a grab-bag of bite-sized TSA experiences.  Complete with drug sniffing dogs!</p>
 
@@ -162,6 +224,14 @@ complicated bags.  It was like a grab-bag of bite-sized TSA experiences.  Comple
 
 <p><em>(Full album <a href="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/">here</a>)</em></p>
 
+=======
+&ldquo;non-convention&rdquo; areas for food/coffee/what have you&mdash;and God help you if you have any techie-looking equipment in
+complicated bags.  It was like a grab-bag of bite-sized TSA experiences.  Complete with drug sniffing dogs!</p>
+
+<p>&hellip;  Alright, that&rsquo;s not fair.  The dogs were pretty cool.  My point still stands though.</p>
+
+<p><em>(Full album <a href="http://waffleparadox.smugmug.com/Events/Anime-Boston-2014/">here</a>)</em></p>
+>>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
