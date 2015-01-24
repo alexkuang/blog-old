@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Misc | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/misc/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2015-01-24T16:21:07-05:00</updated>
+  <id>http://alexkuang.github.io/</id>
+  <author>
+    <name><![CDATA[Alex Kuang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[2015, a Whole New Year!]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/24/2015-a-whole-new-year/"/>
+    <updated>2015-01-24T14:25:50-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/24/2015-a-whole-new-year</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s 2015, and a whole new year!  Several updates, of no particular relation and in no particular order:</p>
+
+
+
+
+<h3>Some Site Updates</h3>
+
+
+
+
+<p>I finally got around to updating Octopress after I noticed the search bar was broken.  The process was
+relatively painless and some of the new features look neat, but I can&rsquo;t say I&rsquo;m a huge fan of the enforced solarized
+light scheme in codeblocks.</p>
+
+
+
+
+<p>While I was at it, I also decided to refresh the headline and about page, since it&rsquo;s been a while.</p>
+
+
+
+
+<h3>Thing of the Week</h3>
+
+
+
+
+<p>While I&rsquo;ve actually been really good about staying on top of sending the internal email blasts for TotW, I ended up
+neglecting the blog cross-posting.  Part of it is because after I started, I had more work-related travel and didn&rsquo;t
+have the blog repo all properly set up on the other laptop; and the other part is that translating back and forth
+between markdown and outlook is kind of a PITA.  In the future, I will probably set up a proper workflow with pandoc and
+everything to make it easier.  But in the meantime, I&rsquo;ve back-posted them with dates tagged for context, plus some bonus
+after-the-fact commentary.</p>
+
+
+
+
+<p>As far as the TotW itself, it&rsquo;s been a success in my book.  Reactions have generally been positive, and a lot of the
+posts end up generating very interesting conversation where I often end up learning something new.  In addition, to keep
+up with the writing I have to be 1) more active in learning new things, and 2) more thorough since I actually have to
+write about it.  Win, win.  Next step: to collect more feedback, then perhaps involve more people and hopefully expand
+it beyond just my immediate teammates.</p>
+
+
+
+
+<h3>2014 in Review and MicroConf</h3>
+
+
+
+
+<p>Back in late 2013 / early 2014, I was extremely frustrated with a number of things and decided to leave my full-time
+job.  After resting off some of the burnout, I set off to build a side project with a friend with two goals in mind: 1) Learn
+new tech and get back into the game properly; in this case, Scala and Lift.  2) Build out a prototype scheduling app and
+try to bootstrap an actual business with it.  The latter ultimately failed, but I still learned a ton and the knowledge
+gained from the former arguably got me to my position today as a Scala developer.  (In hindsight, trying to learn a
+completely new tech stack <em>and</em> all the business + domain-specific stuff required was crazy&hellip;  Next time, I would
+definitely prototype with something easier and more familiar.)</p>
+
+
+
+
+<p>Without getting too side-tracked, suffice to say that 2014 was insane for personal growth and productivity, and I&rsquo;d love
+to continue that trend for 2015.  And while I&rsquo;m definitely not looking to do anything drastic employment-wise, I will
+say that the side-project itch has never really left me.  So I figured after all this time listening to the likes of
+<a href="http://www.startupsfortherestofus.com/">Startups For The Rest Of Us</a> and <a href="http://bootstrapped.fm/">bootstrapped.fm</a>,
+2015 would be a great year to go to MicroConf and actually hang out with all the folks living the lifestyle.  Hopefully
+I come back with heaps of new insight and ideas, but either way it looks to be a blast.  Anyway, I managed to snag a
+ticket after some cutthroat site-camping and waitlist-waiting, so I am stoked.</p>
+
+
+
+
+<p>tl;dr - VEGAS, BABY!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: keybase.io (12/24/14)]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/24/keybase-dot-io/"/>
+    <updated>2015-01-24T11:53:30-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/24/keybase-dot-io</id>
+    <content type="html"><![CDATA[<p>Since it&rsquo;s nearly the holidays, I figured something more frivolous would be good for this week.</p>
+
+
+
+
+<p><a href="https://keybase.io/">keybase.io</a> is a combination public key store slash centralized identity slash hipster social
+network app.  How it works is that you generate a key pair and upload the public key to their store.  From there, you
+can use your key pair to sign messages and post them on twitter, github, bit coin sites, etc, to verify that those
+accounts actually belong to you.  At the end of it, you get a funny page like this saying that “why yes, all of these
+accounts are crypto-verified to be the same person”, like this:  <a href="https://keybase.io/alexkuang">https://keybase.io/alexkuang</a></p>
+
+
+
+
+<p>It’s still very much in toy app status at the moment, but I think it’s a really cool idea.  I believe they’re open for
+signup now; not sure if there’s a beta line or something, but apparently I have invites if anyone wants.</p>
+
+
+
+
+<p>Happy holidays!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CH Backports]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/04/26/ch-backports/"/>
+    <updated>2014-04-26T21:46:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/04/26/ch-backports</id>
+    <content type="html"><![CDATA[<p>For anyone unfamiliar, I wrote a food blog a while back called curehappiness with my then-roommate,
+<a href="http://tlextrait.com/">Thomas</a>.  It was active mostly during my college years, dying down due to a whole variety of
+reasons&ndash;office life, apathy at the post-grad lifestyle, wordpress being a pain&hellip;  All that great stuff.  The project
+had originally started as an off-the-cuff idea for something to do with a newly commissioned server; after a while, I
+decided to shuffle up my server arrangements, and curehappiness&#8217; Wordpress installation got the axe.  Since I couldn&rsquo;t
+be bothered to backup the entire WP install, I just saved a bunch of the posts in HTML form instead, with the idea of
+one day porting it to whatever new platform I would be running.</p>
+
+
+
+
+<p>After all this time on Octopress + Github Pages, I finally pulled the trigger.  All the backported posts will be from
+before 2013, tagged as <code>ch-backports</code>, and will contain a link at the top to this post.  They&rsquo;ve largely been preserved
+verbatim, minus a few corrections like &lsquo;boal&rsquo; -> &lsquo;bowl&rsquo; (seriously, past Alex???).  However, I couldn&rsquo;t resist adding
+small notes from the future, which will be in blockquotes at the top:</p>
+
+
+
+
+<blockquote><p>like so.</p></blockquote>
+
+
+
+
+<p>I ported the posts with the most worthwhile content&ndash;namely, recipes and records of experiments.  Restaurant reviews and
+other such content were few and far between, and honestly aside from a couple of wisecracks and some nice pictures, they
+felt pretty banal; not a solid reason for censorship, granted, but I still felt it wasn&rsquo;t worth the effort.  I&rsquo;ll
+probably upload the photos from those posts to smugmug at some point and save the rewrites for when I have actual
+original insights beyond &ldquo;yes, the food was good&rdquo;.</p>
+
+
+
+
+<p>As a final note, migrating was not trivial, but I did get some nice hackery out of it.  I&rsquo;ll probably post the
+tech-gorey details later, but suffice to say that I&rsquo;ve learned my lesson about storing data in arbitrary mangled html
+generated by a WYSIWYG editor run through who knows how many plugins and themes.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Les Iterables]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/21/les-iterables/"/>
+    <updated>2013-12-21T08:16:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/21/les-iterables</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://alexkuang.github.io/images/les-iterables.jpg" width="500"></p>
+
+
+
+
+<blockquote><p>Not very uplifting&#8230;</p><footer><strong>David Pollak</strong></footer></blockquote>
+
+
+
+
+<blockquote><p>Slick production values.</p><footer><strong>Jan Christopher Vogt</strong></footer></blockquote>
+
+
+
+
+<blockquote><p>Wonderful acting!</p><footer><strong>Jonas Boner</strong></footer></blockquote>
+
+
+
+
+<p><em>(Sorry guys, saw this in <a href="http://reddit.com/r/scala">/r/scala</a> and kind of had to.)</em></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jab, Jab]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/04/jab/"/>
+    <updated>2013-12-04T19:04:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/04/jab</id>
+    <content type="html"><![CDATA[<p>In the past, my biggest problem with blogging has always been with finding something to write about.  Every time an idea
+came, I&rsquo;d recall the original post that inspired it, or have one miraculously pop up on google upon doing more
+research.  Inevitably the post would be articulate, well-researched, and laden with comments from impressed readers to
+boot.  And I would hit control+w, convinced that I don&rsquo;t have anything to add; even if I did, I&rsquo;m an awful writer and
+nobody reads my blog anyway.</p>
+
+
+
+
+<p>But writing is an Important Skill, one that I&rsquo;d very much like to improve.  I&rsquo;m certainly not going to get any better by
+<em>not</em> doing it, and <a href="http://weknowmemes.com/2012/05/sucking-at-something-is-the-first-step-to-becoming/">everyone has to start somewhere</a>: keep practicing, keep
+drilling, keep jabbing away, and eventually you&rsquo;ll probably make progress.  I remember an old post of Jeff Atwood&rsquo;s
+where his only advice was to <a href="http://www.codinghorror.com/blog/2007/10/how-to-achieve-ultimate-blog-success-in-one-easy-step.html">pick a schedule</a> and stick
+with it.  Maybe it&rsquo;s about time I did just that.  <strong>One post a week</strong>, even if the topic sounds asinine and I&rsquo;m low on
+inspiration and nobody will read it (or <em>especially</em> if nobody will read it?).</p>
+
+
+
+
+<p>With all that said, I&rsquo;d like to introduce my newest housemate, <a href="http://waffleparadox.smugmug.com/Animals/Zelda">Zelda</a>.</p>
+
+
+
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Animals/Zelda/i-rNGBWHH/0/L/DSC_2268-L.jpg"></p>
+
+
+
+
+<p>She arrived with all of 3 days&#8217; notice, and is at just about that age where kittens tend to be terrible people.  She&rsquo;ll
+bully the other (much bigger) cats, knock over bowls and trash bags, attack everything like the king of the jungle, and
+just generally be an unabashed little snot.  But she&rsquo;s disarmingly adorable, so naturally none of that matters in the
+slightest.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

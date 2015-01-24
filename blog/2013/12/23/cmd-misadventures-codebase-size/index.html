@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CMD Misadventures - Codebase Size - alex kuang</title>
+  <meta name="author" content="Alex Kuang">
+
+  
+  <meta name="description" content="After watching the wat talk and trolling my friends with the
+aneditor talk for about the 200th time, I decided to
+finally purchase one season of the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44908431-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">alex kuang</a></h1>
+  
+    <h2>professional yak shaver</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="alexkuang.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">about</a></li>
+  <li><a href="/">blog</a></li>
+  <li><a href="/blog/archives">archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">CMD Misadventures - Codebase Size</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-23T06:50:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>6:50 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>After watching the <a href="https://www.destroyallsoftware.com/talks/wat">wat</a> talk and trolling my friends with the
+<a href="https://www.destroyallsoftware.com/talks/a-whole-new-world">aneditor</a> talk for about the 200th time, I decided to
+finally purchase one season of the Destroy All Software screencasts, despite the (IMHO) steep price tag and my financial
+destitution.  (So far?  Totally worth it.  But a full review of the screencasts is neither here nor there.)</p>
+
+<p>I&rsquo;ve always been a big fan of the unix power tools&ndash;<code>find</code>, <code>grep</code>, <code>xargs</code>, and so forth&ndash;but the DAS talks introduced
+an idea that had never occurred to me for some insane reason: combine them with git to extract some interesting
+information about your codebase.  And so, I decided to go diving into my biggest scala project for insights about its
+code size.</p>
+
+<p>One of the most common problems that code size can indicate is the presence of &ldquo;god classes&rdquo; or libraries, which know
+and do way too much and thus are correspondingly bigger than the rest of the code by orders of magnitude.  This command
+was relatively simple and does not involve git, so here it is in its entirety:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>alexkuang@Orion <span class="o">[</span>00:00:00<span class="o">]</span> <span class="o">[</span>~foobar/src/main/scala<span class="o">]</span> <span class="o">[</span>master<span class="o">]</span>
+</span><span class='line'>-&gt; % find . -type f -name <span class="s2">&quot;*.scala&quot;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>file<span class="p">;</span> <span class="k">do</span> wc -l <span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sort -n
+</span><span class='line'>       <span class="m">9</span> ./com/foobar/models/Permission.scala
+</span><span class='line'>      <span class="m">11</span> ./com/foobar/util/LocParams.scala
+</span><span class='line'>      <span class="m">14</span> ./com/foobar/util/OrgSettings.scala
+</span><span class='line'>      <span class="m">16</span> ./com/foobar/security/package.scala
+</span><span class='line'>      <span class="m">17</span> ./com/foobar/scripts/ReloadStageDB.scala
+</span><span class='line'>      <span class="m">18</span> ./com/foobar/scripts/oneoff/InitSchema.scala
+</span><span class='line'>      <span class="c"># ...</span>
+</span><span class='line'>     <span class="m">231</span> ./com/foobar/js/Calendar.scala
+</span><span class='line'>     <span class="m">247</span> ./com/foobar/persistence/Access.scala
+</span><span class='line'>     <span class="m">287</span> ./com/foobar/snippet/BookingCalendar.scala
+</span><span class='line'>     <span class="m">307</span> ./com/foobar/lib/Registration.scala
+</span><span class='line'>     <span class="m">319</span> ./com/foobar/lib/Scheduler.scala
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output was slightly interesting, but nothing groundbreaking.  300 lines is not ideal to me, but manageable.  Broken
+down quickly, <code>find #...</code> finds all files inside the current directory ending in &lsquo;.scala&rsquo;, reads each file in, and
+passes it off to wc -l, which does a linecount on the file, whitespace and all.  <code>sort</code> does what its name implies, with
+<code>-n</code> making it sort <code>1 2 3 11</code> instead of <code>1 11 2 3</code>.  The information was slightly cool, but as a hack it&rsquo;s not very
+interesting, so let&rsquo;s throw some git in there to try to get a sense of how fast the codebase has grown over time.  After
+all, superlinear growth is usually indicative of a ton of repetition and therefore unnecessary code complexity.</p>
+
+<!-- more -->
+
+
+<p>First, starting with walking the git repo.  <code>git rev-list &lt;branch&gt;</code> should do what we want it to, but in the case of
+larger repos it the list can get a bit unwieldy/huge.  Enter <code>awk</code>, which lets you do a bunch of neat things with your
+text but most importantly has an easy variable for line number, of all things <em>(note to self: learn2awk better?)</em>, thus:
+<code>awk 'NR % &lt;n&gt; == 0'</code> to get only every nth revision list.  Combine that with the same reading as above, and do a
+similar scala file find with a linecount, and the command is as follows: <em>(Yes, in this particular project I dev&rsquo;d right
+in master instead of using a nvie-style git-flow.  Bad developer, bad!)</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git rev-list master <span class="p">|</span> awk <span class="s1">&#39;NR % 20 == 0&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>revhash<span class="p">;</span> <span class="k">do</span> git checkout -q <span class="nv">$revhash</span> <span class="p">|</span> <span class="se">\ </span>
+</span><span class='line'><span class="o">&amp;&amp;</span> find . -name <span class="s1">&#39;*.scala&#39;</span> <span class="p">|</span> xargs cat <span class="p">|</span> wc -l<span class="p">;</span> <span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The more finicky among us might comment right about now that the command is already pretty huge and nigh unreadable if
+revisited in about two weeks&ndash;and he&rsquo;d be right.  But this is a quick one-off hack for some interesting info (something
+that unix tools are absolutely amazing at), and if I cared that much I&rsquo;d probably write a real script, or at least
+re-format it into a proper bash function.</p>
+
+<p>So the above command gives us a bunch of line counts which is useful, but it doesn&rsquo;t really give us a sense of the
+progression.  At this point I&rsquo;d usually either 1) compose some huge complicated thing that kept track of the current
+line AND the previous in an attempt to do math, or 2) give up and write a real script for it later, but one of the DAS
+videos showed something that was completely new to me: using <code>jot</code> to create a chart.  Even if I learned nothing else,
+this alone made everything worth it.  Very quickly&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-&gt; % jot - <span class="m">1</span> <span class="m">5</span>
+</span><span class='line'><span class="c"># print range 1 to 5</span>
+</span><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4
+</span><span class='line'>5
+</span><span class='line'>-&gt; % jot -b <span class="s1">&#39;*&#39;</span> - <span class="m">1</span> 5
+</span><span class='line'><span class="c"># range 1 to 5, printing &#39;*&#39; instead</span>
+</span><span class='line'>*
+</span><span class='line'>*
+</span><span class='line'>*
+</span><span class='line'>*
+</span><span class='line'>*
+</span><span class='line'>-&gt; % jot -b <span class="s1">&#39;*&#39;</span> - <span class="m">1</span> <span class="m">5</span> <span class="p">|</span> xargs
+</span><span class='line'><span class="c"># For all its magic, xargs just chunks up your input to be used as args.</span>
+</span><span class='line'>* * * * *
+</span><span class='line'>-&gt; % jot -b <span class="s1">&#39;*&#39;</span> - <span class="m">1</span> <span class="m">5</span> <span class="p">|</span> xargs <span class="p">|</span> tr -d <span class="s1">&#39; &#39;</span>
+</span><span class='line'><span class="c"># And tr to translate.  Side note: as a recovering Perl user, it slightly annoys me that there&#39;s a tr util but not an s</span>
+</span><span class='line'><span class="c"># util.  But I guess that&#39;s what sed is for...?</span>
+</span><span class='line'>*****
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And now all that&rsquo;s left is to combine the <code>jot</code> magic with the above command by reading a the linecount into a variable
+called <code>lines</code>, using that in the <code>jot</code> call, and printing everything out.  In the interest of full disclosure, here&rsquo;s
+the final command along with the output from my project:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-&gt; % git rev-list master <span class="p">|</span> awk <span class="s1">&#39;NR % 20 == 0&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>revhash<span class="p">;</span> <span class="k">do</span> git checkout -q <span class="nv">$revhash</span> <span class="o">&amp;&amp;</span> <span class="se">\ </span>
+</span><span class='line'>find . -name <span class="s1">&#39;*.scala&#39;</span> <span class="p">|</span> xargs cat <span class="p">|</span> wc -l <span class="p">|</span> <span class="se">\ </span>
+</span><span class='line'><span class="nb">read </span>lines <span class="o">&amp;&amp;</span> <span class="o">((</span><span class="nv">hashes</span> <span class="o">=</span> <span class="nv">$lines</span> / 100<span class="o">))</span> <span class="o">&amp;&amp;</span> <span class="se">\ </span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;`jot -b &#39;#&#39; - 1 $hashes | xargs | tr -d &#39; &#39;` $lines&quot;</span><span class="p">;</span> <span class="k">done</span>
+</span><span class='line'><span class="c">######################################################### 5700</span>
+</span><span class='line'><span class="c">##################################################### 5333</span>
+</span><span class='line'><span class="c">################################################### 5151</span>
+</span><span class='line'><span class="c">############################################### 4796</span>
+</span><span class='line'><span class="c">############################################# 4530</span>
+</span><span class='line'><span class="c">##################################### 3786</span>
+</span><span class='line'><span class="c">################################### 3528</span>
+</span><span class='line'><span class="c">#################################### 3660</span>
+</span><span class='line'><span class="c">#################################### 3615</span>
+</span><span class='line'><span class="c">################################ 3208</span>
+</span><span class='line'><span class="c">############################ 2848</span>
+</span><span class='line'><span class="c">############################ 2832</span>
+</span><span class='line'><span class="c">############################ 2855</span>
+</span><span class='line'><span class="c">########################### 2786</span>
+</span><span class='line'><span class="c">######################## 2418</span>
+</span><span class='line'><span class="c">##################### 2186</span>
+</span><span class='line'><span class="c">################## 1834</span>
+</span><span class='line'><span class="c">################ 1664</span>
+</span><span class='line'><span class="c">############## 1412</span>
+</span><span class='line'><span class="c">############ 1270</span>
+</span><span class='line'><span class="c">########### 1179</span>
+</span><span class='line'><span class="c">######## 892</span>
+</span><span class='line'><span class="c">###### 651</span>
+</span><span class='line'><span class="c">#### 420</span>
+</span><span class='line'><span class="c"># 138</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The growth at the beginning looked pretty normal, and I must say I&rsquo;m slightly happy that around the middle it remained
+constant, and even took a slight dip afterwards.  After the dip though it seems like the growth started shooting up
+again, which is not a good sign.  This is consistent with my personal experience, as I recall starting to really throw
+in the super-hacks at around that time, so everything is probably due for another refactor.</p>
+
+<p>In closing, I&rsquo;d like to remark that while this post was pretty monolithic and it took a lot of text to explain
+everything for the first time, in real life this command probably took about 2-3 minutes to write.  And that&rsquo;s what I
+find these utils are really really good at&ndash;Quick dirty answers to the little &ldquo;I wonder&hellip;&rdquo; / &ldquo;What if&hellip;&rdquo; questions
+that tend to pop up while coding.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Alex Kuang
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-12-23T06:50:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>6:50 am</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cmd/'>cmd</a>, <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/tech/'>tech</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size/" data-via="" data-counturl="http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/21/les-iterables/" title="Previous Post: Les Iterables">&laquo; Les Iterables</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/01/04/ramen-stock/" title="Next Post: Ramen Stock">Ramen Stock &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Alex Kuang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

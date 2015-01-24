@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Thing of the Week: Vim Visual Block Mode - alex kuang</title>
+  <meta name="author" content="Alex Kuang">
+
+  
+  <meta name="description" content="Friday Dev Demos are a big part of Bizo culture. Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44908431-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">alex kuang</a></h1>
+  
+    <h2>professional yak shaver</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="alexkuang.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">about</a></li>
+  <li><a href="/">blog</a></li>
+  <li><a href="/blog/archives">archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Thing of the Week: Vim Visual Block Mode</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-20T18:33:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:33 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
+snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
+aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
+discussion.</p>
+
+<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
+<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
+changes that entails.  While I&rsquo;m sure it&ndash;or something similar&ndash;will make a comeback, in the meantime I decided to
+try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
+I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
+incentive for me to be proactive in learning new things to talk about.</p>
+
+<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
+attention&ndash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
+always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
+what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Alex Kuang
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-11-20T18:33:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:33 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tech/'>tech</a>, <a class='category' href='/blog/categories/totw/'>totw</a>, <a class='category' href='/blog/categories/vim/'>vim</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/" data-via="" data-counturl="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/10/18/babys-first-alfred-workflow/" title="Previous Post: Baby's First Alfred Workflow">&laquo; Baby&#8217;s First Alfred Workflow</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/11/25/thing-of-the-week-bash-bangs/" title="Next Post: Thing of the Week: Bash Bangs">Thing of the Week: Bash Bangs &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Alex Kuang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
