@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-<<<<<<< HEAD
   <title><![CDATA[Category: Bjj | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/bjj/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
-=======
-  <title><![CDATA[Category: bjj | alex kuang]]></title>
-  <link href="http://alexkuang.github.io/blog/categories/bjj/atom.xml" rel="self"/>
-  <link href="http://alexkuang.github.io/"/>
-  <updated>2014-11-25T18:11:22-05:00</updated>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -31,53 +24,38 @@ unlimited pass but only show up once every two weeks or so.  Or even people who 
 up at all.  This isn&rsquo;t such a big deal at a place where the monthly fee is $10, but for BJJ gyms in metropolitan areas,
 the costs tend to fall somewhere between $100-$200 / month.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>That&rsquo;s a pretty significant amount of money.  So why would people spend it for a service they&rsquo;re not bothering to use?
 Sure, there&rsquo;s a &ldquo;one year&rdquo; contract for the gym, but owners tend to be understanding most of the time, and the effort in
 canceling that is pretty trivial.  I think the real barrier is in the way people think about quitting.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>When we pick up a hobby and things get serious, it starts working its way into our definitions of ourselves.  This is
 especially true for something like jiu jitsu, which involves a heavy investment and intrinsically comes with rewards
 like &ldquo;higher self confidence&rdquo;, but it also applies to anything from learning a new language to picking up an instrument
 to experimenting with painting.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>So it&rsquo;s only natural that when life starts getting in the way, we cling onto that image.  Maybe we go from every day to
 only a few times a week.  Then once a week.  Then once a month.  Then <em>&ldquo;Oh yeah, I&rsquo;m learning to speak Spanish, but
 it&rsquo;s been a few months since I&rsquo;ve had the chance to practice&hellip;&rdquo;</em>  But we rarely ever cross the threshold into
 consciously declaring that we&rsquo;ve quit.  Are you still really playing the guitar if it&rsquo;s been six months since you&rsquo;ve
 touched it?  One year?  Three?</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Canceling a membership requires the conscious decision that <em>yes, I&rsquo;ve quit</em>.  But we never really seem to cross that
 point.  It&rsquo;s always one rationalization after another.  Perhaps if we&rsquo;re could be more honest with ourselves, we could
 save a lot of the resources that that costs us, whether that be a monthly membership fee that could be better put
 towards something else, or the energy and creativity spent in thinking up justifications for ourselves.</p>
-<<<<<<< HEAD
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
@@ -91,51 +69,37 @@ coast with a new work arrangement, I all but forgot about the whole blogging thi
 you&rsquo;re one of the ones who reads this for what little informational value I manage to provide, or are otherwise
 uninterested in participating in this rare bout of masturbatory self-congratulations, here&rsquo;s your cue.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Still here?  So&hellip;  I got my blue belt in BJJ recently.  For anyone unfamiliar, it&rsquo;s basically the &ldquo;hurrah, you&rsquo;re no
 longer a rookie&rdquo; rank, and in all seriousness this is one of my prouder moments.  Why?  Because of all my regular
 activities, BJJ is the one where I have absolutely no talent whatsoever.  Seriously.  It took me a solid 2 years to get
 to this point, and every day of that was spent with the mat being wiped by my face.  Ask anyone at the gym: I still get
 rag-dolled on a regular basis.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Now, as a software developer (and all-around lazy nerd) I have a propensity to approach most problems by a) finding an
 easier way to do it, b) deciding it&rsquo;s not worth the time, or c) see (a).  It&rsquo;s an approach that works for software, for
 games, and probably for most challenges you&rsquo;re likely to find in the first world.  But it&rsquo;s great having proof that
 sometimes you just have to show up and grind through and that&rsquo;s the only way to improve.  It&rsquo;s a reminder that
 surprisingly often, the only actual obstacle is just you being a giant chicken and unwilling to leave your comfort zone.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>So, as the kid who couldn&rsquo;t do a single push-up and ran a 13 minute mile in school, I&rsquo;d like to give myself a pat on the
 back for managing to get this far.  And despite all the split lips, swollen fingers, and sprained joints, I sure hope I
 get a lot farther in the future.</p>
 
-<<<<<<< HEAD
 
 
 
 <p>Oh, and&hellip;  I kind of lied about the lack of material.  I had another 52-weeks post lined up, but the experiment failed
 horribly.  I&rsquo;m just buying time so I can do a second iteration and save SOME face, so&hellip;  Look forward to that one.</p>
 
-=======
-<p>Oh, and&hellip;  I kind of lied about the lack of material.  I had another 52-weeks post lined up, but the experiment failed
-horribly.  I&rsquo;m just buying time so I can do a second iteration and save SOME face, so&hellip;  Look forward to that one.</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   

@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-<<<<<<< HEAD
   <title><![CDATA[Category: Vim | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
-=======
-  <title><![CDATA[Category: vim | alex kuang]]></title>
-  <link href="http://alexkuang.github.io/blog/categories/vim/atom.xml" rel="self"/>
-  <link href="http://alexkuang.github.io/"/>
-  <updated>2014-11-25T18:11:22-05:00</updated>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -21,7 +14,6 @@
 
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: `gn` in Vim]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/gn-in-vim/"/>
     <updated>2015-01-24T11:53:51-05:00</updated>
@@ -218,8 +210,6 @@ needed.</p>
   </entry>
   
   <entry>
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <title type="html"><![CDATA[Thing of the Week: Vim Visual Block Mode]]></title>
     <link href="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/"/>
     <updated>2014-11-20T18:33:00-05:00</updated>
@@ -230,23 +220,16 @@ snippet of code to a cool iOS application they&rsquo;d just found to a fun web g
 aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
 discussion.</p>
 
-<<<<<<< HEAD
 
 
 
 <p>Unfortunately, the practice kind of fell by the wayside in the chaos of
 <a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
 changes that entails.  While I&rsquo;m sure it&ndash;or something similar&ndash;will make a comeback, in the meantime I decided to
-=======
-<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
-<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
-changes that entails.  While I&rsquo;m sure it&mdash;or something similar&mdash;will make a comeback, in the meantime I decided to
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
 I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
 incentive for me to be proactive in learning new things to talk about.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -262,24 +245,11 @@ what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asc
 
 
 
-=======
-<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
-attention&mdash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
-always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
-what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
-
-<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Some CH Backport Vimporn]]></title>
-=======
-    <title type="html"><![CDATA[Some CH Backport vimporn]]></title>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <link href="http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn/"/>
     <updated>2014-05-02T20:45:00-04:00</updated>
     <id>http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn</id>
@@ -287,7 +257,6 @@ what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asc
 vim skills on.  Technically I work in vim day-to-day, but usually the rest of the mental activity involved with coding
 end up pushing my vim-awareness more to the side than I&rsquo;d like.  This backport, however, was heavy on repetition but
 otherwise braindead, so it made the perfect set of practice exercises.  And since I had such fun (hey, it was a really
-<<<<<<< HEAD
 boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else finds this useful&ndash;or even better, has suggestions
 to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
 familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
@@ -305,22 +274,10 @@ familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed post
 
 
 
-=======
-boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else finds this useful&mdash;or even better, has suggestions
-to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
-familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
-
-<!-- more -->
-
-
-<h3>The Start</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Since I had all the posts in html form, using <code>:set paste</code> and copy-pasting from the browser seemed the most
 straightforward.  Or at least, more straightforward than trying to manually un-mangle everything in the post after being
 wrung through wordpress.  For most of the posts, the paste result looked something like this:</p>
 
-<<<<<<< HEAD
 
 
 
@@ -334,12 +291,6 @@ wrung through wordpress.  For most of the posts, the paste result looked somethi
 
 
 
-=======
-<p><img class="center" src="/images/ch-backport-vim/start.png" width="598" height="440"></p>
-
-<p>Not too awful, but the TODO is obvious:</p>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <ol>
 <li>Needs a banner image</li>
 <li>Lines need to be wrapped (not strictly necessary, but personal pet peeve)</li>
@@ -349,7 +300,6 @@ wrung through wordpress.  For most of the posts, the paste result looked somethi
 </ol>
 
 
-<<<<<<< HEAD
 
 
 <p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
@@ -363,18 +313,10 @@ markdown, that&rsquo;s pretty trivial.</p>
 
 
 
-=======
-<p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
-markdown, that&rsquo;s pretty trivial.</p>
-
-<h3>Banner image</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>This bit was easy.  I have a plugin installed called <code>vim-snipmate</code> (check it out
 <a href="https://github.com/garbas/vim-snipmate">here</a>) that&rsquo;s just built for stuff like this.  Simply put, defining the snippet
 below:</p>
 
-<<<<<<< HEAD
 
 
 
@@ -412,32 +354,10 @@ select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to w
 
 
 
-=======
-<p>```
-snippet img</p>
-
-<pre><code>{% img center ${1} %}
-</code></pre>
-
-<p>```</p>
-
-<p>allowed me to type <code>img&lt;TAB&gt;</code> and it would insert <code>{% img center %}</code>, with my cursor right after the <code>center</code> and ready
-to drop in my picture url.</p>
-
-<h3>Wrapping lines</h3>
-
-<p>vim has a normal mode command, <code>gq</code>, that does this quite well.  Personally I like using visual line mode (<code>V</code>) to
-select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to wrap a block) works as well.</p>
-
-<p><img class="center" src="/images/ch-backport-vim/gq-before.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/gq-after.png" width="598" height="440"></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>I only wrapped the plain paragraphs here, as there is still some fancy dedenting and formatting to do with the Ingredients
 and Methodology sections first.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -457,21 +377,11 @@ quick and easy.  (Just in case&ndash;Yes, <code>&gt;</code> is the command for i
 
 
 
-=======
-<h3>De-denting</h3>
-
-<p>The vim command for de-denting is <code>&lt;</code>.  Once again, combining with visual line mode or a motion (ex: <code>&lt;}</code>) makes it
-quick and easy.  (Just in case&mdash;Yes, <code>&gt;</code> is the command for indenting)</p>
-
-<h3>Ingredients => Unordered List</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>This one, I&rsquo;ll admit, is a little snazzy.  I used the lesser-known cousin of visual and visual line mode, visual block
 mode (accessed via <code>&lt;Ctrl&gt;-V</code>).  Once selecting the first characters of the lines I wanted with visual block, I could
 hit <code>&lt;Shift-I&gt;</code> to drop into insert mode before current character, <code>-</code> to insert what I wanted, then <code>&lt;ESC&gt;</code> to apply
 to everything in the selection.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -489,18 +399,10 @@ to everything in the selection.</p>
 
 
 
-=======
-<p><img class="center" src="/images/ch-backport-vim/ul-before.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/ul-during.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/ul-after.png" width="598" height="440"></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>Note that this is also a great way to mass-comment blocks of code in languages that only support single line comments
 with <code>#</code> or whatnot.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -538,31 +440,11 @@ with <code>#</code> or whatnot.</p>
 
 
 
-=======
-<h3>Methodology => Ordered List</h3>
-
-<p>And of course, the best is for last.  Ordered lists in markdown, logically, can be formatted something like this:</p>
-
-<p><code>
-1. item 1
-2. item 2
-3. item 3
-</code></p>
-
-<p>However, it&rsquo;s actually possible to cheat and still get ordered list output by doing:</p>
-
-<p><code>
-1. item 1
-1. item 2
-1. item 3
-</code></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>It turns out that the markdown spec doesn&rsquo;t care about the order of the numbering as long as the lines begin with
 numbers in that format.  So technically, I could use the same trick as the Ingredients Unordered List except inserting
 <code>1.</code>, and I&rsquo;d be done.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -633,46 +515,10 @@ Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of rec
 
 
 
-=======
-<p>&hellip;  But where&rsquo;s the fun in that?</p>
-
-<p>So here&rsquo;s another tidbit: in vim, if you place the cursor over a number and hit <code>&lt;Ctrl&gt;-A</code> in normal mode, it increments
-the number.  In a very smart way, too&mdash;it takes into account all of the digits, not just the one under the cursor.
-Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of recorded keystrokes that can be repeated).</p>
-
-<p>Rather than explain in long form, it seems easier just paste the sequence and annotate it.</p>
-
-<p>```sh
-qq<sup>yaWjP</sup>^^Aq # Complete keystroke sequence</p>
-
-<pre><code>         # Note that ^A is one character--see below for details
-</code></pre>
-
-<p>qq   # Start recording keystrokes into the q register
-^    # Go to first non-blank character of line
-yaW  # yank (copy) a Word&mdash;Capital W means a &ldquo;word&rdquo; is terminated only by spaces, not punctuation like &ldquo;&ndash;&rdquo;
-j    # Go down a line
-P^   # Paste before cursor, then go back to first non-blank character
-^A   # Increment number
-q    # Stop recording
-```</p>
-
-<p>It ends up looking something like this, played out:</p>
-
-<p><img class="center" src="/images/ch-backport-vim/mac-1.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/mac-2.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/mac-3.png" width="598" height="440"></p>
-
-<p><em>(Aside: I should start making gifs again for stuff like this&hellip;  Perhaps another day when I have more time.)</em></p>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Once the macro is recorded, it can be played back via <code>@q</code>, or whichever register it was recorded into.  More
 importantly, because it resets to the right positions in the lines and moves down automatically, it can actually be
 repeated!  e.g., <code>2@q</code> turns this:</p>
 
-<<<<<<< HEAD
 
 
 
@@ -702,57 +548,32 @@ repeated!  e.g., <code>2@q</code> turns this:</p>
 
 
 
-=======
-<p><code>
-1. item 1
-item 2
-item 3
-</code></p>
-
-<p>into this:</p>
-
-<p><code>
-1. item 1
-2. item 2
-3. item 3
-</code></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>Writing macros to position in a looping way like this is another post altogether, but suffice to say this saved a TON of
 time over multiple posts.  Granted, it still depends on the <code>1.</code> being inserted manually, but that&rsquo;s pretty trivial I
 think.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Another neat thing that might not immediately be obvious is that regular yanking (or copying, if you will) goes into the
 same registers as macro recordings.  So you can use <code>"qp</code> to paste the contents of your macro into a buffer to map it to
 keys or functions (ex: <code>nnoremap &lt;leader&gt;o ^yaW[...]</code>).</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Furthermore, this means that if a recording goes wrong, you can just paste it out, edit it, then select and <code>"qy</code> (or
 similar) to yank back the edited form.  The only caveat is that certain characters like <code>^A</code> may paste out and LOOK like
 two characters, but is infact only one character.  Not a big deal if you&rsquo;re just yanking and replacing text, but it can
 be a weird GOTCHA if you&rsquo;re trying to write a macro by hand or something.  (In this particular case, the <code>^A</code> character
 can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, but it pays to watch out in general for stuff like this)</p>
 
-<<<<<<< HEAD
 
 
 
 <p>So there you have it, ladies and gentlemen&ndash;My idea of fun on a Sunday afternoon&hellip;</p>
 
-=======
-<p>So there you have it, ladies and gentlemen&mdash;My idea of fun on a Sunday afternoon&hellip;</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   

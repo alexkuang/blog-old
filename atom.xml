@@ -4,11 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-<<<<<<< HEAD
   <updated>2015-01-24T16:21:07-05:00</updated>
-=======
-  <updated>2014-11-25T18:11:22-05:00</updated>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -18,7 +14,6 @@
 
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[2015, a Whole New Year!]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/2015-a-whole-new-year/"/>
     <updated>2015-01-24T14:25:50-05:00</updated>
@@ -512,8 +507,6 @@ Then folks got all up in arms about the political correctness of the word &ldquo
   </entry>
   
   <entry>
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <title type="html"><![CDATA[Thing of the Week: Bash Bangs]]></title>
     <link href="http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs/"/>
     <updated>2014-11-25T17:40:00-05:00</updated>
@@ -530,7 +523,6 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<<<<<<< HEAD
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
 </span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="c"># let&#39;s pretend echo throws an error too and wants sudo for some reason</span>
 </span><span class='line'>
@@ -538,15 +530,6 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 </span><span class='line'>sudo <span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
 </span><span class='line'>Password:
 </span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
-=======
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>1 2 3 4 5
-</span><span class='line'>1 2 3 4 5 <span class="c"># let&#39;s pretend echo throws an error too and wants sudo for some reason</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>sudo !!
-</span><span class='line'>sudo <span class="nb">echo </span>1 2 3 4 5
-</span><span class='line'>Password:
-</span><span class='line'>1 2 3 4 5
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -563,7 +546,6 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-<<<<<<< HEAD
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
 </span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
 </span><span class='line'>
@@ -574,18 +556,6 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 </span><span class='line'>sudo <span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
 </span><span class='line'>Password:
 </span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
-=======
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>1 2 3 4 5
-</span><span class='line'>1 2 3 4 5
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>!!:p
-</span><span class='line'><span class="nb">echo </span>1 2 3 4 5
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>sudo !!
-</span><span class='line'>sudo <span class="nb">echo </span>1 2 3 4 5
-</span><span class='line'>Password:
-</span><span class='line'>1 2 3 4 5
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -642,11 +612,7 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 </span></code></pre></td></tr></table></div></figure>
 
 
-<<<<<<< HEAD
 <p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> ->
-=======
-<p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> &ndash;>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <code>rm -r !$</code>).  Plus, it&rsquo;s the easiest sequence to hit, finger-wise.</p>
 
 <p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
@@ -667,21 +633,13 @@ discussion.</p>
 
 <p>Unfortunately, the practice kind of fell by the wayside in the chaos of
 <a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
-<<<<<<< HEAD
 changes that entails.  While I&rsquo;m sure it&ndash;or something similar&ndash;will make a comeback, in the meantime I decided to
-=======
-changes that entails.  While I&rsquo;m sure it&mdash;or something similar&mdash;will make a comeback, in the meantime I decided to
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
 I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
 incentive for me to be proactive in learning new things to talk about.</p>
 
 <p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
-<<<<<<< HEAD
 attention&ndash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
-=======
-attention&mdash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
 what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
 
@@ -702,21 +660,13 @@ published in milliseconds, which while precise, is not exactly human-readable fo
 
 <p>I&rsquo;ve been a huge fan of <a href="http://www.alfredapp.com/">Alfred</a> for a while, and I use its quick-launch and custom search
 functions nearly constantly.  I only recently got around to ponying up for the powerpack, which lets you define custom
-<<<<<<< HEAD
 &ldquo;workflows&rdquo;, so I figured&ndash;why not use a workflow to convert the milliseconds to something more readable?</p>
-=======
-&ldquo;workflows&rdquo;, so I figured&mdash;why not use a workflow to convert the milliseconds to something more readable?</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <!-- more -->
 
 
 <p>The Alfred workflow UI is basically a fancy flow chart.  It allows you to string together elements for input,
-<<<<<<< HEAD
 actions, and output&ndash;Kind of like a graphical representation of a unix pipe.  The final product of the workflow looked
-=======
-actions, and output&mdash;Kind of like a graphical representation of a unix pipe.  The final product of the workflow looked
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 something like this:</p>
 
 <p><img class="center" src="http://alexkuang.github.io/images/alf-flow.png"></p>
@@ -726,11 +676,7 @@ something like this:</p>
 <p><img class="center" src="http://alexkuang.github.io/images/alf-keyword.png"></p>
 
 <p>All this means is that I can use <code>mr (x)</code> to invoke the workflow, where x is some parameter.  <code>{query}</code> is just Alfred&rsquo;s
-<<<<<<< HEAD
 magic string for&ndash;you guessed it&ndash;injecting <code>argv</code>.  In this case, it updates the &lsquo;preview&rsquo; item in the dropdown as the
-=======
-magic string for&mdash;you guessed it&mdash;injecting <code>argv</code>.  In this case, it updates the &lsquo;preview&rsquo; item in the dropdown as the
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 argstring is entered.</p>
 
 <p>The actual script itself is simple and super hacked together in python, but the UI here is still worth showing.  Note the
@@ -774,20 +720,12 @@ Noodles?  Steak?  SAUCE?!  I didn&rsquo;t know it was possible to combine so man
 <p>This version is much more simple, with much less vegetable variety and substituting the wasabi-sauce with the good ol&#8217;
 standby Madras curry.</p>
 
-<<<<<<< HEAD
 <p>First, prep all relevant vegetables&ndash;In my case, julienning carrots and cucumbers, and slicing some onions.  Then boil
-=======
-<p>First, prep all relevant vegetables&mdash;In my case, julienning carrots and cucumbers, and slicing some onions.  Then boil
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 the noodles according to the relevant package instructions and shock with cold water to stop the cooking.  I recommend a
 wheat-based noodle; nothing with huge amounts of egg, or alkaline.  Not that it&rsquo;d be terrible or anything, I just don&rsquo;t
 think it&rsquo;d work as well.</p>
 
-<<<<<<< HEAD
 <p>While doing all that, also sear off and cook a steak&ndash;The specifics of a well-cooked steak probably deserve a post of
-=======
-<p>While doing all that, also sear off and cook a steak&mdash;The specifics of a well-cooked steak probably deserve a post of
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 their own.</p>
 
 <p>While the steak is resting in a nice warm place, get a pan nice and hot and cook off the onions and vegetables.  Add in
@@ -825,11 +763,7 @@ one).  Second, is a picture of a pina colada in a pineapple that I made on a bor
 <p><img class="center" src="http://waffleparadox.smugmug.com/Food/Pina-Colada/i-qwZfFsq/0/L/DSC_3201-L.jpg"></p>
 
 <p>The pineapple idea turned out pretty nicely.  I actually came really close to buying one of those fancy kitchen gadgets
-<<<<<<< HEAD
 that I always make fun of&ndash;in this case, a pineapple corer.  Luckily I refrained and, as it turns out, you can do pretty
-=======
-that I always make fun of&mdash;in this case, a pineapple corer.  Luckily I refrained and, as it turns out, you can do pretty
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 well with a <a href="http://waffleparadox.smugmug.com/Food/Pina-Colada/i-s2XvKSK/0/L/DSC_3153-L.jpg">paring knife</a> and a
 <a href="http://waffleparadox.smugmug.com/Food/Pina-Colada/i-d33xr5Q/0/L/DSC_3156-L.jpg">spoon</a>.  That said, the drink itself
 could have used much improvement.  I used to think I wasn&rsquo;t a &ldquo;booze&rdquo; type person until I met folks who really knew what
@@ -843,20 +777,12 @@ be exploring that more; whether enough to start posting about it remains to be s
   </entry>
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Asciinema]]></title>
-=======
-    <title type="html"><![CDATA[asciinema]]></title>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <link href="http://alexkuang.github.io/blog/2014/07/16/asciinema/"/>
     <updated>2014-07-16T15:40:00-04:00</updated>
     <id>http://alexkuang.github.io/blog/2014/07/16/asciinema</id>
     <content type="html"><![CDATA[<p>I was tooling around the other day and discovered a service called <a href="https://asciinema.org">asciinema</a> which provides
-<<<<<<< HEAD
 terminalcasts&ndash;essentially, &ldquo;screencasts&rdquo; with terminal I/O.  This is awesome for a few reasons.</p>
-=======
-terminalcasts&mdash;essentially, &ldquo;screencasts&rdquo; with terminal I/O.  This is awesome for a few reasons.</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>From a content consumer&rsquo;s standpoint, it&rsquo;s often hard to follow a blog post that&rsquo;s trying to outline a command line tip,
 or a vim tip, for the simple fact that the static nature of writing alone isn&rsquo;t optimal for showing the flow between
@@ -866,7 +792,6 @@ videos and their associated heavy Flash Player bullshit.  asciinema is rendered 
 
 <p>From a wannabe content producer&rsquo;s standpoint&hellip;  Writing is <em>hard</em>.  Writing while crafting appropriate examples is
 harder.  Doing all that while struggling with capturing the nature of the examples in plain text?  No thanks.
-<<<<<<< HEAD
 Again&ndash;Yes, there is the option of screencasts, but those are painful to set up.  Screencasts means worrying about
 things like capturing software, background audio, What Tab Do I Have Open In My Browser, and Will Video Compression
 Screw My Text Legibility.  As a consummately lazy person who only wants to do short self-contained clips for now&hellip;
@@ -874,15 +799,6 @@ That&rsquo;s way too big of a barrier.  asciinema is easy&ndash;Just install, th
 to exit and upload.</p>
 
 <p>And embedding takes 2 seconds&ndash;Check it!</p>
-=======
-Again&mdash;Yes, there is the option of screencasts, but those are painful to set up.  Screencasts means worrying about
-things like capturing software, background audio, What Tab Do I Have Open In My Browser, and Will Video Compression
-Screw My Text Legibility.  As a consummately lazy person who only wants to do short self-contained clips for now&hellip;
-That&rsquo;s way too big of a barrier.  asciinema is easy&mdash;Just install, then <code>asciinema rec</code> from the terminal and <code>&lt;CTRL-D&gt;</code>
-to exit and upload.</p>
-
-<p>And embedding takes 2 seconds&mdash;Check it!</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <script type="text/javascript" src="https://asciinema.org/a/10785.js" id="asciicast-10785" async></script>
 
@@ -898,11 +814,7 @@ to exit and upload.</p>
 
 <p>It is one of my greatest regrets as a Super Manly-Man that my current living situation is prohibitive against the
 construction of fire pits, or even the ownership of so much as a grill.  And it is a travesty that on the Fourth of
-<<<<<<< HEAD
 July&ndash;one of the meatiest holidays of the meatiest of countries (&lsquo;MURICAAAAA)&ndash;I had to settle for a measly oven for my
-=======
-July&mdash;one of the meatiest holidays of the meatiest of countries (&lsquo;MURICAAAAA)&mdash;I had to settle for a measly oven for my
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ribs.  But alas, one must make do.</p>
 
 <!-- more -->
@@ -953,11 +865,7 @@ all in all it could have turned out a lot worse.</p>
 
 
 <p>Combine everything in the Spice Rub and make sure to mix well.  I ended up mixing and storing it in a few Ball jars,
-<<<<<<< HEAD
 since this stuff will keep forever.  Cover the ribs in it.  Seriously, don&rsquo;t be shy with the spice either&ndash;what are you,
-=======
-since this stuff will keep forever.  Cover the ribs in it.  Seriously, don&rsquo;t be shy with the spice either&mdash;what are you,
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 a communist?</p>
 
 <p>After the ribs are completely coated, wrap them in aluminum foil.  First seal up the foil lengthwise, then roll up the
@@ -1148,21 +1056,13 @@ actually fry anything (I hope).  I still can&rsquo;t tell my head from my ass, b
   </entry>
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Follow the Honey]]></title>
-=======
-    <title type="html"><![CDATA[Follow The Honey]]></title>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <link href="http://alexkuang.github.io/blog/2014/06/05/follow-the-honey/"/>
     <updated>2014-06-05T20:14:00-04:00</updated>
     <id>http://alexkuang.github.io/blog/2014/06/05/follow-the-honey</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Other/Follow-The-Honey/i-kDb523C/0/L/DSC_2978-L.jpg"></p>
 
-<<<<<<< HEAD
 <p>A few weeks ago I was dragged somewhat skeptically to a honey store.  Yep, that&rsquo;s right&ndash;a honey store.  A store, that&rsquo;s
-=======
-<p>A few weeks ago I was dragged somewhat skeptically to a honey store.  Yep, that&rsquo;s right&mdash;a honey store.  A store, that&rsquo;s
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 dedicated to honey.  I know.  Strange as it may sound, it&rsquo;s actually a thing.  But after my (thus far only) trip,
 I&rsquo;m a convert.</p>
 
@@ -1170,11 +1070,7 @@ I&rsquo;m a convert.</p>
 
 
 <p>The storefront is very cozy, nestled within the basement of a building in Harvard Square.  The inside is all amber and,
-<<<<<<< HEAD
 to the surprise of absolutely nobody, decorated with various bee-related paraphernalia&ndash;Everything from cards with bees
-=======
-to the surprise of absolutely nobody, decorated with various bee-related paraphernalia&mdash;Everything from cards with bees
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 to beeswax candles.  Why couldn&rsquo;t I have known about this place back when we were doing
 <a href="http://alexkuang.com/blog/2010/10/01/caneles-bordelais/">caneles</a>?  The first attempts with copper molds all but
 required beeswax; hell, I still prefer that to cooking spray.  But I digress.</p>
@@ -1185,22 +1081,14 @@ speak.  In any case, they were all perfectly pleasant and helpful and eager to o
 I mention they have a honey bar?  It&rsquo;s absolutely bizarre.  The first question I was asked was &ldquo;what flavors do you like
 in your honey?&rdquo;  <em>I have no idea, are you kidding me?  I&rsquo;ve only had the kind in the bear bottles.</em></p>
 
-<<<<<<< HEAD
 <p>I ended up trying a few varieties ranging from the savory and spicy to the sweet and fruity.  And it&rsquo;s like coffee&ndash;Once
-=======
-<p>I ended up trying a few varieties ranging from the savory and spicy to the sweet and fruity.  And it&rsquo;s like coffee&mdash;Once
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 you have the real stuff, you don&rsquo;t want to go back unless you have no other choice.  For my part, I walked out with
 nearly 3 digits&#8217; worth of merch.</p>
 
 <p><img class="center" src="http://waffleparadox.smugmug.com/Other/Follow-The-Honey/i-xBT3tP7/0/L/DSC_2989-L.jpg"></p>
 
 <p>The most interesting is probably the Hawaiian honey, which is from bees gathering from flowers off the side of volcanos
-<<<<<<< HEAD
 in Hawaii.  If that sounds exotic, don&rsquo;t worry&ndash;It&rsquo;s got a correspondingly exotic price tag, about 30-some dollars for 8
-=======
-in Hawaii.  If that sounds exotic, don&rsquo;t worry&mdash;It&rsquo;s got a correspondingly exotic price tag, about 30-some dollars for 8
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 oz (226g).  I bought two jars: one was Kiawe honey infused separately with lilikoi flowers, and one uninfused Macadamia
 honey.  The former actually came in semi-solid form (common for raw honey) and packed a sharp passion fruit flavor.  The
 latter was a more &ldquo;typical&rdquo; liquid texture, and rosey gold with a mild nutty flavor.</p>
@@ -1208,11 +1096,7 @@ latter was a more &ldquo;typical&rdquo; liquid texture, and rosey gold with a mi
 <p><img class="center" src="http://waffleparadox.smugmug.com/Other/Follow-The-Honey/i-RqWvFwQ/0/L/DSC_2990-L.jpg"></p>
 
 <p>In addition to these, I also walked out with two jars of honey gathered from Oaxaca, Mexico.  Oaxaca&rsquo;s a great
-<<<<<<< HEAD
 region for food agriculture&ndash;Some pretty good coffee comes out of there as well.  This honey was very savory, almost
-=======
-region for food agriculture&mdash;Some pretty good coffee comes out of there as well.  This honey was very savory, almost
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 spicey, and a dark maple-syrupy color.  It was also very reasonably priced, something like $12-13 for I would guess 12oz
 out of the keg.  Oh, did I mention there were kegs?  Honey, <em>on tap</em>.  Whodaknownit?</p>
 
@@ -1227,11 +1111,7 @@ tastes will be enough.</p>
   </entry>
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Oysters With Lemon Pearls - Week 11 Molecular]]></title>
-=======
-    <title type="html"><![CDATA[Oysters with Lemon Pearls - Week 11 Molecular]]></title>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <link href="http://alexkuang.github.io/blog/2014/05/27/oysters-with-lemon-pearls-week-11-molecular/"/>
     <updated>2014-05-27T17:23:00-04:00</updated>
     <id>http://alexkuang.github.io/blog/2014/05/27/oysters-with-lemon-pearls-week-11-molecular</id>
@@ -1254,11 +1134,7 @@ included with the kit is one use only&hellip;</p>
 <p><img class="center" src="http://waffleparadox.smugmug.com/Food/Oysters-With-Lemon-Pearls/i-p99X433/0/L/DSC_2968-L.jpg"></p>
 
 <p>The spheres look good, but I think that&rsquo;s about all that I can say about them positively.  Taste-wise, they were
-<<<<<<< HEAD
 slightly rubbery and the insides were way too viscous&ndash;Closer to maple syrup than juice.  Maybe it was the
-=======
-slightly rubbery and the insides were way too viscous&mdash;Closer to maple syrup than juice.  Maybe it was the
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 disappointment from expecting something closer to the &ldquo;popping boba&rdquo; found in bubble tea/frozen yogurt, but overall I
 just found the texture unpleasant.  In addition, the alginate stifled the acidity in the lemon and left a funny taste in
 my mouth, making the pearls taste basically like jello filled with slightly off sugar syrup.</p>
@@ -1272,416 +1148,4 @@ upselling, e.g., &ldquo;buy our slotted spoon!&rdquo;, &ldquo;buy our PH meter!&
 ]]></content>
   </entry>
   
-<<<<<<< HEAD
-=======
-  <entry>
-    <title type="html"><![CDATA[Why I Preferred Dark Souls I]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/05/23/why-i-preferred-dark-souls-i/"/>
-    <updated>2014-05-23T21:24:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/05/23/why-i-preferred-dark-souls-i</id>
-    <content type="html"><![CDATA[<p>Dark Souls 2 is a great game.  Let&rsquo;s get that out of the way.  I&rsquo;ve logged low 3 digits in hours of gameplay, and made
-it through the game multiple times.  The combat system is tuned, there&rsquo;s a ton of content, and multiplayer is pretty fun
-(or at least, it was at the levels I hung around).  But I still prefer the original, and Demon&rsquo;s Souls, over it.</p>
-
-<!-- more -->
-
-
-<p>The biggest turn-off in DS2 was the shift in design goals.  The dripping atmosphere and rich world were always the
-primary draws in the franchise, and the difficulty took a back seat (relatively speaking) as a tool to work towards that
-goal.  In DS2, it felt more like the developers&#8217; primary goal was &ldquo;HOW CAN WE MAKE THIS HARDER?&rdquo;  This was evidenced in
-the way combat shifted towards the many-vs-one paradigm; not only with regular enemies, but with the bosses as well.
-The Skeleton Lords, the Dragon Knights, the Looking Glass Knight, Twin Pursuers, Ruin Sentinels&hellip;  &ldquo;How can we make
-this harder?  Let&rsquo;s just put more enemies in.&rdquo;  Not only is the repetition insulting, aiming for &ldquo;hard&rdquo; is just
-completely missing the point.</p>
-
-<p>Take the DS1 fight with Artorias.  It&rsquo;s such a fan favorite not only because it was ridiculously hard, but because the
-entire fight was steeped in the world&rsquo;s lore.  After fighting Sif, going through the Abyss, and reading bits and pieces
-from the game&rsquo;s NPCs about the fall of Artorias the Abysswalker, his charge towards the player holds a gravity that
-couldn&rsquo;t be matched by even 20 Pursuers.  Seriously, <a href="https://www.youtube.com/watch?v=ctW277Kpcv0">check it</a>.</p>
-
-<p>Speaking of the lore, that&rsquo;s another big point of contention with me.  I feel like there&rsquo;s a big difference between lore
-and plot.  Lore is the background of the world.  It&rsquo;s the story behind each NPC, each item, each location, and it&rsquo;s
-great for it to be subtle and nebulous.  A richly built, subtly woven world gives the player an opportunity to explore
-and really dive into the atmosphere of everything.</p>
-
-<p>The plot, however, is simply the thread of the story that drives the player&rsquo;s main progression, and needs to be very
-clear cut.  Another concrete example, as spoiler-free as possible: In DS1, the player embarks on a quest to re-light the
-first flame on the request of a dying man in the asylum.  On his quest to do that, he awakens a primordial serpent, and
-the progression from there differs, ending with the player either re-kindling the first flame or leaving it to die.  The
-story is pretty straightforward there, and at any given point you&rsquo;re pretty clear about the motivations of your
-character.</p>
-
-<p>In contrast, DS2 opens up with something about a curse in Drangleic and how you must go there, <strong>only to
-never revisit the topic</strong>.  No seriously, what the hell is that?  They make this whole deal with the old ladies about
-the curse of Drangleic, and then you get there and it becomes about finding the 4 Great Souls and King Vendrick?  And
-then I guess somehow you&rsquo;re supposed to realize that oh right, after finding the king you need to travel through certain
-memories to retrieve certain knowledge, and oh by the way SHADOWY RULER.  If that sounds confusing because I&rsquo;m trying to
-leave out spoilers, don&rsquo;t worry&mdash;It&rsquo;s not much better with the characters and specifics filled in.</p>
-
-<p>Beyond even the toning down of the art, this lack of direction was, to put it politely, a huge buzz-kill.  I understand
-that a lot of these decisions were made to bring the franchise to a wider audience, since Demon&rsquo;s Souls was a rather
-niche title with relatively limited commercial success.  But seriously guys.  DS2 was like watered down tea to DS1 +
-DeS&#8217; black coffee.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Coi]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/05/15/coi/"/>
-    <updated>2014-05-15T19:58:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/05/15/coi</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Other/Blog/i-qNXR8CC/0/O/coi-asparagus.jpg" width="500" height="500"></p>
-
-<p>Of course it&rsquo;s just after I dish out a healthy dose of self-deprecation about restaurant writing that I feel compelled
-to write about another restaurant.  So I&rsquo;ll keep it short.</p>
-
-<p>I went to Daniel Patterson&rsquo;s Coi recently.  The only thing I can say about the food is that it wasn&rsquo;t overtly
-over-the-top.  Nor was it deliberately modernist or filled with crazy techniques using chemicals I can&rsquo;t pronounce.  But
-it was very very delicious and still managed to surprise me.  I can&rsquo;t overstate how awesome this is, and would recommend
-the trip to anyone given to spending unhealthy amounts of money on food.</p>
-
-<p>Also bought a signed copy of the book while I was there.  I can&rsquo;t wait to read it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The Funny Thing About Quitting]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/05/10/the-funny-thing-about-quitting/"/>
-    <updated>2014-05-10T20:53:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/05/10/the-funny-thing-about-quitting</id>
-    <content type="html"><![CDATA[<p>We were shooting the shit in the gym on Thursday, when the subject of wasted memberships came up.  As I&rsquo;m sure is common
-in any other type of service with a monthly membership, we apparently have a fair amount of people who pay for an
-unlimited pass but only show up once every two weeks or so.  Or even people who pay for a membership and just don&rsquo;t show
-up at all.  This isn&rsquo;t such a big deal at a place where the monthly fee is $10, but for BJJ gyms in metropolitan areas,
-the costs tend to fall somewhere between $100-$200 / month.</p>
-
-<p>That&rsquo;s a pretty significant amount of money.  So why would people spend it for a service they&rsquo;re not bothering to use?
-Sure, there&rsquo;s a &ldquo;one year&rdquo; contract for the gym, but owners tend to be understanding most of the time, and the effort in
-canceling that is pretty trivial.  I think the real barrier is in the way people think about quitting.</p>
-
-<p>When we pick up a hobby and things get serious, it starts working its way into our definitions of ourselves.  This is
-especially true for something like jiu jitsu, which involves a heavy investment and intrinsically comes with rewards
-like &ldquo;higher self confidence&rdquo;, but it also applies to anything from learning a new language to picking up an instrument
-to experimenting with painting.</p>
-
-<p>So it&rsquo;s only natural that when life starts getting in the way, we cling onto that image.  Maybe we go from every day to
-only a few times a week.  Then once a week.  Then once a month.  Then <em>&ldquo;Oh yeah, I&rsquo;m learning to speak Spanish, but
-it&rsquo;s been a few months since I&rsquo;ve had the chance to practice&hellip;&rdquo;</em>  But we rarely ever cross the threshold into
-consciously declaring that we&rsquo;ve quit.  Are you still really playing the guitar if it&rsquo;s been six months since you&rsquo;ve
-touched it?  One year?  Three?</p>
-
-<p>Canceling a membership requires the conscious decision that <em>yes, I&rsquo;ve quit</em>.  But we never really seem to cross that
-point.  It&rsquo;s always one rationalization after another.  Perhaps if we&rsquo;re could be more honest with ourselves, we could
-save a lot of the resources that that costs us, whether that be a monthly membership fee that could be better put
-towards something else, or the energy and creativity spent in thinking up justifications for ourselves.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Some CH Backport vimporn]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn/"/>
-    <updated>2014-05-02T20:45:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn</id>
-    <content type="html"><![CDATA[<p>In some ways, the curehappiness backports came at the perfect time, since I&rsquo;d been looking for something to sharpen my
-vim skills on.  Technically I work in vim day-to-day, but usually the rest of the mental activity involved with coding
-end up pushing my vim-awareness more to the side than I&rsquo;d like.  This backport, however, was heavy on repetition but
-otherwise braindead, so it made the perfect set of practice exercises.  And since I had such fun (hey, it was a really
-boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else finds this useful&mdash;or even better, has suggestions
-to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
-familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
-
-<!-- more -->
-
-
-<h3>The Start</h3>
-
-<p>Since I had all the posts in html form, using <code>:set paste</code> and copy-pasting from the browser seemed the most
-straightforward.  Or at least, more straightforward than trying to manually un-mangle everything in the post after being
-wrung through wordpress.  For most of the posts, the paste result looked something like this:</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/start.png" width="598" height="440"></p>
-
-<p>Not too awful, but the TODO is obvious:</p>
-
-<ol>
-<li>Needs a banner image</li>
-<li>Lines need to be wrapped (not strictly necessary, but personal pet peeve)</li>
-<li>Ingredients + Methodology need to be de-dented</li>
-<li>Ingredients needs to be an unordered list</li>
-<li>Methodology needs to be an ordered list.</li>
-</ol>
-
-
-<p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
-markdown, that&rsquo;s pretty trivial.</p>
-
-<h3>Banner image</h3>
-
-<p>This bit was easy.  I have a plugin installed called <code>vim-snipmate</code> (check it out
-<a href="https://github.com/garbas/vim-snipmate">here</a>) that&rsquo;s just built for stuff like this.  Simply put, defining the snippet
-below:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>snippet img
-</span><span class='line'>    {% img center ${1} %}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>allowed me to type <code>img&lt;TAB&gt;</code> and it would insert <code>{% img center %}</code>, with my cursor right after the <code>center</code> and ready
-to drop in my picture url.</p>
-
-<h3>Wrapping lines</h3>
-
-<p>vim has a normal mode command, <code>gq</code>, that does this quite well.  Personally I like using visual line mode (<code>V</code>) to
-select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to wrap a block) works as well.</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/gq-before.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/gq-after.png" width="598" height="440"></p>
-
-<p>I only wrapped the plain paragraphs here, as there is still some fancy dedenting and formatting to do with the Ingredients
-and Methodology sections first.</p>
-
-<h3>De-denting</h3>
-
-<p>The vim command for de-denting is <code>&lt;</code>.  Once again, combining with visual line mode or a motion (ex: <code>&lt;}</code>) makes it
-quick and easy.  (Just in case&mdash;Yes, <code>&gt;</code> is the command for indenting)</p>
-
-<h3>Ingredients => Unordered List</h3>
-
-<p>This one, I&rsquo;ll admit, is a little snazzy.  I used the lesser-known cousin of visual and visual line mode, visual block
-mode (accessed via <code>&lt;Ctrl&gt;-V</code>).  Once selecting the first characters of the lines I wanted with visual block, I could
-hit <code>&lt;Shift-I&gt;</code> to drop into insert mode before current character, <code>-</code> to insert what I wanted, then <code>&lt;ESC&gt;</code> to apply
-to everything in the selection.</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-before.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-during.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-after.png" width="598" height="440"></p>
-
-<p>Note that this is also a great way to mass-comment blocks of code in languages that only support single line comments
-with <code>#</code> or whatnot.</p>
-
-<h3>Methodology => Ordered List</h3>
-
-<p>And of course, the best is for last.  Ordered lists in markdown, logically, can be formatted something like this:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1. item 1
-</span><span class='line'>2. item 2
-</span><span class='line'>3. item 3</span></code></pre></td></tr></table></div></figure>
-
-
-<p>However, it&rsquo;s actually possible to cheat and still get ordered list output by doing:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1. item 1
-</span><span class='line'>1. item 2
-</span><span class='line'>1. item 3</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It turns out that the markdown spec doesn&rsquo;t care about the order of the numbering as long as the lines begin with
-numbers in that format.  So technically, I could use the same trick as the Ingredients Unordered List except inserting
-<code>1.</code>, and I&rsquo;d be done.</p>
-
-<p>&hellip;  But where&rsquo;s the fun in that?</p>
-
-<p>So here&rsquo;s another tidbit: in vim, if you place the cursor over a number and hit <code>&lt;Ctrl&gt;-A</code> in normal mode, it increments
-the number.  In a very smart way, too&mdash;it takes into account all of the digits, not just the one under the cursor.
-Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of recorded keystrokes that can be repeated).</p>
-
-<p>Rather than explain in long form, it seems easier just paste the sequence and annotate it.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>qq^yaWjP^^Aq <span class="c"># Complete keystroke sequence</span>
-</span><span class='line'>             <span class="c"># Note that ^A is one character--see below for details</span>
-</span><span class='line'>
-</span><span class='line'>qq   <span class="c"># Start recording keystrokes into the q register</span>
-</span><span class='line'>^    <span class="c"># Go to first non-blank character of line</span>
-</span><span class='line'>yaW  <span class="c"># yank (copy) a Word--Capital W means a &quot;word&quot; is terminated only by spaces, not punctuation like &quot;-&quot; </span>
-</span><span class='line'>j    <span class="c"># Go down a line</span>
-</span><span class='line'>P^   <span class="c"># Paste before cursor, then go back to first non-blank character</span>
-</span><span class='line'>^A   <span class="c"># Increment number</span>
-</span><span class='line'>q    <span class="c"># Stop recording</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It ends up looking something like this, played out:</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-1.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-2.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-3.png" width="598" height="440"></p>
-
-<p><em>(Aside: I should start making gifs again for stuff like this&hellip;  Perhaps another day when I have more time.)</em></p>
-
-<p>Once the macro is recorded, it can be played back via <code>@q</code>, or whichever register it was recorded into.  More
-importantly, because it resets to the right positions in the lines and moves down automatically, it can actually be
-repeated!  e.g., <code>2@q</code> turns this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>1. item 1
-</span><span class='line'>item 2
-</span><span class='line'>item 3
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>into this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>1. item 1
-</span><span class='line'>2. item 2
-</span><span class='line'>3. item 3
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Writing macros to position in a looping way like this is another post altogether, but suffice to say this saved a TON of
-time over multiple posts.  Granted, it still depends on the <code>1.</code> being inserted manually, but that&rsquo;s pretty trivial I
-think.</p>
-
-<p>Another neat thing that might not immediately be obvious is that regular yanking (or copying, if you will) goes into the
-same registers as macro recordings.  So you can use <code>"qp</code> to paste the contents of your macro into a buffer to map it to
-keys or functions (ex: <code>nnoremap &lt;leader&gt;o ^yaW[...]</code>).</p>
-
-<p>Furthermore, this means that if a recording goes wrong, you can just paste it out, edit it, then select and <code>"qy</code> (or
-similar) to yank back the edited form.  The only caveat is that certain characters like <code>^A</code> may paste out and LOOK like
-two characters, but is infact only one character.  Not a big deal if you&rsquo;re just yanking and replacing text, but it can
-be a weird GOTCHA if you&rsquo;re trying to write a macro by hand or something.  (In this particular case, the <code>^A</code> character
-can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, but it pays to watch out in general for stuff like this)</p>
-
-<p>So there you have it, ladies and gentlemen&mdash;My idea of fun on a Sunday afternoon&hellip;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[CH Backports]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/04/26/ch-backports/"/>
-    <updated>2014-04-26T21:46:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/04/26/ch-backports</id>
-    <content type="html"><![CDATA[<p>For anyone unfamiliar, I wrote a food blog a while back called curehappiness with my then-roommate,
-<a href="http://tlextrait.com/">Thomas</a>.  It was active mostly during my college years, dying down due to a whole variety of
-reasons&mdash;office life, apathy at the post-grad lifestyle, wordpress being a pain&hellip;  All that great stuff.  The project
-had originally started as an off-the-cuff idea for something to do with a newly commissioned server; after a while, I
-decided to shuffle up my server arrangements, and curehappiness&#8217; Wordpress installation got the axe.  Since I couldn&rsquo;t
-be bothered to backup the entire WP install, I just saved a bunch of the posts in HTML form instead, with the idea of
-one day porting it to whatever new platform I would be running.</p>
-
-<p>After all this time on Octopress + Github Pages, I finally pulled the trigger.  All the backported posts will be from
-before 2013, tagged as <code>ch-backports</code>, and will contain a link at the top to this post.  They&rsquo;ve largely been preserved
-verbatim, minus a few corrections like &lsquo;boal&rsquo; &ndash;> &lsquo;bowl&rsquo; (seriously, past Alex???).  However, I couldn&rsquo;t resist adding
-small notes from the future, which will be in blockquotes at the top:</p>
-
-<blockquote><p>like so.</p></blockquote>
-
-<p>I ported the posts with the most worthwhile content&mdash;namely, recipes and records of experiments.  Restaurant reviews and
-other such content were few and far between, and honestly aside from a couple of wisecracks and some nice pictures, they
-felt pretty banal; not a solid reason for censorship, granted, but I still felt it wasn&rsquo;t worth the effort.  I&rsquo;ll
-probably upload the photos from those posts to smugmug at some point and save the rewrites for when I have actual
-original insights beyond &ldquo;yes, the food was good&rdquo;.</p>
-
-<p>As a final note, migrating was not trivial, but I did get some nice hackery out of it.  I&rsquo;ll probably post the
-tech-gorey details later, but suffice to say that I&rsquo;ve learned my lesson about storing data in arbitrary mangled html
-generated by a WYSIWYG editor run through who knows how many plugins and themes.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hack Days Are Awesome]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome/"/>
-    <updated>2014-04-26T15:32:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome</id>
-    <content type="html"><![CDATA[<p>Earlier this week, we had a &ldquo;hack day&rdquo; at work.  Or more precisely, two hack days.  I think the name is pretty
-self-explanatory&mdash;work on whatever you want, which can be something helpful to or completely unrelated to your currently
-assigned tasks, as long as it&rsquo;s something interesting.  Now, &ldquo;hack time&rdquo; is a pretty established institution in the
-software world, especially amongst the hip startuppy companies.  I&rsquo;m sure everyone has heard of Google&rsquo;s &ldquo;20% time&rdquo; idea
-by now, and the story of Microsoft&rsquo;s Xbox starting as a side-project.  Proponents (especially those who are trying to
-pitch a business case to managers with varying degrees of pointy-haired-ness) cite building camaraderie, stimulating
-creativity, and increasing morale as some of the biggest benefits.</p>
-
-<p>None of this is news.  But I came away this week with a surprising realization.  When coding professionally for business
-use cases, things like resilience and stability are often at the top of the requirement list&mdash;Or at least, I&rsquo;d really
-hope so.  If it&rsquo;s not, kindly give me the name of your company so I know what stock to not buy ;).  To this end, coding
-is never as simple as just sitting down and banging away at a keyboard.  It involves testing, discussions, design,
-thinking, more testing, more thinking, and so on and so forth.</p>
-
-<p>Don&rsquo;t get me wrong.  These are all very, very good things.  But I, at least, was surprised at how nice it was to just
-sit down and bang away at a keyboard with abandon.  It sounds rather obvious in hindsight, but compared to the usual
-rigorously managed process of software development at work, it&rsquo;s super liberating to just cowboy out some code with no
-considerations other than speed and getting the job done.  And what&rsquo;s more, I realized that I had constrained myself to
-the same careful management in all of my personal projects as well, especially when prototyping out potential MVPs and
-such.  Again&mdash;Definitely a good thing, in most cases.  But after this week I&rsquo;m thinking that injecting some &ldquo;hack
-day&rdquo;-ish time into my personal projects is in order, if for no reason other than to let the crazy out.</p>
-
-<p><strong>tl;dr</strong> &ndash; Hack days are awesome.  I should do more of them.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Whole Chicken Biryani]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/04/23/whole-chicken-biryani/"/>
-    <updated>2014-04-23T21:38:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/04/23/whole-chicken-biryani</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Whole-Chicken-Biryani/i-2SMxkfv/0/L/DSC_2941-L.jpg"></p>
-
-<p>And it&rsquo;s time for yet another episode of &ldquo;As [I Have] Seen On TV&rdquo;!  This time, I draw inspiration from Ramsay&rsquo;s Great
-Escape, in which Gordon gets tired of his financial troubles and career as a TV chef and so decides to&hellip;  Go off to
-make more TV.  Go figure.</p>
-
-<!-- more -->
-
-
-<p>Regardless of motivations, it&rsquo;s a pretty engaging show.  Throughout two seasons, he travels through southeast
-Asia&mdash;India, China, Vietnam, and the like&mdash;slumming it with the locals to learn their skills and eventually returning to
-the &ldquo;civilized areas&rdquo; of the country to demonstrate his newfound knowledge.  The only real complaint I have is the
-(hopefully unintended) air of condescension that he develops at times.  &ldquo;Look, these people have <em>absolutely nothing</em>
-and they still eat like kings!  It&rsquo;s <em>amazing</em>!&rdquo;</p>
-
-<p>That aside, there are some memorable moments, one of which was a wedding catering to something in the neighborhood of
-1000 guests.  Ramsay goes back to his line cook roots and helps a chef stuff a goat with some chicken stuffed with quail
-stuffed with egg which is then loaded into a giant vat of rice. Despite my dreams to own a farm one day I still haven&rsquo;t
-the means to pull a goat out of thin air, but I figured a whole chicken biryani might be worth a shot.  While I have
-done biryani before, this was highly experimental, so this will be more of a photo log than set instructions</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Whole-Chicken-Biryani/i-45Rk3rc/0/L/DSC_2943-L.jpg"></p>
-
-<p>First, the chicken was rubbed with oil and lemon juice mixed with biryani-ish spices: cloves, cayenne, cumin seed,
-coriander, and so on.  That was left to sit for a little bit while I par-boiled my rice, and then thrown into a pot to
-roast with some potatoes.  I used my usual temps: 450 for &frac12; hour, 370 after.  In this case I shortened the cooking
-time a bit, since it still had to cook with the rice.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Whole-Chicken-Biryani/i-sD6CTSf/0/L/DSC_2944-L.jpg"></p>
-
-<p>After the chicken was done, I deglazed the bottom of the pot and lined it with freshly sliced tomatoes.  Then I stuffed
-some of the rice and potato into the chicken, loaded the chicken and potatoes back into the pot, and covered with the
-par-boiled rice.  I lined the pot cover with a cloth to trap the steam, and it finished in about 45 minutes at a
-medium-lowish heat.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Whole-Chicken-Biryani/i-5JQdj93/0/L/DSC_2950-L.jpg"></p>
-
-<p>Overall this turned out pretty well.  There wasn&rsquo;t much deviation from &ldquo;standard biryani procedure&rdquo;, which basically
-just involves cubed meat instead of a whole bird.  The biggest pain was getting the meat off the chicken at the end: it
-came off, but took some effort.  Perhaps a longer cooking time, or more moisture to cook the chicken with, next time?</p>
-]]></content>
-  </entry>
-  
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 </feed>

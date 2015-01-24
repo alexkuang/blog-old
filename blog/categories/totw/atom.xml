@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-<<<<<<< HEAD
   <title><![CDATA[Category: Totw | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/totw/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
-=======
-  <title><![CDATA[Category: totw | alex kuang]]></title>
-  <link href="http://alexkuang.github.io/blog/categories/totw/atom.xml" rel="self"/>
-  <link href="http://alexkuang.github.io/"/>
-  <updated>2014-11-25T18:11:22-05:00</updated>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -21,7 +14,6 @@
 
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: `gn` in Vim]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/gn-in-vim/"/>
     <updated>2015-01-24T11:53:51-05:00</updated>
@@ -261,83 +253,10 @@ signup now; not sure if there’s a beta line or something, but apparently I hav
 
 <p>Happy holidays!</p>
 
-=======
-    <title type="html"><![CDATA[Thing of the Week: Bash Bangs]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs/"/>
-    <updated>2014-11-25T17:40:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs</id>
-    <content type="html"><![CDATA[<p>This week I wanted to do a quick tip on some neat functionality in bash (and other bash-like shells), the bang commands.</p>
-
-<p>Let&rsquo;s say you have some long important command that you want to run.  You run it, only to discover that you need sudo
-privileges.  For situations like this, <code>!!</code> (entire last command) can be a great time-saver.</p>
-
-<p>```sh
-$ echo 1 2 3 4 5
-1 2 3 4 5 # let&rsquo;s pretend echo throws an error too and wants sudo for some reason</p>
-
-<p>$ sudo !!
-sudo echo 1 2 3 4 5
-Password:
-1 2 3 4 5
-```</p>
-
-<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used to print it without overwriting the
-&ldquo;last command&rdquo; history.</p>
-
-<p>```sh
-$ echo 1 2 3 4 5
-1 2 3 4 5</p>
-
-<p>$ !!:p
-echo 1 2 3 4 5</p>
-
-<p>$ sudo !!
-sudo echo 1 2 3 4 5
-Password:
-1 2 3 4 5
-```</p>
-
-<p>Bang commands also extend to the individual parts of the last command you ran.  The most basic form of this is <code>echo
-!:[n]</code>, where [n] is the nth word in the command, indexed from 0.  There are also shortcuts: <code>!^</code> gives the first arg
-(like <code>!:1</code>) and <code>!$</code> gives the last arg.</p>
-
-<p>```sh
-$ echo a b c d e
-a b c d e</p>
-
-<p>$ echo !:1
-echo a
-a</p>
-
-<p>$ echo a b c d e
-a b c d e</p>
-
-<p>$ !:5:p # :p works with any bangs!
-e</p>
-
-<p>$ echo !:5
-echo e
-e</p>
-
-<p>$ echo a b c d e
-a b c d e</p>
-
-<p>$ echo !$
-echo e
-e
-```</p>
-
-<p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> &ndash;>
-<code>rm -r !$</code>).  Plus, it&rsquo;s the easiest sequence to hit, finger-wise.</p>
-
-<p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
-e.g. <code>sudo !!&lt;TAB&gt;</code> gets replaced with <code>sudo echo 1 2 3 4 5</code> in place.</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Thing of the Week: The Silver Searcher (12/17/14)]]></title>
     <link href="http://alexkuang.github.io/blog/2015/01/24/the-silver-searcher/"/>
     <updated>2015-01-24T11:53:21-05:00</updated>
@@ -549,31 +468,6 @@ needed.</p>
 
 
 <p>Hope that’s useful / mildly interesting!</p>
-=======
-    <title type="html"><![CDATA[Thing of the Week: Vim Visual Block Mode]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/"/>
-    <updated>2014-11-20T18:33:00-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode</id>
-    <content type="html"><![CDATA[<p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
-demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
-snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
-aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
-discussion.</p>
-
-<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
-<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
-changes that entails.  While I&rsquo;m sure it&mdash;or something similar&mdash;will make a comeback, in the meantime I decided to
-try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
-I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
-incentive for me to be proactive in learning new things to talk about.</p>
-
-<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
-attention&mdash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
-always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
-what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
-
-<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 ]]></content>
   </entry>

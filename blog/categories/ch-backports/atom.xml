@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-<<<<<<< HEAD
   <title><![CDATA[Category: Ch-backports | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/ch-backports/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
-=======
-  <title><![CDATA[Category: ch-backports | alex kuang]]></title>
-  <link href="http://alexkuang.github.io/blog/categories/ch-backports/atom.xml" rel="self"/>
-  <link href="http://alexkuang.github.io/"/>
-  <updated>2014-11-25T18:11:22-05:00</updated>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -21,11 +14,7 @@
 
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Some CH Backport Vimporn]]></title>
-=======
-    <title type="html"><![CDATA[Some CH Backport vimporn]]></title>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <link href="http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn/"/>
     <updated>2014-05-02T20:45:00-04:00</updated>
     <id>http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn</id>
@@ -33,7 +22,6 @@
 vim skills on.  Technically I work in vim day-to-day, but usually the rest of the mental activity involved with coding
 end up pushing my vim-awareness more to the side than I&rsquo;d like.  This backport, however, was heavy on repetition but
 otherwise braindead, so it made the perfect set of practice exercises.  And since I had such fun (hey, it was a really
-<<<<<<< HEAD
 boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else finds this useful&ndash;or even better, has suggestions
 to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
 familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
@@ -51,22 +39,10 @@ familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed post
 
 
 
-=======
-boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else finds this useful&mdash;or even better, has suggestions
-to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
-familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
-
-<!-- more -->
-
-
-<h3>The Start</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Since I had all the posts in html form, using <code>:set paste</code> and copy-pasting from the browser seemed the most
 straightforward.  Or at least, more straightforward than trying to manually un-mangle everything in the post after being
 wrung through wordpress.  For most of the posts, the paste result looked something like this:</p>
 
-<<<<<<< HEAD
 
 
 
@@ -80,12 +56,6 @@ wrung through wordpress.  For most of the posts, the paste result looked somethi
 
 
 
-=======
-<p><img class="center" src="/images/ch-backport-vim/start.png" width="598" height="440"></p>
-
-<p>Not too awful, but the TODO is obvious:</p>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <ol>
 <li>Needs a banner image</li>
 <li>Lines need to be wrapped (not strictly necessary, but personal pet peeve)</li>
@@ -95,7 +65,6 @@ wrung through wordpress.  For most of the posts, the paste result looked somethi
 </ol>
 
 
-<<<<<<< HEAD
 
 
 <p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
@@ -109,18 +78,10 @@ markdown, that&rsquo;s pretty trivial.</p>
 
 
 
-=======
-<p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
-markdown, that&rsquo;s pretty trivial.</p>
-
-<h3>Banner image</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>This bit was easy.  I have a plugin installed called <code>vim-snipmate</code> (check it out
 <a href="https://github.com/garbas/vim-snipmate">here</a>) that&rsquo;s just built for stuff like this.  Simply put, defining the snippet
 below:</p>
 
-<<<<<<< HEAD
 
 
 
@@ -158,32 +119,10 @@ select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to w
 
 
 
-=======
-<p>```
-snippet img</p>
-
-<pre><code>{% img center ${1} %}
-</code></pre>
-
-<p>```</p>
-
-<p>allowed me to type <code>img&lt;TAB&gt;</code> and it would insert <code>{% img center %}</code>, with my cursor right after the <code>center</code> and ready
-to drop in my picture url.</p>
-
-<h3>Wrapping lines</h3>
-
-<p>vim has a normal mode command, <code>gq</code>, that does this quite well.  Personally I like using visual line mode (<code>V</code>) to
-select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to wrap a block) works as well.</p>
-
-<p><img class="center" src="/images/ch-backport-vim/gq-before.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/gq-after.png" width="598" height="440"></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>I only wrapped the plain paragraphs here, as there is still some fancy dedenting and formatting to do with the Ingredients
 and Methodology sections first.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -203,21 +142,11 @@ quick and easy.  (Just in case&ndash;Yes, <code>&gt;</code> is the command for i
 
 
 
-=======
-<h3>De-denting</h3>
-
-<p>The vim command for de-denting is <code>&lt;</code>.  Once again, combining with visual line mode or a motion (ex: <code>&lt;}</code>) makes it
-quick and easy.  (Just in case&mdash;Yes, <code>&gt;</code> is the command for indenting)</p>
-
-<h3>Ingredients => Unordered List</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>This one, I&rsquo;ll admit, is a little snazzy.  I used the lesser-known cousin of visual and visual line mode, visual block
 mode (accessed via <code>&lt;Ctrl&gt;-V</code>).  Once selecting the first characters of the lines I wanted with visual block, I could
 hit <code>&lt;Shift-I&gt;</code> to drop into insert mode before current character, <code>-</code> to insert what I wanted, then <code>&lt;ESC&gt;</code> to apply
 to everything in the selection.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -235,18 +164,10 @@ to everything in the selection.</p>
 
 
 
-=======
-<p><img class="center" src="/images/ch-backport-vim/ul-before.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/ul-during.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/ul-after.png" width="598" height="440"></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>Note that this is also a great way to mass-comment blocks of code in languages that only support single line comments
 with <code>#</code> or whatnot.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -284,31 +205,11 @@ with <code>#</code> or whatnot.</p>
 
 
 
-=======
-<h3>Methodology => Ordered List</h3>
-
-<p>And of course, the best is for last.  Ordered lists in markdown, logically, can be formatted something like this:</p>
-
-<p><code>
-1. item 1
-2. item 2
-3. item 3
-</code></p>
-
-<p>However, it&rsquo;s actually possible to cheat and still get ordered list output by doing:</p>
-
-<p><code>
-1. item 1
-1. item 2
-1. item 3
-</code></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>It turns out that the markdown spec doesn&rsquo;t care about the order of the numbering as long as the lines begin with
 numbers in that format.  So technically, I could use the same trick as the Ingredients Unordered List except inserting
 <code>1.</code>, and I&rsquo;d be done.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -379,46 +280,10 @@ Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of rec
 
 
 
-=======
-<p>&hellip;  But where&rsquo;s the fun in that?</p>
-
-<p>So here&rsquo;s another tidbit: in vim, if you place the cursor over a number and hit <code>&lt;Ctrl&gt;-A</code> in normal mode, it increments
-the number.  In a very smart way, too&mdash;it takes into account all of the digits, not just the one under the cursor.
-Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of recorded keystrokes that can be repeated).</p>
-
-<p>Rather than explain in long form, it seems easier just paste the sequence and annotate it.</p>
-
-<p>```sh
-qq<sup>yaWjP</sup>^^Aq # Complete keystroke sequence</p>
-
-<pre><code>         # Note that ^A is one character--see below for details
-</code></pre>
-
-<p>qq   # Start recording keystrokes into the q register
-^    # Go to first non-blank character of line
-yaW  # yank (copy) a Word&mdash;Capital W means a &ldquo;word&rdquo; is terminated only by spaces, not punctuation like &ldquo;&ndash;&rdquo;
-j    # Go down a line
-P^   # Paste before cursor, then go back to first non-blank character
-^A   # Increment number
-q    # Stop recording
-```</p>
-
-<p>It ends up looking something like this, played out:</p>
-
-<p><img class="center" src="/images/ch-backport-vim/mac-1.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/mac-2.png" width="598" height="440"></p>
-
-<p><img class="center" src="/images/ch-backport-vim/mac-3.png" width="598" height="440"></p>
-
-<p><em>(Aside: I should start making gifs again for stuff like this&hellip;  Perhaps another day when I have more time.)</em></p>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Once the macro is recorded, it can be played back via <code>@q</code>, or whichever register it was recorded into.  More
 importantly, because it resets to the right positions in the lines and moves down automatically, it can actually be
 repeated!  e.g., <code>2@q</code> turns this:</p>
 
-<<<<<<< HEAD
 
 
 
@@ -448,57 +313,32 @@ repeated!  e.g., <code>2@q</code> turns this:</p>
 
 
 
-=======
-<p><code>
-1. item 1
-item 2
-item 3
-</code></p>
-
-<p>into this:</p>
-
-<p><code>
-1. item 1
-2. item 2
-3. item 3
-</code></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>Writing macros to position in a looping way like this is another post altogether, but suffice to say this saved a TON of
 time over multiple posts.  Granted, it still depends on the <code>1.</code> being inserted manually, but that&rsquo;s pretty trivial I
 think.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Another neat thing that might not immediately be obvious is that regular yanking (or copying, if you will) goes into the
 same registers as macro recordings.  So you can use <code>"qp</code> to paste the contents of your macro into a buffer to map it to
 keys or functions (ex: <code>nnoremap &lt;leader&gt;o ^yaW[...]</code>).</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Furthermore, this means that if a recording goes wrong, you can just paste it out, edit it, then select and <code>"qy</code> (or
 similar) to yank back the edited form.  The only caveat is that certain characters like <code>^A</code> may paste out and LOOK like
 two characters, but is infact only one character.  Not a big deal if you&rsquo;re just yanking and replacing text, but it can
 be a weird GOTCHA if you&rsquo;re trying to write a macro by hand or something.  (In this particular case, the <code>^A</code> character
 can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, but it pays to watch out in general for stuff like this)</p>
 
-<<<<<<< HEAD
 
 
 
 <p>So there you have it, ladies and gentlemen&ndash;My idea of fun on a Sunday afternoon&hellip;</p>
 
-=======
-<p>So there you have it, ladies and gentlemen&mdash;My idea of fun on a Sunday afternoon&hellip;</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
@@ -509,7 +349,6 @@ can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, bu
     <id>http://alexkuang.github.io/blog/2014/04/26/ch-backports</id>
     <content type="html"><![CDATA[<p>For anyone unfamiliar, I wrote a food blog a while back called curehappiness with my then-roommate,
 <a href="http://tlextrait.com/">Thomas</a>.  It was active mostly during my college years, dying down due to a whole variety of
-<<<<<<< HEAD
 reasons&ndash;office life, apathy at the post-grad lifestyle, wordpress being a pain&hellip;  All that great stuff.  The project
 had originally started as an off-the-cuff idea for something to do with a newly commissioned server; after a while, I
 decided to shuffle up my server arrangements, and curehappiness&#8217; Wordpress installation got the axe.  Since I couldn&rsquo;t
@@ -533,28 +372,11 @@ small notes from the future, which will be in blockquotes at the top:</p>
 
 
 <p>I ported the posts with the most worthwhile content&ndash;namely, recipes and records of experiments.  Restaurant reviews and
-=======
-reasons&mdash;office life, apathy at the post-grad lifestyle, wordpress being a pain&hellip;  All that great stuff.  The project
-had originally started as an off-the-cuff idea for something to do with a newly commissioned server; after a while, I
-decided to shuffle up my server arrangements, and curehappiness' Wordpress installation got the axe.  Since I couldn&rsquo;t
-be bothered to backup the entire WP install, I just saved a bunch of the posts in HTML form instead, with the idea of
-one day porting it to whatever new platform I would be running.</p>
-
-<p>After all this time on Octopress + Github Pages, I finally pulled the trigger.  All the backported posts will be from
-before 2013, tagged as <code>ch-backports</code>, and will contain a link at the top to this post.  They&rsquo;ve largely been preserved
-verbatim, minus a few corrections like &lsquo;boal&rsquo; &ndash;> &lsquo;bowl&rsquo; (seriously, past Alex???).  However, I couldn&rsquo;t resist adding
-small notes from the future, which will be in blockquotes at the top:</p>
-
-<blockquote><p>like so.</p></blockquote>
-
-<p>I ported the posts with the most worthwhile content&mdash;namely, recipes and records of experiments.  Restaurant reviews and
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 other such content were few and far between, and honestly aside from a couple of wisecracks and some nice pictures, they
 felt pretty banal; not a solid reason for censorship, granted, but I still felt it wasn&rsquo;t worth the effort.  I&rsquo;ll
 probably upload the photos from those posts to smugmug at some point and save the rewrites for when I have actual
 original insights beyond &ldquo;yes, the food was good&rdquo;.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -562,11 +384,6 @@ original insights beyond &ldquo;yes, the food was good&rdquo;.</p>
 tech-gorey details later, but suffice to say that I&rsquo;ve learned my lesson about storing data in arbitrary mangled html
 generated by a WYSIWYG editor run through who knows how many plugins and themes.</p>
 
-=======
-<p>As a final note, migrating was not trivial, but I did get some nice hackery out of it.  I&rsquo;ll probably post the
-tech-gorey details later, but suffice to say that I&rsquo;ve learned my lesson about storing data in arbitrary mangled html
-generated by a WYSIWYG editor run through who knows how many plugins and themes.</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
@@ -577,18 +394,14 @@ generated by a WYSIWYG editor run through who knows how many plugins and themes.
     <id>http://alexkuang.github.io/blog/2012/12/01/chinese-braised-beef-shank</id>
     <content type="html"><![CDATA[<h5>This is a backport from my old blog.  Please see <a href="http://alexkuang.com/blog/2014/04/26/ch-backports/">this post</a> for more details.</h5>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <blockquote><p>This was the first actual post I&rsquo;d written in a while that wasn&rsquo;t a banal restaurant review, in an attempt to start up
 the whole blogging in thing again.  Too bad Meaningful Use at work started really kicking in at that time, and I
 realized how much of a painful time suck it was to wrangle wordpress, so this was the last post on the old blog before I
 took the server down and stopped writing altogether.  It&rsquo;s all very sad.</p></blockquote>
 
-<<<<<<< HEAD
 
 
 
@@ -596,9 +409,6 @@ took the server down and stopped writing altogether.  It&rsquo;s all very sad.</
 
 
 
-=======
-<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-RKjGV2B/0/L/DSC_1888-L.jpg">http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-RKjGV2B/0/L/DSC_1888-L.jpg</a>"></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>Braised beef shank is another favorite from my childhood that I commonly found as an appetizer at banquet-style dinners,
 though it isn&rsquo;t really a braised dish in the traditional western sense.  It isn&rsquo;t served with the braising liquid, and
@@ -606,7 +416,6 @@ it doesn&rsquo;t aim to fall apart on the fork; quite the opposite, actually.  T
 and aromatic spices, then sliced thinly and served cold.  The end result is a great example of a cut of meat that is
 usually tough and cheap being transformed into something wonderfully flavorful by a bit of time and ingenuity.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -615,10 +424,6 @@ usually tough and cheap being transformed into something wonderfully flavorful b
 
 
 
-=======
-<h3>Ingredients</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <ul>
 <li>Two beef shanks</li>
 <li>1.5 cup dark soy sauce</li>
@@ -632,7 +437,6 @@ usually tough and cheap being transformed into something wonderfully flavorful b
 </ul>
 
 
-<<<<<<< HEAD
 
 
 <h3>Methodology</h3>
@@ -640,19 +444,11 @@ usually tough and cheap being transformed into something wonderfully flavorful b
 
 
 
-=======
-<h3>Methodology</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <ol>
 <li>Bring a pot of water to a boil, and simmer the meat in it for about 5 minutes, then rinse with cold water.  This
 helps get rid of some of the gameyness and clean up the flavor a little.</li>
 <li>Place everything (the meat, soy sauce, water, and spices) into a pot and bring to a boil.
-<<<<<<< HEAD
 <img class="center" src="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-td3L4V7/0/M/DSC_1873-M.jpg"></li>
-=======
-<img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-td3L4V7/0/M/DSC_1873-M.jpg">http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-td3L4V7/0/M/DSC_1873-M.jpg</a>"></li>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <li>Simmer on a low heat for about 2-3 hours.</li>
 <li>Let everything cool, and stick it in the fridge overnight.  This step is not optional; the beef shanks will be
 infinitely easier to slice once cooled, and the extra time will let the flavors soak in properly.  In addition, the
@@ -667,7 +463,6 @@ just dunk it into a hot bowl of noodle soup, whatever works.</li>
 </ol>
 
 
-<<<<<<< HEAD
 
 
 <h3>Notes</h3>
@@ -675,30 +470,19 @@ just dunk it into a hot bowl of noodle soup, whatever works.</li>
 
 
 
-=======
-<h3>Notes</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Although I provide a list of ingredients, it is by no means gospel; everyone I&rsquo;ve ever known has used slightly different
 ingredients in slightly varying amounts.  Likewise, it&rsquo;s not the end of the world if a few ingredients are missing or
 have to be substituted, although all of the above list should be available at any decent Chinese grocer, or Amazon when
 all else fails.  Dark soy sauce, which is similar to light soy sauce except fermented with a few extra ingredients and
 for longer, yielding a richer and less salty product, can ostensibly be replaced with regular soy sauce and more sugar
-<<<<<<< HEAD
 (caveat: I&rsquo;ve never tried this myself, so I have no idea how it will go&ndash;most places that sell soy sauce will sell dark
-=======
-(caveat: I&rsquo;ve never tried this myself, so I have no idea how it will go&mdash;most places that sell soy sauce will sell dark
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 soy sauce anyway).  Rock sugar can be replaced by table sugar with negligible difference.  Other aromatics like
 cardamom, fivespice powder, or orange peel can be mixed in.  I would really caution against adding too many cloves,
 though; they have a tendency to overpower other ingredients very quickly.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>The other thing worth mentioning is that the braising liquid can also work for other meats.  Chicken thighs and
 drumsticks work with this flavor very well, and eggs can be used as well as sort of variation on tea eggs.  A personal
 favorite of mine is pork tongue (I recommend the same boiling + slicing procedure, though with thicker slices and served
@@ -707,7 +491,6 @@ plentiful supply for a cheap price, and I love the insane contrast between a hor
 the cutting board and the same tongue ready to serve and neatly sliced on a plate moments later.  Seriously though, pork
 tongue has an amazing flavor and texture, and everyone should try it at least once.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -718,11 +501,6 @@ tongue has an amazing flavor and texture, and everyone should try it at least on
 
 <p><img class="center" src="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-Vj8PVDn/0/L/DSC_1883-L.jpg"></p>
 
-=======
-<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-7G8b3n2/0/L/DSC_1879-L.jpg">http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-7G8b3n2/0/L/DSC_1879-L.jpg</a>"></p>
-
-<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-Vj8PVDn/0/L/DSC_1883-L.jpg">http://waffleparadox.smugmug.com/Food/Braised-Beef-Shank/i-Vj8PVDn/0/L/DSC_1883-L.jpg</a>"></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
@@ -733,18 +511,14 @@ tongue has an amazing flavor and texture, and everyone should try it at least on
     <id>http://alexkuang.github.io/blog/2011/12/01/cinnamon-rolls</id>
     <content type="html"><![CDATA[<h5>This is a backport from my old blog.  Please see <a href="http://alexkuang.com/blog/2014/04/26/ch-backports/">this post</a> for more details.</h5>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <blockquote><p>Holy crap, it&rsquo;s been way too long since I&rsquo;ve made these&hellip;  Seeing this post reminds me that this dough seems vaguely
 similar to the Morning Bun at Oleana.  Applying this dough to a similar pull-apart-bread-ish procedure has been on my
 todo list for a while now.  Plus I still haven&rsquo;t done the cardamom variation I mentioned at the end of the post.  A
 good idea for summer, perhaps.</p></blockquote>
 
-<<<<<<< HEAD
 
 
 
@@ -762,16 +536,6 @@ stupid, and lazy.</p>
 
 
 
-=======
-<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-FCvsSfX/0/L/DSC_1430-L.jpg">http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-FCvsSfX/0/L/DSC_1430-L.jpg</a>"></p>
-
-<p>This is another recipe I started working on due to what I like to call the &ldquo;American Bakery Syndrome&rdquo;&mdash;that is, the
-majority of what I can buy in stores sucks.  In this case, for the most part I&rsquo;ve found that they&rsquo;ve tasted soggy, and
-more of sugar syrup than cinnamon.  That&rsquo;s not to say I don&rsquo;t have a sweet tooth&mdash;quite the opposite.  But my stance
-here is much like the one I take for excessive use of hot sauce&mdash;sure, it tastes like something, but it&rsquo;s still boring,
-stupid, and lazy.</p>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>Here are the basics.  Cinnamon rolls are viennoiserie; simply put, that means they&rsquo;re sort of the bastard child of bread
 and more conventional pastry.  This means there is fermenting dough involved, and you will need time to do this
 properly.  You can, as usual, cut on the time, but the flavor won&rsquo;t be as nice.  For people working the 9-5, I recommend
@@ -779,7 +543,6 @@ starting the dough in the morning, and finishing everything after getting home f
 rolled out, sprinkled with filling, and rolled up and cut into small buns.  The full form of this roll that I originally
 used comes with a glaze, but since development I haven&rsquo;t put them together; the combination of the sugar and butter in
 the roll, cinnamon filling AND the glaze is potent enough to violate the Geneva Convention.  As for the icing crap on
-<<<<<<< HEAD
 top&ndash;I don&rsquo;t believe in it.  It clobbers any nice feeling from the bun and cinnamon with massive amounts of unwarranted
 sugar.  You can do it if you want, just don&rsquo;t tell me about it.</p>
 
@@ -791,13 +554,6 @@ sugar.  You can do it if you want, just don&rsquo;t tell me about it.</p>
 
 
 
-=======
-top&mdash;I don&rsquo;t believe in it.  It clobbers any nice feeling from the bun and cinnamon with massive amounts of unwarranted
-sugar.  You can do it if you want, just don&rsquo;t tell me about it.</p>
-
-<h3>Ingredients (dough)</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <ul>
 <li>400g bread flour</li>
 <li>100g cake flour (AP works as well)</li>
@@ -810,7 +566,6 @@ sugar.  You can do it if you want, just don&rsquo;t tell me about it.</p>
 </ul>
 
 
-<<<<<<< HEAD
 
 
 <h3>Ingredients (filling)</h3>
@@ -818,20 +573,13 @@ sugar.  You can do it if you want, just don&rsquo;t tell me about it.</p>
 
 
 
-=======
-<h3>Ingredients (filling)</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>The main thing to understand about the filling is the proportions.  The basic formula is 100g brown sugar for 100g sugar
 for 6g cinnamon.  However, how much you actually use is basically up to your personal tastes, and how diabetic you feel
 like getting after eating a batch.  For the dough quantity above, a full amount would probably be something like:</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <ul>
 <li>25g brown sugar</li>
 <li>25g sugar</li>
@@ -839,7 +587,6 @@ like getting after eating a batch.  For the dough quantity above, a full amount 
 </ul>
 
 
-<<<<<<< HEAD
 
 
 <h3>Methodology</h3>
@@ -847,10 +594,6 @@ like getting after eating a batch.  For the dough quantity above, a full amount 
 
 
 
-=======
-<h3>Methodology</h3>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <ol>
 <li>Mix the dry ingredients together, and add the water.  Mix until it&rsquo;s just starting to come together.</li>
 <li>If you chose to melt the butter for time constraints, mix it in slowly so you don&rsquo;t have a large quantity of hot
@@ -858,11 +601,7 @@ butter touching the dough at any given time.  If the butter is at room temp, cho
 incorporate into the dough slowly.</li>
 <li>Mix/knead the dough until the gluten is well-formed, and you have a solid ball of dough.  This takes roughly 5
 minutes on medium speed on a kitchenaid with a dough hook, but may take longer if you&rsquo;re doing it by hand.</li>
-<<<<<<< HEAD
 <li>Cover the dough with plastic wrap, and let it rest in the fridge &ldquo;overnight&rdquo;&ndash;this means 4 hours minimum, 10 hours
-=======
-<li>Cover the dough with plastic wrap, and let it rest in the fridge &ldquo;overnight&rdquo;&mdash;this means 4 hours minimum, 10 hours
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 maximum by my reckoning.</li>
 <li>Take the dough out, and let it sit for about 45 minutes so the butter in the dough softens and it becomes more
 workable.</li>
@@ -870,17 +609,10 @@ workable.</li>
 <li>Brush the entire surface of the dough with water, and sprinkle on the filling.  I prefer using a sieve for an even
 distribution.  MAKE SURE to leave a small strip of dough, about 1-2 inches, at the edge that has water but no
 filling, so that when you roll it up it seals properly.
-<<<<<<< HEAD
 <img class="center" src="http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-7wFtjKw/0/M/DSC_1419-M.jpg"></li>
 <li>Roll the rectangle up into a big log, and cut into small rolls.  Rest them on their sides on a baking pan lined with
 parchment paper.  In the meantime, pre-heat your oven to 385 F.
 <img class="center" src="http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-VCC3Pzv/0/M/DSC_1420-M.jpg"></li>
-=======
-<img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-7wFtjKw/0/M/DSC_1419-M.jpg">http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-7wFtjKw/0/M/DSC_1419-M.jpg</a>"></li>
-<li>Roll the rectangle up into a big log, and cut into small rolls.  Rest them on their sides on a baking pan lined with
-parchment paper.  In the meantime, pre-heat your oven to 385 F.
-<img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-VCC3Pzv/0/M/DSC_1420-M.jpg">http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-VCC3Pzv/0/M/DSC_1420-M.jpg</a>"></li>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <li>(OPTIONAL)  At this point you can give the rolls a good coating of eggwash (this is a good opportunity to use up that
 spare egg from above).  It doesn&rsquo;t really affect the taste (unless you screw up) but it definitely goes miles in
 terms of presentation.  Everyone has different formulas for eggwash and as far as I can tell it doesn&rsquo;t make too much
@@ -895,11 +627,7 @@ have softened up considerably.  Unless there is no change after 2+ hours, in whi
 terribly wrong; perhaps you didn&rsquo;t use enough yeast, or killed them off somehow.  Another good indicator is if the
 middle of the rolls are slightly pushed up due to the expansion, and if any excess water you brushed on earlier gets
 squeezed out as well.
-<<<<<<< HEAD
 <img class="center" src="http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-KkDnkr6/0/M/DSC_1421-M.jpg"></li>
-=======
-<img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-KkDnkr6/0/M/DSC_1421-M.jpg">http://waffleparadox.smugmug.com/Food/Cinnamon-Rolls/i-KkDnkr6/0/M/DSC_1421-M.jpg</a>"></li>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <li>(OPTIONAL) Right before putting the rolls into the oven, throw on a second coating of eggwash.  Why two?  It gives
 it more color and more depth, and if you&rsquo;re going to go to the trouble of doing eggwash, might as well do it
 properly.  If you&rsquo;re really lazy, you can skip the first coating from above and just do this one.</li>
@@ -908,16 +636,12 @@ recommend checking on them after 13 minutes and deciding how much longer based o
 </ol>
 
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>And there you have it.  Not that hard, aye?  There&rsquo;s not even a need for a Notes section, since this is a fairly
 straightforward (if time-consuming) process.  Anything that can go wrong in terms of rolling, shaping, etc, all comes
 down to practice, so there really isn&rsquo;t much I can say in a broad sense to remedy that.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -925,11 +649,6 @@ down to practice, so there really isn&rsquo;t much I can say in a broad sense to
 cardamom, and tops the bun with tiny bits of pearl sugar.  It&rsquo;s a bit unusual, but tasty nonetheless.  I may try
 reproducing it one day.</p>
 
-=======
-<p>One interesting note though, is that there is a Swedish-Slash-Scandinavian version of this that infuses the filling with
-cardamom, and tops the bun with tiny bits of pearl sugar.  It&rsquo;s a bit unusual, but tasty nonetheless.  I may try
-reproducing it one day.</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   
@@ -940,12 +659,9 @@ reproducing it one day.</p>
     <id>http://alexkuang.github.io/blog/2011/10/01/strawberry-shortcake</id>
     <content type="html"><![CDATA[<h5>This is a backport from my old blog.  Please see <a href="http://alexkuang.com/blog/2014/04/26/ch-backports/">this post</a> for more details.</h5>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <blockquote><p>For a post about strawberry cake, I sure seemed angry when I wrote this&hellip;  And very self-assured.  Ha!  I now take a
 slightly less drastic stance on the whipped cream issue; purity is secondary to overall structure and quality.  But I
 still hate icing.  And fondant, which tastes like chalk mixed with monkey sweat.  Fuck fondant.</p>
@@ -953,7 +669,6 @@ still hate icing.  And fondant, which tastes like chalk mixed with monkey sweat.
 <p>Working backwards, I&rsquo;d also forgotten how much yellower the lights in that apartment were, check out the horrendous
 white bal on the unedited <a href="http://waffleparadox.smugmug.com/Food/Strawberry-Cake">other photos</a>.</p></blockquote>
 
-<<<<<<< HEAD
 
 
 
@@ -971,16 +686,6 @@ it&rsquo;s not a racial thing.</p>
 
 
 
-=======
-<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Strawberry-Cake/i-pVNbCvG/0/L/DSC_1186-L.jpg">http://waffleparadox.smugmug.com/Food/Strawberry-Cake/i-pVNbCvG/0/L/DSC_1186-L.jpg</a>"></p>
-
-<p>I remember going to a restaurant once and being repulsed at the &ldquo;strawberry shortcake&rdquo; that was served which had a base
-of something closer to a cookie than a cake.  As it turns out, this is the &ldquo;correct&rdquo; American version, but you know
-what?  Screw that.  The form I&rsquo;m familiar with&mdash;strawberries, sweetened whipped cream, light sponge cake&mdash;is apparently
-a Japanese take on the concept, and I must say that once again I prefer the Asian approach to the American.  I swear
-it&rsquo;s not a racial thing.</p>
-
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>That aside, this is the latest in a series of experiments involving the original sponge that I had discovered.  The main
 variable I was playing with in this cake was the sweetened whipped cream.  Whipped cream alone is not stiff enough to
 hold a cake together; especially when you consider that it must be sliced, and pieces will be taken with forks, etc.
@@ -988,22 +693,16 @@ It&rsquo;s simply too squishy.  This problem is remedied with the addition of co
 rests in the refrigerator, but add too much of that and here comes the diabetic shock.  What I ended up settling with
 was 600g cream, 150g confectioner&rsquo;s sugar</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>The result was a very workable mixture that didn&rsquo;t taste TOO sweet.  I took it to 180 once, which was just way too much;
 I think the final number I&rsquo;d settle on is about 130, but in all practicality anything as low as 100-120 would probably
 be alright.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>A side-note:  Some people hold that you need all sorts of fancy contraptions to assemble a cake properly; for example, a
 cake &ldquo;frame&rdquo; to hold the cake in constant shape while frosting.  This is, if I&rsquo;ve ever seen any, some pretty class-A
 horse excrement.  All you really need is a bit of skill and a flat-edged palette knife, and an even surface to work
@@ -1011,7 +710,6 @@ on.  Sure, tools and gadgets and gizmos will probably make your life easier; esp
 turning out one cake after another.  But to believe that all that is necessary is an advanced case of what I like to
 call &ldquo;powering on the electric mixer before ever holding a whisk.&rdquo;  And by advanced, I mean like stages of cancer.</p>
 
-<<<<<<< HEAD
 
 
 
@@ -1019,21 +717,15 @@ call &ldquo;powering on the electric mixer before ever holding a whisk.&rdquo;  
 
 
 
-=======
-<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Food/Strawberry-Cake/i-LqDQPGj/0/L/DSC_1189-L.jpg">http://waffleparadox.smugmug.com/Food/Strawberry-Cake/i-LqDQPGj/0/L/DSC_1189-L.jpg</a>"></p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 
 <p>And aside from a bit of sloppiness on the bottom right-ish rim of the cake (oopsies), note how it&rsquo;s pretty presentable
 even with minimal effort; with an extra 5 seconds, I tidied up the rim to complete flatness.  A quickly (albeit
 extrememly messily, look on the right there!) piped garland type thing did a perfect job in covering those bits that I
 missed up.  Cake frames?  Pah!</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>But all disdain for idiotic doodads aside, if there&rsquo;s one thing this little experiment has taught me it&rsquo;s that I&rsquo;ve been
 giving decoration far too little credit.  Thus far I&rsquo;ve focused on other technical parts of cooking that weren&rsquo;t to do
 with pure aesthetics (for example, the intensely fickle process behind macarons) and dismissed decoration as something
@@ -1041,10 +733,7 @@ more artsy fartsy than having a significant effect on taste.  Of course I knew a
 guess I&rsquo;d underestimated just how much, as well as the degree of technical skill needed for proper decoration even
 disregarding any sort of artistic ability and flair.  I thought I&rsquo;d hit a soft cap on the technical after I&rsquo;d finished
 macarons, but it&rsquo;s nice to know that there&rsquo;s another frontier.</p>
-<<<<<<< HEAD
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   

@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-<<<<<<< HEAD
   <title><![CDATA[Category: Meta | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/meta/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
   <updated>2015-01-24T16:21:07-05:00</updated>
-=======
-  <title><![CDATA[Category: meta | alex kuang]]></title>
-  <link href="http://alexkuang.github.io/blog/categories/meta/atom.xml" rel="self"/>
-  <link href="http://alexkuang.github.io/"/>
-  <updated>2014-11-25T18:11:22-05:00</updated>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -21,11 +14,7 @@
 
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Jab, Jab]]></title>
-=======
-    <title type="html"><![CDATA[Jab, jab]]></title>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     <link href="http://alexkuang.github.io/blog/2013/12/04/jab/"/>
     <updated>2013-12-04T19:04:00-05:00</updated>
     <id>http://alexkuang.github.io/blog/2013/12/04/jab</id>
@@ -35,12 +24,9 @@ research.  Inevitably the post would be articulate, well-researched, and laden w
 boot.  And I would hit control+w, convinced that I don&rsquo;t have anything to add; even if I did, I&rsquo;m an awful writer and
 nobody reads my blog anyway.</p>
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 <p>But writing is an Important Skill, one that I&rsquo;d very much like to improve.  I&rsquo;m certainly not going to get any better by
 <em>not</em> doing it, and <a href="http://weknowmemes.com/2012/05/sucking-at-something-is-the-first-step-to-becoming/">everyone has to start somewhere</a>: keep practicing, keep
 drilling, keep jabbing away, and eventually you&rsquo;ll probably make progress.  I remember an old post of Jeff Atwood&rsquo;s
@@ -48,7 +34,6 @@ where his only advice was to <a href="http://www.codinghorror.com/blog/2007/10/h
 with it.  Maybe it&rsquo;s about time I did just that.  <strong>One post a week</strong>, even if the topic sounds asinine and I&rsquo;m low on
 inspiration and nobody will read it (or <em>especially</em> if nobody will read it?).</p>
 
-<<<<<<< HEAD
 
 
 
@@ -67,16 +52,6 @@ bully the other (much bigger) cats, knock over bowls and trash bags, attack ever
 just generally be an unabashed little snot.  But she&rsquo;s disarmingly adorable, so naturally none of that matters in the
 slightest.</p>
 
-=======
-<p>With all that said, I&rsquo;d like to introduce my newest housemate, <a href="http://waffleparadox.smugmug.com/Animals/Zelda">Zelda</a>.</p>
-
-<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Animals/Zelda/i-rNGBWHH/0/L/DSC_2268-L.jpg">http://waffleparadox.smugmug.com/Animals/Zelda/i-rNGBWHH/0/L/DSC_2268-L.jpg</a>"></p>
-
-<p>She arrived with all of 3 days' notice, and is at just about that age where kittens tend to be terrible people.  She&rsquo;ll
-bully the other (much bigger) cats, knock over bowls and trash bags, attack everything like the king of the jungle, and
-just generally be an unabashed little snot.  But she&rsquo;s disarmingly adorable, so naturally none of that matters in the
-slightest.</p>
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 ]]></content>
   </entry>
   

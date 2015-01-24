@@ -1,5 +1,4 @@
 function getNav() {
-<<<<<<< HEAD
   var mainNav = $('ul.main-navigation, ul[role=main-navigation]').before('<fieldset class="mobile-nav">')
   var mobileNav = $('fieldset.mobile-nav').append('<select>');
   mobileNav.find('select').append('<option value="">Navigate&hellip;</option>');
@@ -11,21 +10,6 @@ function getNav() {
   mobileNav.find('select').bind('change', function(event) {
     if (event.target.value) { window.location.href = event.target.value; }
   });
-=======
-  var mobileNav = $('nav[role=navigation] fieldset[role=search]').after('<fieldset class="mobile-nav"></fieldset>').next().append('<select></select>');
-  mobileNav.children('select').append('<option value="">Navigate&hellip;</option>');
-  $('ul[role=main-navigation]').addClass('main-navigation');
-  $('ul.main-navigation a').each(function(i, link) {
-    mobileNav.children('select').append('<option value="'+link.href+'">&raquo; '+link.text+'</option>');
-  });
-  $('ul.subscription a').each(function(i, link) {
-    mobileNav.children('select').append('<option value="'+link.href+'">&raquo; '+link.text+'</option>');
-  });
-  mobileNav.children('select').bind('change', function(event) {
-    if (event.target.value) { window.location.href = event.target.value; }
-  });
-  mobileNav.children('select').val('');
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 }
 
 function addSidebarToggler() {
@@ -33,24 +17,12 @@ function addSidebarToggler() {
     $('#content').append('<span class="toggle-sidebar"></span>');
     $('.toggle-sidebar').bind('click', function(e) {
       e.preventDefault();
-<<<<<<< HEAD
       $('body').toggleClass('collapse-sidebar');
-=======
-      if ($('body').hasClass('collapse-sidebar')) {
-        $('body').removeClass('collapse-sidebar');
-      } else {
-        $('body').addClass('collapse-sidebar');
-      }
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
     });
   }
   var sections = $('aside.sidebar > section');
   if (sections.length > 1) {
-<<<<<<< HEAD
     sections.each(function(index, section){
-=======
-    sections.each(function(section, index){
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
       if ((sections.length >= 3) && index % 3 === 0) {
         $(section).addClass("first");
       }
@@ -96,17 +68,10 @@ function addCodeLineNumbers() {
 function flashVideoFallback(){
   var flashplayerlocation = "/assets/jwplayer/player.swf",
       flashplayerskin = "/assets/jwplayer/glow/glow.xml";
-<<<<<<< HEAD
   $('video').each(function(i, video){
     video = $(video);
     if (!Modernizr.video.h264 && swfobject.getFlashPlayerVersion() || window.location.hash.indexOf("flash-test") !== -1){
       video.children('source[src$=mp4]').first().map(i, function(source){
-=======
-  $('video').each(function(video){
-    video = $(video);
-    if (!Modernizr.video.h264 && swfobject.getFlashPlayerVersion() || window.location.hash.indexOf("flash-test") !== -1){
-      video.children('source[src$=mp4]').first().map(function(i, source){
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
         var src = $(source).attr('src'),
             id = 'video_'+Math.round(1 + Math.random()*(100000)),
             width = video.attr('width'),
@@ -123,36 +88,12 @@ function flashVideoFallback(){
 }
 
 function wrapFlashVideos() {
-<<<<<<< HEAD
   $('object').each(function(i, object) {
     if( $(object).find('param[name=movie]').length ){
       $(object).wrap('<div class="flash-video">')
     }
   });
   $('iframe[src*=vimeo],iframe[src*=youtube]').wrap('<div class="flash-video">')
-=======
-  $('object').each(function(object) {
-    object = $(object);
-    if ( $('param[name=movie]', object).length ) {
-      var wrapper = object.before('<div class="flash-video"><div>').previous();
-      $(wrapper).children().append(object);
-    }
-  });
-  $('iframe[src*=vimeo],iframe[src*=youtube]').each(function(iframe) {
-    iframe = $(iframe);
-    var wrapper = iframe.before('<div class="flash-video"><div>').previous();
-    $(wrapper).children().append(iframe);
-  });
-}
-
-function renderDeliciousLinks(items) {
-  var output = "<ul>";
-  for (var i=0,l=items.length; i<l; i++) {
-    output += '<li><a href="' + items[i].u + '" title="Tags: ' + (items[i].t == "" ? "" : items[i].t.join(', ')) + '">' + items[i].d + '</a></li>';
-  }
-  output += "</ul>";
-  $('#delicious').html(output);
->>>>>>> 3f751f29d79be717da3f49498942848728c0ff04
 }
 
 $('document').ready(function() {
