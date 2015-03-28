@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2015-01-24T16:21:07-05:00</updated>
+  <updated>2015-01-28T10:11:26-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Vim Ctrl-p, Plus Bonus Rant]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/28/vim-ctrl-p-plus-bonus-rant/"/>
+    <updated>2015-01-28T10:09:32-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/28/vim-ctrl-p-plus-bonus-rant</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thing of the Week: `gn` in Vim]]></title>

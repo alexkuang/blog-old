@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Totw | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/totw/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2015-01-24T16:21:07-05:00</updated>
+  <updated>2015-01-28T10:11:26-05:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Vim Ctrl-p, Plus Bonus Rant]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/28/vim-ctrl-p-plus-bonus-rant/"/>
+    <updated>2015-01-28T10:09:32-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/28/vim-ctrl-p-plus-bonus-rant</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thing of the Week: `gn` in Vim]]></title>
@@ -337,137 +346,6 @@ files that you don’t necessarily care about, e.g. Tags files, third-party depe
 <p>Fun fact: I was doing the whole <code>grep –r</code> thing for an embarrassingly long time before I bothered to search for a better
 workflow.  My initial search turned up ack, which then led to ag.  As far as I can tell, feature-wise they’re
 comparable; I eventually settled on ag just ‘cause the command requires less typing.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Thing of the Week: Vim % Expansion (12/10/14)]]></title>
-    <link href="http://alexkuang.github.io/blog/2015/01/24/vim-expansion/"/>
-    <updated>2015-01-24T11:52:53-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2015/01/24/vim-expansion</id>
-    <content type="html"><![CDATA[<h3>% (Current File Name)</h3>
-
-
-
-
-<p>Another vim tip this week!  This time, it’s about ‘%’, which expands to ‘current file name’.  This is especially useful
-in projects with java/scala style directory setups, where your source is approximately 1.5 million folders away from the
-project root, but you kind of want to hang around project root for things like ant/sbt/etc to work.  <code>%</code> makes this
-easier to work with files in the deeply nested folders while doing this.</p>
-
-
-
-
-<p>Taking a contrived example, instead of doing something like this to <code>git log</code> the file you are currently editing:</p>
-
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:!git log src/main/scala/com/bizo/(…)/Foo.scala</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
-
-<p>You can just do:</p>
-
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:!git log %</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
-
-<p>This is extremely convenient and works everywhere in command line mode (basically, whenever ‘:’ is used), but is also
-useful to have if you’re ever writing vim script.  See <code>:h expand</code> for the function to use in vim script, and some other
-special keywords.</p>
-
-
-
-
-<p>But wait!  There’s more!</p>
-
-
-
-
-<!-- more -->
-
-
-
-
-<p>Vim also supports file modifiers.  For example, <code>:h</code> gives you the ‘head’ of the file name, i.e. the directory of the
-file.  Taking another (contrived) example, you can git add the entire folder containing the file you are editing by
-doing something like:</p>
-
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:!git add %:h</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
-
-<p>See <code>:h file-modifiers</code> for more details (and more modifiers).</p>
-
-
-
-
-<h3>Another Convenient Expansion</h3>
-
-
-
-
-<p>I use <code>%:h</code> so often (for example, when I realize I’ve opened a file before creating the directory containing it, or am
-editing a file in a directory that doesn’t exist) that I’ve made a shortcut for it in my vimrc:</p>
-
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cnoremap %% &lt;C-R&gt;=expand('%:h').'/'&lt;CR&gt;</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
-
-<p>Roughly speaking, it remaps the key chord <code>%%</code> in command line mode to paste from a special register that evals the vim
-script inside it, which calls the expand() function.</p>
-
-
-
-
-<p>Long story short, what this allows me to do is do something like:</p>
-
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:!mkdir -p %%</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
-
-<p>And the <code>%%</code> will expand in-place into whatever <code>%:h</code> resolved to.  Not only is this a win because it’s slightly less to
-type than %:h, but the expansion also allows you to quickly modify your command on the fly and go up/down a directory if
-needed.</p>
-
-
-
-
-<p>And of course, here’s the requisite asciinema with a quick demo of this in action:</p>
-
-
-
-
-<script type="text/javascript" src="https://asciinema.org/a/14592.js" id="asciicast-14592" async></script>
-
-
-
-
-<p>Hope that’s useful / mildly interesting!</p>
 
 ]]></content>
   </entry>
