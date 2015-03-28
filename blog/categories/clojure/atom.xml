@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Clojure | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/clojure/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2015-01-28T10:11:26-05:00</updated>
+  <updated>2015-03-28T13:55:53-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -23,141 +23,74 @@ except not really” quips that commonly float around on the internet are about 
 many of them.  For example, if you want to take a number <code>x</code> and add one, multiply by two, then add 3, the code might
 naively look something like this:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code class="clojure">(+ (* (+ x 1) 2) 3)
+</code></pre>
 
 <p>Or perhaps like this:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">+ </span><span class="mi">3</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">x</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code class="clojure">(+ 3 (* 2 (+ 1 x)))
+</code></pre>
 
 <p>Look at the parens!  Especially the consecutive 3 closing ones in the second variation.  For a sufficiently long chain
 of functions, it can get pretty unreadable—especially with multiple arguments and whatnot.</p>
-
-
-
 
 <p>Enter clojure’s thread macro.  The thread macro is a macro in the form of <code>(-&gt; x &amp; forms)</code>, and it “threads” <code>x</code> through
 the <code>forms</code> as the first arg*.  Which sounds terribly confusing explained, so an example is probably better here.  Take
 this snippet using the thread macro:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; add one, multiply by two, and add three</span>
-</span><span class='line'><span class="p">(</span><span class="nb">-&gt; </span><span class="nv">x</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">* </span><span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">+ </span><span class="mi">3</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code class="clojure">;; add one, multiply by two, and add three
+(-&gt; x
+  (+ 1)
+  (* 2)
+  (+ 3))
+</code></pre>
 
 <p>This desugars into <code>(+ (* (+ x 1) 2) 3)</code>, i.e. the first variation of the initial example above.  Personally, I find the
 macro version much more readable since each call is on its own line, and it seems more expressive of applying a series
 of functions to the initial x.</p>
-
-
-
 
 <p>The thread macro is also useful for chaining together collection methods like <code>map</code>.  Since clojure doesn’t have
 first-class OO support (instead favoring protocols and such), map exists as a regular function that takes the collection
 as an arg, instead of as a method on a collection class.  So chaining together a bunch of ops on a vector might look
 something like&hellip;</p>
 
+<pre><code class="clojure">;; add one to every number and filter for even numbers
+(-&gt;&gt; [1 2 3 4 5 6]
+  (map #(+ 1 %))
+  (filter even?))
 
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; add one to every number and filter for even numbers</span>
-</span><span class='line'><span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">))</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">;; Without the thread macro, would look like:</span>
-</span><span class='line'><span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span> <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+;; Without the thread macro, would look like:
+(filter even? (map #(+ 1 %) [1 2 3 4 5 6]))
+</code></pre>
 
 <p>The only difference is that in this case, ->> was used.  ->> is “thread last”, which is like -> (“thread first”), except
 it inserts the expression at the end of the form.</p>
-
-
-
 
 <p>This pattern also exists in other languages (especially those that don’t offer first-class OO, which allows fancy
 <code>return self</code> type stuff), like Elixir’s pipe <code>|&gt;</code> (in the spirit of the unix pipe) which is what prompted me to spread
 the word about this:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="c1"># double and add one to each element</span>
-</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">x</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">x</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code class="elixir"># double and add one to each element
+[1, 2, 3]
+|&gt; Enum.map(fn x -&gt; x * 2)
+|&gt; Enum.map(fn x -&gt; x + 1)
+</code></pre>
 
 <p>The thread macro pattern doesn’t have as much of a place in Scala, since Scala has mechanisms like the collection
 library and implicit conversions to help express similar logic in elegant ways.  But when I first read up on macros in
 lisp, I spent some time scratching my head at the day-to-day practical uses until I found this and had my first
 “ohhhhhhhhhhhh” moment.  In any case, hope this was mildly interesting!</p>
 
-
-
-
 <p>* - Well technically, as the second item in the form, which is effectively the first arg for functions&hellip; But that might
 be a bit too lispy.</p>
 
-
-
-
 <h3>Bonus</h3>
-
-
-
 
 <p>When I published this email to the internal list, it generated some discussion wherein I learned that there are other
 neat features of the same sort like <a href="https://clojuredocs.org/clojure.core/doto">doto</a>, and that they&rsquo;re all just
 various derivations of the K combinator.  Of course, googling k-combinators led to a pretty
 <a href="http://en.wikipedia.org/wiki/SKI_combinator_calculus">heavy looking wiki page</a>, so I was referred to
 <a href="http://combinators.info/">http://combinators.info/</a> , which I have been trying to get through since.</p>
-
 ]]></content>
   </entry>
   
@@ -172,13 +105,7 @@ Haskell has the upper hand in functional purity and a crazy advanced type system
 heart and Clojure seemed more practical.  I haven&rsquo;t worked with it too extensively, but my experience so far can be
 summarized by two words: Simple and composable.</p>
 
-
-
-
 <h4>The language</h4>
-
-
-
 
 <p>Clojure is a refreshingly simple language.  Despite my last foray into a Lisp being about half a decade ago, the
 learning curve was much gentler than I&rsquo;d expected.  Maybe it&rsquo;s because I was already in a functional programming
@@ -186,22 +113,13 @@ mindset, but the straightforward syntax and <a href="http://clojure-doc.org/">ab
 <a href="http://clojure.org/getting_started">of</a> <a href="http://clojure.org/cheatsheet">documentation</a> probably helped.  And on a
 completely subjective level: <code>iDislikeCamelCase</code>, and <code>clojure-case-is-pretty-neat</code>.</p>
 
-
-
-
 <h4>The ecosystem</h4>
-
-
-
 
 <p>Of course, the overall enjoyability of using a language doesn&rsquo;t depend solely on the core language, but also the
 libraries and toolchain available.  Most of the libraries I&rsquo;ve seen keep in line with the design of the language: super
 lightweight, super simple, super composable, and as a result super easy to ramp up on and use.  Theoretically that
 should just describe all good library design in general, but I feel like the clojure community takes it especially to
 heart.</p>
-
-
-
 
 <p>Compojure, for example, chose to implement its url
 <a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">destructuring</a> to closely follow the destructuring
@@ -210,13 +128,7 @@ to find that url decomposition exists only in the form of an exotic DSL.  Anothe
 between the simplicity of the Clojure build tool Leiningen and the craziness of Scala&rsquo;s SBT.  Sorry SBT&ndash;You work very
 well, but I&rsquo;d rather not have to google what the <code>&lt;++=</code> operator does every time I touch the build.</p>
 
-
-
-
 <h4>With vim</h4>
-
-
-
 
 <p>One of my original reasons for leaning clojure was its close integration with
 <a href="http://www.chris-granger.com/lighttable/">LightTable</a>.  As it turns out, the functionality I liked could be
@@ -225,24 +137,14 @@ no small part to leiningen and nrepl&rsquo;s awesomeness.
 <a href="https://github.com/kien/rainbow_parentheses.vim">Rainbow parentheses</a> is also pretty cool, and has been useful enough
 that I will probably keep it on even when I don&rsquo;t have to deal with the hardcore levels of parens in Lisps:</p>
 
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/rainbow-parens.png"></p>
-
-
-
+<p><img class="center" src="/images/rainbow-parens.png"></p>
 
 <h4>Overall</h4>
-
-
-
 
 <p>If programming languages could be graded on usability, Clojure would get full marks.  It has been a breath of fresh air
 after dealing with the crazy complexity in Scala.  Undoubtedly working through the latter had a part in making the
 former much easier, and Scala will always have a place with me, but for now I find myself slowly joining the rest of the
 Clojure bandwagon.</p>
-
 ]]></content>
   </entry>
   

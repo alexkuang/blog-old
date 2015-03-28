@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2015-01-28T10:11:26-05:00</updated>
+  <updated>2015-03-28T13:55:53-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -14,11 +14,59 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Thing of the Week: Vim Ctrl-p, Plus Bonus Rant]]></title>
-    <link href="http://alexkuang.github.io/blog/2015/01/28/vim-ctrl-p-plus-bonus-rant/"/>
+    <title type="html"><![CDATA[Thing of the Week: Vim Ctrlp, Plus Bonus Rant]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/28/vim-ctrlp-plus-bonus-rant/"/>
     <updated>2015-01-28T10:09:32-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2015/01/28/vim-ctrl-p-plus-bonus-rant</id>
-    <content type="html"><![CDATA[
+    <id>http://alexkuang.github.io/blog/2015/01/28/vim-ctrlp-plus-bonus-rant</id>
+    <content type="html"><![CDATA[<p>Normally I don&rsquo;t go too much into plugins, since I don&rsquo;t want to encourage the &ldquo;yeah vim is great, just start with 500
+plugins, 490 of which you can probably do without&rdquo; mindset.  But if I were stranded on a deserted server and could pick
+only one plugin to install, it would probably be ctrlp.</p>
+
+<p><a href="https://github.com/kien/ctrlp.vim">ctrlp</a> is a fuzzy file finder slash project navigation tool.  As usual it&rsquo;s probably
+easier to see a demo before doing any sort of explaining, so here&rsquo;s a quick cast of using ctrlp to navigate the
+<a href="https://github.com/zmanio/atmos.git">atmos</a> project.</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/15836.js" id="asciicast-15836" async></script>
+
+
+<p>So the plugin is activated, predictably, by hitting <code>&lt;ctrl-p&gt;</code> (or firing off the <code>:CtrlP</code> command).  This brings up the
+UI, where you can type in a bunch of stuff to search.  The fuzzy finding used is very powerful.  First, you can search
+any part of the file path + name and it will work; in the first search I did, I just searched <code>scala</code> which brought up
+basically anything under not just <code>src/main/scala</code>, but <code>src/test/scala</code> as well.  This is great for if you&rsquo;re doing a
+bit of exploring and want to progressively narrow your results.</p>
+
+<p>The other big point worth noting is that it&rsquo;s fuzzy finding, so you don&rsquo;t have to search contiguous characters.  In the
+last example, the search was <code>linearspec</code>, but it still selected <code>LinearBackoffSpec</code>.  In theory, I could probably also
+do something like <code>linspecsc</code> (&ldquo;<strong>Lin</strong>earBackoff<strong>Spec</strong>.<strong>sc</strong>ala&rdquo;) and get the same result.  This is crazy powerful,
+and makes for some pretty fast workflows.</p>
+
+<p>There are a few other nice features that I won&rsquo;t go too far into, like configurable search domains and easy opening
+options (e.g., when I popped the selected file into a <code>vsplit</code> in the last search).  Anyone interested can go dig around
+in the repo.</p>
+
+<h3>emacs folks</h3>
+
+<p>I&rsquo;ve been playing around with emacs + evil-mode a lot lately.  The equivalent in emacs, AFAIK, is a combination of
+<code>helm</code> and <code>projectile</code>.  Funnily enough, I actually prefer the emacs setup a bit, since the search semantics make more
+sense to me, but that&rsquo;s a story for another day&hellip;</p>
+
+<h3>Bonus Philosophical Rant</h3>
+
+<p>On mentioning project navigation, there are inevitably reactions of &ldquo;Oh, what about
+<a href="https://github.com/scrooloose/nerdtree">NERDTree</a>? (<a href="http://i.imgur.com/Tzid4.png">screencap</a>)&rdquo;  The problem I have
+with NERDTree, and project drawers in general, is that reading is <strong>SLOW</strong>.  What project drawers force you to do is
+every time you want to find and open a new file, you have to read down the project tree to find it.  Of course,
+directory structures and such can enable speed-reading and make the process a bit faster, but it&rsquo;s still way slow in my
+opinion.  Taking a concrete example, the last search for <code>LinearBackoffSpec</code>: With a project drawer, I would have had to
+scan through the list of <code>ConstantBackoffSpec</code>, <code>ExponentialBackoffSpec</code>, and so on.  With ctrl-p, I just have to hit
+<code>&lt;ctrl-p&gt;linspecsc&lt;enter&gt;</code>, which I can do in the middle of making dinner, with my eyes closed.  Not that I code
+regularly in those conditions, <em>ahem</em>&hellip;</p>
+
+<p>I don&rsquo;t have a particularly strong hate for NERDTree, I just feel that given the smooth workflow being available with
+the likes of ctrlp and ctags, it sits pretty low in the hierarchy of general project navigation tools.  The one scenario
+I could see it being useful is to get a feel for the directory structure in a completely unfamiliar project, but even
+then I still prefer the <code>tree</code> command (<code>brew install tree</code> on the mac).  Instead, the extra screen real estate can be
+used for stuff like continuously running tests, an extra split for documentation, or a command-line twitter client!</p>
 ]]></content>
   </entry>
   

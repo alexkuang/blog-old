@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2015-01-28T10:11:26-05:00</updated>
+  <updated>2015-03-28T13:55:53-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -14,11 +14,59 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Thing of the Week: Vim Ctrl-p, Plus Bonus Rant]]></title>
-    <link href="http://alexkuang.github.io/blog/2015/01/28/vim-ctrl-p-plus-bonus-rant/"/>
+    <title type="html"><![CDATA[Thing of the Week: Vim Ctrlp, Plus Bonus Rant]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/28/vim-ctrlp-plus-bonus-rant/"/>
     <updated>2015-01-28T10:09:32-05:00</updated>
-    <id>http://alexkuang.github.io/blog/2015/01/28/vim-ctrl-p-plus-bonus-rant</id>
-    <content type="html"><![CDATA[
+    <id>http://alexkuang.github.io/blog/2015/01/28/vim-ctrlp-plus-bonus-rant</id>
+    <content type="html"><![CDATA[<p>Normally I don&rsquo;t go too much into plugins, since I don&rsquo;t want to encourage the &ldquo;yeah vim is great, just start with 500
+plugins, 490 of which you can probably do without&rdquo; mindset.  But if I were stranded on a deserted server and could pick
+only one plugin to install, it would probably be ctrlp.</p>
+
+<p><a href="https://github.com/kien/ctrlp.vim">ctrlp</a> is a fuzzy file finder slash project navigation tool.  As usual it&rsquo;s probably
+easier to see a demo before doing any sort of explaining, so here&rsquo;s a quick cast of using ctrlp to navigate the
+<a href="https://github.com/zmanio/atmos.git">atmos</a> project.</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/15836.js" id="asciicast-15836" async></script>
+
+
+<p>So the plugin is activated, predictably, by hitting <code>&lt;ctrl-p&gt;</code> (or firing off the <code>:CtrlP</code> command).  This brings up the
+UI, where you can type in a bunch of stuff to search.  The fuzzy finding used is very powerful.  First, you can search
+any part of the file path + name and it will work; in the first search I did, I just searched <code>scala</code> which brought up
+basically anything under not just <code>src/main/scala</code>, but <code>src/test/scala</code> as well.  This is great for if you&rsquo;re doing a
+bit of exploring and want to progressively narrow your results.</p>
+
+<p>The other big point worth noting is that it&rsquo;s fuzzy finding, so you don&rsquo;t have to search contiguous characters.  In the
+last example, the search was <code>linearspec</code>, but it still selected <code>LinearBackoffSpec</code>.  In theory, I could probably also
+do something like <code>linspecsc</code> (&ldquo;<strong>Lin</strong>earBackoff<strong>Spec</strong>.<strong>sc</strong>ala&rdquo;) and get the same result.  This is crazy powerful,
+and makes for some pretty fast workflows.</p>
+
+<p>There are a few other nice features that I won&rsquo;t go too far into, like configurable search domains and easy opening
+options (e.g., when I popped the selected file into a <code>vsplit</code> in the last search).  Anyone interested can go dig around
+in the repo.</p>
+
+<h3>emacs folks</h3>
+
+<p>I&rsquo;ve been playing around with emacs + evil-mode a lot lately.  The equivalent in emacs, AFAIK, is a combination of
+<code>helm</code> and <code>projectile</code>.  Funnily enough, I actually prefer the emacs setup a bit, since the search semantics make more
+sense to me, but that&rsquo;s a story for another day&hellip;</p>
+
+<h3>Bonus Philosophical Rant</h3>
+
+<p>On mentioning project navigation, there are inevitably reactions of &ldquo;Oh, what about
+<a href="https://github.com/scrooloose/nerdtree">NERDTree</a>? (<a href="http://i.imgur.com/Tzid4.png">screencap</a>)&rdquo;  The problem I have
+with NERDTree, and project drawers in general, is that reading is <strong>SLOW</strong>.  What project drawers force you to do is
+every time you want to find and open a new file, you have to read down the project tree to find it.  Of course,
+directory structures and such can enable speed-reading and make the process a bit faster, but it&rsquo;s still way slow in my
+opinion.  Taking a concrete example, the last search for <code>LinearBackoffSpec</code>: With a project drawer, I would have had to
+scan through the list of <code>ConstantBackoffSpec</code>, <code>ExponentialBackoffSpec</code>, and so on.  With ctrl-p, I just have to hit
+<code>&lt;ctrl-p&gt;linspecsc&lt;enter&gt;</code>, which I can do in the middle of making dinner, with my eyes closed.  Not that I code
+regularly in those conditions, <em>ahem</em>&hellip;</p>
+
+<p>I don&rsquo;t have a particularly strong hate for NERDTree, I just feel that given the smooth workflow being available with
+the likes of ctrlp and ctags, it sits pretty low in the hierarchy of general project navigation tools.  The one scenario
+I could see it being useful is to get a feel for the directory structure in a completely unfamiliar project, but even
+then I still prefer the <code>tree</code> command (<code>brew install tree</code> on the mac).  Instead, the extra screen real estate can be
+used for stuff like continuously running tests, an extra split for documentation, or a command-line twitter client!</p>
 ]]></content>
   </entry>
   
@@ -30,35 +78,21 @@
     <content type="html"><![CDATA[<p>Back to vim this week!  This one might be a bit esoteric&ndash;apologies in advance&ndash;but it’s such a useful feature that I
 had to share.</p>
 
-
-
-
 <p><code>gn</code> is a kinda-sorta-but-not-really-motion that selects the matches of the current search pattern.  It’s kind of like
 <code>n</code> (go to next match in search), except it also selects the contents of the match in visual mode.  But where it really
 shines is when used with operators like <code>c</code> (change), etc to operate on the match.  Quick demo to see it in action,
 before continuing:</p>
 
-
-
-
 <script type="text/javascript" src="https://asciinema.org/a/15656.js" id="asciicast-15656" async></script>
-
-
 
 
 <p>So this is nice for a few reasons.  First, it’s neat to be able to operate on just the match of a search.  I remember a
 few times before I found <code>gn</code> where I was doing something similar to the demo, tried to use <code>cw</code>, and got mildly annoyed
 that I had to retype half the word because the <code>w</code> motion was too aggressive.</p>
 
-
-
-
 <p>Another nice thing is that with <code>gn</code>, the dot command will both move to the next match and repeat whatever operation you
 did, instead of having to do the movement and operation separately using <code>n.</code>.  It seems petty, but hey it’s a full 50%
 keystroke savings!!</p>
-
-
-
 
 <p>Arguably, the demo above could have been done with an ex command like <code>:%s/test/actual</code> (universal search and replace),
 but I think <code>gn</code> still offers a lot.  It works on all operators, so <code>ygn</code> would yank the match, <code>gUgn</code> would uppercase
@@ -66,24 +100,14 @@ the match, and so on.  Plus, it allows an easy on-the-fly workflow that’s stil
 to tune all the edge cases in my expression”: for example, if you want to only change some instances of <code>test</code> to
 <code>actual</code>, but others to <code>sandbox</code>.</p>
 
-
-
-
 <p>As always, see <code>:h gn</code> for more details.  Also note that gn has only been available since vim 7.4 or something like
 that, but there’s no reason anyone shouldn’t be using the latest on their personal boxes…</p>
 
-
-
-
 <h3>Bonus</h3>
-
-
-
 
 <p>This email also generated some additional discussion, which led to my discovery of the multi-select feature in Sublime,
 and the <a href="https://github.com/terryma/vim-multiple-cursors">associated vim plugin</a>.  It seems like it&rsquo;s in a different
 spirit than <code>gn</code>, but still a very cool way of thinking about operating on search results that I had not seen before.</p>
-
 ]]></content>
   </entry>
   
@@ -94,127 +118,65 @@ spirit than <code>gn</code>, but still a very cool way of thinking about operati
     <id>http://alexkuang.github.io/blog/2015/01/24/vim-expansion</id>
     <content type="html"><![CDATA[<h3>% (Current File Name)</h3>
 
-
-
-
 <p>Another vim tip this week!  This time, it’s about ‘%’, which expands to ‘current file name’.  This is especially useful
 in projects with java/scala style directory setups, where your source is approximately 1.5 million folders away from the
 project root, but you kind of want to hang around project root for things like ant/sbt/etc to work.  <code>%</code> makes this
 easier to work with files in the deeply nested folders while doing this.</p>
 
-
-
-
 <p>Taking a contrived example, instead of doing something like this to <code>git log</code> the file you are currently editing:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:!git log src/main/scala/com/bizo/(…)/Foo.scala</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>:!git log src/main/scala/com/bizo/(…)/Foo.scala
+</code></pre>
 
 <p>You can just do:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:!git log %</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>:!git log %
+</code></pre>
 
 <p>This is extremely convenient and works everywhere in command line mode (basically, whenever ‘:’ is used), but is also
 useful to have if you’re ever writing vim script.  See <code>:h expand</code> for the function to use in vim script, and some other
 special keywords.</p>
 
-
-
-
 <p>But wait!  There’s more!</p>
 
-
-
-
 <!-- more -->
-
-
 
 
 <p>Vim also supports file modifiers.  For example, <code>:h</code> gives you the ‘head’ of the file name, i.e. the directory of the
 file.  Taking another (contrived) example, you can git add the entire folder containing the file you are editing by
 doing something like:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:!git add %:h</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>:!git add %:h
+</code></pre>
 
 <p>See <code>:h file-modifiers</code> for more details (and more modifiers).</p>
 
-
-
-
 <h3>Another Convenient Expansion</h3>
-
-
-
 
 <p>I use <code>%:h</code> so often (for example, when I realize I’ve opened a file before creating the directory containing it, or am
 editing a file in a directory that doesn’t exist) that I’ve made a shortcut for it in my vimrc:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cnoremap %% &lt;C-R&gt;=expand('%:h').'/'&lt;CR&gt;</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>cnoremap %% &lt;C-R&gt;=expand('%:h').'/'&lt;CR&gt;
+</code></pre>
 
 <p>Roughly speaking, it remaps the key chord <code>%%</code> in command line mode to paste from a special register that evals the vim
 script inside it, which calls the expand() function.</p>
 
-
-
-
 <p>Long story short, what this allows me to do is do something like:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:!mkdir -p %%</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>:!mkdir -p %%
+</code></pre>
 
 <p>And the <code>%%</code> will expand in-place into whatever <code>%:h</code> resolved to.  Not only is this a win because it’s slightly less to
 type than %:h, but the expansion also allows you to quickly modify your command on the fly and go up/down a directory if
 needed.</p>
 
-
-
-
 <p>And of course, here’s the requisite asciinema with a quick demo of this in action:</p>
-
-
-
 
 <script type="text/javascript" src="https://asciinema.org/a/14592.js" id="asciicast-14592" async></script>
 
 
-
-
 <p>Hope that’s useful / mildly interesting!</p>
-
 ]]></content>
   </entry>
   
@@ -229,9 +191,6 @@ snippet of code to a cool iOS application they&rsquo;d just found to a fun web g
 aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
 discussion.</p>
 
-
-
-
 <p>Unfortunately, the practice kind of fell by the wayside in the chaos of
 <a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
 changes that entails.  While I&rsquo;m sure it&ndash;or something similar&ndash;will make a comeback, in the meantime I decided to
@@ -239,20 +198,12 @@ try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; e
 I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
 incentive for me to be proactive in learning new things to talk about.</p>
 
-
-
-
 <p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
 attention&ndash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
 always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
 what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
 
-
-
-
 <script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
-
-
 
 ]]></content>
   </entry>
@@ -270,35 +221,18 @@ boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else 
 to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
 familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
 
-
-
-
 <!-- more -->
 
 
-
-
 <h3>The Start</h3>
-
-
-
 
 <p>Since I had all the posts in html form, using <code>:set paste</code> and copy-pasting from the browser seemed the most
 straightforward.  Or at least, more straightforward than trying to manually un-mangle everything in the post after being
 wrung through wordpress.  For most of the posts, the paste result looked something like this:</p>
 
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/start.png" width="598" height="440"></p>
-
-
-
+<p><img class="center" src="/images/ch-backport-vim/start.png" width="598" height="440"></p>
 
 <p>Not too awful, but the TODO is obvious:</p>
-
-
-
 
 <ol>
 <li>Needs a banner image</li>
@@ -309,268 +243,128 @@ wrung through wordpress.  For most of the posts, the paste result looked somethi
 </ol>
 
 
-
-
 <p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
 markdown, that&rsquo;s pretty trivial.</p>
 
-
-
-
 <h3>Banner image</h3>
-
-
-
 
 <p>This bit was easy.  I have a plugin installed called <code>vim-snipmate</code> (check it out
 <a href="https://github.com/garbas/vim-snipmate">here</a>) that&rsquo;s just built for stuff like this.  Simply put, defining the snippet
 below:</p>
 
+<pre><code>snippet img
+    {% img center ${1} %}
+</code></pre>
 
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>snippet img
-</span><span class='line'>    Error processing input, expected syntax: {% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | "title text" ["alt text"]] %}</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
-
-<p>allowed me to type <code>img&lt;TAB&gt;</code> and it would insert <code>Error processing input, expected syntax: {% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | "title text" ["alt text"]] %}</code>, with my cursor right after the <code>center</code> and ready
+<p>allowed me to type <code>img&lt;TAB&gt;</code> and it would insert <code>{% img center %}</code>, with my cursor right after the <code>center</code> and ready
 to drop in my picture url.</p>
 
-
-
-
 <h3>Wrapping lines</h3>
-
-
-
 
 <p>vim has a normal mode command, <code>gq</code>, that does this quite well.  Personally I like using visual line mode (<code>V</code>) to
 select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to wrap a block) works as well.</p>
 
+<p><img class="center" src="/images/ch-backport-vim/gq-before.png" width="598" height="440"></p>
 
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/gq-before.png" width="598" height="440"></p>
-
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/gq-after.png" width="598" height="440"></p>
-
-
-
+<p><img class="center" src="/images/ch-backport-vim/gq-after.png" width="598" height="440"></p>
 
 <p>I only wrapped the plain paragraphs here, as there is still some fancy dedenting and formatting to do with the Ingredients
 and Methodology sections first.</p>
 
-
-
-
 <h3>De-denting</h3>
-
-
-
 
 <p>The vim command for de-denting is <code>&lt;</code>.  Once again, combining with visual line mode or a motion (ex: <code>&lt;}</code>) makes it
 quick and easy.  (Just in case&ndash;Yes, <code>&gt;</code> is the command for indenting)</p>
 
-
-
-
 <h3>Ingredients => Unordered List</h3>
-
-
-
 
 <p>This one, I&rsquo;ll admit, is a little snazzy.  I used the lesser-known cousin of visual and visual line mode, visual block
 mode (accessed via <code>&lt;Ctrl&gt;-V</code>).  Once selecting the first characters of the lines I wanted with visual block, I could
 hit <code>&lt;Shift-I&gt;</code> to drop into insert mode before current character, <code>-</code> to insert what I wanted, then <code>&lt;ESC&gt;</code> to apply
 to everything in the selection.</p>
 
+<p><img class="center" src="/images/ch-backport-vim/ul-before.png" width="598" height="440"></p>
 
+<p><img class="center" src="/images/ch-backport-vim/ul-during.png" width="598" height="440"></p>
 
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-before.png" width="598" height="440"></p>
-
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-during.png" width="598" height="440"></p>
-
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-after.png" width="598" height="440"></p>
-
-
-
+<p><img class="center" src="/images/ch-backport-vim/ul-after.png" width="598" height="440"></p>
 
 <p>Note that this is also a great way to mass-comment blocks of code in languages that only support single line comments
 with <code>#</code> or whatnot.</p>
 
-
-
-
 <h3>Methodology => Ordered List</h3>
-
-
-
 
 <p>And of course, the best is for last.  Ordered lists in markdown, logically, can be formatted something like this:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1. item 1
-</span><span class='line'>2. item 2
-</span><span class='line'>3. item 3</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>1. item 1
+2. item 2
+3. item 3
+</code></pre>
 
 <p>However, it&rsquo;s actually possible to cheat and still get ordered list output by doing:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1. item 1
-</span><span class='line'>1. item 2
-</span><span class='line'>1. item 3</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>1. item 1
+1. item 2
+1. item 3
+</code></pre>
 
 <p>It turns out that the markdown spec doesn&rsquo;t care about the order of the numbering as long as the lines begin with
 numbers in that format.  So technically, I could use the same trick as the Ingredients Unordered List except inserting
 <code>1.</code>, and I&rsquo;d be done.</p>
 
-
-
-
 <p>&hellip;  But where&rsquo;s the fun in that?</p>
-
-
-
 
 <p>So here&rsquo;s another tidbit: in vim, if you place the cursor over a number and hit <code>&lt;Ctrl&gt;-A</code> in normal mode, it increments
 the number.  In a very smart way, too&ndash;it takes into account all of the digits, not just the one under the cursor.
 Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of recorded keystrokes that can be repeated).</p>
 
-
-
-
 <p>Rather than explain in long form, it seems easier just paste the sequence and annotate it.</p>
 
+<pre><code class="sh">qq^yaWjP^^Aq # Complete keystroke sequence
+             # Note that ^A is one character--see below for details
 
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>qq^yaWjP^^Aq <span class="c"># Complete keystroke sequence</span>
-</span><span class='line'>             <span class="c"># Note that ^A is one character--see below for details</span>
-</span><span class='line'>
-</span><span class='line'>qq   <span class="c"># Start recording keystrokes into the q register</span>
-</span><span class='line'>^    <span class="c"># Go to first non-blank character of line</span>
-</span><span class='line'>yaW  <span class="c"># yank (copy) a Word--Capital W means a &quot;word&quot; is terminated only by spaces, not punctuation like &quot;-&quot; </span>
-</span><span class='line'>j    <span class="c"># Go down a line</span>
-</span><span class='line'>P^   <span class="c"># Paste before cursor, then go back to first non-blank character</span>
-</span><span class='line'>^A   <span class="c"># Increment number</span>
-</span><span class='line'>q    <span class="c"># Stop recording</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+qq   # Start recording keystrokes into the q register
+^    # Go to first non-blank character of line
+yaW  # yank (copy) a Word--Capital W means a "word" is terminated only by spaces, not punctuation like "-" 
+j    # Go down a line
+P^   # Paste before cursor, then go back to first non-blank character
+^A   # Increment number
+q    # Stop recording
+</code></pre>
 
 <p>It ends up looking something like this, played out:</p>
 
+<p><img class="center" src="/images/ch-backport-vim/mac-1.png" width="598" height="440"></p>
 
+<p><img class="center" src="/images/ch-backport-vim/mac-2.png" width="598" height="440"></p>
 
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-1.png" width="598" height="440"></p>
-
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-2.png" width="598" height="440"></p>
-
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-3.png" width="598" height="440"></p>
-
-
-
+<p><img class="center" src="/images/ch-backport-vim/mac-3.png" width="598" height="440"></p>
 
 <p><em>(Aside: I should start making gifs again for stuff like this&hellip;  Perhaps another day when I have more time.)</em></p>
-
-
-
 
 <p>Once the macro is recorded, it can be played back via <code>@q</code>, or whichever register it was recorded into.  More
 importantly, because it resets to the right positions in the lines and moves down automatically, it can actually be
 repeated!  e.g., <code>2@q</code> turns this:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>1. item 1
-</span><span class='line'>item 2
-</span><span class='line'>item 3
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>1. item 1
+item 2
+item 3
+</code></pre>
 
 <p>into this:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>1. item 1
-</span><span class='line'>2. item 2
-</span><span class='line'>3. item 3
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>1. item 1
+2. item 2
+3. item 3
+</code></pre>
 
 <p>Writing macros to position in a looping way like this is another post altogether, but suffice to say this saved a TON of
 time over multiple posts.  Granted, it still depends on the <code>1.</code> being inserted manually, but that&rsquo;s pretty trivial I
 think.</p>
 
-
-
-
 <p>Another neat thing that might not immediately be obvious is that regular yanking (or copying, if you will) goes into the
 same registers as macro recordings.  So you can use <code>"qp</code> to paste the contents of your macro into a buffer to map it to
 keys or functions (ex: <code>nnoremap &lt;leader&gt;o ^yaW[...]</code>).</p>
-
-
-
 
 <p>Furthermore, this means that if a recording goes wrong, you can just paste it out, edit it, then select and <code>"qy</code> (or
 similar) to yank back the edited form.  The only caveat is that certain characters like <code>^A</code> may paste out and LOOK like
@@ -578,11 +372,7 @@ two characters, but is infact only one character.  Not a big deal if you&rsquo;r
 be a weird GOTCHA if you&rsquo;re trying to write a macro by hand or something.  (In this particular case, the <code>^A</code> character
 can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, but it pays to watch out in general for stuff like this)</p>
 
-
-
-
 <p>So there you have it, ladies and gentlemen&ndash;My idea of fun on a Sunday afternoon&hellip;</p>
-
 ]]></content>
   </entry>
   
