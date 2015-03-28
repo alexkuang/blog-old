@@ -9,8 +9,8 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="A blog post has recently been making the
-rounds in all the usual programming fora&ndash;/r/programming, hackernews, and so on&ndash;even eliciting a &hellip;">
+  <meta name="description" content="Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds. It&rsquo;s been a while since
+my last trip to Hyrule, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,68 @@ rounds in all the usual programming fora&ndash;/r/programming, hackernews, and s
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/">Zelda as a Metaphor for Complexity</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T18:29:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:29 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
+my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
+which could take upwards of hours (Water Temple, I&rsquo;m looking at you) to complete on the first run.  One of them jumps to
+mind particularly: The Forest Temple, a dungeon you encounter in the early-mid game immediately after gaining access to
+adult Link.</p>
+
+<p>At first glance, it seems like a completely normal dungeon&ndash;You&rsquo;ve got your wolves, you&rsquo;ve got your carnivorous plants,
+and the obvious puzzle in the form of 4 torches that have to be lit.  Fairly straightforward, until the game hits you
+with this:</p>
+
+<p><img class="center" src="/images/forest-temple-hallway.jpg"></p>
+
+<p>The first time you hit the twisting hallway, you have to follow it as-is to the other side, your perspective being
+warped, to end up in a room with you standing on its &ldquo;wall&rdquo;.  On the &ldquo;floor&rdquo; is a chest, inaccessible in your current
+state, and further on is a door you don&rsquo;t have the key to.  After a few more rooms and a battle with some wolves, you
+end up with the bow which allows you to hit a switch to un-twist the hallway, bringing a completely new
+perspective to the rooms&ndash;Most obviously, the chest from the earlier &ldquo;floor&rdquo; is now reachable, and after a little
+contemplation and a lot of climbing, you get the key to the previously locked door&hellip;  <em>Which you can&rsquo;t access until you
+re-twist the hallway.</em></p>
+
+<p>This simple sequence is, in essence, what makes the classical Zelda dungeons challenging and oh so much fun.  In
+addition to an &ldquo;item of the moment&rdquo;, each area contains an inventive mechanic that completely changes the landscape
+of the entire dungeon.  A room is completely different when your perspective is rotated, platforms become traversable
+after you flood the floor with sand, and so on.  It&rsquo;s no longer just <em>Push a block over here</em>, it&rsquo;s <em>Push a block over
+here to change the water level so we can push that other block, and then change the water level back to align the two
+blocks properly and maybe we can finally get to that chest over there.  Oh wait, that didn&rsquo;t work, maybe if I switch the
+water level back BEFORE moving the second block&hellip;</em></p>
+
+<p>Sound familiar?  The hardest dungeons&#8217; mechanics tend to use some piece of outside state to introduce exponentially more
+complex interactions between the existing items that Link already has access to.  Interactions that now depend not only
+on the current environment, but also the configuration of surrounding environments, and probably the order that
+everything was done as well.  Keeping track of all that is welcome, even enjoyable, when I&rsquo;m playing Zelda.  But I have
+no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing what I want it to.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -692,342 +754,6 @@ more artsy fartsy than having a significant effect on taste.  Of course I knew a
 guess I&rsquo;d underestimated just how much, as well as the degree of technical skill needed for proper decoration even
 disregarding any sort of artistic ability and flair.  I thought I&rsquo;d hit a soft cap on the technical after I&rsquo;d finished
 macarons, but it&rsquo;s nice to know that there&rsquo;s another frontier.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/01/macarons/">Macarons</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-10-01T12:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5>This is a backport from my old blog.  Please see <a href="http://alexkuang.com/blog/2014/04/26/ch-backports/">this post</a> for more details.</h5>
-
-<blockquote><p>Ah, yes&hellip;  This post is arguably the Opus Magnum of ye ol&#8217; food blog.  With the rising popularity of macarons as a
-trend and the near ubiquity of resources that are available now, a lot of what I&rsquo;ve written here might seem like
-common sense bordering on &ldquo;DUH&rdquo; for anyone with an inkling of research skills&hellip; Not to mention pretentious.
-However, back in 2011 when I wrote this (or more like 2009-2010 when I started this insanity), macarons were much more
-obscure and there wasn&rsquo;t nearly as much information on them to be found.  For fucks&#8217; sake, I even went through a few
-obscure French textbooks to get answers (though in the end they didn&rsquo;t help much I guess&hellip;)</p>
-
-<p>The copious notes I jot down might not lead to Pierre Herme levels of greatness, but it&rsquo;s certainly better than the
-average you can get in the Greater Boston area even nowadays&hellip;  Plus I put a lot of work into it, dammit.  I mean,
-look at that .gif!  It&rsquo;s a masterpiece!  So, I&rsquo;ll leave the post as-is, minus the shiny photos I lost and had to sub
-with slightly inferior versions.  I&rsquo;ll probably update the photos later on anyhow.</p></blockquote>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Macarons/i-wm2rxnn/0/L/DSC_1352-L.jpg"></p>
-
-<p>I&rsquo;ve been meaning to write this post for a very very long time, but could never gather all the proper information for
-it. After all, if I write a half-assed one, I&rsquo;d be no better than all the people I cursed while trying to figure
-everything out. But thanks to my lovely photo assistant Cindy, I finally got the photos I needed, and so&hellip; Here it is.</p>
-
-<p>First thing you need to know is: macarons are not macaroons. Macaroons are chewy and coconutty. Macarons are impossibly
-light and made of almonds. Confusing the two is unforgivable, and calling macarons &ldquo;macaroons&rdquo; on purpose will get you
-punched in the face.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Macarons/i-56zzDJc/0/L/DSC_1344-L.jpg"></p>
-
-<p>Let&rsquo;s start with the basic anatomy of a macaron. Macarons are a &ldquo;sandwich&rdquo; with two shells (above) around a filling. The
-filling can be everything from buttercream to ganache. But what makes them distinct is the contrast between the smooth
-top and the ruffly rim of the shells, also known as the pied (french for feet). The pied is what gives them that little
-<em>je ne sais quoi</em>, if you&rsquo;ll allow me to be a little douchey.  Macarons are great because a batch requires barely any
-active effort, and the result looks astounding even with minimal decoration.  And more than anything else, it&rsquo;s
-versatile.  You can make these work with every flavor&ndash;from the simple things like chocolate, coffee, and pistachio, to
-the weird and eldritch combinations like Pierre Herme&rsquo;s ispahan: a combination of rose, raspberry, and lychee.</p>
-
-<p>But the name of the game is &ldquo;moisture and air.&rdquo; Moisture because the more of it you have, the harder your life will be,
-and air because you need JUST the right amount in the batter for it to work out. Drying out the top of the shells after
-piping gives it that smooth top, and the air in the batter inflates during baking, driving the dried tops upwards and
-allowing the foam underneath to solidify into the pied. If the tops aren&rsquo;t solid enough (i.e., they&rsquo;re too wet, or the
-batter hasn&rsquo;t been deflated enough) to contain the force of the air, they crack and become misshapen. But if there isn&rsquo;t
-enough air, the batter doesn&rsquo;t rise at all or it rises like a limp&hellip;  Well, you know.  The result of that one is flat,
-crunchy almond biscuits.  Like with Goldilocks&#8217; porridge, this batter has to be just right. Sounds simple enough, eh?</p>
-
-<p>Not quite. Macarons like to play jump-rope with the Vicky Mendoza diagonal. When made properly, they&rsquo;re delicious.
-They&rsquo;re impossibly light. They&rsquo;re good looking, and make excellent party favors. Did I mention delicious and light?
-Seriously, they practically don&rsquo;t require chewing. You could give them to that toothless grandma you love, if it weren&rsquo;t
-for the whole diabetes thing. If it&rsquo;s not so light you can eat it without teeth, then you&rsquo;re doing it wrong. But in
-exchange for this they require a level of anality that makes your ficklest grade-school penmanship teacher look like a
-California pothead, and they&rsquo;re harder to predict than New England weather. Temperature change in the room? Screws
-things up. Humid day? Screws things up. Change the positioning of the racks in your oven? Screws things up.</p>
-
-<p>Is it worth it? Depends on your preferences, really. And how easily you can get your hands on a batch of well-made ones.
-Since I love these sorts of things and seem to live 200 miles away from anything consistently good, I naturally set out
-to collect all the information I could to produce a good macaron. After a lot of roadblocks, trials, mess-ups, lessons,
-and of course manly pain-tears, here are the results. The good news is that after you get things down, the process is
-fairly matter-of-fact. Easy, even. Downright effortless. The bad news? It takes a LOT of prep and experimentation to get
-to that point. It&rsquo;s really one of those &ldquo;looks super easy if you&rsquo;re good, but try it and you find out exactly how hard
-it is&rdquo; things. Making a crappy macaron that sort of looks like the real thing is easy. Making one whose tastes live up
-to the name? Ah, now you&rsquo;re talking.</p>
-
-<p>Naturally, since I mean for this to be a &ldquo;master post&rdquo; and a one-stop-shop for everything you need to make a good
-macaron, this post is going to be absolutely fucking monolithic (Yeah, you&rsquo;re not even halfway through yet.), so&hellip;
-You&rsquo;ve been warned. Many many people have written whole books on this topic, both good and bad, but I&rsquo;ll try to keep it
-(relatively) short while covering as many bases as possible. I&rsquo;m afraid this isn&rsquo;t a post for the people who want the
-pretty photos, but one for those who actually want to get down to the nitty gritty and conquer this son of a bitch.</p>
-
-<p>&hellip; Still here? I applaud your persistence. Grab a cup of tea and buckle down&hellip;</p>
-
-<h3>Equipment</h3>
-
-<p>Baking usually requires a good amount of equipment&ndash;let&rsquo;s face it, desserts are a rich man&rsquo;s game. But with this, it&rsquo;s
-especially true. It&rsquo;s not a giant list, but it&rsquo;s still noteworthy.</p>
-
-<p>The first in the list is a <strong>food processor</strong>. The principle ingredient in macarons is powdered almonds (also known as
-almond flour, almond powder, almond meal). For some reason, I have a hell of a time finding it around here&ndash;and even
-when I do, it&rsquo;s usually too coarse to use. You need a very fine powder to produce macarons that aren&rsquo;t lumpy. With a
-food processor, I can find blanched almonds and just grind them myself. And even with existing almond powder, nothing
-works as well as a good blitz in the Cuisinart to get rid of lumps from moisture or shoddy manufacturing. For those on a
-tight budget (like college students, cough), a coffee grinder such as this one costs relatively little and works just as
-well. You&rsquo;ll just need to work in smaller, more numerous batches. It&rsquo;s more of a pain, but what can you do.</p>
-
-<p><strong>Pastry bags</strong> are necessary. You&rsquo;ll be doing a lot of piping between the shells and the fillings, and in this case
-dropping batters off a spoon is NOT an acceptable substitution in this case. I like the disposables from Ateco; I got
-200 of them for $20 on amazon. It&rsquo;s convenient, and saves me the washing. As far as tips are concerned, I like an Ateco
-804 for regular-sized shells.</p>
-
-<p><strong>Silpat</strong> mats are useful, but not necessary. I wouldn&rsquo;t recommend them unless you have too much money. Parchment paper on
-metal sheet pans do just as well.</p>
-
-<p>In regards to <strong>spatulas</strong>, make sure it&rsquo;s a firm silicone one. If it&rsquo;s too soft, you won&rsquo;t be able to deflate the batter
-properly later. Trust me, you&rsquo;ll thank me later.</p>
-
-<h3>Ingredients</h3>
-
-<p>In terms of macaron recipes, there are two main schools of thought: the French meringue style, and the Italian meringue
-style. They both require roughly the same ingredients: almond powder, egg whites, sugar. It&rsquo;s just the process differs a
-bit, with the Italian style requiring a bit of sugar syrup work. Neither of them can really be called the &ldquo;superior&rdquo;
-style&ndash;it&rsquo;s all up to personal preference, really, and what you are most comfortable with. All the greats&ndash;Pierre Herme,
-Laduree, etc&ndash;play both styles, with Herme sticking by and large to the French and Laduree to the Italian (I&rsquo;m not 100%
-on this; someone correct me if I&rsquo;m wrong). The French produces something that is a bit lighter, whereas the Italian
-produces a bit more solid but tends to be more stable. I personally prefer the former, which is what I will detail here;
-I recommend it to beginners as well, since the latter requires a bit of sugar work that may make this even more
-intimidating than it already is.</p>
-
-<ul>
-<li>90g egg whites</li>
-<li>110g almond powder</li>
-<li>200g confectioner&rsquo;s sugar</li>
-<li>25g sugar</li>
-</ul>
-
-
-<p>Simple, right? Definitely. Dead simple, in fact. The thing to note here is that the egg whites should be measured at
-exactly 90 grams. Not &ldquo;3 large eggs&rdquo;, not &ldquo;2.5 extra large eggs&rdquo;, 90 grams. Why? To reduce unpredictability. Trust me,
-you&rsquo;ll be wanting to control as many variables here as possible, especially when you&rsquo;re just starting out. Life will
-throw enough stuff in there to mess you up even without you having to worry about the egg whites in your batter, trust
-me.  In fact, half of the macaron process is basically putting the odds on your side.  Sure, you can skip the &ldquo;optional&rdquo;
-bits and play the odds, but that&rsquo;s really not something you want to do on your first few attempts.</p>
-
-<h3>Methodology</h3>
-
-<ol>
-<li>This part is optional, but you can rest the egg whites in a cool part of the kitchen or the refrigerator for a few
-days. This gets rid of some of the moisture, which stabilizes the whites and makes your job just a little bit easier.
-Don&rsquo;t worry; as long as there is no yolk in the mix, whites will last 3-5 days even at room temp. Alternatively, you
-could instead nuke them in the microwave for 3-5 seconds at a time to get rid of some moisture. Just make sure not to
-leave them in there too long, you&rsquo;ll accidentally cook them. How do I know this? Definitely not from experience,
-that&rsquo;s how&hellip;</li>
-<li>Whether you choose to follow #1 or not, start with egg whites at roughly room temp to maximize your chances of
-success.</li>
-<li>Pre-heat your oven to 290F.</li>
-<li>Throw the almond powder and the confectioner&rsquo;s sugar into a food processor and blitz it for about 30 seconds to a
-minute to work out the lumps. If you have unground almonds, it&rsquo;ll probably take a few minutes to get it to proper
-powder consistency. Don&rsquo;t try grinding just the almonds alone; it&rsquo;ll turn into almond paste more often than not
-because of the fat in the nuts. The confectioner&rsquo;s sugar helps keep things dry and powdery.</li>
-<li>Sift the almond powder + confectioner&rsquo;s sugar to be super-sure that you have a good consistency. You can skip this,
-but you risk ending up with unpleasant little lumps.</li>
-<li>Whip the egg whites to the stiff peak stage, and dump in the 25g sugar. Whisk for a few more seconds to incorporate
-fully.</li>
-<li>Alright, here comes the tricky part. Combine the almond powder/sugar combination with the egg whites, and start
-folding with your spatula. The goal here is to deflate the batter JUST enough that there is enough air in it for the
-feet to form during baking, but not so much that the macarons are misshapen or cracked. The total process should take
-less than 50 good strokes of the spatula for a batch of this size. This is probably THE most important yet overlooked
-part of this process. Please do yourself a favor and take a look at the post-procedural notes on this part. :)</li>
-<li>Load up the pastry bags. For beginners or the bag-challenged such as myself, you can put the bag in a tall mug. Just
-make sure the tip is pointing up as below, so it doesn&rsquo;t start spilling into the mug as soon as you start filling it.
-<img class="center" src="http://waffleparadox.smugmug.com/Food/Macarons/i-t6wjzT6/0/M/DSC_1319-M.jpg"></li>
-<li>Pipe the batter into small rounds. Don&rsquo;t squeeze them together too much; this will create too much moisture and
-weaken the integrity of the shells as you bake. Personally I like a shell of about an inch and a half in diameter.
-While piping, I recommend holding the tip at a slight angle and not moving it, then lifting the tip after the round
-is finished, and &ldquo;hooking&rdquo; the tip back towards the center to make a circle. Don&rsquo;t worry; if your batter was done
-right, the little tip will settle back into the shell. &hellip; If not, then the tips might stay and your macarons will
-look like cartoon poo. See the picture below for ones that have been done properly, as well as ones that haven&rsquo;t.
-<img class="center" src="http://waffleparadox.smugmug.com/Food/Macarons/i-xrDTxJH/0/M/DSC_1337-M.jpg"></li>
-<li>Let the shells rest for roughly 45 minutes to an hour. Again, see the notes for a more detailed explanation.</li>
-<li>Bake the shells for about 16 minutes, adjusting according to size.
-<img class="center" src="http://waffleparadox.smugmug.com/Food/Macarons/i-JMvvqm5/0/M/DSC_1347-M.jpg"></li>
-<li>Let the shells cool down after baking, then remove from the sheets with spatulas. Fill with whatever you want.</li>
-</ol>
-
-
-<h3>Notes: Details</h3>
-
-<p>And finally the mythic Notes section. This time there are actually enough to make multiple sections of notes: this
-section is on all the little details you&rsquo;ll need to really succeed. So you&rsquo;d better watch your step, cause I&rsquo;m about to
-drop some knowledge.</p>
-
-<h4>Folding the batter.</h4>
-
-<p>Alright. Here&rsquo;s the most important part of getting a good french meringue macaron: the folding.  Let&rsquo;s get one thing
-straight here, you are supposed to deflate the batter. In fact, the entire macaron is dependent on you deflating the
-batter JUST enough. Now, it&rsquo;s really hard to give a solid count because of the variability in folding style, spatula
-size, whether you&rsquo;ve added food coloring/cocoa powder/whatever to the batter, and all that. Also remember that filling
-the pastry bag and piping it also serves to deflate the batter further; it&rsquo;s not a HUGE thing, but it&rsquo;s not
-insignificant either.  But (as I said above) generally speaking it should take less than 50 good strokes of the spatula.
-The one way I&rsquo;ve best been able to tell though is the consistency of the batter as it flows off the spatula. And so I
-present the photo that this post really does revolve around:</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Food/Macarons/i-7dsKQ3C/0/O/mac_drop.gif"></p>
-
-<p>The texture when it&rsquo;s very important here. Note how it drops off the spatula in thick ribbons.  Note the speed, the
-consistency, the texture.  If it&rsquo;s coming down in giant blobs it needs more work. If it&rsquo;s dripping off like syrup,
-you&rsquo;ve gone way too far. When the batter drops back into the bowl, any irregularities in its surface should start to
-even out, very very slowly.  The only way to be absolutely certain is to see this enough and use your experience to
-judge, but since I can&rsquo;t give you that, I can only give you this animated picture, which I really wish I&rsquo;d had when I
-was learning this shit. It would have made my life 1000 times easier.  Use it as a guideline, and good luck.</p>
-
-<p>On that note, if you have a bit of trouble getting the batter completely even and lump/bubble-free, you can fold a small
-fraction into the egg whites as a sort of &ldquo;starter&rdquo; and giving it 5 strokes or so, so you don&rsquo;t have to work with it all
-at once. Don&rsquo;t overdo it though or you&rsquo;ll deflate the batter way too much.</p>
-
-<h4>Resting macarons and you.</h4>
-
-<p>While macarons are actually relatively quick to make, all desserts require time. This is no exception. The first rest
-you will need is obviously the egg whites; that has been covered above. The second is the shells after piping. What you
-want to do is let the shells rest until a slight &ldquo;skin&rdquo; has formed on top of them. This means that when you touch them
-lightly with your finger, they should not be tacky at all, in any way, in any area of the shell. On average this takes
-me 45 minutes or so, but that can change depending on humidity, temperature, and what you put in your shells. See what I
-mean by variability? If you&rsquo;re in a HUGE hurry, you can speed up the process with a blow-dryer or a space heater. But if
-you overdo it with that, then your shells might have a slight bit more crisp on the outside than usual, which slightly
-violates the spirit of macarons. Use your judgment.</p>
-
-<p>The second rest is after filling. While sometimes shells are ready to eat right out the oven, most often they are not.
-After you fill them, cover them up and let them rest a few hours. Optimally, you should leave them overnight (or even
-better, a full 24 hours) in the fridge. This lets the fillings&#8217; flavors infuse properly with the shells, resulting in a
-better taste overall. In addition, the moisture from the fillings helps soften up the shells even more, bringing it to
-the edge where the impossible and the possible meet&ndash;the possimpible, if you will. Right out of the oven, you get a
-product that can be okay to meh. After a good long rest though, you get something amazing.</p>
-
-<p>Though this isn&rsquo;t really a rest, if you refrigerated your macarons please let them come back to room temperature before
-eating. Please. It&rsquo;s kind of common sense, since fillings like ganache and buttercream harden considerably in the fridge
-and are not at all pleasant to eat at those temperatures, but I feel like it should be mentioned anyway. Obviously
-something with mascarpone takes way less time to come to room temp than something with butter, which in turn takes less
-time than something with chocolate. Again; use your judgment.</p>
-
-<p>In keeping with the above, you&rsquo;ll notice how any macaron shop worth its space will have the macarons AT ROOM TEMP.
-Usually they will be stored sideways in a nearly airtight box.  The environment of the box lets them rest and soften
-properly, and the sideways arrangement keeps them from sticking&ndash;trust me, with the moisture in the macarons and the
-fillings, if you try resting macarons on a plate some of the ones touching the plate will stick.  Also the boxes just
-look good.  People often talk about baked goods &ldquo;fresh out of the oven&rdquo;, but in this case that is actually a bad thing.
-I can assure you that the best macarons you buy will always be room temperature and resting on their sides, and will
-always have rested for a while before being taken out for sale.</p>
-
-<p>Removing the shells. Some people recommend putting a bit of water on the sheet to soften and remove the shells. I think
-that&rsquo;s a load of horse apples.  It&rsquo;s way too much risk for sogginess for something that shouldn&rsquo;t need it in the first
-place.  Just get a good flat thin spatula, and remove them with that. If you can&rsquo;t get them off a silpat mat or nonstick
-parchment paper, then they are probably undercooked and not ready yet, or something else has gone terribly terribly
-wrong.</p>
-
-<h3>Notes: Troubleshooting</h3>
-
-<p>Yes, for once I am writing a troubleshooting section. Getting tired of me yet? This part will be for the common things
-that go wrong, and how to fix and/or prevent them.</p>
-
-<ol>
-<li><strong>Cracked shells.</strong> Shells crack for a variety of reasons, but the root of it is that the top of the shell wasn&rsquo;t strong
-enough to withstand the force from the air rising in the body of the shell. One possibility is that you haven&rsquo;t
-rested the shells enough to form a sufficient skin. Make sure you rest them long enough. Another is that the batter
-was simply undermixed. And the third (and not so uncommon) is that the macarons are getting too hot. This has
-happened to me once or twice, since I work mainly in an electric oven with the heating coils at the bottom and tend
-to keep my racks at the bottom for higher heat. Try moving the oven rack up a slot or two and see if that helps.
-Otherwise, just make sure your batter is the right texture, and that you let it rest enough to form a skin.  And
-lastly, if there is too much moisture and it compromises the shells, they will crack.  This can result in too much
-liquid food coloring in the batter, or baking too many macarons too close together.  In these cases, opening the oven
-door for a second a few minutes into the baking can help vent the oven of moisture and prevent cracking.</li>
-<li><strong>Misshapen shells.</strong> This is somewhat related to cracked shells, in that it shares a common cause: undermixed batter. As
-you deflate the macaron batter, it becomes more and more liquid, and less and less lumpy. If you don&rsquo;t deflate it
-enough, it&rsquo;ll still behave like a meringue; that is, any shape you give it with the pastry bag will stay that way
-instead of smoothing down into a nice dome-ish circle. You can see a bit of this in my green tea macaron pictures,
-where the tips haven&rsquo;t QUITE sank back into the shells. The more undermixed the macarons are, the worse this problem
-is.</li>
-<li><strong>Flat shells, with wide and short or no pied.</strong> This comes from the exact opposite as the above two. If you have this
-problem, chances are your batter was flowing like crepe batter, and you have deflated it far far too much. Go easier
-on the spatula next time, yeah?  Another possibility is that you didn&rsquo;t rest them for long enough, but this time the
-top was so under-rested it just went ahead and expanded in tandem with the rest of the macaron, resulting in a
-non-flat but still footless shell.  The rest after piping is so important.  I would have gotten a picture, but after
-everything I&rsquo;ve been through I couldn&rsquo;t bring myself to overmix on purpose like that.</li>
-<li><strong>Small lumps in the shells.</strong> This is an ingredient problem as much as anything. Lumps usually result from moisture in
-the almond powder or just badly/coarsely ground almond powder. For macarons you need powder that is approaching
-confectioner&rsquo;s sugar in how fine it is. Again, blitz it with confectioner&rsquo;s sugar in a food processor even if you
-have awesome pre-ground almond powder. Confectioner&rsquo;s sugar is laced with corn starch, which will help get rid of any
-moisture-induced clumps. To be extra sure, sift it before using. Though honestly, with a good quality powder I find
-that a few seconds in the Cuisinart gets rid of the need for sifting.</li>
-<li><strong>Large lumps or bubbles in the shells.</strong> This comes mostly from the even mixing issue discussed above. Use a small part
-of the powder as a starter if it helps, and work slowly. Make sure you incorporate as much of the powder as you can
-with each stroke, getting rid of large clumps and dry spots as you go along. I&rsquo;ve heard people say that smacking the
-bowl helps get rid of air bubbles, but I haven&rsquo;t found it necessary. You can try it if it makes you feel better
-though. Same with rapping the undersides of the macaron trays after piping and all that, I&rsquo;ve never needed to do it.
-Just work methodically and don&rsquo;t hurry yourself.</li>
-<li><strong>Lopsided shells.</strong> Work on your piping. Don&rsquo;t try to pipe in a spiral or something stupid like that. Hold it in place,
-then lift and pull the tip. I apologize for not having an animated photo for this part, but I didn&rsquo;t think of it at
-the time. If I ever get one in the future, I&rsquo;ll retroactively link it back here.  This could also be caused by uneven
-resting surfaces, which makes the batter subtly and slowly flow into a weird shape.  I had this problem in the
-beginning, since I was lazy and rested them on paper that was already on metal baking sheets; the problem was, most
-of our sheets are cheap shit and warped from repeated abuse.  :)</li>
-</ol>
-
-
-<h3>References</h3>
-
-<p>Here&rsquo;s the section that I rarely get to write.  But I wouldn&rsquo;t have discovered most of what I know without the
-following&hellip;</p>
-
-<p><strong>Helene Dujardin</strong>, whose free ebook Demystifying Macarons first turned me on to the importance of the consistency and
-mixing of the batter, and has been an invaluable resource otherwise.  I swear I will read her blog one day.</p>
-
-<p><strong>Michel Suas</strong>, whose book Advanced Bread and Pastry didn&rsquo;t teach me anything on macarons in particular, but did inspire me
-with the pretty pictures inside, and kept me going even when I didn&rsquo;t really want to.  Also it&rsquo;s just a great reference
-in general.</p>
-
-<p><strong>Jill Colonna</strong>, whose book Mad About Macarons was the only resource I actually paid for to learn macarons specifically,
-and clued me in to the after-filling rest to bring macarons to perfection.</p>
-
-<p>And once again I have to extend my glare of withering condemnation to <strong>LeNotre</strong> academy, whose texts were as usual
-thoroughly unhelpful and bordering on misleading, and the main sabotaging factor in my very first attempts.  Seriously,
-screw you guys.</p>
-
-<p>&hellip; Well, that&rsquo;s it. Notice how despite this giant wall of text, the amount of time you spend in actually making a batch
-will probably be tiny compared to any other desserts.  This is because like most real skills worth knowing, it&rsquo;s not
-really about the fancy stuff so much as the absolute mastery of the fundamentals and imposing your will on the crap life
-throws in there to get in the way. Sure, you can rap the tray and add powders and chemicals and invert the bowl at
-exactly 30 degrees from the vertical when you&rsquo;re mixing and all that, but that&rsquo;s just a lot of bull without
-accomplishing much.  Peddling that is like tying a brick to your bike and saying that it&rsquo;s OK, you&rsquo;re still moving.
-Trust me.  It&rsquo;s all about the basics.</p>
-
-<p>So in the end, making a batch of macarons actually doesn&rsquo;t require too much work, and the active effort time required is
-downright trivial. If you&rsquo;ve read this post all the way down to the end, I admire your tenacity. Good luck, so long, and
-thanks for all the fish.  Hopefully someone finds this useful at some point.</p>
 </div>
   
   
