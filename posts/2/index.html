@@ -9,8 +9,7 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Friday Dev Demos are a big part of Bizo culture. Every Friday, developers take turn presenting a short 10-15 min
-demo on something cool they&rsquo;d &hellip;">
+  <meta name="description" content="This week I wanted to do a quick tip on some neat functionality in bash (and other bash-like shells), the bang commands. Let&rsquo;s say you have &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +88,141 @@ demo on something cool they&rsquo;d &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/25/thing-of-the-week-bash-bangs/">Thing of the Week: Bash Bangs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-25T17:40:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:40 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This week I wanted to do a quick tip on some neat functionality in bash (and other bash-like shells), the bang commands.</p>
+
+<p>Let&rsquo;s say you have some long important command that you want to run.  You run it, only to discover that you need sudo
+privileges.  For situations like this, <code>!!</code> (entire last command) can be a great time-saver.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="c"># let&#39;s pretend echo throws an error too and wants sudo for some reason</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>sudo !!
+</span><span class='line'>sudo <span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>Password:
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used to print it without overwriting the
+&ldquo;last command&rdquo; history.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>!!:p
+</span><span class='line'><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>sudo !!
+</span><span class='line'>sudo <span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>Password:
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bang commands also extend to the individual parts of the last command you ran.  The most basic form of this is <code>echo
+!:[n]</code>, where [n] is the nth word in the command, indexed from 0.  There are also shortcuts: <code>!^</code> gives the first arg
+(like <code>!:1</code>) and <code>!$</code> gives the last arg.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:1
+</span><span class='line'><span class="nb">echo </span>a
+</span><span class='line'>a
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>!:5:p <span class="c"># :p works with any bangs!</span>
+</span><span class='line'>e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:5
+</span><span class='line'><span class="nb">echo </span>e
+</span><span class='line'>e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !<span class="err">$</span>
+</span><span class='line'><span class="nb">echo </span>e
+</span><span class='line'>e
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> ->
+<code>rm -r !$</code>).  Plus, it&rsquo;s the easiest sequence to hit, finger-wise.</p>
+
+<p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
+e.g. <code>sudo !!&lt;TAB&gt;</code> gets replaced with <code>sudo echo 1 2 3 4 5</code> in place.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -485,44 +619,6 @@ we are.</p>
     <footer>
       <a rel="full-article" href="/blog/2014/06/16/fuck-it-its-friday-weeks-12-13/">Read on &rarr;</a>
     </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/14/hello-hardware-world/">Hello, Hardware World!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-14T16:56:00-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:56 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Recently, one of our tech leads at work previewed <a href="https://github.com/ogrodnek/analog-metrics-talk">a talk</a> that he&rsquo;s
-planning to give on analog metrics for the upcoming Strange Loop conference.  I&rsquo;ve always wanted to play with
-microcontrollers, and this really gave me a kick in the pants to get started.  Since I had a bit of amazon credit lying
-around, I decided to buy an arduino starter kit with all sorts of buttons, lights, and doo-dads, but not enough power to
-actually fry anything (I hope).  I still can&rsquo;t tell my head from my ass, but so far I can make a button turn on an LED.</p>
-
-<p><img class="center" src="http://waffleparadox.smugmug.com/Other/Camera-Awesome-Photos/i-h59QFDb/0/L/CA_06051420063663-L.jpg"></p>
-
-<p>Next step: world domination!</p>
-</div>
-  
   
 
 
