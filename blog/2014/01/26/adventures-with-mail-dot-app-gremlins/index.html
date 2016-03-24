@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Adventures With Mail.app Gremlins - alex kuang</title>
+  <meta name="author" content="Alex Kuang">
+
+  
+  <meta name="description" content="Background Usually I don&rsquo;t care too much if an email or two gets dropped en route. Between spam filters and sometimes-spotty
+(cough, mobile) &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44908431-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">alex kuang</a></h1>
+  
+    <h2>professional yak shaver</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="alexkuang.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">about</a></li>
+  <li><a href="/">blog</a></li>
+  <li><a href="/blog/archives">archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Adventures With Mail.app Gremlins</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-26T09:05:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:05 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h4>Background</h4>
+
+<p>Usually I don&rsquo;t care too much if an email or two gets dropped en route.  Between spam filters and sometimes-spotty
+(cough, mobile) connections, it&rsquo;s not too much of a stretch to assume that things get lost once in a great while.  But
+recently I was trying to set up an interview on the other side of the country, so naturally I paid a little more
+attention than usual.  Everything was going quite well, correspondence was zipping back and forth, and I&rsquo;d even bought a
+plane ticket for the trip.  But then a lull came when it was time to receive confirmation for hotel arrangements and a
+rough schedule for the interview process.</p>
+
+<p>Unbeknownst to me, the HR rep had already tried to send the information twice at this point, but for some
+reason the emails weren&rsquo;t landing in my inbox.  I sent one last-ditch follow-up when my flight was boarding, and got a
+reply with the info (thankfully) right before the plane took off.  Along with the reply, the HR rep mentioned that the
+previous emails she&rsquo;d sent had gone to <code>waffles@mochify.com</code>. <em>(aside: While <code>waffles@mochify.com</code> isn&rsquo;t the first email
+I&rsquo;d give out professionally, I&rsquo;m thankful it wasn&rsquo;t something like <code>sexbadger69@gmail.com</code> &hellip;  Actually, now I wonder
+if that address is open &hellip;)</em></p>
+
+<h4>The technical details</h4>
+
+<p>This was an old address that I&rsquo;d added to my various devices previously, but then removed for inactivity; I certainly
+didn&rsquo;t recall sending any recent email from it.  But when I logged in to check the inbox, lo and behold the missing
+emails were staring me in the face, along with a few others that had been &ldquo;dropped&rdquo; not too long ago.  Something smelled
+fishy.  I checked over my Sent box for my regular email to no avail; all the correspondence was there, with the correct
+<code>From</code>s and <code>To</code>s.  I ended up having to dig into the plain-text of the mime header to spot the issue:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>From: Alex Kuang &lt;[...]&gt;
+</span><span class='line'>Content-Type: multipart/alternative;
+</span><span class='line'>    boundary="Apple-Mail=_7DA4001C-0AA1-48BD-80F5-00ACDBCCAE9C"
+</span><span class='line'>    Message-Id: &lt;ADFD0F4C-6FE0-41F5-AA68-EF8E9845B360@gmail.com&gt;
+</span><span class='line'>    Mime-Version: 1.0 (Mac OS X Mail 6.6 \(1510\))
+</span><span class='line'>    X-Smtp-Server: smtp.gmail.com:waffles@mochify.com
+</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>X-Smtp? What?</em>  After a bit of googling I discovered that Mail.app on the Mac keeps a list of outgoing smtp servers
+associated with your mail accounts, which you can see in Preferences -> Accounts -> &ldquo;Outgoing Mail Server&rdquo; -> Edit SMTP
+Server List.  The problem is, the entry with the association persists <strong>even after an account is removed from the
+list</strong>: when I checked my smtp list, it included an entry for mochify as well as a few other one-off addresses that I&rsquo;d
+added and removed in similar fashion.  Most of my email (including <code>mochify.com</code>) is handled by google apps, which means
+that the smtp server the entries pointed to were all <code>smtp.gmail.com</code>, and the only difference was the
+username/authentication associated.</p>
+
+<p>So what ended up happening here was that I&rsquo;d sent the email from my regular account through Mail.app so it still carried
+the correct <code>From</code>/etc.  However, for reasons unknown, the outgoing smtp entry for that account did not work at
+that moment.  Since <code>mochify</code>&rsquo;s smtp entry pointed at the same <code>smtp.gmail.com</code> server, I&rsquo;m willing to bet that Mail.app
+decided it was a perfectly good fallback, added the <code>X-Smtp-Server</code> MIME header, and sent the email causing this weird
+reply-to behavior.</p>
+
+<p>There is a checkbox in account preferences that will lock you into using one-and-only-one smtp server and prevent this
+from happening, but honestly after this ordeal I will probably just be even more biased towards composing my email using
+the web gmail ui.  I&rsquo;m just glad that everything worked out in the end, and anyway this is a good reminder that I should
+be more diligent in setting up auto-forwarding even for email addresses I don&rsquo;t plan on using.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Alex Kuang
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-01-26T09:05:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:05 am</span></time>
+      
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins/" data-via="" data-counturl="http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/23/cmd-misadventures-codebase-size/" title="Previous Post: CMD Misadventures - Codebase Size">&laquo; CMD Misadventures - Codebase Size</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/02/03/iap-and-mobile/" title="Next Post: IAP and Mobile">IAP and Mobile &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Alex Kuang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

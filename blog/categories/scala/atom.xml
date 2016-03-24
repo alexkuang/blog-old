@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Scala | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/scala/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2016-03-24T17:52:30-04:00</updated>
+  <id>http://alexkuang.github.io/</id>
+  <author>
+    <name><![CDATA[Alex Kuang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Scala Enrichment (12/03/14)]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/24/scala-enrichment/"/>
+    <updated>2015-01-24T11:52:37-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/24/scala-enrichment</id>
+    <content type="html"><![CDATA[<p>Douglas Crockford recently gave a tech talk at work, where he casually endorsed Scala during the Q&amp;A at the end.  Given
+that and the fact that I&rsquo;ve been hearing increasing mentions of it in the company at large, I figured this week I&rsquo;d plug
+a neat feature of Scala and a recent use case where I found it extremely handy.</p>
+
+<h3>The Feature</h3>
+
+<p>Anyone who&rsquo;s worked with The AWS SDK (or just Java code in general) will be familiar with the builder pattern.
+Recently, I was writing some code to automate setup of CloudWatch alarms for a DynamoDB table.  The alarm request
+started looking something like:</p>
+
+<pre><code class="scala">val req = new PutMetricsAlarmRequest()
+  .withNamespace("DynamoDB")
+  .withDimensions(dimensionsForTableName)
+  .withStatistic("Sum")
+  .withComparisonOperator(GreaterThanThreshold)
+  .withThreshold(thresholdNumber)
+  .withMetricName(throttledMetricName)
+  .withEvaluationPeriods(periods)
+  .withPeriod(periodDuration.toSeconds.toInt)
+  .withAlarmActions(idMappingSNS)
+  .withAlarmName(alarmNameFor(tableName, throttledMetric, throttledThreshold))
+
+cloudwatchClient.putMetricAlarm(req)
+</code></pre>
+
+<p>Which is serviceable, but less than ideal given that I had multiple alarms of roughly the same nature.  Plus, I felt
+like it left something to be desired in terms of readability and communicating the intent of the alarm in a succinct
+way.  Enter <code>implicit class</code>s and the &ldquo;enrichment&rdquo;* pattern!  Basically, it lets us turn the above into something more
+like this:</p>
+
+<pre><code class="scala">val req = new PutMetricAlarmRequest()
+  .forTable(tableName)
+  .triggerOnSumGreaterThan(throttledMetric, throttledThreshold)
+  .afterEvaluationPeriods(evaluationPeriodDuration, evaluationPeriods)
+  .withAlarmActions(idMappingSNS)
+  .withAlarmName(alarmNameFor(tableName, throttledMetric, throttledThreshold))
+
+cloudwatchClient.putMetricAlarm(req) /** Can still pass req back into AWS API! */
+</code></pre>
+
+<p>With the addition of this:</p>
+
+<pre><code class="scala">implicit class MetricAlarmRequestHelper(req: PutMetricAlarmRequest) {
+  def forTable(tableName: String) = {
+    req.withNamespace("DynamoDB").withDimensions(tableMetricDimensions(tableName).asJava)
+  }
+
+  def triggerOnSumGreaterThan(metricName: String, threshold: Int) = {
+    req.withStatistic("Sum").withComparisonOperator(GreaterThanThreshold).withThreshold(threshold).withMetricName(metricName)
+  }
+
+  def afterEvaluationPeriods(periodDuration: Duration, periods: Int) = {
+    req.withEvaluationPeriods(periods).withPeriod(periodDuration.toSeconds.toInt)
+  }
+}
+</code></pre>
+
+<!-- more -->
+
+
+<h3>How It Works</h3>
+
+<p>One of the coolest&ndash;and probably most confusing&ndash;keywords in scala is <code>implicit</code>, which can refer to many different
+things.  For now, let&rsquo;s limit the discussion to implicit conversions.  A grossly oversimplified tl;dr is that there can
+be some def of the form:</p>
+
+<pre><code class="scala">implicit def foo2bar(foo: Foo): Bar = { … }
+</code></pre>
+
+<p>And as long as that def is in scope, the code will convert anything of type Foo into type Bar without having to re-write
+that logic or call some conversion method.  For more information on implicits in general, see this excellent answer by
+Daniel Sobral, who is basically the Jon Skeet of the Scala world:
+<a href="http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits/5598107#5598107">http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits/5598107#5598107</a></p>
+
+<p>Extending the use of implicits, that means that if you do something like, for the above use-case:</p>
+
+<pre><code class="scala">class MetricAlarmRequestHelper(req: PutMetricAlarmRequest) = { /** Same function defs as above */ }
+
+implicit def vanillaRequest2Helper(req: PutMetricAlarmRequest) = new MetricAlarmRequestHelper(req)
+implicit def helper2vanillaRequest(helper: MetricAlarmRequestHelper) = helper.req
+</code></pre>
+
+<p>then scala will be able to magically convert from the vanilla request to the helper for use in your client code, and
+then from the helper back to the vanilla request for passing to other parts of the Amazon API. <code>implicit class</code> is just
+short-hand introduced in Scala 2.10 that does the above for you in one convenient construct that makes things even more
+concise.  For more info, see the scala docs: <a href="http://docs.scala-lang.org/overviews/core/implicit-classes.html">http://docs.scala-lang.org/overviews/core/implicit-classes.html</a></p>
+
+<p>Beyond use cases like wrapping builders, this kind of enrichment using <code>implicit</code> can be extremely powerful, especially
+for extending functionality where it&rsquo;s not practical to alter the original code.  Though as with all advanced features
+of anything, it&rsquo;s probably best not to go overboard.  :)</p>
+
+<h3>Naming</h3>
+
+<p>Quick bit of bonus trivia&hellip;  When the pattern first rose into prominence, it was known colloquially as &ldquo;pimp my class&rdquo;.
+Then folks got all up in arms about the political correctness of the word &ldquo;pimp&rdquo;, so now the common term is
+&ldquo;enrichment&rdquo;.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Neophyte's Take on Scala]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala/"/>
+    <updated>2013-12-09T18:12:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala</id>
+    <content type="html"><![CDATA[<p>A <a href="http://overwatering.org/blog/2013/12/scala-1-star-would-not-program-again/">blog post</a> has recently been making the
+rounds in all the usual programming fora&ndash;/r/programming, hackernews, and so on&ndash;even eliciting a
+<a href="https://groups.google.com/forum/#!topic/scala-debate/153H3Ya4Nxk">response</a> from Scala&rsquo;s creator himself.  There&rsquo;s a
+lot of discussion both productive and inflammatory out there already, but I thought I&rsquo;d jot down my perspective on the
+common points as someone who: 1. picked scala up relatively recently (2.9.2 and 2.10), 2. has worked with it for a few
+months on the side, and 3. comes from a background of dynamic languages.</p>
+
+<h4>Long Compile Times</h4>
+
+<p>I can definitely see where this is coming from.  Scala&rsquo;s compile times can be pretty long, though I had pegged that as
+the cost of using a compiled language anyway.  I, at least, felt a marked increase in times upgrading from <code>2.9.2</code> to
+<code>2.10</code>, presumably from the slew of new features like macros.  However, it seems that <code>2.11</code> will thankfully be
+<a href="http://java.dzone.com/articles/state-scala-2013">focused</a> on compiler optimizations.  In the meantime, I&rsquo;ve found that
+judicious use of some of Scala&rsquo;s heavier features (such as implicits) keeps the compile times manageable.
+<a href="http://zeroturnaround.com/software/jrebel/">JRebel</a> has been a godsend as well for hot-reloading in incremental
+compilation, and they do offer a personal Scala license for free.  Without JRebel my life as a scala user would have
+been a lot harder.</p>
+
+<h4>Opaque Syntax</h4>
+
+<p>I agree completely here.  Scala&rsquo;s flexibility in parsing + its allowance of symbolic method names obviously allows for a
+lot of flexibility.  This allows the construction of all sorts of DSLs; whether these DSLs end up being expressive or
+just plain confusing, is another thing altogether.  In this case, I&rsquo;d have to say that just because something is
+possible does not mean it should be done all the time.</p>
+
+<!-- more -->
+
+
+<p>The original post mentions that their build script&rsquo;s syntax seemed to be all over the place; I&rsquo;m assuming they were
+referring to the de facto scala build tool, <a href="http://www.scala-sbt.org/">sbt</a>.  While it&rsquo;s great in a lot of ways, I
+personally am not a big fan of their heavy use of symbolic names either.  Just as an example, a relatively simple build
+file for one of my personal projects already has all of the following:</p>
+
+<p><figure class='code'><figcaption><span>build.sbt </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span> <span class="o">&amp;</span><span class="n">hellip</span><span class="o">;</span> <span class="o">)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">testOptions</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">+=</span> <span class="o">(&amp;</span><span class="n">hellip</span><span class="o">;)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">resourceGenerators</span> <span class="n">in</span> <span class="nc">Compile</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;+=</span> <span class="o">(&amp;</span><span class="n">hellip</span><span class="o">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>All of them are obviously for adding to some sort of sequence, but still different enough to trip you up.  And this is
+still relatively shallow territory&ndash;I haven&rsquo;t even mentioned the insanity that comes with more advanced libraries, like
+the <a href="http://stackoverflow.com/questions/14472310/pronounceable-names-for-scalaz-operators">fish operator</a>.</p>
+
+<p>In Odersky&rsquo;s google groups thread, he mentions a proposal for requiring an equivalent alphabetical alias for all
+symbolic methods.  I hope that goes through.  If nothing else, it&rsquo;ll make the methods easier to google.</p>
+
+<h4>Documentation</h4>
+
+<p>As with any budding technology, documentation tends to lag behind development.  However, language and core library
+documentation has improved immensely even in the time since I picked up Scala, so many kudos to the typesafe team for
+that.  However, the third-party libraries still have a way to go; as helpful and educational as it may be, source code
+should <em>not</em> be the go-to method for research.</p>
+
+<h4>Types and Case Classes</h4>
+
+<p>Here&rsquo;s where I have to respectfully disagree completely with the original post.  I <em>love</em> types and case classes.  Being
+able to encode logic in your types that would otherwise have ended up as boilerplate-y edge case checking, <em>and</em> having
+the compiler do it for you instead of maintaining the extra tests, is a win in my book.  Coming from a dynamic web
+background, having a compiler do some of these checks for me was a breath of fresh air, especially since it doesn&rsquo;t come
+at the cost of extreme clunkiness a la Java.</p>
+
+<p>And case classes / <a href="http://learnyouahaskell.com/making-our-own-types-and-typeclasses">algebraic data types</a> are the
+bee&rsquo;s knees.  Between the <code>copy</code> method and the free pattern matching, I don&rsquo;t see how case classes do anything but get
+rid of repetition.  Forgive the simplistic example:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">model</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">version</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;//</span> <span class="nc">Extraction</span><span class="o">,</span> <span class="n">conditionals</span><span class="o">,</span> <span class="n">and</span> <span class="n">assignment</span><span class="o">,</span> <span class="n">all</span> <span class="n">done</span> <span class="n">succinctly</span>
+</span><span class='line'><span class="k">def</span> <span class="n">calcType</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="n">hp</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="mi">20</span><span class="n">B</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;,</span> <span class="mi">1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="n">financial</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;</span>
+</span><span class='line'>  <span class="c1">// &amp;hellip;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="nc">Calculator</span><span class="k">:</span> <span class="kt">%s</span> <span class="kt">%s</span> <span class="kt">%s</span> <span class="kt">is</span> <span class="kt">of</span> <span class="kt">unknown</span> <span class="k">type</span><span class="kt">&amp;rdquo</span><span class="o">;.</span><span class="n">format</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span>
+</span><span class='line'><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;//</span> <span class="nc">No</span> <span class="n">custom</span> <span class="n">methods</span><span class="o">/</span><span class="n">etc</span> <span class="n">needed</span>
+</span><span class='line'><span class="k">def</span> <span class="n">upgrade</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">version</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">version</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h4>Overall impressions</h4>
+
+<p>Despite its flaws, I&rsquo;ve really enjoyed working with Scala and it will probably remain a part of my toolbox.  Its
+flexibility and power makes it a great gen-purpose language, especially in its type system and ability to combine
+functional programming with OO.  It sits in the JVM, which means interoperability with the existing mammoth Java
+ecosystem comes with just a little bit of glue code.  And more importantly, it means that if I should pick up Clojure in
+the future, interoperability with THAT will not be too far off either, knock on wood.</p>
+
+<p>That said, it&rsquo;s not by any means a perfect language.  The same flexibility that makes it great to use can often result
+in convoluted APIs, and it&rsquo;s very easy to shoot yourself in the foot.  Living in the JVM also means the language has to
+deal with things like type erasure; that results in some annoying limitations, especially if you&rsquo;re looking to use scala
+in a more advanced functional capacity (see <a href="https://github.com/scalaz/scalaz">scalaz</a>).  And lastly&hellip;  Scala, at least
+to me, is one of those tools that feels natural once you&rsquo;re used to it, but requires a significant mental shift to fully
+grok&ndash;I wouldn&rsquo;t want to be plopped into scala on a fresh project with a one month deadline.  Ideally, there should be
+some better documentation to help bridge that gap.</p>
+
+<p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
+language and ecosystem mature, they will hopefully become less and less of a problem.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fibonacci Stream]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream/"/>
+    <updated>2013-10-17T07:15:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream</id>
+    <content type="html"><![CDATA[<p>I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
+to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy
+to sync to 2.1 at the moment.  As such, everyone will have to settle for this plain jane snippet:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// e.g., fibStream.take(5)</span>
+</span><span class='line'><span class="k">def</span> <span class="n">fibStream</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">def</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev1</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">,</span> <span class="n">prev2</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="n">prev1</span> <span class="o">#::</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev2</span><span class="o">,</span> <span class="n">prev1</span> <span class="o">+</span> <span class="n">prev2</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">loop</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Nothing fancy, just one of many possible variations of the fibonacci sequence.  This one is done via a <code>Stream</code>,
+which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream">More here</a>).</p>
+
+<p>Will probably write more about the why/how of the nested loop <code>def</code> (mostly for my own reference), but for now I think
+the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
+though.</p>
+]]></content>
+  </entry>
+  
+</feed>

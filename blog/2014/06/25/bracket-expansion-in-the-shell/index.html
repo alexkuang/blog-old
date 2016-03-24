@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hello, Blog! - alex kuang</title>
+  <title>Bracket Expansion in the Shell - alex kuang</title>
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Trying to take another shot at this whole writing-about-tech thing. :) Please excuse appearances while this blog gets
-revamped for the umpteenth time &hellip;">
+  <meta name="description" content="Just a quick post to show of a neat little trick for those who are more command-line-driven: bracket expansion. Basically, bracket expansion means &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ revamped for the umpteenth time &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://alexkuang.github.io/blog/2016/03/18/hello">
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
@@ -93,7 +92,7 @@ revamped for the umpteenth time &hellip;">
   <header>
     
       
-        <h1 class="entry-title">Hello, Blog!</h1>
+        <h1 class="entry-title">Bracket Expansion in the Shell</h1>
       
     
     
@@ -103,7 +102,7 @@ revamped for the umpteenth time &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-03-18T13:58:09-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:58 pm</span></time>
+<time class='entry-date' datetime='2014-06-25T18:58:00-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:58 pm</span></time>
         
         
       </p>
@@ -111,8 +110,28 @@ revamped for the umpteenth time &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Trying to take another shot at this whole writing-about-tech thing.  :)  Please excuse appearances while this blog gets
-revamped for the umpteenth time.</p>
+<div class="entry-content"><p>Just a quick post to show of a neat little trick for those who are more command-line-driven: bracket expansion.</p>
+
+<p>Basically, bracket expansion means that <code>some-string-called-{x,y}-here</code> desugars in the shell to
+<code>some-string-called-x-here some-string-called-y-here</code>.  This is especially useful if, say, you&rsquo;re in a Java-like
+directory structure and you accidentally placed your source class in your test folder, and you need to move it back:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># desugars into mv src/test/java/com/foobar/app/Class.java src/main/java/com/foobar/app/Class.java</span>
+</span><span class='line'>mv src/<span class="o">{</span><span class="nb">test</span>,main<span class="o">}</span>/java/com/foobar/app/Class.java
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or if you&rsquo;ve already committed to source control, this also works quite nicely with <code>git mv</code>.  Another nice example from
+recent memory is, say, if you were cleaning up some directories nested by date and wanted to only wipe a few months:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm /posts/2014/<span class="o">{</span>01,03,06,07<span class="o">}</span>/*.html
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Anyway, just a quick little post for a neat little trick.</p>
 </div>
 
 
@@ -135,16 +154,22 @@ revamped for the umpteenth time.</p>
 
 
 
-<time class='entry-date' datetime='2016-03-18T13:58:09-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:58 pm</span></time>
+<time class='entry-date' datetime='2014-06-25T18:58:00-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:58 pm</span></time>
       
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>programming</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2016/03/18/hello/" data-via="" data-counturl="http://alexkuang.github.io/blog/2016/03/18/hello/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell/" data-via="" data-counturl="http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell/" >Tweet</a>
   
   
   
@@ -153,8 +178,10 @@ revamped for the umpteenth time.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/01/24/gn-in-vim/" title="Previous Post: Thing of the Week: `gn` in Vim">&laquo; Thing of the Week: `gn` in Vim</a>
+        <a class="basic-alignment left" href="/blog/2014/06/14/hello-hardware-world/" title="Previous Post: Hello, Hardware World!">&laquo; Hello, Hardware World!</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2014/07/16/asciinema/" title="Next Post: asciinema">asciinema &raquo;</a>
       
     </p>
   </footer>

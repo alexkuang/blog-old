@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hello, Blog! - alex kuang</title>
+  <title>Fibonacci Stream - alex kuang</title>
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Trying to take another shot at this whole writing-about-tech thing. :) Please excuse appearances while this blog gets
-revamped for the umpteenth time &hellip;">
+  <meta name="description" content="I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
+to test is not available in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ revamped for the umpteenth time &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://alexkuang.github.io/blog/2016/03/18/hello">
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
@@ -93,7 +93,7 @@ revamped for the umpteenth time &hellip;">
   <header>
     
       
-        <h1 class="entry-title">Hello, Blog!</h1>
+        <h1 class="entry-title">Fibonacci Stream</h1>
       
     
     
@@ -103,7 +103,7 @@ revamped for the umpteenth time &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-03-18T13:58:09-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:58 pm</span></time>
+<time class='entry-date' datetime='2013-10-17T07:15:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:15 am</span></time>
         
         
       </p>
@@ -111,8 +111,29 @@ revamped for the umpteenth time &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Trying to take another shot at this whole writing-about-tech thing.  :)  Please excuse appearances while this blog gets
-revamped for the umpteenth time.</p>
+<div class="entry-content"><p>I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
+to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy
+to sync to 2.1 at the moment.  As such, everyone will have to settle for this plain jane snippet:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// e.g., fibStream.take(5)</span>
+</span><span class='line'><span class="k">def</span> <span class="n">fibStream</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">def</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev1</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">,</span> <span class="n">prev2</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="n">prev1</span> <span class="o">#::</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev2</span><span class="o">,</span> <span class="n">prev1</span> <span class="o">+</span> <span class="n">prev2</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">loop</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Nothing fancy, just one of many possible variations of the fibonacci sequence.  This one is done via a <code>Stream</code>,
+which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream">More here</a>).</p>
+
+<p>Will probably write more about the why/how of the nested loop <code>def</code> (mostly for my own reference), but for now I think
+the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
+though.</p>
 </div>
 
 
@@ -135,16 +156,22 @@ revamped for the umpteenth time.</p>
 
 
 
-<time class='entry-date' datetime='2016-03-18T13:58:09-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:58 pm</span></time>
+<time class='entry-date' datetime='2013-10-17T07:15:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:15 am</span></time>
       
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/scala/'>scala</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2016/03/18/hello/" data-via="" data-counturl="http://alexkuang.github.io/blog/2016/03/18/hello/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream/" data-via="" data-counturl="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream/" >Tweet</a>
   
   
   
@@ -153,8 +180,8 @@ revamped for the umpteenth time.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/01/24/gn-in-vim/" title="Previous Post: Thing of the Week: `gn` in Vim">&laquo; Thing of the Week: `gn` in Vim</a>
       
+        <a class="basic-alignment right" href="/blog/2013/12/09/a-neophytes-take-on-scala/" title="Next Post: A Neophyte's Take on Scala">A Neophyte&#8217;s Take on Scala &raquo;</a>
       
     </p>
   </footer>

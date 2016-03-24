@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hello, Blog! - alex kuang</title>
+  <title>Zelda as a Metaphor for Complexity - alex kuang</title>
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Trying to take another shot at this whole writing-about-tech thing. :) Please excuse appearances while this blog gets
-revamped for the umpteenth time &hellip;">
+  <meta name="description" content="Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds. It&rsquo;s been a while since
+my last trip to Hyrule, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ revamped for the umpteenth time &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://alexkuang.github.io/blog/2016/03/18/hello">
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
@@ -93,7 +93,7 @@ revamped for the umpteenth time &hellip;">
   <header>
     
       
-        <h1 class="entry-title">Hello, Blog!</h1>
+        <h1 class="entry-title">Zelda as a Metaphor for Complexity</h1>
       
     
     
@@ -103,7 +103,7 @@ revamped for the umpteenth time &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-03-18T13:58:09-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:58 pm</span></time>
+<time class='entry-date' datetime='2013-12-11T18:29:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:29 pm</span></time>
         
         
       </p>
@@ -111,8 +111,39 @@ revamped for the umpteenth time &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Trying to take another shot at this whole writing-about-tech thing.  :)  Please excuse appearances while this blog gets
-revamped for the umpteenth time.</p>
+<div class="entry-content"><p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
+my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
+which could take upwards of hours (Water Temple, I&rsquo;m looking at you) to complete on the first run.  One of them jumps to
+mind particularly: The Forest Temple, a dungeon you encounter in the early-mid game immediately after gaining access to
+adult Link.</p>
+
+<p>At first glance, it seems like a completely normal dungeon&ndash;You&rsquo;ve got your wolves, you&rsquo;ve got your carnivorous plants,
+and the obvious puzzle in the form of 4 torches that have to be lit.  Fairly straightforward, until the game hits you
+with this:</p>
+
+<p><img class="center" src="/images/forest-temple-hallway.jpg"></p>
+
+<p>The first time you hit the twisting hallway, you have to follow it as-is to the other side, your perspective being
+warped, to end up in a room with you standing on its &ldquo;wall&rdquo;.  On the &ldquo;floor&rdquo; is a chest, inaccessible in your current
+state, and further on is a door you don&rsquo;t have the key to.  After a few more rooms and a battle with some wolves, you
+end up with the bow which allows you to hit a switch to un-twist the hallway, bringing a completely new
+perspective to the rooms&ndash;Most obviously, the chest from the earlier &ldquo;floor&rdquo; is now reachable, and after a little
+contemplation and a lot of climbing, you get the key to the previously locked door&hellip;  <em>Which you can&rsquo;t access until you
+re-twist the hallway.</em></p>
+
+<p>This simple sequence is, in essence, what makes the classical Zelda dungeons challenging and oh so much fun.  In
+addition to an &ldquo;item of the moment&rdquo;, each area contains an inventive mechanic that completely changes the landscape
+of the entire dungeon.  A room is completely different when your perspective is rotated, platforms become traversable
+after you flood the floor with sand, and so on.  It&rsquo;s no longer just <em>Push a block over here</em>, it&rsquo;s <em>Push a block over
+here to change the water level so we can push that other block, and then change the water level back to align the two
+blocks properly and maybe we can finally get to that chest over there.  Oh wait, that didn&rsquo;t work, maybe if I switch the
+water level back BEFORE moving the second block&hellip;</em></p>
+
+<p>Sound familiar?  The hardest dungeons&#8217; mechanics tend to use some piece of outside state to introduce exponentially more
+complex interactions between the existing items that Link already has access to.  Interactions that now depend not only
+on the current environment, but also the configuration of surrounding environments, and probably the order that
+everything was done as well.  Keeping track of all that is welcome, even enjoyable, when I&rsquo;m playing Zelda.  But I have
+no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing what I want it to.</p>
 </div>
 
 
@@ -135,16 +166,22 @@ revamped for the umpteenth time.</p>
 
 
 
-<time class='entry-date' datetime='2016-03-18T13:58:09-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:58 pm</span></time>
+<time class='entry-date' datetime='2013-12-11T18:29:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:29 pm</span></time>
       
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/games/'>games</a>, <a class='category' href='/blog/categories/programming/'>programming</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2016/03/18/hello/" data-via="" data-counturl="http://alexkuang.github.io/blog/2016/03/18/hello/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/" data-via="" data-counturl="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/" >Tweet</a>
   
   
   
@@ -153,8 +190,10 @@ revamped for the umpteenth time.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/01/24/gn-in-vim/" title="Previous Post: Thing of the Week: `gn` in Vim">&laquo; Thing of the Week: `gn` in Vim</a>
+        <a class="basic-alignment left" href="/blog/2013/12/09/a-neophytes-take-on-scala/" title="Previous Post: A Neophyte's Take on Scala">&laquo; A Neophyte&#8217;s Take on Scala</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2013/12/20/clojure-first-impressions/" title="Next Post: Clojure First Impressions">Clojure First Impressions &raquo;</a>
       
     </p>
   </footer>

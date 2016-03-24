@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2016-03-18T14:11:34-04:00</updated>
+  <updated>2016-03-24T17:52:30-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -20,6 +20,1451 @@
     <id>http://alexkuang.github.io/blog/2016/03/18/hello</id>
     <content type="html"><![CDATA[<p>Trying to take another shot at this whole writing-about-tech thing.  :)  Please excuse appearances while this blog gets
 revamped for the umpteenth time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: `gn` in Vim]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/24/gn-in-vim/"/>
+    <updated>2015-01-24T11:53:51-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/24/gn-in-vim</id>
+    <content type="html"><![CDATA[<p>Back to vim this week!  This one might be a bit esoteric&ndash;apologies in advance&ndash;but it’s such a useful feature that I
+had to share.</p>
+
+<p><code>gn</code> is a kinda-sorta-but-not-really-motion that selects the matches of the current search pattern.  It’s kind of like
+<code>n</code> (go to next match in search), except it also selects the contents of the match in visual mode.  But where it really
+shines is when used with operators like <code>c</code> (change), etc to operate on the match.  Quick demo to see it in action,
+before continuing:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/15656.js" id="asciicast-15656" async></script>
+
+
+<p>So this is nice for a few reasons.  First, it’s neat to be able to operate on just the match of a search.  I remember a
+few times before I found <code>gn</code> where I was doing something similar to the demo, tried to use <code>cw</code>, and got mildly annoyed
+that I had to retype half the word because the <code>w</code> motion was too aggressive.</p>
+
+<p>Another nice thing is that with <code>gn</code>, the dot command will both move to the next match and repeat whatever operation you
+did, instead of having to do the movement and operation separately using <code>n.</code>.  It seems petty, but hey it’s a full 50%
+keystroke savings!!</p>
+
+<p>Arguably, the demo above could have been done with an ex command like <code>:%s/test/actual</code> (universal search and replace),
+but I think <code>gn</code> still offers a lot.  It works on all operators, so <code>ygn</code> would yank the match, <code>gUgn</code> would uppercase
+the match, and so on.  Plus, it allows an easy on-the-fly workflow that’s still decently fast without the “crap I have
+to tune all the edge cases in my expression”: for example, if you want to only change some instances of <code>test</code> to
+<code>actual</code>, but others to <code>sandbox</code>.</p>
+
+<p>As always, see <code>:h gn</code> for more details.  Also note that gn has only been available since vim 7.4 or something like
+that, but there’s no reason anyone shouldn’t be using the latest on their personal boxes…</p>
+
+<h3>Bonus</h3>
+
+<p>This email also generated some additional discussion, which led to my discovery of the multi-select feature in Sublime,
+and the <a href="https://github.com/terryma/vim-multiple-cursors">associated vim plugin</a>.  It seems like it&rsquo;s in a different
+spirit than <code>gn</code>, but still a very cool way of thinking about operating on search results that I had not seen before.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Thread Macro (01/07/15)]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/24/thread-macro/"/>
+    <updated>2015-01-24T11:53:42-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/24/thread-macro</id>
+    <content type="html"><![CDATA[<p>Let’s deviate from Scala for a bit and talk about clojure.  Or lisps in general, I guess.  A lot of the “kinda joking
+except not really” quips that commonly float around on the internet are about the parentheses, as in how there are so
+many of them.  For example, if you want to take a number <code>x</code> and add one, multiply by two, then add 3, the code might
+naively look something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or perhaps like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">+ </span><span class="mi">3</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">x</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Look at the parens!  Especially the consecutive 3 closing ones in the second variation.  For a sufficiently long chain
+of functions, it can get pretty unreadable—especially with multiple arguments and whatnot.</p>
+
+<p>Enter clojure’s thread macro.  The thread macro is a macro in the form of <code>(-&gt; x &amp; forms)</code>, and it “threads” <code>x</code> through
+the <code>forms</code> as the first arg*.  Which sounds terribly confusing explained, so an example is probably better here.  Take
+this snippet using the thread macro:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; add one, multiply by two, and add three</span>
+</span><span class='line'><span class="p">(</span><span class="nb">-&gt; </span><span class="nv">x</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">* </span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">+ </span><span class="mi">3</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This desugars into <code>(+ (* (+ x 1) 2) 3)</code>, i.e. the first variation of the initial example above.  Personally, I find the
+macro version much more readable since each call is on its own line, and it seems more expressive of applying a series
+of functions to the initial x.</p>
+
+<p>The thread macro is also useful for chaining together collection methods like <code>map</code>.  Since clojure doesn’t have
+first-class OO support (instead favoring protocols and such), map exists as a regular function that takes the collection
+as an arg, instead of as a method on a collection class.  So chaining together a bunch of ops on a vector might look
+something like&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; add one to every number and filter for even numbers</span>
+</span><span class='line'><span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">))</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">;; Without the thread macro, would look like:</span>
+</span><span class='line'><span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span> <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The only difference is that in this case, ->> was used.  ->> is “thread last”, which is like -> (“thread first”), except
+it inserts the expression at the end of the form.</p>
+
+<p>This pattern also exists in other languages (especially those that don’t offer first-class OO, which allows fancy
+<code>return self</code> type stuff), like Elixir’s pipe <code>|&gt;</code> (in the spirit of the unix pipe) which is what prompted me to spread
+the word about this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="c1"># double and add one to each element</span>
+</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">x</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">x</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The thread macro pattern doesn’t have as much of a place in Scala, since Scala has mechanisms like the collection
+library and implicit conversions to help express similar logic in elegant ways.  But when I first read up on macros in
+lisp, I spent some time scratching my head at the day-to-day practical uses until I found this and had my first
+“ohhhhhhhhhhhh” moment.  In any case, hope this was mildly interesting!</p>
+
+<p>* - Well technically, as the second item in the form, which is effectively the first arg for functions&hellip; But that might
+be a bit too lispy.</p>
+
+<h3>Bonus</h3>
+
+<p>When I published this email to the internal list, it generated some discussion wherein I learned that there are other
+neat features of the same sort like <a href="https://clojuredocs.org/clojure.core/doto">doto</a>, and that they&rsquo;re all just
+various derivations of the K combinator.  Of course, googling k-combinators led to a pretty
+<a href="http://en.wikipedia.org/wiki/SKI_combinator_calculus">heavy looking wiki page</a>, so I was referred to
+<a href="http://combinators.info/">http://combinators.info/</a> , which I have been trying to get through since.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: The Silver Searcher (12/17/14)]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/24/the-silver-searcher/"/>
+    <updated>2015-01-24T11:53:21-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/24/the-silver-searcher</id>
+    <content type="html"><![CDATA[<h3>grep</h3>
+
+<p>This week I’d like to talk about grep.  Grep is a great general-purpose tool and works very well for filtering text in
+the middle of a long command chain, but I’ve found it a bit clunky as a codebase search tool.</p>
+
+<p>For example, let’s say you’re sitting in some project and trying to grep for all the places where a function is being
+called.  The naïve first attempt would be:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grep myFunc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Except that just hangs, since grep defaults to reading from stdin.  A next attempt might be:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grep myFunc .</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Except then grep would complain that . is a directory, which leads to:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grep –r myFunc .</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which finally works, but still leaves a bit to be desired.  The biggest annoyance is that grep will get caught up in
+files that you don’t necessarily care about, e.g. Tags files, third-party dependency files, binary files… “Binary file
+./lib/default/xxx.jar matches” anyone?</p>
+
+<h3>ag</h3>
+
+<p>Introducing <a href="http://geoff.greer.fm/ag/">ag, the silver searcher</a>!  Ag:</p>
+
+<ul>
+<li>Fulfills the above “find this in cwd” use case via a simple, short <code>ag myFunc</code></li>
+<li>Is easy to install and super fast</li>
+<li>Respects project ignore files: for example, it will ignore the patterns found in your .gitignore</li>
+<li>In the case of files that you want in the repo but still don’t want to search, it also supports the use of a .agignore file</li>
+<li>Integrates well into other tools: AFAIK there are ag plugins for vim, emacs, and text mate.</li>
+</ul>
+
+
+<p>Fun fact: I was doing the whole <code>grep –r</code> thing for an embarrassingly long time before I bothered to search for a better
+workflow.  My initial search turned up ack, which then led to ag.  As far as I can tell, feature-wise they’re
+comparable; I eventually settled on ag just ‘cause the command requires less typing.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Vim % Expansion (12/10/14)]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/24/vim-expansion/"/>
+    <updated>2015-01-24T11:52:53-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/24/vim-expansion</id>
+    <content type="html"><![CDATA[<h3>% (Current File Name)</h3>
+
+<p>Another vim tip this week!  This time, it’s about ‘%’, which expands to ‘current file name’.  This is especially useful
+in projects with java/scala style directory setups, where your source is approximately 1.5 million folders away from the
+project root, but you kind of want to hang around project root for things like ant/sbt/etc to work.  <code>%</code> makes this
+easier to work with files in the deeply nested folders while doing this.</p>
+
+<p>Taking a contrived example, instead of doing something like this to <code>git log</code> the file you are currently editing:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:!git log src/main/scala/com/bizo/(…)/Foo.scala</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can just do:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:!git log %</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is extremely convenient and works everywhere in command line mode (basically, whenever ‘:’ is used), but is also
+useful to have if you’re ever writing vim script.  See <code>:h expand</code> for the function to use in vim script, and some other
+special keywords.</p>
+
+<p>But wait!  There’s more!</p>
+
+<!-- more -->
+
+
+<p>Vim also supports file modifiers.  For example, <code>:h</code> gives you the ‘head’ of the file name, i.e. the directory of the
+file.  Taking another (contrived) example, you can git add the entire folder containing the file you are editing by
+doing something like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:!git add %:h</span></code></pre></td></tr></table></div></figure>
+
+
+<p>See <code>:h file-modifiers</code> for more details (and more modifiers).</p>
+
+<h3>Another Convenient Expansion</h3>
+
+<p>I use <code>%:h</code> so often (for example, when I realize I’ve opened a file before creating the directory containing it, or am
+editing a file in a directory that doesn’t exist) that I’ve made a shortcut for it in my vimrc:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cnoremap %% &lt;C-R&gt;=expand('%:h').'/'&lt;CR&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Roughly speaking, it remaps the key chord <code>%%</code> in command line mode to paste from a special register that evals the vim
+script inside it, which calls the expand() function.</p>
+
+<p>Long story short, what this allows me to do is do something like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:!mkdir -p %%</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And the <code>%%</code> will expand in-place into whatever <code>%:h</code> resolved to.  Not only is this a win because it’s slightly less to
+type than %:h, but the expansion also allows you to quickly modify your command on the fly and go up/down a directory if
+needed.</p>
+
+<p>And of course, here’s the requisite asciinema with a quick demo of this in action:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/14592.js" id="asciicast-14592" async></script>
+
+
+<p>Hope that’s useful / mildly interesting!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Scala Enrichment (12/03/14)]]></title>
+    <link href="http://alexkuang.github.io/blog/2015/01/24/scala-enrichment/"/>
+    <updated>2015-01-24T11:52:37-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2015/01/24/scala-enrichment</id>
+    <content type="html"><![CDATA[<p>Douglas Crockford recently gave a tech talk at work, where he casually endorsed Scala during the Q&amp;A at the end.  Given
+that and the fact that I&rsquo;ve been hearing increasing mentions of it in the company at large, I figured this week I&rsquo;d plug
+a neat feature of Scala and a recent use case where I found it extremely handy.</p>
+
+<h3>The Feature</h3>
+
+<p>Anyone who&rsquo;s worked with The AWS SDK (or just Java code in general) will be familiar with the builder pattern.
+Recently, I was writing some code to automate setup of CloudWatch alarms for a DynamoDB table.  The alarm request
+started looking something like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">req</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PutMetricsAlarmRequest</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withNamespace</span><span class="o">(</span><span class="s">&quot;DynamoDB&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withDimensions</span><span class="o">(</span><span class="n">dimensionsForTableName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withStatistic</span><span class="o">(</span><span class="s">&quot;Sum&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withComparisonOperator</span><span class="o">(</span><span class="nc">GreaterThanThreshold</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withThreshold</span><span class="o">(</span><span class="n">thresholdNumber</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withMetricName</span><span class="o">(</span><span class="n">throttledMetricName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withEvaluationPeriods</span><span class="o">(</span><span class="n">periods</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withPeriod</span><span class="o">(</span><span class="n">periodDuration</span><span class="o">.</span><span class="n">toSeconds</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmActions</span><span class="o">(</span><span class="n">idMappingSNS</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmName</span><span class="o">(</span><span class="n">alarmNameFor</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cloudwatchClient</span><span class="o">.</span><span class="n">putMetricAlarm</span><span class="o">(</span><span class="n">req</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which is serviceable, but less than ideal given that I had multiple alarms of roughly the same nature.  Plus, I felt
+like it left something to be desired in terms of readability and communicating the intent of the alarm in a succinct
+way.  Enter <code>implicit class</code>s and the &ldquo;enrichment&rdquo;* pattern!  Basically, it lets us turn the above into something more
+like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">req</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PutMetricAlarmRequest</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">forTable</span><span class="o">(</span><span class="n">tableName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">triggerOnSumGreaterThan</span><span class="o">(</span><span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">afterEvaluationPeriods</span><span class="o">(</span><span class="n">evaluationPeriodDuration</span><span class="o">,</span> <span class="n">evaluationPeriods</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmActions</span><span class="o">(</span><span class="n">idMappingSNS</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmName</span><span class="o">(</span><span class="n">alarmNameFor</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cloudwatchClient</span><span class="o">.</span><span class="n">putMetricAlarm</span><span class="o">(</span><span class="n">req</span><span class="o">)</span> <span class="cm">/** Can still pass req back into AWS API! */</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With the addition of this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">implicit</span> <span class="k">class</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">def</span> <span class="n">forTable</span><span class="o">(</span><span class="n">tableName</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withNamespace</span><span class="o">(</span><span class="s">&quot;DynamoDB&quot;</span><span class="o">).</span><span class="n">withDimensions</span><span class="o">(</span><span class="n">tableMetricDimensions</span><span class="o">(</span><span class="n">tableName</span><span class="o">).</span><span class="n">asJava</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="n">triggerOnSumGreaterThan</span><span class="o">(</span><span class="n">metricName</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">threshold</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withStatistic</span><span class="o">(</span><span class="s">&quot;Sum&quot;</span><span class="o">).</span><span class="n">withComparisonOperator</span><span class="o">(</span><span class="nc">GreaterThanThreshold</span><span class="o">).</span><span class="n">withThreshold</span><span class="o">(</span><span class="n">threshold</span><span class="o">).</span><span class="n">withMetricName</span><span class="o">(</span><span class="n">metricName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="n">afterEvaluationPeriods</span><span class="o">(</span><span class="n">periodDuration</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">periods</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withEvaluationPeriods</span><span class="o">(</span><span class="n">periods</span><span class="o">).</span><span class="n">withPeriod</span><span class="o">(</span><span class="n">periodDuration</span><span class="o">.</span><span class="n">toSeconds</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<h3>How It Works</h3>
+
+<p>One of the coolest&ndash;and probably most confusing&ndash;keywords in scala is <code>implicit</code>, which can refer to many different
+things.  For now, let&rsquo;s limit the discussion to implicit conversions.  A grossly oversimplified tl;dr is that there can
+be some def of the form:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">foo2bar</span><span class="o">(</span><span class="n">foo</span><span class="k">:</span> <span class="kt">Foo</span><span class="o">)</span><span class="k">:</span> <span class="kt">Bar</span> <span class="o">=</span> <span class="o">{</span> <span class="err">…</span> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And as long as that def is in scope, the code will convert anything of type Foo into type Bar without having to re-write
+that logic or call some conversion method.  For more information on implicits in general, see this excellent answer by
+Daniel Sobral, who is basically the Jon Skeet of the Scala world:
+<a href="http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits/5598107#5598107">http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits/5598107#5598107</a></p>
+
+<p>Extending the use of implicits, that means that if you do something like, for the above use-case:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span> <span class="cm">/** Same function defs as above */</span> <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">vanillaRequest2Helper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="o">)</span>
+</span><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">helper2vanillaRequest</span><span class="o">(</span><span class="n">helper</span><span class="k">:</span> <span class="kt">MetricAlarmRequestHelper</span><span class="o">)</span> <span class="k">=</span> <span class="n">helper</span><span class="o">.</span><span class="n">req</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>then scala will be able to magically convert from the vanilla request to the helper for use in your client code, and
+then from the helper back to the vanilla request for passing to other parts of the Amazon API. <code>implicit class</code> is just
+short-hand introduced in Scala 2.10 that does the above for you in one convenient construct that makes things even more
+concise.  For more info, see the scala docs: <a href="http://docs.scala-lang.org/overviews/core/implicit-classes.html">http://docs.scala-lang.org/overviews/core/implicit-classes.html</a></p>
+
+<p>Beyond use cases like wrapping builders, this kind of enrichment using <code>implicit</code> can be extremely powerful, especially
+for extending functionality where it&rsquo;s not practical to alter the original code.  Though as with all advanced features
+of anything, it&rsquo;s probably best not to go overboard.  :)</p>
+
+<h3>Naming</h3>
+
+<p>Quick bit of bonus trivia&hellip;  When the pattern first rose into prominence, it was known colloquially as &ldquo;pimp my class&rdquo;.
+Then folks got all up in arms about the political correctness of the word &ldquo;pimp&rdquo;, so now the common term is
+&ldquo;enrichment&rdquo;.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Bash Bangs]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs/"/>
+    <updated>2014-11-25T17:40:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/11/25/thing-of-the-week-bash-bangs</id>
+    <content type="html"><![CDATA[<p>This week I wanted to do a quick tip on some neat functionality in bash (and other bash-like shells), the bang commands.</p>
+
+<p>Let&rsquo;s say you have some long important command that you want to run.  You run it, only to discover that you need sudo
+privileges.  For situations like this, <code>!!</code> (entire last command) can be a great time-saver.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="c"># let&#39;s pretend echo throws an error too and wants sudo for some reason</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>sudo !!
+</span><span class='line'>sudo <span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>Password:
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used to print it without overwriting the
+&ldquo;last command&rdquo; history.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>!!:p
+</span><span class='line'><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>sudo !!
+</span><span class='line'>sudo <span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>Password:
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bang commands also extend to the individual parts of the last command you ran.  The most basic form of this is <code>echo
+!:[n]</code>, where [n] is the nth word in the command, indexed from 0.  There are also shortcuts: <code>!^</code> gives the first arg
+(like <code>!:1</code>) and <code>!$</code> gives the last arg.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:1
+</span><span class='line'><span class="nb">echo </span>a
+</span><span class='line'>a
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>!:5:p <span class="c"># :p works with any bangs!</span>
+</span><span class='line'>e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:5
+</span><span class='line'><span class="nb">echo </span>e
+</span><span class='line'>e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !<span class="err">$</span>
+</span><span class='line'><span class="nb">echo </span>e
+</span><span class='line'>e
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> ->
+<code>rm -r !$</code>).  Plus, it&rsquo;s the easiest sequence to hit, finger-wise.</p>
+
+<p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
+e.g. <code>sudo !!&lt;TAB&gt;</code> gets replaced with <code>sudo echo 1 2 3 4 5</code> in place.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thing of the Week: Vim Visual Block Mode]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/"/>
+    <updated>2014-11-20T18:33:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode</id>
+    <content type="html"><![CDATA[<p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
+snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
+aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
+discussion.</p>
+
+<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
+<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
+changes that entails.  While I&rsquo;m sure it&ndash;or something similar&ndash;will make a comeback, in the meantime I decided to
+try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
+I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
+incentive for me to be proactive in learning new things to talk about.</p>
+
+<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
+attention&ndash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
+always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
+what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Baby's First Alfred Workflow]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow/"/>
+    <updated>2014-10-18T15:32:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow</id>
+    <content type="html"><![CDATA[<p>Lately I&rsquo;ve been spending a lot of my work time staring at <a href="http://aws.amazon.com/cloudwatch/">CloudWatch</a> metrics.
+Particularly, we have a <a href="http://aws.amazon.com/kinesis/">Kinesis</a> application that publishes metrics on how long a
+record spends hanging around in the stream before getting picked up by our processor.  The problem is that the metric is
+published in milliseconds, which while precise, is not exactly human-readable for large enough durations.</p>
+
+<p>I&rsquo;ve been a huge fan of <a href="http://www.alfredapp.com/">Alfred</a> for a while, and I use its quick-launch and custom search
+functions nearly constantly.  I only recently got around to ponying up for the powerpack, which lets you define custom
+&ldquo;workflows&rdquo;, so I figured&ndash;why not use a workflow to convert the milliseconds to something more readable?</p>
+
+<!-- more -->
+
+
+<p>The Alfred workflow UI is basically a fancy flow chart.  It allows you to string together elements for input,
+actions, and output&ndash;Kind of like a graphical representation of a unix pipe.  The final product of the workflow looked
+something like this:</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/alf-flow.png"></p>
+
+<p>The first step is to define a keyword, which is how this workflow will be invoked in the alfred menu:</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/alf-keyword.png"></p>
+
+<p>All this means is that I can use <code>mr (x)</code> to invoke the workflow, where x is some parameter.  <code>{query}</code> is just Alfred&rsquo;s
+magic string for&ndash;you guessed it&ndash;injecting <code>argv</code>.  In this case, it updates the &lsquo;preview&rsquo; item in the dropdown as the
+argstring is entered.</p>
+
+<p>The actual script itself is simple and super hacked together in python, but the UI here is still worth showing.  Note the
+use of {query}:</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/alf-py.png"></p>
+
+<p>In addition to python, the &ldquo;run script&rdquo; element also supports bash, ruby, and all manner of things up to and including Perl.</p>
+
+<p>And, the final product:</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/alf-demo.png"></p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/alf-print.png"></p>
+
+<p>There are a few optimizations I can see immediately (for example, the &lsquo;large print&rsquo; output seems a bit kludgy), but it&rsquo;s
+not bad for a few minutes&#8217; work!</p>
+
+<p>And while this script was relatively simple, there&rsquo;s tons more to be explored.  In addition to running a script, Alfred
+also supports other actions such as opening an application, running a web search, running iTunes, and then some.  And
+for output, Alfred can do things like copy to clipboard or post to the Mac&rsquo;s Notification Center.  Really, it&rsquo;s like a
+graphical scripting language on steroids with easy interaction with OS X.  I&rsquo;ve seen some projects lately for more
+accessible coding via graphical interfaces; Alfred&rsquo;s approach is a pretty good start as far as I&rsquo;m concerned.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Asciinema]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/07/16/asciinema/"/>
+    <updated>2014-07-16T15:40:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/07/16/asciinema</id>
+    <content type="html"><![CDATA[<p>I was tooling around the other day and discovered a service called <a href="https://asciinema.org">asciinema</a> which provides
+terminalcasts&ndash;essentially, &ldquo;screencasts&rdquo; with terminal I/O.  This is awesome for a few reasons.</p>
+
+<p>From a content consumer&rsquo;s standpoint, it&rsquo;s often hard to follow a blog post that&rsquo;s trying to outline a command line tip,
+or a vim tip, for the simple fact that the static nature of writing alone isn&rsquo;t optimal for showing the flow between
+&ldquo;steps&rdquo; (commands, keystrokes, what have you) and &ldquo;output&rdquo; (what you&rsquo;re supposed to see after executing commands).
+Having a dynamic format for demos helps with this greatly.  Sure, there are screencasts, but that involves dealing with
+videos and their associated heavy Flash Player bullshit.  asciinema is rendered with just bits of html and js.</p>
+
+<p>From a wannabe content producer&rsquo;s standpoint&hellip;  Writing is <em>hard</em>.  Writing while crafting appropriate examples is
+harder.  Doing all that while struggling with capturing the nature of the examples in plain text?  No thanks.
+Again&ndash;Yes, there is the option of screencasts, but those are painful to set up.  Screencasts means worrying about
+things like capturing software, background audio, What Tab Do I Have Open In My Browser, and Will Video Compression
+Screw My Text Legibility.  As a consummately lazy person who only wants to do short self-contained clips for now&hellip;
+That&rsquo;s way too big of a barrier.  asciinema is easy&ndash;Just install, then <code>asciinema rec</code> from the terminal and <code>&lt;CTRL-D&gt;</code>
+to exit and upload.</p>
+
+<p>And embedding takes 2 seconds&ndash;Check it!</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/10785.js" id="asciicast-10785" async></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bracket Expansion in the Shell]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell/"/>
+    <updated>2014-06-25T18:58:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell</id>
+    <content type="html"><![CDATA[<p>Just a quick post to show of a neat little trick for those who are more command-line-driven: bracket expansion.</p>
+
+<p>Basically, bracket expansion means that <code>some-string-called-{x,y}-here</code> desugars in the shell to
+<code>some-string-called-x-here some-string-called-y-here</code>.  This is especially useful if, say, you&rsquo;re in a Java-like
+directory structure and you accidentally placed your source class in your test folder, and you need to move it back:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># desugars into mv src/test/java/com/foobar/app/Class.java src/main/java/com/foobar/app/Class.java</span>
+</span><span class='line'>mv src/<span class="o">{</span><span class="nb">test</span>,main<span class="o">}</span>/java/com/foobar/app/Class.java
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or if you&rsquo;ve already committed to source control, this also works quite nicely with <code>git mv</code>.  Another nice example from
+recent memory is, say, if you were cleaning up some directories nested by date and wanted to only wipe a few months:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm /posts/2014/<span class="o">{</span>01,03,06,07<span class="o">}</span>/*.html
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Anyway, just a quick little post for a neat little trick.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello, Hardware World!]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/06/14/hello-hardware-world/"/>
+    <updated>2014-06-14T16:56:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/06/14/hello-hardware-world</id>
+    <content type="html"><![CDATA[<p>Recently, one of our tech leads at work previewed <a href="https://github.com/ogrodnek/analog-metrics-talk">a talk</a> that he&rsquo;s
+planning to give on analog metrics for the upcoming Strange Loop conference.  I&rsquo;ve always wanted to play with
+microcontrollers, and this really gave me a kick in the pants to get started.  Since I had a bit of amazon credit lying
+around, I decided to buy an arduino starter kit with all sorts of buttons, lights, and doo-dads, but not enough power to
+actually fry anything (I hope).  I still can&rsquo;t tell my head from my ass, but so far I can make a button turn on an LED.</p>
+
+<p><img class="center" src="http://waffleparadox.smugmug.com/Other/Camera-Awesome-Photos/i-h59QFDb/0/L/CA_06051420063663-L.jpg"></p>
+
+<p>Next step: world domination!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Some CH Backport Vimporn]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn/"/>
+    <updated>2014-05-02T20:45:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn</id>
+    <content type="html"><![CDATA[<p>In some ways, the curehappiness backports came at the perfect time, since I&rsquo;d been looking for something to sharpen my
+vim skills on.  Technically I work in vim day-to-day, but usually the rest of the mental activity involved with coding
+end up pushing my vim-awareness more to the side than I&rsquo;d like.  This backport, however, was heavy on repetition but
+otherwise braindead, so it made the perfect set of practice exercises.  And since I had such fun (hey, it was a really
+boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else finds this useful&ndash;or even better, has suggestions
+to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
+familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
+
+<!-- more -->
+
+
+<h3>The Start</h3>
+
+<p>Since I had all the posts in html form, using <code>:set paste</code> and copy-pasting from the browser seemed the most
+straightforward.  Or at least, more straightforward than trying to manually un-mangle everything in the post after being
+wrung through wordpress.  For most of the posts, the paste result looked something like this:</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/start.png" width="598" height="440"></p>
+
+<p>Not too awful, but the TODO is obvious:</p>
+
+<ol>
+<li>Needs a banner image</li>
+<li>Lines need to be wrapped (not strictly necessary, but personal pet peeve)</li>
+<li>Ingredients + Methodology need to be de-dented</li>
+<li>Ingredients needs to be an unordered list</li>
+<li>Methodology needs to be an ordered list.</li>
+</ol>
+
+
+<p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
+markdown, that&rsquo;s pretty trivial.</p>
+
+<h3>Banner image</h3>
+
+<p>This bit was easy.  I have a plugin installed called <code>vim-snipmate</code> (check it out
+<a href="https://github.com/garbas/vim-snipmate">here</a>) that&rsquo;s just built for stuff like this.  Simply put, defining the snippet
+below:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>snippet img
+</span><span class='line'>    {% img center ${1} %}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>allowed me to type <code>img&lt;TAB&gt;</code> and it would insert <code>{% img center %}</code>, with my cursor right after the <code>center</code> and ready
+to drop in my picture url.</p>
+
+<h3>Wrapping lines</h3>
+
+<p>vim has a normal mode command, <code>gq</code>, that does this quite well.  Personally I like using visual line mode (<code>V</code>) to
+select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to wrap a block) works as well.</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/gq-before.png" width="598" height="440"></p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/gq-after.png" width="598" height="440"></p>
+
+<p>I only wrapped the plain paragraphs here, as there is still some fancy dedenting and formatting to do with the Ingredients
+and Methodology sections first.</p>
+
+<h3>De-denting</h3>
+
+<p>The vim command for de-denting is <code>&lt;</code>.  Once again, combining with visual line mode or a motion (ex: <code>&lt;}</code>) makes it
+quick and easy.  (Just in case&ndash;Yes, <code>&gt;</code> is the command for indenting)</p>
+
+<h3>Ingredients => Unordered List</h3>
+
+<p>This one, I&rsquo;ll admit, is a little snazzy.  I used the lesser-known cousin of visual and visual line mode, visual block
+mode (accessed via <code>&lt;Ctrl&gt;-V</code>).  Once selecting the first characters of the lines I wanted with visual block, I could
+hit <code>&lt;Shift-I&gt;</code> to drop into insert mode before current character, <code>-</code> to insert what I wanted, then <code>&lt;ESC&gt;</code> to apply
+to everything in the selection.</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-before.png" width="598" height="440"></p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-during.png" width="598" height="440"></p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-after.png" width="598" height="440"></p>
+
+<p>Note that this is also a great way to mass-comment blocks of code in languages that only support single line comments
+with <code>#</code> or whatnot.</p>
+
+<h3>Methodology => Ordered List</h3>
+
+<p>And of course, the best is for last.  Ordered lists in markdown, logically, can be formatted something like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1. item 1
+</span><span class='line'>2. item 2
+</span><span class='line'>3. item 3</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, it&rsquo;s actually possible to cheat and still get ordered list output by doing:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1. item 1
+</span><span class='line'>1. item 2
+</span><span class='line'>1. item 3</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It turns out that the markdown spec doesn&rsquo;t care about the order of the numbering as long as the lines begin with
+numbers in that format.  So technically, I could use the same trick as the Ingredients Unordered List except inserting
+<code>1.</code>, and I&rsquo;d be done.</p>
+
+<p>&hellip;  But where&rsquo;s the fun in that?</p>
+
+<p>So here&rsquo;s another tidbit: in vim, if you place the cursor over a number and hit <code>&lt;Ctrl&gt;-A</code> in normal mode, it increments
+the number.  In a very smart way, too&ndash;it takes into account all of the digits, not just the one under the cursor.
+Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of recorded keystrokes that can be repeated).</p>
+
+<p>Rather than explain in long form, it seems easier just paste the sequence and annotate it.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>qq^yaWjP^^Aq <span class="c"># Complete keystroke sequence</span>
+</span><span class='line'>             <span class="c"># Note that ^A is one character--see below for details</span>
+</span><span class='line'>
+</span><span class='line'>qq   <span class="c"># Start recording keystrokes into the q register</span>
+</span><span class='line'>^    <span class="c"># Go to first non-blank character of line</span>
+</span><span class='line'>yaW  <span class="c"># yank (copy) a Word--Capital W means a &quot;word&quot; is terminated only by spaces, not punctuation like &quot;-&quot;</span>
+</span><span class='line'>j    <span class="c"># Go down a line</span>
+</span><span class='line'>P^   <span class="c"># Paste before cursor, then go back to first non-blank character</span>
+</span><span class='line'>^A   <span class="c"># Increment number</span>
+</span><span class='line'>q    <span class="c"># Stop recording</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It ends up looking something like this, played out:</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-1.png" width="598" height="440"></p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-2.png" width="598" height="440"></p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-3.png" width="598" height="440"></p>
+
+<p><em>(Aside: I should start making gifs again for stuff like this&hellip;  Perhaps another day when I have more time.)</em></p>
+
+<p>Once the macro is recorded, it can be played back via <code>@q</code>, or whichever register it was recorded into.  More
+importantly, because it resets to the right positions in the lines and moves down automatically, it can actually be
+repeated!  e.g., <code>2@q</code> turns this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>1. item 1
+</span><span class='line'>item 2
+</span><span class='line'>item 3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>into this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>1. item 1
+</span><span class='line'>2. item 2
+</span><span class='line'>3. item 3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Writing macros to position in a looping way like this is another post altogether, but suffice to say this saved a TON of
+time over multiple posts.  Granted, it still depends on the <code>1.</code> being inserted manually, but that&rsquo;s pretty trivial I
+think.</p>
+
+<p>Another neat thing that might not immediately be obvious is that regular yanking (or copying, if you will) goes into the
+same registers as macro recordings.  So you can use <code>"qp</code> to paste the contents of your macro into a buffer to map it to
+keys or functions (ex: <code>nnoremap &lt;leader&gt;o ^yaW[...]</code>).</p>
+
+<p>Furthermore, this means that if a recording goes wrong, you can just paste it out, edit it, then select and <code>"qy</code> (or
+similar) to yank back the edited form.  The only caveat is that certain characters like <code>^A</code> may paste out and LOOK like
+two characters, but is infact only one character.  Not a big deal if you&rsquo;re just yanking and replacing text, but it can
+be a weird GOTCHA if you&rsquo;re trying to write a macro by hand or something.  (In this particular case, the <code>^A</code> character
+can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, but it pays to watch out in general for stuff like this)</p>
+
+<p>So there you have it, ladies and gentlemen&ndash;My idea of fun on a Sunday afternoon&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hack Days Are Awesome]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome/"/>
+    <updated>2014-04-26T15:32:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome</id>
+    <content type="html"><![CDATA[<p>Earlier this week, we had a &ldquo;hack day&rdquo; at work.  Or more precisely, two hack days.  I think the name is pretty
+self-explanatory&ndash;work on whatever you want, which can be something helpful to or completely unrelated to your currently
+assigned tasks, as long as it&rsquo;s something interesting.  Now, &ldquo;hack time&rdquo; is a pretty established institution in the
+software world, especially amongst the hip startuppy companies.  I&rsquo;m sure everyone has heard of Google&rsquo;s &ldquo;20% time&rdquo; idea
+by now, and the story of Microsoft&rsquo;s Xbox starting as a side-project.  Proponents (especially those who are trying to
+pitch a business case to managers with varying degrees of pointy-haired-ness) cite building camaraderie, stimulating
+creativity, and increasing morale as some of the biggest benefits.</p>
+
+<p>None of this is news.  But I came away this week with a surprising realization.  When coding professionally for business
+use cases, things like resilience and stability are often at the top of the requirement list&ndash;Or at least, I&rsquo;d really
+hope so.  If it&rsquo;s not, kindly give me the name of your company so I know what stock to not buy ;).  To this end, coding
+is never as simple as just sitting down and banging away at a keyboard.  It involves testing, discussions, design,
+thinking, more testing, more thinking, and so on and so forth.</p>
+
+<p>Don&rsquo;t get me wrong.  These are all very, very good things.  But I, at least, was surprised at how nice it was to just
+sit down and bang away at a keyboard with abandon.  It sounds rather obvious in hindsight, but compared to the usual
+rigorously managed process of software development at work, it&rsquo;s super liberating to just cowboy out some code with no
+considerations other than speed and getting the job done.  And what&rsquo;s more, I realized that I had constrained myself to
+the same careful management in all of my personal projects as well, especially when prototyping out potential MVPs and
+such.  Again&ndash;Definitely a good thing, in most cases.  But after this week I&rsquo;m thinking that injecting some &ldquo;hack
+day&rdquo;-ish time into my personal projects is in order, if for no reason other than to let the crazy out.</p>
+
+<p><strong>tl;dr</strong> - Hack days are awesome.  I should do more of them.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[IAP and Mobile]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile/"/>
+    <updated>2014-02-03T21:43:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/02/03/iap-and-mobile</id>
+    <content type="html"><![CDATA[<p>In-app purchases and the free-to-play model have long been anathema to self-declared &ldquo;real gamers&rdquo; everywhere, but the
+recent release (or re-release?) of classics like Tales of Phantasia and Dungeon Keeper seems to have brought yet
+another wave of angry discussion to the forefront.  Understandably, people
+<a href="http://www.baekdal.com/opinion/how-inapp-purchases-has-destroyed-the-industry/">are</a>
+<a href="http://kotaku.com/a-cancer-thats-eroding-the-market-reactions-to-eas-1515121353">very</a>
+<a href="http://www.escapistmagazine.com/articles/view/editorials/reviews/10956-Dungeon-Keeper-Mobile-Review-Wallet-Reaper">angry</a>
+<a href="http://toucharcade.com/2014/01/27/tales-of-phantasia-review/">that</a> their beloved classics are being turned into f2p
+&ldquo;cash farms&rdquo;, but personally I think saying the model is &ldquo;destroying the industry&rdquo; is a bit hyperbolic.</p>
+
+<p>In response, toucharcade recently published a post pointing out an article that takes a <a href="http://toucharcade.com/2014/02/03/iap-isnt-actually-destroying-the-games-industry/">stance to the
+contrary</a>.  The original piece is
+definitely worth a read to anyone who cares about the topic; it makes a number of good arguments regarding pricing
+pressures and facing a realistic economy for the unprecedented levels of competition on iOS.  But it also notes that the
+concept of paying for more content&ndash;the &ldquo;original IAP&rdquo;&ndash;dates back to the beginning of the industry with coin op arcade
+machines.  This seems like a valid comparison superficially, but as someone who&rsquo;s shelled out way too many quarters on
+the likes of Gauntlet Dark Legacy I feel like there are two fundamental differences that this argument glosses over.</p>
+
+<p>First: arcade games always had a large skill component.  It might take a while to get good enough, but it was always
+possible to beat the game consistently on sheer skill alone.  The game might have been hard, but the balance was never
+so broken as to render completion impossible without the extra coins.  Second: in the cases of the most nefarious IAPs,
+you&rsquo;re not paying to spend more time with the game; you&rsquo;re paying for the exact opposite.  When an IAP does nothing but
+shorten a timer or increase a premium resource, you&rsquo;re essentially paying more money to decrease the time you spend with
+the game.  All &ldquo;Skinner&rsquo;s Box From Hell&rdquo; arguments aside, that is probably what I object to the most.  I don&rsquo;t have an
+indiscriminate hatred for the f2p model&ndash;there are definitely cases of it being executed well&ndash;but I have a fundamental
+problem with paying more for less.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Adventures With Mail.app Gremlins]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins/"/>
+    <updated>2014-01-26T09:05:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/01/26/adventures-with-mail-dot-app-gremlins</id>
+    <content type="html"><![CDATA[<h4>Background</h4>
+
+<p>Usually I don&rsquo;t care too much if an email or two gets dropped en route.  Between spam filters and sometimes-spotty
+(cough, mobile) connections, it&rsquo;s not too much of a stretch to assume that things get lost once in a great while.  But
+recently I was trying to set up an interview on the other side of the country, so naturally I paid a little more
+attention than usual.  Everything was going quite well, correspondence was zipping back and forth, and I&rsquo;d even bought a
+plane ticket for the trip.  But then a lull came when it was time to receive confirmation for hotel arrangements and a
+rough schedule for the interview process.</p>
+
+<p>Unbeknownst to me, the HR rep had already tried to send the information twice at this point, but for some
+reason the emails weren&rsquo;t landing in my inbox.  I sent one last-ditch follow-up when my flight was boarding, and got a
+reply with the info (thankfully) right before the plane took off.  Along with the reply, the HR rep mentioned that the
+previous emails she&rsquo;d sent had gone to <code>waffles@mochify.com</code>. <em>(aside: While <code>waffles@mochify.com</code> isn&rsquo;t the first email
+I&rsquo;d give out professionally, I&rsquo;m thankful it wasn&rsquo;t something like <code>sexbadger69@gmail.com</code> &hellip;  Actually, now I wonder
+if that address is open &hellip;)</em></p>
+
+<h4>The technical details</h4>
+
+<p>This was an old address that I&rsquo;d added to my various devices previously, but then removed for inactivity; I certainly
+didn&rsquo;t recall sending any recent email from it.  But when I logged in to check the inbox, lo and behold the missing
+emails were staring me in the face, along with a few others that had been &ldquo;dropped&rdquo; not too long ago.  Something smelled
+fishy.  I checked over my Sent box for my regular email to no avail; all the correspondence was there, with the correct
+<code>From</code>s and <code>To</code>s.  I ended up having to dig into the plain-text of the mime header to spot the issue:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>From: Alex Kuang &lt;[...]&gt;
+</span><span class='line'>Content-Type: multipart/alternative;
+</span><span class='line'>    boundary="Apple-Mail=_7DA4001C-0AA1-48BD-80F5-00ACDBCCAE9C"
+</span><span class='line'>    Message-Id: &lt;ADFD0F4C-6FE0-41F5-AA68-EF8E9845B360@gmail.com&gt;
+</span><span class='line'>    Mime-Version: 1.0 (Mac OS X Mail 6.6 \(1510\))
+</span><span class='line'>    X-Smtp-Server: smtp.gmail.com:waffles@mochify.com
+</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>X-Smtp? What?</em>  After a bit of googling I discovered that Mail.app on the Mac keeps a list of outgoing smtp servers
+associated with your mail accounts, which you can see in Preferences -> Accounts -> &ldquo;Outgoing Mail Server&rdquo; -> Edit SMTP
+Server List.  The problem is, the entry with the association persists <strong>even after an account is removed from the
+list</strong>: when I checked my smtp list, it included an entry for mochify as well as a few other one-off addresses that I&rsquo;d
+added and removed in similar fashion.  Most of my email (including <code>mochify.com</code>) is handled by google apps, which means
+that the smtp server the entries pointed to were all <code>smtp.gmail.com</code>, and the only difference was the
+username/authentication associated.</p>
+
+<p>So what ended up happening here was that I&rsquo;d sent the email from my regular account through Mail.app so it still carried
+the correct <code>From</code>/etc.  However, for reasons unknown, the outgoing smtp entry for that account did not work at
+that moment.  Since <code>mochify</code>&rsquo;s smtp entry pointed at the same <code>smtp.gmail.com</code> server, I&rsquo;m willing to bet that Mail.app
+decided it was a perfectly good fallback, added the <code>X-Smtp-Server</code> MIME header, and sent the email causing this weird
+reply-to behavior.</p>
+
+<p>There is a checkbox in account preferences that will lock you into using one-and-only-one smtp server and prevent this
+from happening, but honestly after this ordeal I will probably just be even more biased towards composing my email using
+the web gmail ui.  I&rsquo;m just glad that everything worked out in the end, and anyway this is a good reminder that I should
+be more diligent in setting up auto-forwarding even for email addresses I don&rsquo;t plan on using.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CMD Misadventures - Codebase Size]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size/"/>
+    <updated>2013-12-23T06:50:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/23/cmd-misadventures-codebase-size</id>
+    <content type="html"><![CDATA[<p>After watching the <a href="https://www.destroyallsoftware.com/talks/wat">wat</a> talk and trolling my friends with the
+<a href="https://www.destroyallsoftware.com/talks/a-whole-new-world">aneditor</a> talk for about the 200th time, I decided to
+finally purchase one season of the Destroy All Software screencasts, despite the (IMHO) steep price tag and my financial
+destitution.  (So far?  Totally worth it.  But a full review of the screencasts is neither here nor there.)</p>
+
+<p>I&rsquo;ve always been a big fan of the unix power tools&ndash;<code>find</code>, <code>grep</code>, <code>xargs</code>, and so forth&ndash;but the DAS talks introduced
+an idea that had never occurred to me for some insane reason: combine them with git to extract some interesting
+information about your codebase.  And so, I decided to go diving into my biggest scala project for insights about its
+code size.</p>
+
+<p>One of the most common problems that code size can indicate is the presence of &ldquo;god classes&rdquo; or libraries, which know
+and do way too much and thus are correspondingly bigger than the rest of the code by orders of magnitude.  This command
+was relatively simple and does not involve git, so here it is in its entirety:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>alexkuang@Orion <span class="o">[</span>00:00:00<span class="o">]</span> <span class="o">[</span>~foobar/src/main/scala<span class="o">]</span> <span class="o">[</span>master<span class="o">]</span>
+</span><span class='line'>-&gt; % find . -type f -name <span class="s2">&quot;*.scala&quot;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>file<span class="p">;</span> <span class="k">do</span> wc -l <span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sort -n
+</span><span class='line'>       <span class="m">9</span> ./com/foobar/models/Permission.scala
+</span><span class='line'>      <span class="m">11</span> ./com/foobar/util/LocParams.scala
+</span><span class='line'>      <span class="m">14</span> ./com/foobar/util/OrgSettings.scala
+</span><span class='line'>      <span class="m">16</span> ./com/foobar/security/package.scala
+</span><span class='line'>      <span class="m">17</span> ./com/foobar/scripts/ReloadStageDB.scala
+</span><span class='line'>      <span class="m">18</span> ./com/foobar/scripts/oneoff/InitSchema.scala
+</span><span class='line'>      <span class="c"># ...</span>
+</span><span class='line'>     <span class="m">231</span> ./com/foobar/js/Calendar.scala
+</span><span class='line'>     <span class="m">247</span> ./com/foobar/persistence/Access.scala
+</span><span class='line'>     <span class="m">287</span> ./com/foobar/snippet/BookingCalendar.scala
+</span><span class='line'>     <span class="m">307</span> ./com/foobar/lib/Registration.scala
+</span><span class='line'>     <span class="m">319</span> ./com/foobar/lib/Scheduler.scala
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output was slightly interesting, but nothing groundbreaking.  300 lines is not ideal to me, but manageable.  Broken
+down quickly, <code>find #...</code> finds all files inside the current directory ending in &lsquo;.scala&rsquo;, reads each file in, and
+passes it off to wc -l, which does a linecount on the file, whitespace and all.  <code>sort</code> does what its name implies, with
+<code>-n</code> making it sort <code>1 2 3 11</code> instead of <code>1 11 2 3</code>.  The information was slightly cool, but as a hack it&rsquo;s not very
+interesting, so let&rsquo;s throw some git in there to try to get a sense of how fast the codebase has grown over time.  After
+all, superlinear growth is usually indicative of a ton of repetition and therefore unnecessary code complexity.</p>
+
+<!-- more -->
+
+
+<p>First, starting with walking the git repo.  <code>git rev-list &lt;branch&gt;</code> should do what we want it to, but in the case of
+larger repos it the list can get a bit unwieldy/huge.  Enter <code>awk</code>, which lets you do a bunch of neat things with your
+text but most importantly has an easy variable for line number, of all things <em>(note to self: learn2awk better?)</em>, thus:
+<code>awk 'NR % &lt;n&gt; == 0'</code> to get only every nth revision list.  Combine that with the same reading as above, and do a
+similar scala file find with a linecount, and the command is as follows: <em>(Yes, in this particular project I dev&rsquo;d right
+in master instead of using a nvie-style git-flow.  Bad developer, bad!)</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git rev-list master <span class="p">|</span> awk <span class="s1">&#39;NR % 20 == 0&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>revhash<span class="p">;</span> <span class="k">do</span> git checkout -q <span class="nv">$revhash</span> <span class="p">|</span> <span class="se">\</span>
+</span><span class='line'><span class="o">&amp;&amp;</span> find . -name <span class="s1">&#39;*.scala&#39;</span> <span class="p">|</span> xargs cat <span class="p">|</span> wc -l<span class="p">;</span> <span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The more finicky among us might comment right about now that the command is already pretty huge and nigh unreadable if
+revisited in about two weeks&ndash;and he&rsquo;d be right.  But this is a quick one-off hack for some interesting info (something
+that unix tools are absolutely amazing at), and if I cared that much I&rsquo;d probably write a real script, or at least
+re-format it into a proper bash function.</p>
+
+<p>So the above command gives us a bunch of line counts which is useful, but it doesn&rsquo;t really give us a sense of the
+progression.  At this point I&rsquo;d usually either 1) compose some huge complicated thing that kept track of the current
+line AND the previous in an attempt to do math, or 2) give up and write a real script for it later, but one of the DAS
+videos showed something that was completely new to me: using <code>jot</code> to create a chart.  Even if I learned nothing else,
+this alone made everything worth it.  Very quickly&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-&gt; % jot - <span class="m">1</span> 5
+</span><span class='line'><span class="c"># print range 1 to 5</span>
+</span><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4
+</span><span class='line'>5
+</span><span class='line'>-&gt; % jot -b <span class="s1">&#39;*&#39;</span> - <span class="m">1</span> 5
+</span><span class='line'><span class="c"># range 1 to 5, printing &#39;*&#39; instead</span>
+</span><span class='line'>*
+</span><span class='line'>*
+</span><span class='line'>*
+</span><span class='line'>*
+</span><span class='line'>*
+</span><span class='line'>-&gt; % jot -b <span class="s1">&#39;*&#39;</span> - <span class="m">1</span> <span class="m">5</span> <span class="p">|</span> xargs
+</span><span class='line'><span class="c"># For all its magic, xargs just chunks up your input to be used as args.</span>
+</span><span class='line'>* * * * *
+</span><span class='line'>-&gt; % jot -b <span class="s1">&#39;*&#39;</span> - <span class="m">1</span> <span class="m">5</span> <span class="p">|</span> xargs <span class="p">|</span> tr -d <span class="s1">&#39; &#39;</span>
+</span><span class='line'><span class="c"># And tr to translate.  Side note: as a recovering Perl user, it slightly annoys me that there&#39;s a tr util but not an s</span>
+</span><span class='line'><span class="c"># util.  But I guess that&#39;s what sed is for...?</span>
+</span><span class='line'>*****
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And now all that&rsquo;s left is to combine the <code>jot</code> magic with the above command by reading a the linecount into a variable
+called <code>lines</code>, using that in the <code>jot</code> call, and printing everything out.  In the interest of full disclosure, here&rsquo;s
+the final command along with the output from my project:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-&gt; % git rev-list master <span class="p">|</span> awk <span class="s1">&#39;NR % 20 == 0&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>revhash<span class="p">;</span> <span class="k">do</span> git checkout -q <span class="nv">$revhash</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+</span><span class='line'>find . -name <span class="s1">&#39;*.scala&#39;</span> <span class="p">|</span> xargs cat <span class="p">|</span> wc -l <span class="p">|</span> <span class="se">\</span>
+</span><span class='line'><span class="nb">read </span>lines <span class="o">&amp;&amp;</span> <span class="o">((</span><span class="nv">hashes</span> <span class="o">=</span> <span class="nv">$lines</span> / 100<span class="o">))</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;`jot -b &#39;#&#39; - 1 $hashes | xargs | tr -d &#39; &#39;` $lines&quot;</span><span class="p">;</span> <span class="k">done</span>
+</span><span class='line'><span class="c">######################################################### 5700</span>
+</span><span class='line'><span class="c">##################################################### 5333</span>
+</span><span class='line'><span class="c">################################################### 5151</span>
+</span><span class='line'><span class="c">############################################### 4796</span>
+</span><span class='line'><span class="c">############################################# 4530</span>
+</span><span class='line'><span class="c">##################################### 3786</span>
+</span><span class='line'><span class="c">################################### 3528</span>
+</span><span class='line'><span class="c">#################################### 3660</span>
+</span><span class='line'><span class="c">#################################### 3615</span>
+</span><span class='line'><span class="c">################################ 3208</span>
+</span><span class='line'><span class="c">############################ 2848</span>
+</span><span class='line'><span class="c">############################ 2832</span>
+</span><span class='line'><span class="c">############################ 2855</span>
+</span><span class='line'><span class="c">########################### 2786</span>
+</span><span class='line'><span class="c">######################## 2418</span>
+</span><span class='line'><span class="c">##################### 2186</span>
+</span><span class='line'><span class="c">################## 1834</span>
+</span><span class='line'><span class="c">################ 1664</span>
+</span><span class='line'><span class="c">############## 1412</span>
+</span><span class='line'><span class="c">############ 1270</span>
+</span><span class='line'><span class="c">########### 1179</span>
+</span><span class='line'><span class="c">######## 892</span>
+</span><span class='line'><span class="c">###### 651</span>
+</span><span class='line'><span class="c">#### 420</span>
+</span><span class='line'><span class="c"># 138</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The growth at the beginning looked pretty normal, and I must say I&rsquo;m slightly happy that around the middle it remained
+constant, and even took a slight dip afterwards.  After the dip though it seems like the growth started shooting up
+again, which is not a good sign.  This is consistent with my personal experience, as I recall starting to really throw
+in the super-hacks at around that time, so everything is probably due for another refactor.</p>
+
+<p>In closing, I&rsquo;d like to remark that while this post was pretty monolithic and it took a lot of text to explain
+everything for the first time, in real life this command probably took about 2-3 minutes to write.  And that&rsquo;s what I
+find these utils are really really good at&ndash;Quick dirty answers to the little &ldquo;I wonder&hellip;&rdquo; / &ldquo;What if&hellip;&rdquo; questions
+that tend to pop up while coding.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Clojure First Impressions]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions/"/>
+    <updated>2013-12-20T14:05:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/20/clojure-first-impressions</id>
+    <content type="html"><![CDATA[<p>After achieving some measure of familiarity with Scala, and with newfound copious amounts of free time, I decided I
+wanted to see more of what the functional world had to offer.  The obvious choices were Haskell and Clojure; but while
+Haskell has the upper hand in functional purity and a crazy advanced type system, I like to think I&rsquo;m a pragmatic guy at
+heart and Clojure seemed more practical.  I haven&rsquo;t worked with it too extensively, but my experience so far can be
+summarized by two words: Simple and composable.</p>
+
+<h4>The language</h4>
+
+<p>Clojure is a refreshingly simple language.  Despite my last foray into a Lisp being about half a decade ago, the
+learning curve was much gentler than I&rsquo;d expected.  Maybe it&rsquo;s because I was already in a functional programming
+mindset, but the straightforward syntax and <a href="http://clojure-doc.org/">abundance</a>
+<a href="http://clojure.org/getting_started">of</a> <a href="http://clojure.org/cheatsheet">documentation</a> probably helped.  And on a
+completely subjective level: <code>iDislikeCamelCase</code>, and <code>clojure-case-is-pretty-neat</code>.</p>
+
+<h4>The ecosystem</h4>
+
+<p>Of course, the overall enjoyability of using a language doesn&rsquo;t depend solely on the core language, but also the
+libraries and toolchain available.  Most of the libraries I&rsquo;ve seen keep in line with the design of the language: super
+lightweight, super simple, super composable, and as a result super easy to ramp up on and use.  Theoretically that
+should just describe all good library design in general, but I feel like the clojure community takes it especially to
+heart.</p>
+
+<p>Compojure, for example, chose to implement its url
+<a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">destructuring</a> to closely follow the destructuring
+available in stock Clojure <code>let</code>s expressions.  I can&rsquo;t help but draw the comparison to Scala, where I&rsquo;d be more likely
+to find that url decomposition exists only in the form of an exotic DSL.  Another huge example for me is the difference
+between the simplicity of the Clojure build tool Leiningen and the craziness of Scala&rsquo;s SBT.  Sorry SBT&ndash;You work very
+well, but I&rsquo;d rather not have to google what the <code>&lt;++=</code> operator does every time I touch the build.</p>
+
+<h4>With vim</h4>
+
+<p>One of my original reasons for leaning clojure was its close integration with
+<a href="http://www.chris-granger.com/lighttable/">LightTable</a>.  As it turns out, the functionality I liked could be
+replicated in vim with <a href="https://github.com/tpope/vim-fireplace">fireplace.vim</a>&rsquo;s quasi-insta-repl and insta-doc, due in
+no small part to leiningen and nrepl&rsquo;s awesomeness.
+<a href="https://github.com/kien/rainbow_parentheses.vim">Rainbow parentheses</a> is also pretty cool, and has been useful enough
+that I will probably keep it on even when I don&rsquo;t have to deal with the hardcore levels of parens in Lisps:</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/rainbow-parens.png"></p>
+
+<h4>Overall</h4>
+
+<p>If programming languages could be graded on usability, Clojure would get full marks.  It has been a breath of fresh air
+after dealing with the crazy complexity in Scala.  Undoubtedly working through the latter had a part in making the
+former much easier, and Scala will always have a place with me, but for now I find myself slowly joining the rest of the
+Clojure bandwagon.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Zelda as a Metaphor for Complexity]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/"/>
+    <updated>2013-12-11T18:29:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/11/zelda-as-a-metaphor-for-complexity</id>
+    <content type="html"><![CDATA[<p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
+my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
+which could take upwards of hours (Water Temple, I&rsquo;m looking at you) to complete on the first run.  One of them jumps to
+mind particularly: The Forest Temple, a dungeon you encounter in the early-mid game immediately after gaining access to
+adult Link.</p>
+
+<p>At first glance, it seems like a completely normal dungeon&ndash;You&rsquo;ve got your wolves, you&rsquo;ve got your carnivorous plants,
+and the obvious puzzle in the form of 4 torches that have to be lit.  Fairly straightforward, until the game hits you
+with this:</p>
+
+<p><img class="center" src="http://alexkuang.github.io/images/forest-temple-hallway.jpg"></p>
+
+<p>The first time you hit the twisting hallway, you have to follow it as-is to the other side, your perspective being
+warped, to end up in a room with you standing on its &ldquo;wall&rdquo;.  On the &ldquo;floor&rdquo; is a chest, inaccessible in your current
+state, and further on is a door you don&rsquo;t have the key to.  After a few more rooms and a battle with some wolves, you
+end up with the bow which allows you to hit a switch to un-twist the hallway, bringing a completely new
+perspective to the rooms&ndash;Most obviously, the chest from the earlier &ldquo;floor&rdquo; is now reachable, and after a little
+contemplation and a lot of climbing, you get the key to the previously locked door&hellip;  <em>Which you can&rsquo;t access until you
+re-twist the hallway.</em></p>
+
+<p>This simple sequence is, in essence, what makes the classical Zelda dungeons challenging and oh so much fun.  In
+addition to an &ldquo;item of the moment&rdquo;, each area contains an inventive mechanic that completely changes the landscape
+of the entire dungeon.  A room is completely different when your perspective is rotated, platforms become traversable
+after you flood the floor with sand, and so on.  It&rsquo;s no longer just <em>Push a block over here</em>, it&rsquo;s <em>Push a block over
+here to change the water level so we can push that other block, and then change the water level back to align the two
+blocks properly and maybe we can finally get to that chest over there.  Oh wait, that didn&rsquo;t work, maybe if I switch the
+water level back BEFORE moving the second block&hellip;</em></p>
+
+<p>Sound familiar?  The hardest dungeons&#8217; mechanics tend to use some piece of outside state to introduce exponentially more
+complex interactions between the existing items that Link already has access to.  Interactions that now depend not only
+on the current environment, but also the configuration of surrounding environments, and probably the order that
+everything was done as well.  Keeping track of all that is welcome, even enjoyable, when I&rsquo;m playing Zelda.  But I have
+no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing what I want it to.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Neophyte's Take on Scala]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala/"/>
+    <updated>2013-12-09T18:12:00-05:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala</id>
+    <content type="html"><![CDATA[<p>A <a href="http://overwatering.org/blog/2013/12/scala-1-star-would-not-program-again/">blog post</a> has recently been making the
+rounds in all the usual programming fora&ndash;/r/programming, hackernews, and so on&ndash;even eliciting a
+<a href="https://groups.google.com/forum/#!topic/scala-debate/153H3Ya4Nxk">response</a> from Scala&rsquo;s creator himself.  There&rsquo;s a
+lot of discussion both productive and inflammatory out there already, but I thought I&rsquo;d jot down my perspective on the
+common points as someone who: 1. picked scala up relatively recently (2.9.2 and 2.10), 2. has worked with it for a few
+months on the side, and 3. comes from a background of dynamic languages.</p>
+
+<h4>Long Compile Times</h4>
+
+<p>I can definitely see where this is coming from.  Scala&rsquo;s compile times can be pretty long, though I had pegged that as
+the cost of using a compiled language anyway.  I, at least, felt a marked increase in times upgrading from <code>2.9.2</code> to
+<code>2.10</code>, presumably from the slew of new features like macros.  However, it seems that <code>2.11</code> will thankfully be
+<a href="http://java.dzone.com/articles/state-scala-2013">focused</a> on compiler optimizations.  In the meantime, I&rsquo;ve found that
+judicious use of some of Scala&rsquo;s heavier features (such as implicits) keeps the compile times manageable.
+<a href="http://zeroturnaround.com/software/jrebel/">JRebel</a> has been a godsend as well for hot-reloading in incremental
+compilation, and they do offer a personal Scala license for free.  Without JRebel my life as a scala user would have
+been a lot harder.</p>
+
+<h4>Opaque Syntax</h4>
+
+<p>I agree completely here.  Scala&rsquo;s flexibility in parsing + its allowance of symbolic method names obviously allows for a
+lot of flexibility.  This allows the construction of all sorts of DSLs; whether these DSLs end up being expressive or
+just plain confusing, is another thing altogether.  In this case, I&rsquo;d have to say that just because something is
+possible does not mean it should be done all the time.</p>
+
+<!-- more -->
+
+
+<p>The original post mentions that their build script&rsquo;s syntax seemed to be all over the place; I&rsquo;m assuming they were
+referring to the de facto scala build tool, <a href="http://www.scala-sbt.org/">sbt</a>.  While it&rsquo;s great in a lot of ways, I
+personally am not a big fan of their heavy use of symbolic names either.  Just as an example, a relatively simple build
+file for one of my personal projects already has all of the following:</p>
+
+<figure class='code'><figcaption><span>build.sbt </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">testOptions</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">+=</span> <span class="o">(...)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">resourceGenerators</span> <span class="n">in</span> <span class="nc">Compile</span> <span class="o">&lt;+=</span> <span class="o">(...)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All of them are obviously for adding to some sort of sequence, but still different enough to trip you up.  And this is
+still relatively shallow territory&ndash;I haven&rsquo;t even mentioned the insanity that comes with more advanced libraries, like
+the <a href="http://stackoverflow.com/questions/14472310/pronounceable-names-for-scalaz-operators">fish operator</a>.</p>
+
+<p>In Odersky&rsquo;s google groups thread, he mentions a proposal for requiring an equivalent alphabetical alias for all
+symbolic methods.  I hope that goes through.  If nothing else, it&rsquo;ll make the methods easier to google.</p>
+
+<h4>Documentation</h4>
+
+<p>As with any budding technology, documentation tends to lag behind development.  However, language and core library
+documentation has improved immensely even in the time since I picked up Scala, so many kudos to the typesafe team for
+that.  However, the third-party libraries still have a way to go; as helpful and educational as it may be, source code
+should <em>not</em> be the go-to method for research.</p>
+
+<h4>Types and Case Classes</h4>
+
+<p>Here&rsquo;s where I have to respectfully disagree completely with the original post.  I <em>love</em> types and case classes.  Being
+able to encode logic in your types that would otherwise have ended up as boilerplate-y edge case checking, <em>and</em> having
+the compiler do it for you instead of maintaining the extra tests, is a win in my book.  Coming from a dynamic web
+background, having a compiler do some of these checks for me was a breath of fresh air, especially since it doesn&rsquo;t come
+at the cost of extreme clunkiness a la Java.</p>
+
+<p>And case classes / <a href="http://learnyouahaskell.com/making-our-own-types-and-typeclasses">algebraic data types</a> are the
+bee&rsquo;s knees.  Between the <code>copy</code> method and the free pattern matching, I don&rsquo;t see how case classes do anything but get
+rid of repetition.  Forgive the simplistic example:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">model</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">version</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Extraction, conditionals, and assignment, all done succinctly</span>
+</span><span class='line'><span class="k">def</span> <span class="n">calcType</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="s">&quot;hp&quot;</span><span class="o">,</span> <span class="s">&quot;20B&quot;</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">&quot;financial&quot;</span>
+</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">&quot;Calculator: %s %s %s is of unknown type&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// No custom methods/etc needed</span>
+</span><span class='line'><span class="k">def</span> <span class="n">upgrade</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">version</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">version</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Overall impressions</h4>
+
+<p>Despite its flaws, I&rsquo;ve really enjoyed working with Scala and it will probably remain a part of my toolbox.  Its
+flexibility and power makes it a great gen-purpose language, especially in its type system and ability to combine
+functional programming with OO.  It sits in the JVM, which means interoperability with the existing mammoth Java
+ecosystem comes with just a little bit of glue code.  And more importantly, it means that if I should pick up Clojure in
+the future, interoperability with THAT will not be too far off either, knock on wood.</p>
+
+<p>That said, it&rsquo;s not by any means a perfect language.  The same flexibility that makes it great to use can often result
+in convoluted APIs, and it&rsquo;s very easy to shoot yourself in the foot.  Living in the JVM also means the language has to
+deal with things like type erasure; that results in some annoying limitations, especially if you&rsquo;re looking to use scala
+in a more advanced functional capacity (see <a href="https://github.com/scalaz/scalaz">scalaz</a>).  And lastly&hellip;  Scala, at least
+to me, is one of those tools that feels natural once you&rsquo;re used to it, but requires a significant mental shift to fully
+grok&ndash;I wouldn&rsquo;t want to be plopped into scala on a fresh project with a one month deadline.  Ideally, there should be
+some better documentation to help bridge that gap.</p>
+
+<p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
+language and ecosystem mature, they will hopefully become less and less of a problem.</p>
 ]]></content>
   </entry>
   

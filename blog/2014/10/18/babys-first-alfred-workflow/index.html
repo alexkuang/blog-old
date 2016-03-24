@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hello, Blog! - alex kuang</title>
+  <title>Baby&#8217;s First Alfred Workflow - alex kuang</title>
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Trying to take another shot at this whole writing-about-tech thing. :) Please excuse appearances while this blog gets
-revamped for the umpteenth time &hellip;">
+  <meta name="description" content="Lately I&rsquo;ve been spending a lot of my work time staring at CloudWatch metrics.
+Particularly, we have a Kinesis application that publishes &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ revamped for the umpteenth time &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://alexkuang.github.io/blog/2016/03/18/hello">
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
@@ -93,7 +93,7 @@ revamped for the umpteenth time &hellip;">
   <header>
     
       
-        <h1 class="entry-title">Hello, Blog!</h1>
+        <h1 class="entry-title">Baby&#8217;s First Alfred Workflow</h1>
       
     
     
@@ -103,7 +103,7 @@ revamped for the umpteenth time &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-03-18T13:58:09-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:58 pm</span></time>
+<time class='entry-date' datetime='2014-10-18T15:32:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:32 pm</span></time>
         
         
       </p>
@@ -111,8 +111,53 @@ revamped for the umpteenth time &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Trying to take another shot at this whole writing-about-tech thing.  :)  Please excuse appearances while this blog gets
-revamped for the umpteenth time.</p>
+<div class="entry-content"><p>Lately I&rsquo;ve been spending a lot of my work time staring at <a href="http://aws.amazon.com/cloudwatch/">CloudWatch</a> metrics.
+Particularly, we have a <a href="http://aws.amazon.com/kinesis/">Kinesis</a> application that publishes metrics on how long a
+record spends hanging around in the stream before getting picked up by our processor.  The problem is that the metric is
+published in milliseconds, which while precise, is not exactly human-readable for large enough durations.</p>
+
+<p>I&rsquo;ve been a huge fan of <a href="http://www.alfredapp.com/">Alfred</a> for a while, and I use its quick-launch and custom search
+functions nearly constantly.  I only recently got around to ponying up for the powerpack, which lets you define custom
+&ldquo;workflows&rdquo;, so I figured&ndash;why not use a workflow to convert the milliseconds to something more readable?</p>
+
+<!-- more -->
+
+
+<p>The Alfred workflow UI is basically a fancy flow chart.  It allows you to string together elements for input,
+actions, and output&ndash;Kind of like a graphical representation of a unix pipe.  The final product of the workflow looked
+something like this:</p>
+
+<p><img class="center" src="/images/alf-flow.png"></p>
+
+<p>The first step is to define a keyword, which is how this workflow will be invoked in the alfred menu:</p>
+
+<p><img class="center" src="/images/alf-keyword.png"></p>
+
+<p>All this means is that I can use <code>mr (x)</code> to invoke the workflow, where x is some parameter.  <code>{query}</code> is just Alfred&rsquo;s
+magic string for&ndash;you guessed it&ndash;injecting <code>argv</code>.  In this case, it updates the &lsquo;preview&rsquo; item in the dropdown as the
+argstring is entered.</p>
+
+<p>The actual script itself is simple and super hacked together in python, but the UI here is still worth showing.  Note the
+use of {query}:</p>
+
+<p><img class="center" src="/images/alf-py.png"></p>
+
+<p>In addition to python, the &ldquo;run script&rdquo; element also supports bash, ruby, and all manner of things up to and including Perl.</p>
+
+<p>And, the final product:</p>
+
+<p><img class="center" src="/images/alf-demo.png"></p>
+
+<p><img class="center" src="/images/alf-print.png"></p>
+
+<p>There are a few optimizations I can see immediately (for example, the &lsquo;large print&rsquo; output seems a bit kludgy), but it&rsquo;s
+not bad for a few minutes&#8217; work!</p>
+
+<p>And while this script was relatively simple, there&rsquo;s tons more to be explored.  In addition to running a script, Alfred
+also supports other actions such as opening an application, running a web search, running iTunes, and then some.  And
+for output, Alfred can do things like copy to clipboard or post to the Mac&rsquo;s Notification Center.  Really, it&rsquo;s like a
+graphical scripting language on steroids with easy interaction with OS X.  I&rsquo;ve seen some projects lately for more
+accessible coding via graphical interfaces; Alfred&rsquo;s approach is a pretty good start as far as I&rsquo;m concerned.</p>
 </div>
 
 
@@ -135,7 +180,7 @@ revamped for the umpteenth time.</p>
 
 
 
-<time class='entry-date' datetime='2016-03-18T13:58:09-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:58 pm</span></time>
+<time class='entry-date' datetime='2014-10-18T15:32:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:32 pm</span></time>
       
       
 
@@ -144,7 +189,7 @@ revamped for the umpteenth time.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2016/03/18/hello/" data-via="" data-counturl="http://alexkuang.github.io/blog/2016/03/18/hello/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow/" data-via="" data-counturl="http://alexkuang.github.io/blog/2014/10/18/babys-first-alfred-workflow/" >Tweet</a>
   
   
   
@@ -153,8 +198,10 @@ revamped for the umpteenth time.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/01/24/gn-in-vim/" title="Previous Post: Thing of the Week: `gn` in Vim">&laquo; Thing of the Week: `gn` in Vim</a>
+        <a class="basic-alignment left" href="/blog/2014/07/16/asciinema/" title="Previous Post: asciinema">&laquo; asciinema</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/" title="Next Post: Thing of the Week: Vim Visual Block Mode">Thing of the Week: Vim Visual Block Mode &raquo;</a>
       
     </p>
   </footer>

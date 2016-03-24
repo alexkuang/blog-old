@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Arduino | alex kuang]]></title>
+  <link href="http://alexkuang.github.io/blog/categories/arduino/atom.xml" rel="self"/>
+  <link href="http://alexkuang.github.io/"/>
+  <updated>2016-03-24T17:52:30-04:00</updated>
+  <id>http://alexkuang.github.io/</id>
+  <author>
+    <name><![CDATA[Alex Kuang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello, Hardware World!]]></title>
+    <link href="http://alexkuang.github.io/blog/2014/06/14/hello-hardware-world/"/>
+    <updated>2014-06-14T16:56:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2014/06/14/hello-hardware-world</id>
+    <content type="html"><![CDATA[<p>Recently, one of our tech leads at work previewed <a href="https://github.com/ogrodnek/analog-metrics-talk">a talk</a> that he&rsquo;s
+planning to give on analog metrics for the upcoming Strange Loop conference.  I&rsquo;ve always wanted to play with
+microcontrollers, and this really gave me a kick in the pants to get started.  Since I had a bit of amazon credit lying
+around, I decided to buy an arduino starter kit with all sorts of buttons, lights, and doo-dads, but not enough power to
+actually fry anything (I hope).  I still can&rsquo;t tell my head from my ass, but so far I can make a button turn on an LED.</p>
+
+<p><img class="center <a" src="href="http://waffleparadox.smugmug.com/Other/Camera-Awesome-Photos/i-h59QFDb/0/L/CA_06051420063663-L.jpg">http://waffleparadox.smugmug.com/Other/Camera-Awesome-Photos/i-h59QFDb/0/L/CA_06051420063663-L.jpg</a>&#8221;></p>
+
+<p>Next step: world domination!</p>
+]]></content>
+  </entry>
+  
+</feed>

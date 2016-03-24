@@ -121,7 +121,732 @@ revamped for the umpteenth time.</p>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/24/gn-in-vim/">Thing of the Week: `gn` in Vim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-24T11:53:51-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:53 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Back to vim this week!  This one might be a bit esoteric&ndash;apologies in advance&ndash;but it’s such a useful feature that I
+had to share.</p>
+
+<p><code>gn</code> is a kinda-sorta-but-not-really-motion that selects the matches of the current search pattern.  It’s kind of like
+<code>n</code> (go to next match in search), except it also selects the contents of the match in visual mode.  But where it really
+shines is when used with operators like <code>c</code> (change), etc to operate on the match.  Quick demo to see it in action,
+before continuing:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/15656.js" id="asciicast-15656" async></script>
+
+
+<p>So this is nice for a few reasons.  First, it’s neat to be able to operate on just the match of a search.  I remember a
+few times before I found <code>gn</code> where I was doing something similar to the demo, tried to use <code>cw</code>, and got mildly annoyed
+that I had to retype half the word because the <code>w</code> motion was too aggressive.</p>
+
+<p>Another nice thing is that with <code>gn</code>, the dot command will both move to the next match and repeat whatever operation you
+did, instead of having to do the movement and operation separately using <code>n.</code>.  It seems petty, but hey it’s a full 50%
+keystroke savings!!</p>
+
+<p>Arguably, the demo above could have been done with an ex command like <code>:%s/test/actual</code> (universal search and replace),
+but I think <code>gn</code> still offers a lot.  It works on all operators, so <code>ygn</code> would yank the match, <code>gUgn</code> would uppercase
+the match, and so on.  Plus, it allows an easy on-the-fly workflow that’s still decently fast without the “crap I have
+to tune all the edge cases in my expression”: for example, if you want to only change some instances of <code>test</code> to
+<code>actual</code>, but others to <code>sandbox</code>.</p>
+
+<p>As always, see <code>:h gn</code> for more details.  Also note that gn has only been available since vim 7.4 or something like
+that, but there’s no reason anyone shouldn’t be using the latest on their personal boxes…</p>
+
+<h3>Bonus</h3>
+
+<p>This email also generated some additional discussion, which led to my discovery of the multi-select feature in Sublime,
+and the <a href="https://github.com/terryma/vim-multiple-cursors">associated vim plugin</a>.  It seems like it&rsquo;s in a different
+spirit than <code>gn</code>, but still a very cool way of thinking about operating on search results that I had not seen before.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/24/thread-macro/">Thing of the Week: Thread Macro (01/07/15)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-24T11:53:42-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:53 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Let’s deviate from Scala for a bit and talk about clojure.  Or lisps in general, I guess.  A lot of the “kinda joking
+except not really” quips that commonly float around on the internet are about the parentheses, as in how there are so
+many of them.  For example, if you want to take a number <code>x</code> and add one, multiply by two, then add 3, the code might
+naively look something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or perhaps like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">+ </span><span class="mi">3</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">x</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Look at the parens!  Especially the consecutive 3 closing ones in the second variation.  For a sufficiently long chain
+of functions, it can get pretty unreadable—especially with multiple arguments and whatnot.</p>
+
+<p>Enter clojure’s thread macro.  The thread macro is a macro in the form of <code>(-&gt; x &amp; forms)</code>, and it “threads” <code>x</code> through
+the <code>forms</code> as the first arg*.  Which sounds terribly confusing explained, so an example is probably better here.  Take
+this snippet using the thread macro:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; add one, multiply by two, and add three</span>
+</span><span class='line'><span class="p">(</span><span class="nb">-&gt; </span><span class="nv">x</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">* </span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">+ </span><span class="mi">3</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This desugars into <code>(+ (* (+ x 1) 2) 3)</code>, i.e. the first variation of the initial example above.  Personally, I find the
+macro version much more readable since each call is on its own line, and it seems more expressive of applying a series
+of functions to the initial x.</p>
+
+<p>The thread macro is also useful for chaining together collection methods like <code>map</code>.  Since clojure doesn’t have
+first-class OO support (instead favoring protocols and such), map exists as a regular function that takes the collection
+as an arg, instead of as a method on a collection class.  So chaining together a bunch of ops on a vector might look
+something like&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; add one to every number and filter for even numbers</span>
+</span><span class='line'><span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">))</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">;; Without the thread macro, would look like:</span>
+</span><span class='line'><span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span> <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The only difference is that in this case, ->> was used.  ->> is “thread last”, which is like -> (“thread first”), except
+it inserts the expression at the end of the form.</p>
+
+<p>This pattern also exists in other languages (especially those that don’t offer first-class OO, which allows fancy
+<code>return self</code> type stuff), like Elixir’s pipe <code>|&gt;</code> (in the spirit of the unix pipe) which is what prompted me to spread
+the word about this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="c1"># double and add one to each element</span>
+</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">x</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">x</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The thread macro pattern doesn’t have as much of a place in Scala, since Scala has mechanisms like the collection
+library and implicit conversions to help express similar logic in elegant ways.  But when I first read up on macros in
+lisp, I spent some time scratching my head at the day-to-day practical uses until I found this and had my first
+“ohhhhhhhhhhhh” moment.  In any case, hope this was mildly interesting!</p>
+
+<p>* - Well technically, as the second item in the form, which is effectively the first arg for functions&hellip; But that might
+be a bit too lispy.</p>
+
+<h3>Bonus</h3>
+
+<p>When I published this email to the internal list, it generated some discussion wherein I learned that there are other
+neat features of the same sort like <a href="https://clojuredocs.org/clojure.core/doto">doto</a>, and that they&rsquo;re all just
+various derivations of the K combinator.  Of course, googling k-combinators led to a pretty
+<a href="http://en.wikipedia.org/wiki/SKI_combinator_calculus">heavy looking wiki page</a>, so I was referred to
+<a href="http://combinators.info/">http://combinators.info/</a> , which I have been trying to get through since.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/24/the-silver-searcher/">Thing of the Week: The Silver Searcher (12/17/14)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-24T11:53:21-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:53 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>grep</h3>
+
+<p>This week I’d like to talk about grep.  Grep is a great general-purpose tool and works very well for filtering text in
+the middle of a long command chain, but I’ve found it a bit clunky as a codebase search tool.</p>
+
+<p>For example, let’s say you’re sitting in some project and trying to grep for all the places where a function is being
+called.  The naïve first attempt would be:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grep myFunc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Except that just hangs, since grep defaults to reading from stdin.  A next attempt might be:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grep myFunc .</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Except then grep would complain that . is a directory, which leads to:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grep –r myFunc .</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which finally works, but still leaves a bit to be desired.  The biggest annoyance is that grep will get caught up in
+files that you don’t necessarily care about, e.g. Tags files, third-party dependency files, binary files… “Binary file
+./lib/default/xxx.jar matches” anyone?</p>
+
+<h3>ag</h3>
+
+<p>Introducing <a href="http://geoff.greer.fm/ag/">ag, the silver searcher</a>!  Ag:</p>
+
+<ul>
+<li>Fulfills the above “find this in cwd” use case via a simple, short <code>ag myFunc</code></li>
+<li>Is easy to install and super fast</li>
+<li>Respects project ignore files: for example, it will ignore the patterns found in your .gitignore</li>
+<li>In the case of files that you want in the repo but still don’t want to search, it also supports the use of a .agignore file</li>
+<li>Integrates well into other tools: AFAIK there are ag plugins for vim, emacs, and text mate.</li>
+</ul>
+
+
+<p>Fun fact: I was doing the whole <code>grep –r</code> thing for an embarrassingly long time before I bothered to search for a better
+workflow.  My initial search turned up ack, which then led to ag.  As far as I can tell, feature-wise they’re
+comparable; I eventually settled on ag just ‘cause the command requires less typing.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/24/vim-expansion/">Thing of the Week: Vim % Expansion (12/10/14)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-24T11:52:53-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:52 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>% (Current File Name)</h3>
+
+<p>Another vim tip this week!  This time, it’s about ‘%’, which expands to ‘current file name’.  This is especially useful
+in projects with java/scala style directory setups, where your source is approximately 1.5 million folders away from the
+project root, but you kind of want to hang around project root for things like ant/sbt/etc to work.  <code>%</code> makes this
+easier to work with files in the deeply nested folders while doing this.</p>
+
+<p>Taking a contrived example, instead of doing something like this to <code>git log</code> the file you are currently editing:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:!git log src/main/scala/com/bizo/(…)/Foo.scala</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can just do:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:!git log %</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is extremely convenient and works everywhere in command line mode (basically, whenever ‘:’ is used), but is also
+useful to have if you’re ever writing vim script.  See <code>:h expand</code> for the function to use in vim script, and some other
+special keywords.</p>
+
+<p>But wait!  There’s more!</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/01/24/vim-expansion/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/24/scala-enrichment/">Thing of the Week: Scala Enrichment (12/03/14)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-24T11:52:37-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:52 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Douglas Crockford recently gave a tech talk at work, where he casually endorsed Scala during the Q&amp;A at the end.  Given
+that and the fact that I&rsquo;ve been hearing increasing mentions of it in the company at large, I figured this week I&rsquo;d plug
+a neat feature of Scala and a recent use case where I found it extremely handy.</p>
+
+<h3>The Feature</h3>
+
+<p>Anyone who&rsquo;s worked with The AWS SDK (or just Java code in general) will be familiar with the builder pattern.
+Recently, I was writing some code to automate setup of CloudWatch alarms for a DynamoDB table.  The alarm request
+started looking something like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">req</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PutMetricsAlarmRequest</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withNamespace</span><span class="o">(</span><span class="s">&quot;DynamoDB&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withDimensions</span><span class="o">(</span><span class="n">dimensionsForTableName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withStatistic</span><span class="o">(</span><span class="s">&quot;Sum&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withComparisonOperator</span><span class="o">(</span><span class="nc">GreaterThanThreshold</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withThreshold</span><span class="o">(</span><span class="n">thresholdNumber</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withMetricName</span><span class="o">(</span><span class="n">throttledMetricName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withEvaluationPeriods</span><span class="o">(</span><span class="n">periods</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withPeriod</span><span class="o">(</span><span class="n">periodDuration</span><span class="o">.</span><span class="n">toSeconds</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmActions</span><span class="o">(</span><span class="n">idMappingSNS</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmName</span><span class="o">(</span><span class="n">alarmNameFor</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cloudwatchClient</span><span class="o">.</span><span class="n">putMetricAlarm</span><span class="o">(</span><span class="n">req</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which is serviceable, but less than ideal given that I had multiple alarms of roughly the same nature.  Plus, I felt
+like it left something to be desired in terms of readability and communicating the intent of the alarm in a succinct
+way.  Enter <code>implicit class</code>s and the &ldquo;enrichment&rdquo;* pattern!  Basically, it lets us turn the above into something more
+like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">req</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PutMetricAlarmRequest</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">forTable</span><span class="o">(</span><span class="n">tableName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">triggerOnSumGreaterThan</span><span class="o">(</span><span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">afterEvaluationPeriods</span><span class="o">(</span><span class="n">evaluationPeriodDuration</span><span class="o">,</span> <span class="n">evaluationPeriods</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmActions</span><span class="o">(</span><span class="n">idMappingSNS</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmName</span><span class="o">(</span><span class="n">alarmNameFor</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cloudwatchClient</span><span class="o">.</span><span class="n">putMetricAlarm</span><span class="o">(</span><span class="n">req</span><span class="o">)</span> <span class="cm">/** Can still pass req back into AWS API! */</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With the addition of this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">implicit</span> <span class="k">class</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">def</span> <span class="n">forTable</span><span class="o">(</span><span class="n">tableName</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withNamespace</span><span class="o">(</span><span class="s">&quot;DynamoDB&quot;</span><span class="o">).</span><span class="n">withDimensions</span><span class="o">(</span><span class="n">tableMetricDimensions</span><span class="o">(</span><span class="n">tableName</span><span class="o">).</span><span class="n">asJava</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="n">triggerOnSumGreaterThan</span><span class="o">(</span><span class="n">metricName</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">threshold</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withStatistic</span><span class="o">(</span><span class="s">&quot;Sum&quot;</span><span class="o">).</span><span class="n">withComparisonOperator</span><span class="o">(</span><span class="nc">GreaterThanThreshold</span><span class="o">).</span><span class="n">withThreshold</span><span class="o">(</span><span class="n">threshold</span><span class="o">).</span><span class="n">withMetricName</span><span class="o">(</span><span class="n">metricName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="n">afterEvaluationPeriods</span><span class="o">(</span><span class="n">periodDuration</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">periods</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withEvaluationPeriods</span><span class="o">(</span><span class="n">periods</span><span class="o">).</span><span class="n">withPeriod</span><span class="o">(</span><span class="n">periodDuration</span><span class="o">.</span><span class="n">toSeconds</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/01/24/scala-enrichment/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/25/thing-of-the-week-bash-bangs/">Thing of the Week: Bash Bangs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-25T17:40:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:40 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This week I wanted to do a quick tip on some neat functionality in bash (and other bash-like shells), the bang commands.</p>
+
+<p>Let&rsquo;s say you have some long important command that you want to run.  You run it, only to discover that you need sudo
+privileges.  For situations like this, <code>!!</code> (entire last command) can be a great time-saver.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="c"># let&#39;s pretend echo throws an error too and wants sudo for some reason</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>sudo !!
+</span><span class='line'>sudo <span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>Password:
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, let&rsquo;s say you don&rsquo;t want to blindly re-run the last command.  <code>:p</code> can be used to print it without overwriting the
+&ldquo;last command&rdquo; history.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>!!:p
+</span><span class='line'><span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>sudo !!
+</span><span class='line'>sudo <span class="nb">echo </span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span><span class='line'>Password:
+</span><span class='line'><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> 5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bang commands also extend to the individual parts of the last command you ran.  The most basic form of this is <code>echo
+!:[n]</code>, where [n] is the nth word in the command, indexed from 0.  There are also shortcuts: <code>!^</code> gives the first arg
+(like <code>!:1</code>) and <code>!$</code> gives the last arg.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:1
+</span><span class='line'><span class="nb">echo </span>a
+</span><span class='line'>a
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>!:5:p <span class="c"># :p works with any bangs!</span>
+</span><span class='line'>e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !:5
+</span><span class='line'><span class="nb">echo </span>e
+</span><span class='line'>e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo </span>a b c d e
+</span><span class='line'>a b c d e
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span><span class="nb">echo</span> !<span class="err">$</span>
+</span><span class='line'><span class="nb">echo </span>e
+</span><span class='line'>e
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Personally, I use <code>!$</code> the most, since very often I&rsquo;ll only want the last arg (e.g., <code>ls [some tab-completed dir]</code> ->
+<code>rm -r !$</code>).  Plus, it&rsquo;s the easiest sequence to hit, finger-wise.</p>
+
+<p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
+e.g. <code>sudo !!&lt;TAB&gt;</code> gets replaced with <code>sudo echo 1 2 3 4 5</code> in place.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/">Thing of the Week: Vim Visual Block Mode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-20T18:33:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:33 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
+snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
+aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
+discussion.</p>
+
+<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
+<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
+changes that entails.  While I&rsquo;m sure it&ndash;or something similar&ndash;will make a comeback, in the meantime I decided to
+try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
+I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
+incentive for me to be proactive in learning new things to talk about.</p>
+
+<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
+attention&ndash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
+always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
+what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/18/babys-first-alfred-workflow/">Baby&#8217;s First Alfred Workflow</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-18T15:32:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:32 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lately I&rsquo;ve been spending a lot of my work time staring at <a href="http://aws.amazon.com/cloudwatch/">CloudWatch</a> metrics.
+Particularly, we have a <a href="http://aws.amazon.com/kinesis/">Kinesis</a> application that publishes metrics on how long a
+record spends hanging around in the stream before getting picked up by our processor.  The problem is that the metric is
+published in milliseconds, which while precise, is not exactly human-readable for large enough durations.</p>
+
+<p>I&rsquo;ve been a huge fan of <a href="http://www.alfredapp.com/">Alfred</a> for a while, and I use its quick-launch and custom search
+functions nearly constantly.  I only recently got around to ponying up for the powerpack, which lets you define custom
+&ldquo;workflows&rdquo;, so I figured&ndash;why not use a workflow to convert the milliseconds to something more readable?</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/10/18/babys-first-alfred-workflow/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/16/asciinema/">Asciinema</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-07-16T15:40:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:40 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was tooling around the other day and discovered a service called <a href="https://asciinema.org">asciinema</a> which provides
+terminalcasts&ndash;essentially, &ldquo;screencasts&rdquo; with terminal I/O.  This is awesome for a few reasons.</p>
+
+<p>From a content consumer&rsquo;s standpoint, it&rsquo;s often hard to follow a blog post that&rsquo;s trying to outline a command line tip,
+or a vim tip, for the simple fact that the static nature of writing alone isn&rsquo;t optimal for showing the flow between
+&ldquo;steps&rdquo; (commands, keystrokes, what have you) and &ldquo;output&rdquo; (what you&rsquo;re supposed to see after executing commands).
+Having a dynamic format for demos helps with this greatly.  Sure, there are screencasts, but that involves dealing with
+videos and their associated heavy Flash Player bullshit.  asciinema is rendered with just bits of html and js.</p>
+
+<p>From a wannabe content producer&rsquo;s standpoint&hellip;  Writing is <em>hard</em>.  Writing while crafting appropriate examples is
+harder.  Doing all that while struggling with capturing the nature of the examples in plain text?  No thanks.
+Again&ndash;Yes, there is the option of screencasts, but those are painful to set up.  Screencasts means worrying about
+things like capturing software, background audio, What Tab Do I Have Open In My Browser, and Will Video Compression
+Screw My Text Legibility.  As a consummately lazy person who only wants to do short self-contained clips for now&hellip;
+That&rsquo;s way too big of a barrier.  asciinema is easy&ndash;Just install, then <code>asciinema rec</code> from the terminal and <code>&lt;CTRL-D&gt;</code>
+to exit and upload.</p>
+
+<p>And embedding takes 2 seconds&ndash;Check it!</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/10785.js" id="asciicast-10785" async></script>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     

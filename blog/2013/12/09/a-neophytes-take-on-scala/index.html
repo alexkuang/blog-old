@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A Neophyte&#8217;s Take on Scala - alex kuang</title>
+  <meta name="author" content="Alex Kuang">
+
+  
+  <meta name="description" content="A blog post has recently been making the
+rounds in all the usual programming fora&ndash;/r/programming, hackernews, and so on&ndash;even eliciting a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44908431-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">alex kuang</a></h1>
+  
+    <h2>professional yak shaver</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="alexkuang.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">about</a></li>
+  <li><a href="/">blog</a></li>
+  <li><a href="/blog/archives">archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">A Neophyte&#8217;s Take on Scala</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-09T18:12:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:12 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A <a href="http://overwatering.org/blog/2013/12/scala-1-star-would-not-program-again/">blog post</a> has recently been making the
+rounds in all the usual programming fora&ndash;/r/programming, hackernews, and so on&ndash;even eliciting a
+<a href="https://groups.google.com/forum/#!topic/scala-debate/153H3Ya4Nxk">response</a> from Scala&rsquo;s creator himself.  There&rsquo;s a
+lot of discussion both productive and inflammatory out there already, but I thought I&rsquo;d jot down my perspective on the
+common points as someone who: 1. picked scala up relatively recently (2.9.2 and 2.10), 2. has worked with it for a few
+months on the side, and 3. comes from a background of dynamic languages.</p>
+
+<h4>Long Compile Times</h4>
+
+<p>I can definitely see where this is coming from.  Scala&rsquo;s compile times can be pretty long, though I had pegged that as
+the cost of using a compiled language anyway.  I, at least, felt a marked increase in times upgrading from <code>2.9.2</code> to
+<code>2.10</code>, presumably from the slew of new features like macros.  However, it seems that <code>2.11</code> will thankfully be
+<a href="http://java.dzone.com/articles/state-scala-2013">focused</a> on compiler optimizations.  In the meantime, I&rsquo;ve found that
+judicious use of some of Scala&rsquo;s heavier features (such as implicits) keeps the compile times manageable.
+<a href="http://zeroturnaround.com/software/jrebel/">JRebel</a> has been a godsend as well for hot-reloading in incremental
+compilation, and they do offer a personal Scala license for free.  Without JRebel my life as a scala user would have
+been a lot harder.</p>
+
+<h4>Opaque Syntax</h4>
+
+<p>I agree completely here.  Scala&rsquo;s flexibility in parsing + its allowance of symbolic method names obviously allows for a
+lot of flexibility.  This allows the construction of all sorts of DSLs; whether these DSLs end up being expressive or
+just plain confusing, is another thing altogether.  In this case, I&rsquo;d have to say that just because something is
+possible does not mean it should be done all the time.</p>
+
+<!-- more -->
+
+
+<p>The original post mentions that their build script&rsquo;s syntax seemed to be all over the place; I&rsquo;m assuming they were
+referring to the de facto scala build tool, <a href="http://www.scala-sbt.org/">sbt</a>.  While it&rsquo;s great in a lot of ways, I
+personally am not a big fan of their heavy use of symbolic names either.  Just as an example, a relatively simple build
+file for one of my personal projects already has all of the following:</p>
+
+<figure class='code'><figcaption><span>build.sbt </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">testOptions</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">+=</span> <span class="o">(...)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">resourceGenerators</span> <span class="n">in</span> <span class="nc">Compile</span> <span class="o">&lt;+=</span> <span class="o">(...)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All of them are obviously for adding to some sort of sequence, but still different enough to trip you up.  And this is
+still relatively shallow territory&ndash;I haven&rsquo;t even mentioned the insanity that comes with more advanced libraries, like
+the <a href="http://stackoverflow.com/questions/14472310/pronounceable-names-for-scalaz-operators">fish operator</a>.</p>
+
+<p>In Odersky&rsquo;s google groups thread, he mentions a proposal for requiring an equivalent alphabetical alias for all
+symbolic methods.  I hope that goes through.  If nothing else, it&rsquo;ll make the methods easier to google.</p>
+
+<h4>Documentation</h4>
+
+<p>As with any budding technology, documentation tends to lag behind development.  However, language and core library
+documentation has improved immensely even in the time since I picked up Scala, so many kudos to the typesafe team for
+that.  However, the third-party libraries still have a way to go; as helpful and educational as it may be, source code
+should <em>not</em> be the go-to method for research.</p>
+
+<h4>Types and Case Classes</h4>
+
+<p>Here&rsquo;s where I have to respectfully disagree completely with the original post.  I <em>love</em> types and case classes.  Being
+able to encode logic in your types that would otherwise have ended up as boilerplate-y edge case checking, <em>and</em> having
+the compiler do it for you instead of maintaining the extra tests, is a win in my book.  Coming from a dynamic web
+background, having a compiler do some of these checks for me was a breath of fresh air, especially since it doesn&rsquo;t come
+at the cost of extreme clunkiness a la Java.</p>
+
+<p>And case classes / <a href="http://learnyouahaskell.com/making-our-own-types-and-typeclasses">algebraic data types</a> are the
+bee&rsquo;s knees.  Between the <code>copy</code> method and the free pattern matching, I don&rsquo;t see how case classes do anything but get
+rid of repetition.  Forgive the simplistic example:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">model</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">version</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Extraction, conditionals, and assignment, all done succinctly</span>
+</span><span class='line'><span class="k">def</span> <span class="n">calcType</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="s">&quot;hp&quot;</span><span class="o">,</span> <span class="s">&quot;20B&quot;</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">&quot;financial&quot;</span>
+</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">&quot;Calculator: %s %s %s is of unknown type&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// No custom methods/etc needed</span>
+</span><span class='line'><span class="k">def</span> <span class="n">upgrade</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">version</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">version</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Overall impressions</h4>
+
+<p>Despite its flaws, I&rsquo;ve really enjoyed working with Scala and it will probably remain a part of my toolbox.  Its
+flexibility and power makes it a great gen-purpose language, especially in its type system and ability to combine
+functional programming with OO.  It sits in the JVM, which means interoperability with the existing mammoth Java
+ecosystem comes with just a little bit of glue code.  And more importantly, it means that if I should pick up Clojure in
+the future, interoperability with THAT will not be too far off either, knock on wood.</p>
+
+<p>That said, it&rsquo;s not by any means a perfect language.  The same flexibility that makes it great to use can often result
+in convoluted APIs, and it&rsquo;s very easy to shoot yourself in the foot.  Living in the JVM also means the language has to
+deal with things like type erasure; that results in some annoying limitations, especially if you&rsquo;re looking to use scala
+in a more advanced functional capacity (see <a href="https://github.com/scalaz/scalaz">scalaz</a>).  And lastly&hellip;  Scala, at least
+to me, is one of those tools that feels natural once you&rsquo;re used to it, but requires a significant mental shift to fully
+grok&ndash;I wouldn&rsquo;t want to be plopped into scala on a fresh project with a one month deadline.  Ideally, there should be
+some better documentation to help bridge that gap.</p>
+
+<p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
+language and ecosystem mature, they will hopefully become less and less of a problem.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Alex Kuang
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-12-09T18:12:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:12 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/scala/'>scala</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala/" data-via="" data-counturl="http://alexkuang.github.io/blog/2013/12/09/a-neophytes-take-on-scala/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/10/17/fibonacci-stream/" title="Previous Post: Fibonacci Stream">&laquo; Fibonacci Stream</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/" title="Next Post: Zelda as a Metaphor for Complexity">Zelda as a Metaphor for Complexity &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Alex Kuang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
