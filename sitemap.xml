@@ -61,11 +61,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn/</loc>
-    <lastmod>2014-05-02T20:45:00-04:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome/</loc>
     <lastmod>2014-04-26T15:32:00-04:00</lastmod>
     <priority>0.8</priority>
@@ -107,19 +102,19 @@
   </url>
   <url>
     <loc>http://alexkuang.github.io/blog/archives/</loc>
-    <lastmod>2016-03-24T17:52:30-04:00</lastmod>
+    <lastmod>2016-03-24T17:54:02-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexkuang.github.io/</loc>
-    <lastmod>2016-03-24T17:52:30-04:00</lastmod>
+    <lastmod>2016-03-24T17:54:02-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alexkuang.github.io/about/</loc>
-    <lastmod>2016-03-24T17:52:30-04:00</lastmod>
+    <lastmod>2016-03-24T17:54:02-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

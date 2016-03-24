@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2016-03-24T17:52:30-04:00</updated>
+  <updated>2016-03-24T17:54:02-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -718,201 +718,6 @@ actually fry anything (I hope).  I still can&rsquo;t tell my head from my ass, b
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Some CH Backport Vimporn]]></title>
-    <link href="http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn/"/>
-    <updated>2014-05-02T20:45:00-04:00</updated>
-    <id>http://alexkuang.github.io/blog/2014/05/02/some-ch-backport-vimporn</id>
-    <content type="html"><![CDATA[<p>In some ways, the curehappiness backports came at the perfect time, since I&rsquo;d been looking for something to sharpen my
-vim skills on.  Technically I work in vim day-to-day, but usually the rest of the mental activity involved with coding
-end up pushing my vim-awareness more to the side than I&rsquo;d like.  This backport, however, was heavy on repetition but
-otherwise braindead, so it made the perfect set of practice exercises.  And since I had such fun (hey, it was a really
-boring Sunday afternoon&hellip;), I figured I&rsquo;d share in case anyone else finds this useful&ndash;or even better, has suggestions
-to make similar tasks more efficient in the future.  Please note that this is a rather quick fly-by and assumes moderate
-familiarity with vim mechanics.  I&rsquo;ll probably do more slow, detailed posts in the future&hellip;</p>
-
-<!-- more -->
-
-
-<h3>The Start</h3>
-
-<p>Since I had all the posts in html form, using <code>:set paste</code> and copy-pasting from the browser seemed the most
-straightforward.  Or at least, more straightforward than trying to manually un-mangle everything in the post after being
-wrung through wordpress.  For most of the posts, the paste result looked something like this:</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/start.png" width="598" height="440"></p>
-
-<p>Not too awful, but the TODO is obvious:</p>
-
-<ol>
-<li>Needs a banner image</li>
-<li>Lines need to be wrapped (not strictly necessary, but personal pet peeve)</li>
-<li>Ingredients + Methodology need to be de-dented</li>
-<li>Ingredients needs to be an unordered list</li>
-<li>Methodology needs to be an ordered list.</li>
-</ol>
-
-
-<p>Technically I guess headings need to be put in too, but since headings are simply <code># HEADING 1</code>, <code>## HEADING 2</code>, etc, in
-markdown, that&rsquo;s pretty trivial.</p>
-
-<h3>Banner image</h3>
-
-<p>This bit was easy.  I have a plugin installed called <code>vim-snipmate</code> (check it out
-<a href="https://github.com/garbas/vim-snipmate">here</a>) that&rsquo;s just built for stuff like this.  Simply put, defining the snippet
-below:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>snippet img
-</span><span class='line'>    {% img center ${1} %}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>allowed me to type <code>img&lt;TAB&gt;</code> and it would insert <code>{% img center %}</code>, with my cursor right after the <code>center</code> and ready
-to drop in my picture url.</p>
-
-<h3>Wrapping lines</h3>
-
-<p>vim has a normal mode command, <code>gq</code>, that does this quite well.  Personally I like using visual line mode (<code>V</code>) to
-select the text to wrap, but using it with a motion (e.g., <code>gq}</code> to wrap a block) works as well.</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/gq-before.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/gq-after.png" width="598" height="440"></p>
-
-<p>I only wrapped the plain paragraphs here, as there is still some fancy dedenting and formatting to do with the Ingredients
-and Methodology sections first.</p>
-
-<h3>De-denting</h3>
-
-<p>The vim command for de-denting is <code>&lt;</code>.  Once again, combining with visual line mode or a motion (ex: <code>&lt;}</code>) makes it
-quick and easy.  (Just in case&ndash;Yes, <code>&gt;</code> is the command for indenting)</p>
-
-<h3>Ingredients => Unordered List</h3>
-
-<p>This one, I&rsquo;ll admit, is a little snazzy.  I used the lesser-known cousin of visual and visual line mode, visual block
-mode (accessed via <code>&lt;Ctrl&gt;-V</code>).  Once selecting the first characters of the lines I wanted with visual block, I could
-hit <code>&lt;Shift-I&gt;</code> to drop into insert mode before current character, <code>-</code> to insert what I wanted, then <code>&lt;ESC&gt;</code> to apply
-to everything in the selection.</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-before.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-during.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/ul-after.png" width="598" height="440"></p>
-
-<p>Note that this is also a great way to mass-comment blocks of code in languages that only support single line comments
-with <code>#</code> or whatnot.</p>
-
-<h3>Methodology => Ordered List</h3>
-
-<p>And of course, the best is for last.  Ordered lists in markdown, logically, can be formatted something like this:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1. item 1
-</span><span class='line'>2. item 2
-</span><span class='line'>3. item 3</span></code></pre></td></tr></table></div></figure>
-
-
-<p>However, it&rsquo;s actually possible to cheat and still get ordered list output by doing:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1. item 1
-</span><span class='line'>1. item 2
-</span><span class='line'>1. item 3</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It turns out that the markdown spec doesn&rsquo;t care about the order of the numbering as long as the lines begin with
-numbers in that format.  So technically, I could use the same trick as the Ingredients Unordered List except inserting
-<code>1.</code>, and I&rsquo;d be done.</p>
-
-<p>&hellip;  But where&rsquo;s the fun in that?</p>
-
-<p>So here&rsquo;s another tidbit: in vim, if you place the cursor over a number and hit <code>&lt;Ctrl&gt;-A</code> in normal mode, it increments
-the number.  In a very smart way, too&ndash;it takes into account all of the digits, not just the one under the cursor.
-Using this, it&rsquo;s pretty easy to write a vim macro (namely, a series of recorded keystrokes that can be repeated).</p>
-
-<p>Rather than explain in long form, it seems easier just paste the sequence and annotate it.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>qq^yaWjP^^Aq <span class="c"># Complete keystroke sequence</span>
-</span><span class='line'>             <span class="c"># Note that ^A is one character--see below for details</span>
-</span><span class='line'>
-</span><span class='line'>qq   <span class="c"># Start recording keystrokes into the q register</span>
-</span><span class='line'>^    <span class="c"># Go to first non-blank character of line</span>
-</span><span class='line'>yaW  <span class="c"># yank (copy) a Word--Capital W means a &quot;word&quot; is terminated only by spaces, not punctuation like &quot;-&quot;</span>
-</span><span class='line'>j    <span class="c"># Go down a line</span>
-</span><span class='line'>P^   <span class="c"># Paste before cursor, then go back to first non-blank character</span>
-</span><span class='line'>^A   <span class="c"># Increment number</span>
-</span><span class='line'>q    <span class="c"># Stop recording</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It ends up looking something like this, played out:</p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-1.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-2.png" width="598" height="440"></p>
-
-<p><img class="center" src="http://alexkuang.github.io/images/ch-backport-vim/mac-3.png" width="598" height="440"></p>
-
-<p><em>(Aside: I should start making gifs again for stuff like this&hellip;  Perhaps another day when I have more time.)</em></p>
-
-<p>Once the macro is recorded, it can be played back via <code>@q</code>, or whichever register it was recorded into.  More
-importantly, because it resets to the right positions in the lines and moves down automatically, it can actually be
-repeated!  e.g., <code>2@q</code> turns this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>1. item 1
-</span><span class='line'>item 2
-</span><span class='line'>item 3
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>into this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>1. item 1
-</span><span class='line'>2. item 2
-</span><span class='line'>3. item 3
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Writing macros to position in a looping way like this is another post altogether, but suffice to say this saved a TON of
-time over multiple posts.  Granted, it still depends on the <code>1.</code> being inserted manually, but that&rsquo;s pretty trivial I
-think.</p>
-
-<p>Another neat thing that might not immediately be obvious is that regular yanking (or copying, if you will) goes into the
-same registers as macro recordings.  So you can use <code>"qp</code> to paste the contents of your macro into a buffer to map it to
-keys or functions (ex: <code>nnoremap &lt;leader&gt;o ^yaW[...]</code>).</p>
-
-<p>Furthermore, this means that if a recording goes wrong, you can just paste it out, edit it, then select and <code>"qy</code> (or
-similar) to yank back the edited form.  The only caveat is that certain characters like <code>^A</code> may paste out and LOOK like
-two characters, but is infact only one character.  Not a big deal if you&rsquo;re just yanking and replacing text, but it can
-be a weird GOTCHA if you&rsquo;re trying to write a macro by hand or something.  (In this particular case, the <code>^A</code> character
-can be obtained in insert mode via <code>&lt;Ctrl-V&gt;&lt;Ctrl-A&gt;</code>, but it pays to watch out in general for stuff like this)</p>
-
-<p>So there you have it, ladies and gentlemen&ndash;My idea of fun on a Sunday afternoon&hellip;</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Hack Days Are Awesome]]></title>
     <link href="http://alexkuang.github.io/blog/2014/04/26/hack-days-are-awesome/"/>
     <updated>2014-04-26T15:32:00-04:00</updated>
@@ -1465,6 +1270,37 @@ some better documentation to help bridge that gap.</p>
 
 <p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
 language and ecosystem mature, they will hopefully become less and less of a problem.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fibonacci Stream]]></title>
+    <link href="http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream/"/>
+    <updated>2013-10-17T07:15:00-04:00</updated>
+    <id>http://alexkuang.github.io/blog/2013/10/17/fibonacci-stream</id>
+    <content type="html"><![CDATA[<p>I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
+to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy
+to sync to 2.1 at the moment.  As such, everyone will have to settle for this plain jane snippet:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// e.g., fibStream.take(5)</span>
+</span><span class='line'><span class="k">def</span> <span class="n">fibStream</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">def</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev1</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">,</span> <span class="n">prev2</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="n">prev1</span> <span class="o">#::</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev2</span><span class="o">,</span> <span class="n">prev1</span> <span class="o">+</span> <span class="n">prev2</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">loop</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Nothing fancy, just one of many possible variations of the fibonacci sequence.  This one is done via a <code>Stream</code>,
+which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream">More here</a>).</p>
+
+<p>Will probably write more about the why/how of the nested loop <code>def</code> (mostly for my own reference), but for now I think
+the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
+though.</p>
 ]]></content>
   </entry>
   
