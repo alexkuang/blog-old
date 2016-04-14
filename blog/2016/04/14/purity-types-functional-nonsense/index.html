@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Purity, Types, and Other Functional Nonsense - alex kuang</title>
+  <meta name="author" content="Alex Kuang">
+
+  
+  <meta name="description" content="A while ago the topic of lenses came up in one of the
+chatrooms at work. This led to a discussion on the (ahem) suboptimal readability of advanced &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://alexkuang.github.io/blog/2016/04/14/purity-types-functional-nonsense">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="alex kuang" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44908431-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">alex kuang</a></h1>
+  
+    <h2>professional yak shaver</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="alexkuang.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">about</a></li>
+  <li><a href="/">blog</a></li>
+  <li><a href="/blog/archives">archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Purity, Types, and Other Functional Nonsense</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-14T07:12:23-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:12 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A while ago the topic of <a href="http://fluffynukeit.com/how-functional-programming-lenses-work/">lenses</a> came up in one of the
+chatrooms at work. This led to a discussion on the (ahem) suboptimal readability of advanced functional programming
+code examples, and how a lot of the fancier constructs are by-products of being super hardcore about purity.  This led
+to me writing a great big email to the team that generated a whole bunch of thoughtful discussion on FP, complexity, and
+straw men with free lunches. I was also told I should transcribe to blog form, so here it is reproduced (mostly)
+faithfully:</p>
+
+<p>I’ve been digging into Haskell/etc a bunch lately and have hit some similar pain points. Typeclasses and
+Haskell-specific syntax aside, I think one of the biggest mental shifts I have experienced is learning to reason based
+on types alone. Full disclaimer: I am by no means an expert on any of this. But since I am (at the original time of
+writing) sitting in an airport with a mildly disgruntled cat, I figure I may as well write up a blurb about my
+experiences on purity, types, and what can follow from it.</p>
+
+<!-- more -->
+
+
+<h3>A Brave New World</h3>
+
+<p>So for the rest of this email, let’s suspend our disbelief and imagine that we have an “ideal functional” Scala that is
+pure and strongly typed. This means no:</p>
+
+<ul>
+<li><code>null</code></li>
+<li>exceptions</li>
+<li>type-casting (e.g. <code>asInstanceOf</code>, <code>isInstanceOf</code>)</li>
+<li>side-effects (e.g. <code>println</code>, <code>cw.track(metric)</code>)</li>
+<li>Object (e.g. <code>anything.toString</code>)</li>
+</ul>
+
+
+<h3>A simple example</h3>
+
+<p>Given the above, consider a function with this signature:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">def</span> <span class="n">nonsense</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">i</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">A</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>nonsense</code> is parameterized on the type <code>A</code>, which could be any type. This means that the implementation of <code>nonsense</code> knows
+literally nothing about its input—It could be a number, a list, an Option, a String, or anything else we can think of
+passing in. Because we’re living in this imaginary world where null, etc do not exist, <code>nonsense</code> literally cannot do
+anything with its argument except return it.</p>
+
+<p>Following this logic, we can deduce that <code>nonsense</code> is just the identity function based on its type signature alone. It
+doesn’t matter if it is called <code>nonsense</code> or <code>foo</code> or <code>id</code>, or if its argument is named <code>i</code>, <code>j</code>, <code>k</code>. We don’t even have to look at
+the implementation. Given the type <code>A =&gt; A</code>, this function literally cannot do anything other than return its argument, or
+else it would not have compiled. (Again, this is assuming no <code>null</code>, <code>println</code>, etc).</p>
+
+<p>Extending this slightly, this function:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">def</span> <span class="n">c</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">i</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">j</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">A</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>can only have two possible implementations based on its type: <code>def c[A](i: A, j: A) = i</code>, or <code>def c[A](i: A, j: A) = j</code>.
+Likewise, <code>def c2[A, B](i: A, j: B): B</code> can only <code>=&gt; j</code>, and so on.</p>
+
+<h3>A structured example</h3>
+
+<p>Now consider the function:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">def</span> <span class="n">nonsense2</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">i</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Without looking at the function name, the implementation, and so on, what can we deduce about <code>nonsense2</code> in our imaginary
+magical world? <em>The output never contains any element that was not in the input</em>. That is, the output could be the input
+itself, it could be input reversed, it could be the input sliced up—but you will never have a situation where e.g.
+<code>nonsense2(List(1)) == List(2)</code> or <code>nonsense2(List(1)) == List(List("XYZ"))</code>. To put it another way, just based on the type
+signature of <code>List[A] =&gt; List[A]</code>, we know that the function may do something to the <code>List</code> structure but nothing will
+happen to the individual <code>A</code>s&ndash;or else the code would not have compiled.</p>
+
+<p>This type of reasoning can be applied to basically any function to derive information about it (guess what this function
+is: <code>def fff[A, B](f: A =&gt; List[B], i: List[A]): List[B]</code>). By maintaining strict typing and purity, we give up the
+convenience of things like side-effects and run-time type-matching. But in exchange, we get increased ability to reason
+about (and have a sufficiently smart compiler prove) certain properties of our code, regardless of potentially
+misleading/outdated evidence such as function names and comments. The big idea here is to 1) shift as much of the
+“thinking” to the compiler as possible to reduce the potential for human error, and 2) lock as much down during
+compile-time as possible to reduce the potential surface area of run-time errors.</p>
+
+<h3>Real life</h3>
+
+<p>Sadly, real life is messy and not everything can be proved at compile time. Even in <code>fff</code> above, the implementation could
+be e.g. <code>flatMap</code> or <code>flatMap andThen reverse</code> or just <code>Nil</code>.</p>
+
+<p>As another example, consider:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">def</span> <span class="n">intNonsense</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Based on the types, we can say that the potential output of <code>intNonsense</code> is constrained to the size of the set of
+possible Ints; i.e., there are 2<sup>32</sup> possible outputs. Other than that though, we can’t say much about the function’s
+implementation(*). It could double its input, add 1 to its input, negate its input, negate its input but only if it’s
+even, and so on.</p>
+
+<p>So what’s a programmer to do?</p>
+
+<p>(*) - Without some fancy pants type-level probably-church-encoded something-something-something sort of programming, but
+that’s a whole ‘nother can of worms that I haven’t gotten remotely close to opening&hellip;</p>
+
+<h3>Tests!</h3>
+
+<p>One natural reaction would be to start writing some unit tests to make sure this function does what we think it does. So
+we start writing some tests:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">assert</span><span class="o">(</span><span class="n">intNonsense</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span>
+</span><span class='line'><span class="n">assert</span><span class="o">(</span><span class="n">intNonsense</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span>
+</span><span class='line'><span class="n">assert</span><span class="o">(</span><span class="n">intNonsense</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+</span><span class='line'><span class="n">assert</span><span class="o">(</span><span class="n">intNonsense</span><span class="o">(-</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And from that we may think that <code>intNonsense == identity</code>. Except that with the above suite, the following could still
+happen, and we would be wrong:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">def</span> <span class="n">intNonsense</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">20000</span><span class="o">)</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We could also test the totality of the mapping between input and output to intNonsense. But even for a simple <code>Int =&gt;
+Int</code> function, that would be a total of 2<sup>32</sup> possible inputs, and I feel like even the most determined programmer would
+give up after a couple hundred. Or maybe not, and more power to you. :)</p>
+
+<p>One way to help with this is properties-based testing, which I think has been discussed before. Props-based testing
+frameworks come in various levels of sophistication, but the basic idea is that instead of writing tests for a single
+case, you write a general “property” for your function and the framework will generate a whole bunch of kinda-random
+input to throw at it. As an example in <a href="https://scalacheck.org/">ScalaCheck</a>, a property for string concatenation might
+look something like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">property</span><span class="o">(</span><span class="s">&quot;startsWith&quot;</span><span class="o">)</span> <span class="k">=</span> <span class="n">forAll</span> <span class="o">{</span>
+</span><span class='line'>  <span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">).</span><span class="n">startsWith</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is not perfect, but it still lends itself to far more robustness-per-effort when compared to individual unit tests.
+In some cases, it is even more readable as far as communicating what you want to be true about your code.</p>
+
+<p>Of course, props-based testing can be used with the most imperative mutable-state-having code, but when combined with
+pure compiler-friendly code it can end up really reducing the potential for unexpected errors.</p>
+
+<h3>Disclaimers</h3>
+
+<p>Wrapping up, a couple of disclaimers.</p>
+
+<p>1) If we take the idea of using types/etc in this way another step further, we might draw the conclusion that function
+names and documentation are relatively meaningless next to what you can prove with the compiler. This is one argument
+I’ve heard re: scalaz’s lack of concern about approachability in its API naming + docs. “We don’t need a docstring, from
+the types there is only one possible implementation of this function, so it’s self-explanatory”. If we take this idea
+all the way to the extreme, we might even argue that concrete names are harmful since they propagate impressions about
+the code that can potentially be outdated or false. This should sound familiar to anyone who has read, say, Tony Morris.</p>
+
+<p>FWIW, I tend to come down on the side of “why not both”? I love the idea of catching more mistakes at build-time by
+fully leveraging a smart compiler and better tests, and I do agree (at least in principle) that maintaining purity also
+makes composability easier. But at the same time, I don’t really see the harm in calling an argument <code>zero</code> to declare its
+intentions, regardless of whether we can fully prove it in the code. To play devil’s advocate again though, I do agree
+that sometimes names are vestigial and you have to depend on the types. For example, I’ve tried and failed to think of a
+better name than <code>f</code> for the argument <code>A =&gt; List[B]</code> in <code>flatMap</code>.</p>
+
+<p>2) Approaching this from another angle, one can also write code using nothing but the types, or what I like to call
+“playing type jigsaw.” IMO it’s pretty fun to just write out a bunch of type signatures and almost-kinda-auto-pilot your
+way through until it compiles—but it can get really meta, and I have only had limited experience in playing around with
+this style of programming. The furthest I have taken it is trying to reconstruct twitter’s
+<a href="https://www.youtube.com/watch?v=VVpmMfT8aYw">Stitch</a> as a natural transformation to <code>Future</code>, and most of the other
+stuff I’ve played with has been small and isolated—think Project Euler style problems. Which is to say that I’ve
+explored this stuff on the side, but in practice for a large enough system I have no idea if it’s e.g. just trading one
+type of complexity for another. Though intuitively I feel like enterprise code (i.e., large systems, many
+inputs/outputs, lots of complex logic) is where leveraging a strongly typed functional style with a smart compiler could
+really be useful in the long run.</p>
+
+<h3>Takeaways</h3>
+
+<p>Funnily enough, the most widely actionable takeaway from all of this is completely unrelated to types and naming and all
+of that. The one thing I feel that everyone can benefit from immediately is to use more quickcheck/properties-based
+testing. While it is not perfect, it sure beats enumerating things on a case-by-case basis. Plus&ndash;I forget where I read
+this&ndash;“nothing scares bugs out of your code like having something feed it pathologically bad values”.</p>
+
+<p>Aside from that&hellip; I am not immediately hopping onto the HARDCORE PURITY train, but hopefully this at least gives some
+food for thought as far as another approach to writing and thinking about code.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Alex Kuang
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-04-14T07:12:23-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:12 am</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/totw/'>totw</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alexkuang.github.io/blog/2016/04/14/purity-types-functional-nonsense/" data-via="" data-counturl="http://alexkuang.github.io/blog/2016/04/14/purity-types-functional-nonsense/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/03/18/hello/" title="Previous Post: Hello, Blog!">&laquo; Hello, Blog!</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Alex Kuang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
