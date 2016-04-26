@@ -9,8 +9,8 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="A while ago the topic of lenses came up in one of the
-chatrooms at work. This led to a discussion on the (ahem) suboptimal readability of advanced &hellip;">
+  <meta name="description" content="Stockfighter is a CTF (short for Capture the Flag) game that I first heard about at
+Microconf 2015, but haven&rsquo;t gotten a chance to play up &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +95,46 @@ chatrooms at work. This led to a discussion on the (ahem) suboptimal readability
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2016/04/23/writing-an-api-client-with-akka-http/">Writing an API Client With Akka-http</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-23T10:21:43-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>10:21 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://www.stockfighter.io">Stockfighter</a> is a CTF (short for Capture the Flag) game that I first heard about at
+Microconf 2015, but haven&rsquo;t gotten a chance to play up until very recently.  I plan on posting more about my impressions
+of the game later, but very shortly: it is a series of programming challenges based on the concept of stock exchanges
+and ways to manipulate stock exchanges.  Along with the web UI, a public json <a href="https://starfighter.readme.io/">API</a> is
+exposed as a mechanism for interacting with the game.  There did not seem to be any Scala clients floating around, so
+I took this as a chance to play around with <a href="http://doc.akka.io/docs/akka/2.4.4/scala/http/index.html">akka-http</a>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/04/23/writing-an-api-client-with-akka-http/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2016/04/14/purity-types-functional-nonsense/">Purity, Types, and Other Functional Nonsense</a></h1>
     
     
@@ -115,8 +155,9 @@ chatrooms at work. This led to a discussion on the (ahem) suboptimal readability
   <div class="entry-content"><p>A while ago the topic of <a href="http://fluffynukeit.com/how-functional-programming-lenses-work/">lenses</a> came up in one of the
 chatrooms at work. This led to a discussion on the (ahem) suboptimal readability of advanced functional programming
 code examples, and how a lot of the fancier constructs are by-products of being super hardcore about purity.  This led
-to me writing a great big email to the team that generated a whole bunch of thoughtful discussion. I was also told I
-should transcribe to blog form, so here it is reproduced (mostly) faithfully:</p>
+to me writing a great big email to the team that generated a whole bunch of thoughtful discussion on FP, complexity, and
+straw men with free lunches. I was also told I should transcribe to blog form, so here it is reproduced (mostly)
+faithfully:</p>
 
 <p>I’ve been digging into Haskell/etc a bunch lately and have hit some similar pain points. Typeclasses and
 Haskell-specific syntax aside, I think one of the biggest mental shifts I have experienced is learning to reason based
@@ -792,48 +833,6 @@ what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asc
 
 </div>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/18/babys-first-alfred-workflow/">Baby&#8217;s First Alfred Workflow</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-18T15:32:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:32 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Lately I&rsquo;ve been spending a lot of my work time staring at <a href="http://aws.amazon.com/cloudwatch/">CloudWatch</a> metrics.
-Particularly, we have a <a href="http://aws.amazon.com/kinesis/">Kinesis</a> application that publishes metrics on how long a
-record spends hanging around in the stream before getting picked up by our processor.  The problem is that the metric is
-published in milliseconds, which while precise, is not exactly human-readable for large enough durations.</p>
-
-<p>I&rsquo;ve been a huge fan of <a href="http://www.alfredapp.com/">Alfred</a> for a while, and I use its quick-launch and custom search
-functions nearly constantly.  I only recently got around to ponying up for the powerpack, which lets you define custom
-&ldquo;workflows&rdquo;, so I figured&ndash;why not use a workflow to convert the milliseconds to something more readable?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/10/18/babys-first-alfred-workflow/">Read on &rarr;</a>
-    </footer>
   
 
 

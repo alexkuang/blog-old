@@ -9,8 +9,8 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="I was going to test out some of the codeblock functionality in octopress, but as it turns out the fancy stuff I wanted
-to test is not available in &hellip;">
+  <meta name="description" content="A blog post has recently been making the
+rounds in all the usual programming fora&ndash;/r/programming, hackernews, and so on&ndash;even eliciting a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,64 @@ to test is not available in &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/09/a-neophytes-take-on-scala/">A Neophyte&#8217;s Take on Scala</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-09T18:12:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:12 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A <a href="http://overwatering.org/blog/2013/12/scala-1-star-would-not-program-again/">blog post</a> has recently been making the
+rounds in all the usual programming fora&ndash;/r/programming, hackernews, and so on&ndash;even eliciting a
+<a href="https://groups.google.com/forum/#!topic/scala-debate/153H3Ya4Nxk">response</a> from Scala&rsquo;s creator himself.  There&rsquo;s a
+lot of discussion both productive and inflammatory out there already, but I thought I&rsquo;d jot down my perspective on the
+common points as someone who: 1. picked scala up relatively recently (2.9.2 and 2.10), 2. has worked with it for a few
+months on the side, and 3. comes from a background of dynamic languages.</p>
+
+<h4>Long Compile Times</h4>
+
+<p>I can definitely see where this is coming from.  Scala&rsquo;s compile times can be pretty long, though I had pegged that as
+the cost of using a compiled language anyway.  I, at least, felt a marked increase in times upgrading from <code>2.9.2</code> to
+<code>2.10</code>, presumably from the slew of new features like macros.  However, it seems that <code>2.11</code> will thankfully be
+<a href="http://java.dzone.com/articles/state-scala-2013">focused</a> on compiler optimizations.  In the meantime, I&rsquo;ve found that
+judicious use of some of Scala&rsquo;s heavier features (such as implicits) keeps the compile times manageable.
+<a href="http://zeroturnaround.com/software/jrebel/">JRebel</a> has been a godsend as well for hot-reloading in incremental
+compilation, and they do offer a personal Scala license for free.  Without JRebel my life as a scala user would have
+been a lot harder.</p>
+
+<h4>Opaque Syntax</h4>
+
+<p>I agree completely here.  Scala&rsquo;s flexibility in parsing + its allowance of symbolic method names obviously allows for a
+lot of flexibility.  This allows the construction of all sorts of DSLs; whether these DSLs end up being expressive or
+just plain confusing, is another thing altogether.  In this case, I&rsquo;d have to say that just because something is
+possible does not mean it should be done all the time.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/09/a-neophytes-take-on-scala/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
