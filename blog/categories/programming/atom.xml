@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2016-04-23T10:33:25-04:00</updated>
+  <updated>2016-05-20T08:51:11-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -23,74 +23,141 @@ except not really” quips that commonly float around on the internet are about 
 many of them.  For example, if you want to take a number <code>x</code> and add one, multiply by two, then add 3, the code might
 naively look something like this:</p>
 
-<pre><code class="clojure">(+ (* (+ x 1) 2) 3)
-</code></pre>
+
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>Or perhaps like this:</p>
 
-<pre><code class="clojure">(+ 3 (* 2 (+ 1 x)))
-</code></pre>
+
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">+ </span><span class="mi">3</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">x</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>Look at the parens!  Especially the consecutive 3 closing ones in the second variation.  For a sufficiently long chain
 of functions, it can get pretty unreadable—especially with multiple arguments and whatnot.</p>
+
+
+
 
 <p>Enter clojure’s thread macro.  The thread macro is a macro in the form of <code>(-&gt; x &amp; forms)</code>, and it “threads” <code>x</code> through
 the <code>forms</code> as the first arg*.  Which sounds terribly confusing explained, so an example is probably better here.  Take
 this snippet using the thread macro:</p>
 
-<pre><code class="clojure">;; add one, multiply by two, and add three
-(-&gt; x
-  (+ 1)
-  (* 2)
-  (+ 3))
-</code></pre>
+
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; add one, multiply by two, and add three</span>
+</span><span class='line'><span class="p">(</span><span class="nb">-&gt; </span><span class="nv">x</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">* </span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">+ </span><span class="mi">3</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>This desugars into <code>(+ (* (+ x 1) 2) 3)</code>, i.e. the first variation of the initial example above.  Personally, I find the
 macro version much more readable since each call is on its own line, and it seems more expressive of applying a series
 of functions to the initial x.</p>
+
+
+
 
 <p>The thread macro is also useful for chaining together collection methods like <code>map</code>.  Since clojure doesn’t have
 first-class OO support (instead favoring protocols and such), map exists as a regular function that takes the collection
 as an arg, instead of as a method on a collection class.  So chaining together a bunch of ops on a vector might look
 something like&hellip;</p>
 
-<pre><code class="clojure">;; add one to every number and filter for even numbers
-(-&gt;&gt; [1 2 3 4 5 6]
-  (map #(+ 1 %))
-  (filter even?))
 
-;; Without the thread macro, would look like:
-(filter even? (map #(+ 1 %) [1 2 3 4 5 6]))
-</code></pre>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="c1">;; add one to every number and filter for even numbers</span>
+</span><span class='line'><span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">))</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">;; Without the thread macro, would look like:</span>
+</span><span class='line'><span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span> <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">%</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>The only difference is that in this case, ->> was used.  ->> is “thread last”, which is like -> (“thread first”), except
 it inserts the expression at the end of the form.</p>
+
+
+
 
 <p>This pattern also exists in other languages (especially those that don’t offer first-class OO, which allows fancy
 <code>return self</code> type stuff), like Elixir’s pipe <code>|&gt;</code> (in the spirit of the unix pipe) which is what prompted me to spread
 the word about this:</p>
 
-<pre><code class="elixir"># double and add one to each element
-[1, 2, 3]
-|&gt; Enum.map(fn x -&gt; x * 2)
-|&gt; Enum.map(fn x -&gt; x + 1)
-</code></pre>
+
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='elixir'><span class='line'><span class="c1"># double and add one to each element</span>
+</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">x</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="o">|&gt;</span> <span class="nc">Enum</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span> <span class="n">x</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>The thread macro pattern doesn’t have as much of a place in Scala, since Scala has mechanisms like the collection
 library and implicit conversions to help express similar logic in elegant ways.  But when I first read up on macros in
 lisp, I spent some time scratching my head at the day-to-day practical uses until I found this and had my first
 “ohhhhhhhhhhhh” moment.  In any case, hope this was mildly interesting!</p>
 
+
+
+
 <p>* - Well technically, as the second item in the form, which is effectively the first arg for functions&hellip; But that might
 be a bit too lispy.</p>
 
+
+
+
 <h3>Bonus</h3>
+
+
+
 
 <p>When I published this email to the internal list, it generated some discussion wherein I learned that there are other
 neat features of the same sort like <a href="https://clojuredocs.org/clojure.core/doto">doto</a>, and that they&rsquo;re all just
 various derivations of the K combinator.  Of course, googling k-combinators led to a pretty
 <a href="http://en.wikipedia.org/wiki/SKI_combinator_calculus">heavy looking wiki page</a>, so I was referred to
 <a href="http://combinators.info/">http://combinators.info/</a> , which I have been trying to get through since.</p>
+
 ]]></content>
   </entry>
   
@@ -103,98 +170,191 @@ various derivations of the K combinator.  Of course, googling k-combinators led 
 that and the fact that I&rsquo;ve been hearing increasing mentions of it in the company at large, I figured this week I&rsquo;d plug
 a neat feature of Scala and a recent use case where I found it extremely handy.</p>
 
+
+
+
 <h3>The Feature</h3>
+
+
+
 
 <p>Anyone who&rsquo;s worked with The AWS SDK (or just Java code in general) will be familiar with the builder pattern.
 Recently, I was writing some code to automate setup of CloudWatch alarms for a DynamoDB table.  The alarm request
 started looking something like:</p>
 
-<pre><code class="scala">val req = new PutMetricsAlarmRequest()
-  .withNamespace("DynamoDB")
-  .withDimensions(dimensionsForTableName)
-  .withStatistic("Sum")
-  .withComparisonOperator(GreaterThanThreshold)
-  .withThreshold(thresholdNumber)
-  .withMetricName(throttledMetricName)
-  .withEvaluationPeriods(periods)
-  .withPeriod(periodDuration.toSeconds.toInt)
-  .withAlarmActions(idMappingSNS)
-  .withAlarmName(alarmNameFor(tableName, throttledMetric, throttledThreshold))
 
-cloudwatchClient.putMetricAlarm(req)
-</code></pre>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">req</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PutMetricsAlarmRequest</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withNamespace</span><span class="o">(</span><span class="s">&quot;DynamoDB&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withDimensions</span><span class="o">(</span><span class="n">dimensionsForTableName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withStatistic</span><span class="o">(</span><span class="s">&quot;Sum&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withComparisonOperator</span><span class="o">(</span><span class="nc">GreaterThanThreshold</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withThreshold</span><span class="o">(</span><span class="n">thresholdNumber</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withMetricName</span><span class="o">(</span><span class="n">throttledMetricName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withEvaluationPeriods</span><span class="o">(</span><span class="n">periods</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withPeriod</span><span class="o">(</span><span class="n">periodDuration</span><span class="o">.</span><span class="n">toSeconds</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmActions</span><span class="o">(</span><span class="n">idMappingSNS</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmName</span><span class="o">(</span><span class="n">alarmNameFor</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cloudwatchClient</span><span class="o">.</span><span class="n">putMetricAlarm</span><span class="o">(</span><span class="n">req</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>Which is serviceable, but less than ideal given that I had multiple alarms of roughly the same nature.  Plus, I felt
 like it left something to be desired in terms of readability and communicating the intent of the alarm in a succinct
 way.  Enter <code>implicit class</code>s and the &ldquo;enrichment&rdquo;* pattern!  Basically, it lets us turn the above into something more
 like this:</p>
 
-<pre><code class="scala">val req = new PutMetricAlarmRequest()
-  .forTable(tableName)
-  .triggerOnSumGreaterThan(throttledMetric, throttledThreshold)
-  .afterEvaluationPeriods(evaluationPeriodDuration, evaluationPeriods)
-  .withAlarmActions(idMappingSNS)
-  .withAlarmName(alarmNameFor(tableName, throttledMetric, throttledThreshold))
 
-cloudwatchClient.putMetricAlarm(req) /** Can still pass req back into AWS API! */
-</code></pre>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">req</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PutMetricAlarmRequest</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">forTable</span><span class="o">(</span><span class="n">tableName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">triggerOnSumGreaterThan</span><span class="o">(</span><span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">afterEvaluationPeriods</span><span class="o">(</span><span class="n">evaluationPeriodDuration</span><span class="o">,</span> <span class="n">evaluationPeriods</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmActions</span><span class="o">(</span><span class="n">idMappingSNS</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmName</span><span class="o">(</span><span class="n">alarmNameFor</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cloudwatchClient</span><span class="o">.</span><span class="n">putMetricAlarm</span><span class="o">(</span><span class="n">req</span><span class="o">)</span> <span class="cm">/** Can still pass req back into AWS API! */</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>With the addition of this:</p>
 
-<pre><code class="scala">implicit class MetricAlarmRequestHelper(req: PutMetricAlarmRequest) {
-  def forTable(tableName: String) = {
-    req.withNamespace("DynamoDB").withDimensions(tableMetricDimensions(tableName).asJava)
-  }
 
-  def triggerOnSumGreaterThan(metricName: String, threshold: Int) = {
-    req.withStatistic("Sum").withComparisonOperator(GreaterThanThreshold).withThreshold(threshold).withMetricName(metricName)
-  }
 
-  def afterEvaluationPeriods(periodDuration: Duration, periods: Int) = {
-    req.withEvaluationPeriods(periods).withPeriod(periodDuration.toSeconds.toInt)
-  }
-}
-</code></pre>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">implicit</span> <span class="k">class</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">def</span> <span class="n">forTable</span><span class="o">(</span><span class="n">tableName</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withNamespace</span><span class="o">(</span><span class="s">&quot;DynamoDB&quot;</span><span class="o">).</span><span class="n">withDimensions</span><span class="o">(</span><span class="n">tableMetricDimensions</span><span class="o">(</span><span class="n">tableName</span><span class="o">).</span><span class="n">asJava</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="n">triggerOnSumGreaterThan</span><span class="o">(</span><span class="n">metricName</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">threshold</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withStatistic</span><span class="o">(</span><span class="s">&quot;Sum&quot;</span><span class="o">).</span><span class="n">withComparisonOperator</span><span class="o">(</span><span class="nc">GreaterThanThreshold</span><span class="o">).</span><span class="n">withThreshold</span><span class="o">(</span><span class="n">threshold</span><span class="o">).</span><span class="n">withMetricName</span><span class="o">(</span><span class="n">metricName</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="n">afterEvaluationPeriods</span><span class="o">(</span><span class="n">periodDuration</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">periods</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withEvaluationPeriods</span><span class="o">(</span><span class="n">periods</span><span class="o">).</span><span class="n">withPeriod</span><span class="o">(</span><span class="n">periodDuration</span><span class="o">.</span><span class="n">toSeconds</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <!-- more -->
 
 
+
+
 <h3>How It Works</h3>
+
+
+
 
 <p>One of the coolest&ndash;and probably most confusing&ndash;keywords in scala is <code>implicit</code>, which can refer to many different
 things.  For now, let&rsquo;s limit the discussion to implicit conversions.  A grossly oversimplified tl;dr is that there can
 be some def of the form:</p>
 
-<pre><code class="scala">implicit def foo2bar(foo: Foo): Bar = { … }
-</code></pre>
+
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">foo2bar</span><span class="o">(</span><span class="n">foo</span><span class="k">:</span> <span class="kt">Foo</span><span class="o">)</span><span class="k">:</span> <span class="kt">Bar</span> <span class="o">=</span> <span class="o">{</span> <span class="err">…</span> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>And as long as that def is in scope, the code will convert anything of type Foo into type Bar without having to re-write
 that logic or call some conversion method.  For more information on implicits in general, see this excellent answer by
 Daniel Sobral, who is basically the Jon Skeet of the Scala world:
 <a href="http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits/5598107#5598107">http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits/5598107#5598107</a></p>
 
+
+
+
 <p>Extending the use of implicits, that means that if you do something like, for the above use-case:</p>
 
-<pre><code class="scala">class MetricAlarmRequestHelper(req: PutMetricAlarmRequest) = { /** Same function defs as above */ }
 
-implicit def vanillaRequest2Helper(req: PutMetricAlarmRequest) = new MetricAlarmRequestHelper(req)
-implicit def helper2vanillaRequest(helper: MetricAlarmRequestHelper) = helper.req
-</code></pre>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span> <span class="cm">/** Same function defs as above */</span> <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">vanillaRequest2Helper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="o">)</span>
+</span><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">helper2vanillaRequest</span><span class="o">(</span><span class="n">helper</span><span class="k">:</span> <span class="kt">MetricAlarmRequestHelper</span><span class="o">)</span> <span class="k">=</span> <span class="n">helper</span><span class="o">.</span><span class="n">req</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>then scala will be able to magically convert from the vanilla request to the helper for use in your client code, and
 then from the helper back to the vanilla request for passing to other parts of the Amazon API. <code>implicit class</code> is just
 short-hand introduced in Scala 2.10 that does the above for you in one convenient construct that makes things even more
 concise.  For more info, see the scala docs: <a href="http://docs.scala-lang.org/overviews/core/implicit-classes.html">http://docs.scala-lang.org/overviews/core/implicit-classes.html</a></p>
 
+
+
+
 <p>Beyond use cases like wrapping builders, this kind of enrichment using <code>implicit</code> can be extremely powerful, especially
 for extending functionality where it&rsquo;s not practical to alter the original code.  Though as with all advanced features
 of anything, it&rsquo;s probably best not to go overboard.  :)</p>
 
+
+
+
 <h3>Naming</h3>
+
+
+
 
 <p>Quick bit of bonus trivia&hellip;  When the pattern first rose into prominence, it was known colloquially as &ldquo;pimp my class&rdquo;.
 Then folks got all up in arms about the political correctness of the word &ldquo;pimp&rdquo;, so now the common term is
 &ldquo;enrichment&rdquo;.</p>
+
 ]]></content>
   </entry>
   
@@ -206,11 +366,17 @@ Then folks got all up in arms about the political correctness of the word &ldquo
     <content type="html"><![CDATA[<p>I was tooling around the other day and discovered a service called <a href="https://asciinema.org">asciinema</a> which provides
 terminalcasts&ndash;essentially, &ldquo;screencasts&rdquo; with terminal I/O.  This is awesome for a few reasons.</p>
 
+
+
+
 <p>From a content consumer&rsquo;s standpoint, it&rsquo;s often hard to follow a blog post that&rsquo;s trying to outline a command line tip,
 or a vim tip, for the simple fact that the static nature of writing alone isn&rsquo;t optimal for showing the flow between
 &ldquo;steps&rdquo; (commands, keystrokes, what have you) and &ldquo;output&rdquo; (what you&rsquo;re supposed to see after executing commands).
 Having a dynamic format for demos helps with this greatly.  Sure, there are screencasts, but that involves dealing with
 videos and their associated heavy Flash Player bullshit.  asciinema is rendered with just bits of html and js.</p>
+
+
+
 
 <p>From a wannabe content producer&rsquo;s standpoint&hellip;  Writing is <em>hard</em>.  Writing while crafting appropriate examples is
 harder.  Doing all that while struggling with capturing the nature of the examples in plain text?  No thanks.
@@ -220,9 +386,17 @@ Screw My Text Legibility.  As a consummately lazy person who only wants to do sh
 That&rsquo;s way too big of a barrier.  asciinema is easy&ndash;Just install, then <code>asciinema rec</code> from the terminal and <code>&lt;CTRL-D&gt;</code>
 to exit and upload.</p>
 
+
+
+
 <p>And embedding takes 2 seconds&ndash;Check it!</p>
 
+
+
+
 <script type="text/javascript" src="https://asciinema.org/a/10785.js" id="asciicast-10785" async></script>
+
+
 
 ]]></content>
   </entry>
@@ -234,21 +408,40 @@ to exit and upload.</p>
     <id>http://alexkuang.github.io/blog/2014/06/25/bracket-expansion-in-the-shell</id>
     <content type="html"><![CDATA[<p>Just a quick post to show of a neat little trick for those who are more command-line-driven: bracket expansion.</p>
 
+
+
+
 <p>Basically, bracket expansion means that <code>some-string-called-{x,y}-here</code> desugars in the shell to
 <code>some-string-called-x-here some-string-called-y-here</code>.  This is especially useful if, say, you&rsquo;re in a Java-like
 directory structure and you accidentally placed your source class in your test folder, and you need to move it back:</p>
 
-<pre><code class="bash"># desugars into mv src/test/java/com/foobar/app/Class.java src/main/java/com/foobar/app/Class.java
-mv src/{test,main}/java/com/foobar/app/Class.java
-</code></pre>
+
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># desugars into mv src/test/java/com/foobar/app/Class.java src/main/java/com/foobar/app/Class.java</span>
+</span><span class='line'>mv src/<span class="o">{</span><span class="nb">test</span>,main<span class="o">}</span>/java/com/foobar/app/Class.java
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>Or if you&rsquo;ve already committed to source control, this also works quite nicely with <code>git mv</code>.  Another nice example from
 recent memory is, say, if you were cleaning up some directories nested by date and wanted to only wipe a few months:</p>
 
-<pre><code class="bash">rm /posts/2014/{01,03,06,07}/*.html
-</code></pre>
+
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm /posts/2014/<span class="o">{</span>01,03,06,07<span class="o">}</span>/*.html
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
 
 <p>Anyway, just a quick little post for a neat little trick.</p>
+
 ]]></content>
   </entry>
   
@@ -265,11 +458,17 @@ by now, and the story of Microsoft&rsquo;s Xbox starting as a side-project.  Pro
 pitch a business case to managers with varying degrees of pointy-haired-ness) cite building camaraderie, stimulating
 creativity, and increasing morale as some of the biggest benefits.</p>
 
+
+
+
 <p>None of this is news.  But I came away this week with a surprising realization.  When coding professionally for business
 use cases, things like resilience and stability are often at the top of the requirement list&ndash;Or at least, I&rsquo;d really
 hope so.  If it&rsquo;s not, kindly give me the name of your company so I know what stock to not buy ;).  To this end, coding
 is never as simple as just sitting down and banging away at a keyboard.  It involves testing, discussions, design,
 thinking, more testing, more thinking, and so on and so forth.</p>
+
+
+
 
 <p>Don&rsquo;t get me wrong.  These are all very, very good things.  But I, at least, was surprised at how nice it was to just
 sit down and bang away at a keyboard with abandon.  It sounds rather obvious in hindsight, but compared to the usual
@@ -279,7 +478,11 @@ the same careful management in all of my personal projects as well, especially w
 such.  Again&ndash;Definitely a good thing, in most cases.  But after this week I&rsquo;m thinking that injecting some &ldquo;hack
 day&rdquo;-ish time into my personal projects is in order, if for no reason other than to let the crazy out.</p>
 
+
+
+
 <p><strong>tl;dr</strong> - Hack days are awesome.  I should do more of them.</p>
+
 ]]></content>
   </entry>
   

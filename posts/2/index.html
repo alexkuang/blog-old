@@ -9,8 +9,8 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Lately I&rsquo;ve been spending a lot of my work time staring at CloudWatch metrics.
-Particularly, we have a Kinesis application that publishes &hellip;">
+  <meta name="description" content="Friday Dev Demos are a big part of Bizo culture. Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,55 @@ Particularly, we have a Kinesis application that publishes &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/">Vim Visual Block Mode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-20T18:33:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:33 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
+demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
+snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
+aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
+discussion.</p>
+
+<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
+<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
+changes that entails.  While I&rsquo;m sure it&ndash;or something similar&ndash;will make a comeback, in the meantime I decided to
+try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
+I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
+incentive for me to be proactive in learning new things to talk about.</p>
+
+<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
+attention&ndash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
+always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
+what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -617,68 +666,6 @@ that I will probably keep it on even when I don&rsquo;t have to deal with the ha
 after dealing with the crazy complexity in Scala.  Undoubtedly working through the latter had a part in making the
 former much easier, and Scala will always have a place with me, but for now I find myself slowly joining the rest of the
 Clojure bandwagon.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/11/zelda-as-a-metaphor-for-complexity/">Zelda as a Metaphor for Complexity</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-12-11T18:29:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:29 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Recently, my gaming bandwidth has been taken up by the new Zelda game, A Link Between Worlds.  It&rsquo;s been a while since
-my last trip to Hyrule, but I&rsquo;ve always loved the ingenuity behind the dungeons, especially the ones in Ocarina of Time
-which could take upwards of hours (Water Temple, I&rsquo;m looking at you) to complete on the first run.  One of them jumps to
-mind particularly: The Forest Temple, a dungeon you encounter in the early-mid game immediately after gaining access to
-adult Link.</p>
-
-<p>At first glance, it seems like a completely normal dungeon&ndash;You&rsquo;ve got your wolves, you&rsquo;ve got your carnivorous plants,
-and the obvious puzzle in the form of 4 torches that have to be lit.  Fairly straightforward, until the game hits you
-with this:</p>
-
-<p><img class="center" src="/images/forest-temple-hallway.jpg"></p>
-
-<p>The first time you hit the twisting hallway, you have to follow it as-is to the other side, your perspective being
-warped, to end up in a room with you standing on its &ldquo;wall&rdquo;.  On the &ldquo;floor&rdquo; is a chest, inaccessible in your current
-state, and further on is a door you don&rsquo;t have the key to.  After a few more rooms and a battle with some wolves, you
-end up with the bow which allows you to hit a switch to un-twist the hallway, bringing a completely new
-perspective to the rooms&ndash;Most obviously, the chest from the earlier &ldquo;floor&rdquo; is now reachable, and after a little
-contemplation and a lot of climbing, you get the key to the previously locked door&hellip;  <em>Which you can&rsquo;t access until you
-re-twist the hallway.</em></p>
-
-<p>This simple sequence is, in essence, what makes the classical Zelda dungeons challenging and oh so much fun.  In
-addition to an &ldquo;item of the moment&rdquo;, each area contains an inventive mechanic that completely changes the landscape
-of the entire dungeon.  A room is completely different when your perspective is rotated, platforms become traversable
-after you flood the floor with sand, and so on.  It&rsquo;s no longer just <em>Push a block over here</em>, it&rsquo;s <em>Push a block over
-here to change the water level so we can push that other block, and then change the water level back to align the two
-blocks properly and maybe we can finally get to that chest over there.  Oh wait, that didn&rsquo;t work, maybe if I switch the
-water level back BEFORE moving the second block&hellip;</em></p>
-
-<p>Sound familiar?  The hardest dungeons&#8217; mechanics tend to use some piece of outside state to introduce exponentially more
-complex interactions between the existing items that Link already has access to.  Interactions that now depend not only
-on the current environment, but also the configuration of surrounding environments, and probably the order that
-everything was done as well.  Keeping track of all that is welcome, even enjoyable, when I&rsquo;m playing Zelda.  But I have
-no wish to be dealing with such things when I&rsquo;m trying to make sure my code is doing what I want it to.</p>
 </div>
   
   

@@ -9,8 +9,8 @@
   <meta name="author" content="Alex Kuang">
 
   
-  <meta name="description" content="Stockfighter is a CTF (short for Capture the Flag) game that I first heard about at
-Microconf 2015, but haven&rsquo;t gotten a chance to play up &hellip;">
+  <meta name="description" content="One sentiment I see from people coming from dynamically typed languages (python, ruby) or even Java and C is a general
+dismissiveness about static &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,7 +95,7 @@ Microconf 2015, but haven&rsquo;t gotten a chance to play up &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/04/23/writing-an-api-client-with-akka-http/">Writing an API Client With Akka-http</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/05/20/the-compiler-is-your-friend/">The Compiler Is Your Friend</a></h1>
     
     
       <p class="meta">
@@ -104,7 +104,60 @@ Microconf 2015, but haven&rsquo;t gotten a chance to play up &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-04-23T10:21:43-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>10:21 am</span></time>
+<time class='entry-date' datetime='2016-05-20T07:06:20-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:06 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One sentiment I see from people coming from dynamically typed languages (python, ruby) or even Java and C is a general
+dismissiveness about static typing and compilers.  At best, the sentiment is &ldquo;Oh, well it makes sure my input is an Int,
+or a Float, or a Bool&hellip;  That&rsquo;s cool I guess, but I have TDD&rdquo;; at worst, static typing is seen as something to fight
+against, shackles that limit our creativity and bar us from what we <em>really</em> want to do and the beautiful programs that
+we could write if only it got out of our way.</p>
+
+<p>Personally, I think of the type-checker (and by extension the compiler, really) not only as a free suite of tests
+built from first principles, but as a friend that is nice enough to correct me, the silly human, when I think I&rsquo;m making
+sense but I&rsquo;m really not.  Sure, sometimes that friend is a bit dense (<em>ahem</em> Java, <em>ahem</em>) and can&rsquo;t quite understand
+what I&rsquo;m trying to say, but in the case of a language like Scala I find that the compiler is right more often than not.
+In fact, I had a whole giant wall of text geared up to talk about the value in using <code>Option</code> over <code>null</code>, in using
+<code>Either</code> instead of exceptions, in capturing values without using Stringly-Typed data&hellip;  But then Li Haoyi beat me to
+it with another addition to his wonderful Strategic Scala Style series: <a href="http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html">Practical Type Safety</a>.
+I highly recommend reading it (and the rest of the Strategic Scala Style series) before coming back.</p>
+
+<p>Still here?  That post covers a lot of what I wanted to say, but I wanted to put some extra emphasis on one particular
+topic:</p>
+
+<p><img class="center" src="/images/adts.jpg"></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/05/20/the-compiler-is-your-friend/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/04/26/writing-an-api-client-with-akka-http/">Writing an API Client With Akka-http</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-26T08:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:00 am</span></time>
         
         
       </p>
@@ -123,7 +176,7 @@ I took this as a chance to play around with <a href="http://doc.akka.io/docs/akk
   
   
     <footer>
-      <a rel="full-article" href="/blog/2016/04/23/writing-an-api-client-with-akka-http/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2016/04/26/writing-an-api-client-with-akka-http/">Read on &rarr;</a>
     </footer>
   
 
@@ -782,55 +835,6 @@ privileges.  For situations like this, <code>!!</code> (entire last command) can
 
 <p>One final tip: awesome shells like, say, <code>zsh</code>, will actually tab-complete bangs and get rid of the need for <code>:p</code>.
 e.g. <code>sudo !!&lt;TAB&gt;</code> gets replaced with <code>sudo echo 1 2 3 4 5</code> in place.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/20/thing-of-the-week-vim-visual-block-mode/">Vim Visual Block Mode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-20T18:33:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:33 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Friday Dev Demos are a big part of Bizo culture.  Every Friday, developers take turn presenting a short 10-15 min
-demo on something cool they&rsquo;d found that wasn&rsquo;t necessarily work related.  The topic could be anything from a neat
-snippet of code to a cool iOS application they&rsquo;d just found to a fun web game.  Dev demo day is great for the social
-aspect, but also for the chance to showcase (and draw inspiration from) ideas that might not come up in day-to-day
-discussion.</p>
-
-<p>Unfortunately, the practice kind of fell by the wayside in the chaos of
-<a href="http://blog.bizo.com/blog/from-the-digital-c-suite/linkedin-to-acquire-bizo">joining a new company</a> and all the
-changes that entails.  While I&rsquo;m sure it&ndash;or something similar&ndash;will make a comeback, in the meantime I decided to
-try carrying on the torch by starting a weekly &ldquo;Thing of the Week&rdquo; email blast that is in roughly the same spirit.  And
-I figured while I&rsquo;m at it, why not stick it on the blog?  If nothing else, it will mean more practice writing and more
-incentive for me to be proactive in learning new things to talk about.</p>
-
-<p>So without further ado, the first &ldquo;Thing of the Week&rdquo; is a neat little feature in vim that I don&rsquo;t think deserves enough
-attention&ndash;Visual Block mode.  The visual modes in vim are very similar to highlighting in other editors, but I&rsquo;ve
-always felt that Visual Block is the underrated cousin to Visual and Visual Line mode.  Rather than trying to explain
-what it does in words, here&rsquo;s a quick terminal cast to demonstrate via asciinema:</p>
-
-<script type="text/javascript" src="https://asciinema.org/a/14064.js" id="asciicast-14064" async></script>
-
 </div>
   
   
