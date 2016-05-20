@@ -4,7 +4,7 @@
   <title><![CDATA[alex kuang]]></title>
   <link href="http://alexkuang.github.io/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2016-05-20T08:51:11-04:00</updated>
+  <updated>2016-05-20T09:01:23-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -20,18 +20,19 @@
     <id>http://alexkuang.github.io/blog/2016/05/20/the-compiler-is-your-friend</id>
     <content type="html"><![CDATA[<p>One sentiment I see from people coming from dynamically typed languages (python, ruby) or even Java and C is a general
 dismissiveness about static typing and compilers.  At best, the sentiment is &ldquo;Oh, well it makes sure my input is an Int,
-or a Float, or a Bool&hellip;  That&rsquo;s cool I guess, but I have TDD&rdquo;; at worst, static typing is seen as something to fight
-against, shackles that limit our creativity and bar us from what we <em>really</em> want to do and the beautiful programs that
-we could write if only it got out of our way.</p>
+or a Float, or a Bool&hellip;  That&rsquo;s cool I guess, but I can do that with TDD&rdquo;.  At worst, static typing is seen as
+something to fight against, shackles that limit our creativity and bar us from what we <em>really</em> want to do and the
+beautiful programs that we could write if only the type-checker got out of our way.</p>
 
-<p>Personally, I think of the type-checker (and by extension the compiler, really) not only as a free suite of tests
-built from first principles, but as a friend that is nice enough to correct me, the silly human, when I think I&rsquo;m making
-sense but I&rsquo;m really not.  Sure, sometimes that friend is a bit dense (<em>ahem</em> Java, <em>ahem</em>) and can&rsquo;t quite understand
-what I&rsquo;m trying to say, but in the case of a language like Scala I find that the compiler is right more often than not.
-In fact, I had a whole giant wall of text geared up to talk about the value in using <code>Option</code> over <code>null</code>, in using
-<code>Either</code> instead of exceptions, in capturing values without using Stringly-Typed data&hellip;  But then Li Haoyi beat me to
-it with another addition to his wonderful Strategic Scala Style series: <a href="http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html">Practical Type Safety</a>.
-I highly recommend reading it (and the rest of the Strategic Scala Style series) before coming back.</p>
+<p>Personally, I think of the type-checker (and by extension the compiler, really) not only as a free suite of rigorous
+tests built from first principles, but as a friend that is nice enough to correct me, the silly human, when I think I&rsquo;m
+making sense but I&rsquo;m really not.  Sure, sometimes that friend is a bit dense (<em>ahem</em> Java, <em>ahem</em>) and can&rsquo;t quite
+understand what I&rsquo;m trying to say, but in the case of a language like Scala I find that the compiler is right more often
+than not.  In fact, I had a whole giant wall of text geared up to talk about the value in using <code>Option</code> over <code>null</code>, in
+using <code>Either</code> instead of exceptions, in capturing values without using Stringly-Typed data&hellip;  But then Li Haoyi beat
+me to it with another addition to his wonderful Strategic Scala Style series: <a href="http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html">Practical Type
+Safety</a>.  I highly recommend reading it (and
+the rest of the Strategic Scala Style series) before coming back.</p>
 
 <p>Still here?  That post covers a lot of what I wanted to say, but I wanted to put some extra emphasis on one particular
 topic:</p>
@@ -44,8 +45,8 @@ topic:</p>
 <h3>ADTs (!!!)</h3>
 
 <p>ADTs (Algebraic Data Types) are so, so good.  You can take a lot of features away in Scala and I could probably get by,
-but ADTs &ndash; Or at least, the closest Scala approximation &ndash; are on the short list that you can pry out of my cold dead
-hands&hellip; Along with higher order functions and pattern matching, probably.</p>
+but ADTs &ndash; Or at least, the closest Scala approximation &ndash; are on the short list that you&rsquo;d have to pry out of my cold
+dead hands&hellip; Along with higher order functions and pattern matching, probably.</p>
 
 <p>So, a quick review&hellip;  What are Algebraic Data Types?  ADTs are so named because their structure can be described in two
 operations: Product, and Sum.</p>
@@ -273,27 +274,28 @@ handling into our business logic&rdquo;.  Apparently, this sort of thing is
 <p>At this point, one might protest, &ldquo;That just makes you push the status validation somewhere else!  The first
 implementation was just bad practice, you could easily have written this simple version with the old type by refactoring
 to <code>def onboardUsersToList(downstreamId: String, users: Seq[User])</code>.&rdquo;  Yes, this is perfectly true.  The validation
-still has to take place <em>somewhere</em>.  The difference here is that the former implementation can only enforce
-cleanliness and correctness with malleable things like documentation and best practice guidelines, whereas the latter
-implementation enforces it by simply <em>refusing to compile until you fix it</em>.  The latter implementation also reduces the
-amount of &ldquo;unforced&rdquo; errors since it is impossible to construct an <code>ActiveList</code> object without a <code>downstreamId</code>, whereas
-it was possible to have <code>UserList(status = Active, downstreamId = None)</code> previously.</p>
+still has to take place <em>somewhere</em> since the code will presumably be interacting with the outside world.  The
+difference here is that the former implementation can only enforce cleanliness and correctness with malleable things
+like documentation and best practice guidelines, whereas the latter implementation enforces it by simply <em>refusing to
+compile until you fix it</em>.  The latter implementation also reduces the amount of &ldquo;unforced&rdquo; errors since it is
+impossible to construct an <code>ActiveList</code> object without a <code>downstreamId</code>, whereas it was possible to accidentally create
+a <code>UserList(status = Active, downstreamId = None)</code> previously.</p>
 
 <h3>Stepping back</h3>
 
 <p>Hopefully the above example demonstrated a reasonable real-world case where ADTs can be really useful.  ADTs seem really
 basic &ndash; and in the vast world of type hackery they are only a starting point &ndash; but you can do some surprisingly
-powerful things with these fundamental building blocks, and it can really help improve code quality.</p>
+powerful things with these fundamental building blocks.</p>
 
 <p>There is one last point I want to make.  As a professional programmer (i.e., employed by a business to write code that
 ostensibly generates some amount of profit), the goal of all this is not to encode the world at the type level.  The
-goal is to reduce complexity.  There are some insane things possible once you go down the rabbit hole of type hacking &ndash;
-for example, <a href="http://jto.github.io/articles/typelevel_quicksort/">type-level quicksort</a>.  This is all great fun and by
-no means a bad thing, but at some point it&rsquo;s important to step back and think, &ldquo;Right, somebody actually has to read,
-maintain, and extend this code at some point.  <em>Maybe</em> this should not go into production.&rdquo;</p>
+goal is to reduce complexity and mental overhead.  There are some insane things possible once you go down the rabbit
+hole of type hackery &ndash; for example, <a href="http://jto.github.io/articles/typelevel_quicksort/">type-level quicksort</a>.  This
+is all great fun and by no means a bad thing, but at some point it&rsquo;s important to step back and think, &ldquo;Right, somebody
+else actually has to read, maintain, and modify this code at some point.  <em>Maybe</em> this should not go into production.&rdquo;</p>
 
-<p>This is especially important in a language like Scala, which provides you with plentiful amounts of power to complicate
-things and shoot yourself in the foot if you&rsquo;re not careful.  Or, in other words:</p>
+<p>This is especially important to keep in mind in a language like Scala, which provides us with plentiful amounts of
+power to complicate things and shoot ourselves in the foot if we&rsquo;re not careful.  Or, in other words:</p>
 
 <p><img class="center" src="http://alexkuang.github.io/images/can_should.jpg">
 (Source: <a href="https://twitter.com/ThePracticalDev/status/730177044030566400">https://twitter.com/ThePracticalDev/status/730177044030566400</a>)</p>

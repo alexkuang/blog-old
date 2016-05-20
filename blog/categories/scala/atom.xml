@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scala | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2016-05-20T08:51:11-04:00</updated>
+  <updated>2016-05-20T09:01:23-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -20,63 +20,38 @@
     <id>http://alexkuang.github.io/blog/2016/05/20/the-compiler-is-your-friend</id>
     <content type="html"><![CDATA[<p>One sentiment I see from people coming from dynamically typed languages (python, ruby) or even Java and C is a general
 dismissiveness about static typing and compilers.  At best, the sentiment is &ldquo;Oh, well it makes sure my input is an Int,
-or a Float, or a Bool&hellip;  That&rsquo;s cool I guess, but I have TDD&rdquo;; at worst, static typing is seen as something to fight
-against, shackles that limit our creativity and bar us from what we <em>really</em> want to do and the beautiful programs that
-we could write if only it got out of our way.</p>
+or a Float, or a Bool&hellip;  That&rsquo;s cool I guess, but I can do that with TDD&rdquo;.  At worst, static typing is seen as
+something to fight against, shackles that limit our creativity and bar us from what we <em>really</em> want to do and the
+beautiful programs that we could write if only the type-checker got out of our way.</p>
 
-
-
-
-<p>Personally, I think of the type-checker (and by extension the compiler, really) not only as a free suite of tests
-built from first principles, but as a friend that is nice enough to correct me, the silly human, when I think I&rsquo;m making
-sense but I&rsquo;m really not.  Sure, sometimes that friend is a bit dense (<em>ahem</em> Java, <em>ahem</em>) and can&rsquo;t quite understand
-what I&rsquo;m trying to say, but in the case of a language like Scala I find that the compiler is right more often than not.
-In fact, I had a whole giant wall of text geared up to talk about the value in using <code>Option</code> over <code>null</code>, in using
-<code>Either</code> instead of exceptions, in capturing values without using Stringly-Typed data&hellip;  But then Li Haoyi beat me to
-it with another addition to his wonderful Strategic Scala Style series: <a href="http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html">Practical Type Safety</a>.
-I highly recommend reading it (and the rest of the Strategic Scala Style series) before coming back.</p>
-
-
-
+<p>Personally, I think of the type-checker (and by extension the compiler, really) not only as a free suite of rigorous
+tests built from first principles, but as a friend that is nice enough to correct me, the silly human, when I think I&rsquo;m
+making sense but I&rsquo;m really not.  Sure, sometimes that friend is a bit dense (<em>ahem</em> Java, <em>ahem</em>) and can&rsquo;t quite
+understand what I&rsquo;m trying to say, but in the case of a language like Scala I find that the compiler is right more often
+than not.  In fact, I had a whole giant wall of text geared up to talk about the value in using <code>Option</code> over <code>null</code>, in
+using <code>Either</code> instead of exceptions, in capturing values without using Stringly-Typed data&hellip;  But then Li Haoyi beat
+me to it with another addition to his wonderful Strategic Scala Style series: <a href="http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html">Practical Type
+Safety</a>.  I highly recommend reading it (and
+the rest of the Strategic Scala Style series) before coming back.</p>
 
 <p>Still here?  That post covers a lot of what I wanted to say, but I wanted to put some extra emphasis on one particular
 topic:</p>
 
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/adts.jpg"></p>
-
-
-
+<p><img class="center" src="/images/adts.jpg"></p>
 
 <!-- more -->
 
 
-
-
 <h3>ADTs (!!!)</h3>
 
-
-
-
 <p>ADTs (Algebraic Data Types) are so, so good.  You can take a lot of features away in Scala and I could probably get by,
-but ADTs &ndash; Or at least, the closest Scala approximation &ndash; are on the short list that you can pry out of my cold dead
-hands&hellip; Along with higher order functions and pattern matching, probably.</p>
-
-
-
+but ADTs &ndash; Or at least, the closest Scala approximation &ndash; are on the short list that you&rsquo;d have to pry out of my cold
+dead hands&hellip; Along with higher order functions and pattern matching, probably.</p>
 
 <p>So, a quick review&hellip;  What are Algebraic Data Types?  ADTs are so named because their structure can be described in two
 operations: Product, and Sum.</p>
 
-
-
-
 <h4>Product Types</h4>
-
-
-
 
 <p>Product types are present in one form or another in the vast majority of mainstream programming languages.  People may
 know it as a struct in C, or a record, or a tuple, or a <code>case class</code> in Scala.  It&rsquo;s essentially a way of mashing
@@ -84,92 +59,45 @@ multiple types together into one type.  The reason it is called a product type i
 (i.e., the set of all possible values for it), is the product of the cardinality of the type&rsquo;s constituents.  Some quick
 examples:</p>
 
+<pre><code class="scala">// Has 2 possible values: A(true), A(false)
+case class A(b: Boolean)
 
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// Has 2 possible values: A(true), A(false)</span>
-</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">A</span><span class="o">(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// has (2 * 2 = 4) possible values: AA(true, true), AA(true, false), AA(false, true), AA(false, false)</span>
-</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">AA</span><span class="o">(</span><span class="n">b1</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span> <span class="n">b2</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+// has (2 * 2 = 4) possible values: AA(true, true), AA(true, false), AA(false, true), AA(false, false)
+case class AA(b1: Boolean, b2: Boolean)
+</code></pre>
 
 <h4>Sum Types</h4>
-
-
-
 
 <p>Where product types express &ldquo;this <em>and</em> that <em>and</em> the other thing&rdquo;, sum types (also commonly known as union types)
 express &ldquo;this <em>or</em> that <em>or</em> the other thing&rdquo;.  Sum types are so named because the cardinality of a sum type is the
 sum of the cardinality of the type&rsquo;s consituents.  Unfortunately in Scala 2.x, there isn&rsquo;t direct support for sum types,
 but they can be roughly approximated with <code>sealed trait</code>.  Some examples:</p>
 
+<pre><code class="scala">// Probably not how any of this is implemented in the actual standard lib but you get the idea  :)
+sealed trait Boolean
+final case object True extends Boolean
+final case object False extends Boolean
 
+sealed trait Option[T]
+final case class Some(x: T) extends Option[T]
+final case class None extends Option[_]
 
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// Probably not how any of this is implemented in the actual standard lib but you get the idea  :)</span>
-</span><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">Boolean</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">object</span> <span class="nc">True</span> <span class="k">extends</span> <span class="nc">Boolean</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">object</span> <span class="nc">False</span> <span class="k">extends</span> <span class="nc">Boolean</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">Option</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span>
-</span><span class='line'><span class="nc">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Some</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Option</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">None</span> <span class="k">extends</span> <span class="nc">Option</span><span class="o">[</span><span class="k">_</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">Either</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">]</span>
-</span><span class='line'><span class="nc">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Left</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">](</span><span class="n">a</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Either</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">]</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Right</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">](</span><span class="n">b</span><span class="k">:</span> <span class="kt">B</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Either</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+sealed trait Either[A, B]
+final case class Left[A, B](a: A) extends Either[A, B]
+final case class Right[A, B](b: B) extends Either[A, B]
+</code></pre>
 
 <p>One cheerful note is that proper union type support was announced for Dotty at ScalaDays 2016, so hurrah!  *confetti*</p>
 
-
-
-
 <h3>So What?</h3>
-
-
-
 
 <p>At first glance, ADTs might seem simplistic &ndash; kinda like fancied up named tuples.  But they are deceptively powerful,
 because combining them effectively allows you to encode invariants about your program&rsquo;s logic and state in the
 type system, and therefore leverage the compiler to keep you from violating those invariants and writing buggy software.</p>
 
-
-
-
 <p>Which sounds like a bunch of abstract nonsense, so it&rsquo;s time for a concrete example!</p>
 
-
-
-
 <h3>Modeling Real Life: Wrangling User Lists</h3>
-
-
-
 
 <p>Working in the marketing space, it is very common to deal with lists of users.  It can be a list of users from a mailing list, a list
 of website visitors, or a list of people who have downloaded your white paper.  In any case, it is a list of users that you
@@ -179,91 +107,46 @@ it might also have a downstream platform to target (e.g., AdWords, or Facebook).
 states that keep track of whether the list&rsquo;s meta-data has been sent to the downstream platform, or whether it&rsquo;s been
 archived or soft-deleted and when that state transition happened.</p>
 
-
-
-
 <p>So one reasonable implementation at a data structure for such a user list might look something like:</p>
 
+<pre><code class="scala">sealed trait ListStatus
+final case object Pending extends ListStatus
+final case object Active extends ListStatus
+final case object Archived extends ListStatus
 
+sealed trait Platform
+final case object Facebook extends Platform // And so on and so forth
 
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">ListStatus</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">object</span> <span class="nc">Pending</span> <span class="k">extends</span> <span class="nc">ListStatus</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">object</span> <span class="nc">Active</span> <span class="k">extends</span> <span class="nc">ListStatus</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">object</span> <span class="nc">Archived</span> <span class="k">extends</span> <span class="nc">ListStatus</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">Platform</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">object</span> <span class="nc">Facebook</span> <span class="k">extends</span> <span class="nc">Platform</span> <span class="c1">// And so on and so forth</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">UserList</span><span class="o">(</span>
-</span><span class='line'>  <span class="n">id</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">status</span><span class="k">:</span> <span class="kt">ListStatus</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">createdTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">archivedTime</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Long</span><span class="o">],</span>
-</span><span class='line'>  <span class="n">downstreamId</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="c1">// i.e., a &quot;foreign key&quot; to the list on the downstream platform</span>
-</span><span class='line'><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+case class UserList(
+  id: Long,
+  name: String,
+  status: ListStatus,
+  createdTime: Long,
+  archivedTime: Option[Long],
+  downstreamId: Option[String] // i.e., a "foreign key" to the list on the downstream platform
+)
+</code></pre>
 
 <p>At first glance, this seems like pretty reasonable code.  The various states and platforms are enumerated, and it seems
 to carry all the information we want with decent naming and so on.  At the very least it&rsquo;s better than carting around a
 tab-separated string, or something like <code>val list: (Long, String, ListStatus, Long, Option[Long], Option[String])</code>.</p>
 
-
-
-
 <p>But there&rsquo;s still something a bit off here.  In particular, look around the optional fields.  With this current model,
 it is possible to construct an internally inconsistent list:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">list</span> <span class="k">=</span> <span class="nc">UserList</span><span class="o">(</span>
-</span><span class='line'>  <span class="n">id</span> <span class="k">=</span> <span class="mi">1</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;website visitors&quot;</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">status</span> <span class="k">=</span> <span class="nc">Active</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">createdTime</span> <span class="k">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">archivedTime</span> <span class="k">=</span> <span class="nc">None</span><span class="o">,</span>
-</span><span class='line'>  <span class="n">downstreamId</span> <span class="k">=</span> <span class="nc">None</span> <span class="c1">// Wait, what?</span>
-</span><span class='line'><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code class="scala">val list = UserList(
+  id = 1,
+  name = "website visitors",
+  status = Active,
+  createdTime = System.currentTimeMillis,
+  archivedTime = None,
+  downstreamId = None // Wait, what?
+)
+</code></pre>
 
 <p>The example above is internally inconsistent because the list&rsquo;s active status indicates that it should be onboarded to
 the downstream platform, but for some reason we do not have a downstream id.  There are other &ldquo;weird&rdquo; cases like this
 that are possible but do not make sense semantically &ndash; for example, <code>archivedTime = Some(1)</code> with <code>status = Pending</code>.</p>
-
-
-
 
 <p>This data structure is almost trivially simple, but there area already a good number of things that can go wrong,
 especially once we take outside input and possibly complex business logic into account.  And here there&rsquo;s nothing
@@ -271,46 +154,23 @@ stopping us from constructing these degenerate cases other than our ability to k
 at the best of times) and read the code <em>really really</em> carefully every time we work with this particular data structure
 (good luck).</p>
 
-
-
-
 <p>Another point to consider is what this does to the code that works with the data:</p>
 
+<pre><code class="scala">// Send users from our list to downstream platform so we can serve them ads
+def onboardUsersToList(list: UserList, users: Seq[User]) {
+  list.status match {
+    case Active =&gt; {
+      val platformId = list.downstreamId.getOrElse {
+        // this should never happen
+        throw new IllegalStateException("Downstream id not found for active list")
+      }
 
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// Send users from our list to downstream platform so we can serve them ads</span>
-</span><span class='line'><span class="k">def</span> <span class="n">onboardUsersToList</span><span class="o">(</span><span class="n">list</span><span class="k">:</span> <span class="kt">UserList</span><span class="o">,</span> <span class="n">users</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">User</span><span class="o">])</span> <span class="o">{</span>
-</span><span class='line'>  <span class="n">list</span><span class="o">.</span><span class="n">status</span> <span class="k">match</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">case</span> <span class="nc">Active</span> <span class="k">=&gt;</span> <span class="o">{</span>
-</span><span class='line'>      <span class="k">val</span> <span class="n">platformId</span> <span class="k">=</span> <span class="n">list</span><span class="o">.</span><span class="n">downstreamId</span><span class="o">.</span><span class="n">getOrElse</span> <span class="o">{</span>
-</span><span class='line'>        <span class="c1">// this should never happen</span>
-</span><span class='line'>        <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalStateException</span><span class="o">(</span><span class="s">&quot;Downstream id not found for active list&quot;</span><span class="o">)</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">platformClient</span><span class="o">.</span><span class="n">sendUsers</span><span class="o">(</span><span class="n">platformId</span><span class="o">,</span> <span class="n">users</span><span class="o">)</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;Cannot onboard users for non-active list&quot;</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+      platformClient.sendUsers(platformId, users)
+    }
+    case _ =&gt; throw new IllegalArgumentException("Cannot onboard users for non-active list")
+  }
+}
+</code></pre>
 
 <p>The above code is a conceptually simple method that takes users from our list and sends them to a downstream platform,
 e.g.  Facebook.  It technically does what we want, but there is a lot of clutter introduced by the management of the
@@ -321,92 +181,52 @@ handling into our business logic&rdquo;.  Apparently, this sort of thing is
 <a href="https://github.com/adi-bolb/pair-programming-match-making/blob/51496f4b854c56974324d3f97ac19b7e76ac9a54/src/main/java/org/findapair/ThisShouldNeverHappenException.java">that</a>
 <a href="https://github.com/akestner/DockerPlugin/blob/42abd2aaf6c649827d4101250bee761d0f65d160/src/com/akestner/plugins/docker/exception/ShouldNotHappenException.java">uncommon</a>.</p>
 
-
-
-
 <p>One possible remedy is to refactor <code>UserList</code> to encode some of the constraints into the type:</p>
 
+<pre><code class="scala">final case class UserListMetadata(id: Long, name: String, createdTime: Long)
 
+sealed trait UserList { metadata: UserListMetadata }
 
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">UserListMetadata</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">createdTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">UserList</span> <span class="o">{</span> <span class="n">metadata</span><span class="k">:</span> <span class="kt">UserListMetadata</span> <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">PendingList</span><span class="o">(</span><span class="n">metadata</span><span class="k">:</span> <span class="kt">UserListMetadata</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">UserList</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">ActiveList</span><span class="o">(</span><span class="n">metadata</span><span class="k">:</span> <span class="kt">UserListMetadata</span><span class="o">,</span> <span class="n">downstreamId</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">UserList</span>
-</span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">ArchivedList</span><span class="o">(</span><span class="n">metadata</span><span class="k">:</span> <span class="kt">UserListMetadata</span><span class="o">,</span> <span class="n">archivedTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">UserList</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+final case class PendingList(metadata: UserListMetadata) extends UserList
+final case class ActiveList(metadata: UserListMetadata, downstreamId: String) extends UserList
+final case class ArchivedList(metadata: UserListMetadata, archivedTime: Long) extends UserList
+</code></pre>
 
 <p>This lets us rewrite the above method as:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">def</span> <span class="n">onboardUsersToList</span><span class="o">(</span><span class="n">list</span><span class="k">:</span> <span class="kt">ActiveList</span><span class="o">,</span> <span class="n">users</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">User</span><span class="o">])</span> <span class="o">{</span>
-</span><span class='line'>  <span class="n">platformClient</span><span class="o">.</span><span class="n">sendUsers</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="n">downstreamId</span><span class="o">,</span> <span class="n">users</span><span class="o">)</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code class="scala">def onboardUsersToList(list: ActiveList, users: Seq[User]) {
+  platformClient.sendUsers(list.downstreamId, users)
+}
+</code></pre>
 
 <p>At this point, one might protest, &ldquo;That just makes you push the status validation somewhere else!  The first
 implementation was just bad practice, you could easily have written this simple version with the old type by refactoring
 to <code>def onboardUsersToList(downstreamId: String, users: Seq[User])</code>.&rdquo;  Yes, this is perfectly true.  The validation
-still has to take place <em>somewhere</em>.  The difference here is that the former implementation can only enforce
-cleanliness and correctness with malleable things like documentation and best practice guidelines, whereas the latter
-implementation enforces it by simply <em>refusing to compile until you fix it</em>.  The latter implementation also reduces the
-amount of &ldquo;unforced&rdquo; errors since it is impossible to construct an <code>ActiveList</code> object without a <code>downstreamId</code>, whereas
-it was possible to have <code>UserList(status = Active, downstreamId = None)</code> previously.</p>
-
-
-
+still has to take place <em>somewhere</em> since the code will presumably be interacting with the outside world.  The
+difference here is that the former implementation can only enforce cleanliness and correctness with malleable things
+like documentation and best practice guidelines, whereas the latter implementation enforces it by simply <em>refusing to
+compile until you fix it</em>.  The latter implementation also reduces the amount of &ldquo;unforced&rdquo; errors since it is
+impossible to construct an <code>ActiveList</code> object without a <code>downstreamId</code>, whereas it was possible to accidentally create
+a <code>UserList(status = Active, downstreamId = None)</code> previously.</p>
 
 <h3>Stepping back</h3>
 
-
-
-
 <p>Hopefully the above example demonstrated a reasonable real-world case where ADTs can be really useful.  ADTs seem really
 basic &ndash; and in the vast world of type hackery they are only a starting point &ndash; but you can do some surprisingly
-powerful things with these fundamental building blocks, and it can really help improve code quality.</p>
-
-
-
+powerful things with these fundamental building blocks.</p>
 
 <p>There is one last point I want to make.  As a professional programmer (i.e., employed by a business to write code that
 ostensibly generates some amount of profit), the goal of all this is not to encode the world at the type level.  The
-goal is to reduce complexity.  There are some insane things possible once you go down the rabbit hole of type hacking &ndash;
-for example, <a href="http://jto.github.io/articles/typelevel_quicksort/">type-level quicksort</a>.  This is all great fun and by
-no means a bad thing, but at some point it&rsquo;s important to step back and think, &ldquo;Right, somebody actually has to read,
-maintain, and extend this code at some point.  <em>Maybe</em> this should not go into production.&rdquo;</p>
+goal is to reduce complexity and mental overhead.  There are some insane things possible once you go down the rabbit
+hole of type hackery &ndash; for example, <a href="http://jto.github.io/articles/typelevel_quicksort/">type-level quicksort</a>.  This
+is all great fun and by no means a bad thing, but at some point it&rsquo;s important to step back and think, &ldquo;Right, somebody
+else actually has to read, maintain, and modify this code at some point.  <em>Maybe</em> this should not go into production.&rdquo;</p>
 
+<p>This is especially important to keep in mind in a language like Scala, which provides us with plentiful amounts of
+power to complicate things and shoot ourselves in the foot if we&rsquo;re not careful.  Or, in other words:</p>
 
-
-
-<p>This is especially important in a language like Scala, which provides you with plentiful amounts of power to complicate
-things and shoot yourself in the foot if you&rsquo;re not careful.  Or, in other words:</p>
-
-
-
-
-<p><img class="center" src="http://alexkuang.github.io/images/can_should.jpg">
+<p><img class="center" src="/images/can_should.jpg">
 (Source: <a href="https://twitter.com/ThePracticalDev/status/730177044030566400">https://twitter.com/ThePracticalDev/status/730177044030566400</a>)</p>
-
 ]]></content>
   </entry>
   
@@ -422,57 +242,29 @@ and ways to manipulate stock exchanges.  Along with the web UI, a public json <a
 exposed as a mechanism for interacting with the game.  There did not seem to be any Scala clients floating around, so
 I took this as a chance to play around with <a href="http://doc.akka.io/docs/akka/2.4.4/scala/http/index.html">akka-http</a>.</p>
 
-
-
-
 <!-- more -->
-
-
 
 
 <h3>Scaffolding</h3>
 
-
-
-
 <p>After some quick googling and reading of tutorials, it looked like the basic structure of an http client would be
 something like this:</p>
 
+<pre><code class="scala">package stockfighter.client
 
+import akka.actor.ActorSystem
+import akka.http.scaladsl.model._
+import akka.stream.ActorMaterializer
 
+class TradingApiClient(apiKey: String)(implicit val system: ActorSystem = ActorSystem()) {
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">package</span> <span class="nn">stockfighter.client</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.actor.ActorSystem</span>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.http.scaladsl.model._</span>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.stream.ActorMaterializer</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">TradingApiClient</span><span class="o">(</span><span class="n">apiKey</span><span class="k">:</span> <span class="kt">String</span><span class="o">)(</span><span class="k">implicit</span> <span class="k">val</span> <span class="n">system</span><span class="k">:</span> <span class="kt">ActorSystem</span> <span class="o">=</span> <span class="nc">ActorSystem</span><span class="o">())</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">implicit</span> <span class="k">val</span> <span class="n">materializer</span> <span class="k">=</span> <span class="nc">ActorMaterializer</span><span class="o">()</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// TODO</span>
-</span><span class='line'>  <span class="c1">// def endpoint(): Response = {</span>
-</span><span class='line'>  <span class="c1">// }</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+  implicit val materializer = ActorMaterializer()
 
-
-
+  // TODO
+  // def endpoint(): Response = {
+  // }
+}
+</code></pre>
 
 <p>A couple of things to note here.  First off, <code>akka-http</code> is a part of the (increasingly pervasive) akka ecosystem, so
 obviously actors have to be involved.  The tutorials either had the <code>ActorSystem</code> at the top level or had the
@@ -481,9 +273,6 @@ a parameter with a default.  The <code>ActorMaterializer</code> is completely ne
 <a href="http://spray.io/documentation/1.1.2/">spray</a> ~1.1 and have missed out on a lot of the latest reactive-buzzwordy
 developments.</p>
 
-
-
-
 <p>I&rsquo;m still not sure I grok it completely, but my understanding is that akka-http is backed completely by reactive
 streams, which the client constructs as lazy descriptions of computations.  When the computations are run, the
 <code>ActorMaterializer</code> spins up the actors to do the actual work.  In any case, I thought about putting the Materializer in
@@ -491,76 +280,37 @@ the constructor as well, but the fact that it takes an implicit <code>ActorSyste
 have both <code>ActorSystem</code> and <code>ActorMaterializer</code> live as constructor params with defaults.  I can think of a few ways to
 deal with this, but for a quickie client I decided to just in-line the materializer and move on.</p>
 
-
-
-
 <h3>Making a request</h3>
-
-
-
 
 <p>The Stockfighter API ships with a heartbeat/status endpoint, i.e., &ldquo;is the service up?&rdquo;  The endpoint lives at
 <code>https://api.stockfighter.io/ob/api/heartbeat</code> and returns a response in the following format:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="nt">&quot;ok&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code class="json">{
+  "ok": true,
+  "error": ""
+}
+</code></pre>
 
 <p>This seemed like as good a starting point as any, in that it&rsquo;s a fairly simple endpoint with a simple response type,
 but still complex enough to test a full request flow with some common functionality like serialization/deserialization.</p>
 
-
-
-
 <p>As it turns out, it took a decent amount of time and a lot of reading to get to a basic implementation:</p>
 
+<pre><code class="scala">import akka.http.scaladsl.Http
+import akka.http.scaladsl.model._
+import akka.http.scaladsl.model.Uri.Path
+import akka.stream.scaladsl.{ Source, Sink }
 
+// constructor boilerplate elided
 
+def apiIsUp: Future[HttpResponse] = {
+  // Fancier DSL: `Path.singleSlash / "ob" / "api" / "heartbeat"`
+  val source = Source.single(HttpRequest(uri = Uri(path = Path("/ob/api/heartbeat"))))
+  val flow = Http().outgoingConnectionHttps("api.stockfighter.io")
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">import</span> <span class="nn">akka.http.scaladsl.Http</span>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.http.scaladsl.model._</span>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.http.scaladsl.model.Uri.Path</span>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.stream.scaladsl.</span><span class="o">{</span> <span class="nc">Source</span><span class="o">,</span> <span class="nc">Sink</span> <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// constructor boilerplate elided</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="n">apiIsUp</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">HttpResponse</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
-</span><span class='line'>  <span class="c1">// Fancier DSL: `Path.singleSlash / &quot;ob&quot; / &quot;api&quot; / &quot;heartbeat&quot;`</span>
-</span><span class='line'>  <span class="k">val</span> <span class="n">source</span> <span class="k">=</span> <span class="nc">Source</span><span class="o">.</span><span class="n">single</span><span class="o">(</span><span class="nc">HttpRequest</span><span class="o">(</span><span class="n">uri</span> <span class="k">=</span> <span class="nc">Uri</span><span class="o">(</span><span class="n">path</span> <span class="k">=</span> <span class="nc">Path</span><span class="o">(</span><span class="s">&quot;/ob/api/heartbeat&quot;</span><span class="o">))))</span>
-</span><span class='line'>  <span class="k">val</span> <span class="n">flow</span> <span class="k">=</span> <span class="nc">Http</span><span class="o">().</span><span class="n">outgoingConnectionHttps</span><span class="o">(</span><span class="s">&quot;api.stockfighter.io&quot;</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">source</span><span class="o">.</span><span class="n">via</span><span class="o">(</span><span class="n">flow</span><span class="o">).</span><span class="n">runWith</span><span class="o">(</span><span class="nc">Sink</span><span class="o">.</span><span class="n">head</span><span class="o">)</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+  source.via(flow).runWith(Sink.head)
+}
+</code></pre>
 
 <p>Executive summary: <code>akka-http</code> leverages the concept of reactive streams that seems to be the new hot thing lately.
 Streams are essentially fancied up functions, and consist of three parts: the <code>Source</code>, the <code>Flow</code>, and the <code>Sink</code>.  The
@@ -570,90 +320,45 @@ Streams are essentially fancied up functions, and consist of three parts: the <c
 <code>fold</code> over it (<code>Sink.fold</code>), and so on.  You can combine things in all sorts of different ways&ndash;the above uses <code>via</code>
 and <code>runWith</code>, but there&rsquo;s also <code>viaMat</code>, <code>run</code>, and any number of other fancy combinators.</p>
 
-
-
-
 <p>What it boils down to here is that the <code>Source</code> is an http request, the <code>Flow</code> describes how to send that request, and
 <code>runWith(Sink.head)</code> runs the flow and returns a future of the response.  Phew&hellip;</p>
 
-
-
-
 <h3>Serialization/Deserialization</h3>
-
-
-
 
 <p>For serialization/deserialization, <code>akka-http</code> provides its own <code>Marshal</code>/<code>Unmarshal</code>.  For json, the default option is
 to lean on <code>akka-http</code>&rsquo;s predecessor, <code>spray</code>&ndash;Or more specifically, <code>spray-json</code>:</p>
 
+<pre><code class="scala">// ADT describing the response
+case class ApiStatus(ok: Boolean, error: String)
 
 
+import spray.json._
+import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// ADT describing the response</span>
-</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">ApiStatus</span><span class="o">(</span><span class="n">ok</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span> <span class="n">error</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="k">import</span> <span class="nn">spray.json._</span>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">trait</span> <span class="nc">TradingApiSerialization</span> <span class="k">extends</span> <span class="nc">SprayJsonSupport</span> <span class="o">{</span>
-</span><span class='line'>  <span class="c1">// One of the built-in spray-json auto-formatters</span>
-</span><span class='line'>  <span class="k">implicit</span> <span class="k">val</span> <span class="nc">ApiStatusFormat</span> <span class="k">=</span> <span class="n">jsonFormat2</span><span class="o">(</span><span class="nc">ApiStatus</span><span class="o">)</span>
-</span><span class='line'><span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Previous imports elided</span>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.http.scaladsl.unmarshalling.Unmarshal</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// N.B. mixing in TradingApiSerialization to get the automatic conversions</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">TradingApiClient</span><span class="o">(</span><span class="n">apiKey</span><span class="k">:</span> <span class="kt">String</span><span class="o">)(</span><span class="k">implicit</span> <span class="k">val</span> <span class="n">system</span><span class="k">:</span> <span class="kt">ActorSystem</span> <span class="o">=</span> <span class="nc">ActorSystem</span><span class="o">())</span> <span class="k">extends</span> <span class="nc">TradingApiSerialization</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">implicit</span> <span class="k">val</span> <span class="n">materializer</span> <span class="k">=</span> <span class="nc">ActorMaterializer</span><span class="o">()</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="n">apiIsUp</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">ApiStatus</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">val</span> <span class="n">source</span> <span class="k">=</span> <span class="nc">Source</span><span class="o">.</span><span class="n">single</span><span class="o">(</span><span class="nc">HttpRequest</span><span class="o">(</span><span class="n">uri</span> <span class="k">=</span> <span class="nc">Uri</span><span class="o">(</span><span class="n">path</span> <span class="k">=</span> <span class="nc">Path</span><span class="o">(</span><span class="s">&quot;/ob/api/heartbeat&quot;</span><span class="o">))))</span>
-</span><span class='line'>    <span class="k">val</span> <span class="n">flow</span> <span class="k">=</span> <span class="nc">Http</span><span class="o">().</span><span class="n">outgoingConnectionHttps</span><span class="o">(</span><span class="s">&quot;api.stockfighter.io&quot;</span><span class="o">).</span><span class="n">mapAsync</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span> <span class="n">r</span> <span class="k">=&gt;</span>
-</span><span class='line'>      <span class="nc">Unmarshal</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="n">entity</span><span class="o">).</span><span class="n">to</span><span class="o">[</span><span class="kt">ApiStatus</span><span class="o">]</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">source</span><span class="o">.</span><span class="n">via</span><span class="o">(</span><span class="n">flow</span><span class="o">).</span><span class="n">runWith</span><span class="o">(</span><span class="nc">Sink</span><span class="o">.</span><span class="n">head</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+trait TradingApiSerialization extends SprayJsonSupport {
+  // One of the built-in spray-json auto-formatters
+  implicit val ApiStatusFormat = jsonFormat2(ApiStatus)
+}
 
 
+// Previous imports elided
+import akka.http.scaladsl.unmarshalling.Unmarshal
 
+// N.B. mixing in TradingApiSerialization to get the automatic conversions
+class TradingApiClient(apiKey: String)(implicit val system: ActorSystem = ActorSystem()) extends TradingApiSerialization {
+
+  implicit val materializer = ActorMaterializer()
+
+  def apiIsUp: Future[ApiStatus] = {
+    val source = Source.single(HttpRequest(uri = Uri(path = Path("/ob/api/heartbeat"))))
+    val flow = Http().outgoingConnectionHttps("api.stockfighter.io").mapAsync(1) { r =&gt;
+      Unmarshal(r.entity).to[ApiStatus]
+    }
+
+    source.via(flow).runWith(Sink.head)
+  }
+}
+</code></pre>
 
 <p>The Serialization trait is normal procedure for <code>spray-json</code>, and the <code>SprayJsonSupport</code> provided by <code>akka-http</code> just
 provides an implicit conversion that links the <code>Unmarshal(r.entity)</code> together with the <code>jsonFormat</code> for the entity.  The
@@ -663,189 +368,96 @@ the use of <code>Future</code> here is a way of handling lazy/streaming response
 alternative API for this so <code>mapAsync(1)</code> seemed to be the least of the evils&ndash;another choice would have been something
 like <code>.map { r =&gt; Await.result(Unmarshal(r.entity).to[ApiStatus], Duration.Inf) }</code> but that seems even clunkier.</p>
 
-
-
-
 <h3>Error handling</h3>
-
-
-
 
 <p>The above code still has the flaw that if the server responds with e.g. 404, it will throw an exception and the client
 will be SOL.  This is not so much an issue for the heartbeat endpoint, but Stockfighter is nice enough to enumerate a
 bunch of its common errors for us so why not add in some minimal handling via
 <a href="http://danielwestheide.com/blog/2013/01/02/the-neophytes-guide-to-scala-part-7-the-either-type.html">Either</a>?</p>
 
+<pre><code class="scala">// Type alias for readability's sake
+type TradingApiResult[T] = Either[ApiError, T]
+
+sealed trait ApiError
+case class NotFound(error: String) extends ApiError
+case class Unauthorized(error: String) extends ApiError
+case class UnexpectedStatusCode(status: StatusCode) extends ApiError
 
 
+import akka.http.scaladsl.unmarshalling.{ Unmarshal, Unmarshaller }
+import akka.http.scaladsl.model.StatusCodes
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// Type alias for readability&#39;s sake</span>
-</span><span class='line'><span class="k">type</span> <span class="kt">TradingApiResult</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Either</span><span class="o">[</span><span class="kt">ApiError</span>, <span class="kt">T</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">ApiError</span>
-</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">NotFound</span><span class="o">(</span><span class="n">error</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">ApiError</span>
-</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Unauthorized</span><span class="o">(</span><span class="n">error</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">ApiError</span>
-</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">UnexpectedStatusCode</span><span class="o">(</span><span class="n">status</span><span class="k">:</span> <span class="kt">StatusCode</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">ApiError</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.http.scaladsl.unmarshalling.</span><span class="o">{</span> <span class="nc">Unmarshal</span><span class="o">,</span> <span class="nc">Unmarshaller</span> <span class="o">}</span>
-</span><span class='line'><span class="k">import</span> <span class="nn">akka.http.scaladsl.model.StatusCodes</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Constructor/etc elided</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// `um` is provided by the previously mentioned `SprayJsonSupport`</span>
-</span><span class='line'><span class="c1">// This is a prevalent theme in akka-related code: IMPLICITS, IMPLICITS EVERYWHERE.  Fun fact: this also requires</span>
-</span><span class='line'><span class="c1">// an implicit ActorSystem and ActorMaterializer floating around!</span>
-</span><span class='line'><span class="k">private</span> <span class="k">def</span> <span class="n">deserialize</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">r</span><span class="k">:</span> <span class="kt">HttpResponse</span><span class="o">)(</span><span class="k">implicit</span> <span class="n">um</span><span class="k">:</span> <span class="kt">Unmarshaller</span><span class="o">[</span><span class="kt">ResponseEntity</span>, <span class="kt">T</span><span class="o">])</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">TradingApiResult</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span> <span class="k">=</span> <span class="o">{</span>
-</span><span class='line'>  <span class="n">r</span><span class="o">.</span><span class="n">status</span> <span class="k">match</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">case</span> <span class="nc">StatusCodes</span><span class="o">.</span><span class="nc">OK</span> <span class="k">=&gt;</span> <span class="nc">Unmarshal</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="n">entity</span><span class="o">).</span><span class="n">to</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="n">map</span> <span class="nc">Right</span><span class="o">.</span><span class="n">apply</span>
-</span><span class='line'>    <span class="k">case</span> <span class="nc">StatusCodes</span><span class="o">.</span><span class="nc">Unauthorized</span> <span class="k">=&gt;</span> <span class="nc">Future</span><span class="o">(</span><span class="nc">Left</span><span class="o">(</span><span class="nc">Unauthorized</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">toString</span><span class="o">)))</span>
-</span><span class='line'>    <span class="k">case</span> <span class="nc">StatusCodes</span><span class="o">.</span><span class="nc">NotFound</span> <span class="k">=&gt;</span> <span class="nc">Future</span><span class="o">(</span><span class="nc">Left</span><span class="o">(</span><span class="nc">NotFound</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">toString</span><span class="o">)))</span>
-</span><span class='line'>    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nc">Future</span><span class="o">(</span><span class="nc">Left</span><span class="o">(</span><span class="nc">UnexpectedStatusCode</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="n">status</span><span class="o">)))</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Use it in the API call!</span>
-</span><span class='line'><span class="k">def</span> <span class="n">apiIsUp</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">TradingApiResult</span><span class="o">[</span><span class="kt">ApiStatus</span><span class="o">]]</span> <span class="k">=</span> <span class="o">{</span>
-</span><span class='line'>  <span class="k">val</span> <span class="n">source</span> <span class="k">=</span> <span class="nc">Source</span><span class="o">.</span><span class="n">single</span><span class="o">(</span><span class="nc">HttpRequest</span><span class="o">(</span><span class="n">uri</span> <span class="k">=</span> <span class="nc">Uri</span><span class="o">(</span><span class="n">path</span> <span class="k">=</span> <span class="nc">Path</span><span class="o">(</span><span class="s">&quot;/ob/api/heartbeat&quot;</span><span class="o">))))</span>
-</span><span class='line'>  <span class="k">val</span> <span class="n">flow</span> <span class="k">=</span> <span class="nc">Http</span><span class="o">().</span><span class="n">outgoingConnectionHttps</span><span class="o">(</span><span class="s">&quot;api.stockfighter.io&quot;</span><span class="o">).</span><span class="n">mapAsync</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span> <span class="n">r</span> <span class="k">=&gt;</span>
-</span><span class='line'>    <span class="n">deserialize</span><span class="o">[</span><span class="kt">ApiStatus</span><span class="o">](</span><span class="n">r</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">source</span><span class="o">.</span><span class="n">via</span><span class="o">(</span><span class="n">flow</span><span class="o">).</span><span class="n">runWith</span><span class="o">(</span><span class="nc">Sink</span><span class="o">.</span><span class="n">head</span><span class="o">)</span>
-</span><span class='line'><span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Repeat for rest of the endpoints</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+// Constructor/etc elided
 
+// `um` is provided by the previously mentioned `SprayJsonSupport`
+// This is a prevalent theme in akka-related code: IMPLICITS, IMPLICITS EVERYWHERE.  Fun fact: this also requires
+// an implicit ActorSystem and ActorMaterializer floating around!
+private def deserialize[T](r: HttpResponse)(implicit um: Unmarshaller[ResponseEntity, T]): Future[TradingApiResult[T]] = {
+  r.status match {
+    case StatusCodes.OK =&gt; Unmarshal(r.entity).to[T] map Right.apply
+    case StatusCodes.Unauthorized =&gt; Future(Left(Unauthorized(r.entity.toString)))
+    case StatusCodes.NotFound =&gt; Future(Left(NotFound(r.entity.toString)))
+    case _ =&gt; Future(Left(UnexpectedStatusCode(r.status)))
+  }
+}
 
+// Use it in the API call!
+def apiIsUp: Future[TradingApiResult[ApiStatus]] = {
+  val source = Source.single(HttpRequest(uri = Uri(path = Path("/ob/api/heartbeat"))))
+  val flow = Http().outgoingConnectionHttps("api.stockfighter.io").mapAsync(1) { r =&gt;
+    deserialize[ApiStatus](r)
+  }
 
+  source.via(flow).runWith(Sink.head)
+}
+
+// Repeat for rest of the endpoints
+</code></pre>
 
 <p><code>apiIsUp</code> should now return an <code>Either[ApiError, ApiStatus]</code> unless something really bad (dare I say, <em>exceptional</em>?) happens.</p>
 
-
-
-
 <h3>TODOs</h3>
 
-
-
-
 <p>The above is a nice start, but a few big TODOs stand out to me before I go on and toss this onto github.</p>
-
-
-
 
 <p>First and foremost&hellip; Tests!  Testing libraries like this is always tricky since they&rsquo;re essentially all integration-y
 glue code, but I have always been a big fan of the <a href="https://github.com/vcr/vcr">vcr</a> gem in Ruby.  As far as I know the
 closest thing in Scala is <a href="https://github.com/betamaxteam/betamax">betamax</a>, which I have not used but would like to.
 (I know, I know&ndash;Not writing test firsts?  What about TDD?  BAD DEVELOPER!  *rolls up newspaper*)</p>
 
-
-
-
 <p>Another big thing for me is domain modeling.  The built-in json deserialization is fine for working with row-level data,
 but the plain case class format leaves a bit to be desired as far as robust data modeling.  As a simple example:</p>
 
+<pre><code class="json">// A simplistic "order request"
+{ price: 0, qty: 0, direction: "buy" } // "buy" or "sell"
+</code></pre>
 
+<pre><code class="scala">// naive translation:
+OrderRequest(price: Int, qty: Int, direction: String)
 
+// Preferable:
+sealed trait OrderDirection
+case object Buy extends OrderDirection
+case object Sell extends OrderDirection
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="err">//</span> <span class="err">A</span> <span class="err">simplistic</span> <span class="s2">&quot;order request&quot;</span>
-</span><span class='line'><span class="p">{</span> <span class="err">price:</span> <span class="err">0,</span> <span class="err">qty:</span> <span class="err">0,</span> <span class="err">direction:</span> <span class="nt">&quot;buy&quot;</span> <span class="p">}</span> <span class="err">//</span> <span class="s2">&quot;buy&quot;</span> <span class="err">or</span> <span class="s2">&quot;sell&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="c1">// naive translation:</span>
-</span><span class='line'><span class="nc">OrderRequest</span><span class="o">(</span><span class="n">price</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">qty</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">direction</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Preferable:</span>
-</span><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">OrderDirection</span>
-</span><span class='line'><span class="k">case</span> <span class="k">object</span> <span class="nc">Buy</span> <span class="k">extends</span> <span class="nc">OrderDirection</span>
-</span><span class='line'><span class="k">case</span> <span class="k">object</span> <span class="nc">Sell</span> <span class="k">extends</span> <span class="nc">OrderDirection</span>
-</span><span class='line'>
-</span><span class='line'><span class="nc">BetterOrderRequest</span><span class="o">(</span><span class="n">price</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">qty</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">direction</span><span class="k">:</span> <span class="kt">OrderDirection</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+BetterOrderRequest(price: Int, qty: Int, direction: OrderDirection)
+</code></pre>
 
 <p>I haven&rsquo;t decided whether it would be better to add another step to the pipeline (e.g., <code>mapJsonToDomainObject</code>) or to
 roll custom spray <code>JsonFormat</code>s to do this.</p>
-
-
-
 
 <p>Lastly: websockets.  In <a href="http://doc.akka.io/docs/akka/2.4.4/scala/http/client-side/websocket-support.html">theory</a>
 websockets are supported, but the documentation is even sparser than for http clients and I haven&rsquo;t quite figured it out
 yet&ndash;especially since the deserialization provided in <code>SprayJsonSupport</code> does not seem to work with the types used in
 the websocket API.</p>
 
-
-
-
 <h3>Overall Impressions</h3>
-
-
-
 
 <p>So far, my impression of <code>akka-http</code> is by and large the same as my impression of <code>spray</code>.  Actors (and now reactive
 streams) provide a lot of power and performance in exchange for non-trivial complexity.  In my experience this tradeoff
 is generally worth it for server-side/business application code, but lugging around an ActorSystem/etc ends up feeling
 very clunky for a simple http client.  It doesn&rsquo;t help that the -client libraries seem to be the red-headed
 step-children of both ecosystems.</p>
-
-
-
 
 <p>The documentation feels consistent with the general API design.  That is: it tries to look simple for the most basic
 use-cases, but in reality there is a lot of implicit stuff floating around.  It was basically a pre-requisite for me to
@@ -854,25 +466,13 @@ together before I could unpack the examples in the client tutorials.  For exampl
 <a href="http://doc.akka.io/docs/akka/2.4.4/scala/http/client-side/websocket-support.html">websocket tutorial</a> I tried to switch
 the <code>Sink.foreach</code> with a <code>Sink.queue</code> and got the following:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="o">[</span><span class="kt">error</span><span class="o">]</span> <span class="o">(...)/</span><span class="nc">TradingApiClient</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">118</span><span class="kt">:</span> <span class="k">type</span> <span class="kt">mismatch</span><span class="o">;</span>
-</span><span class='line'><span class="o">[</span><span class="kt">error</span><span class="o">]</span>  <span class="n">found</span><span class="k">:</span>
-</span><span class='line'><span class="kt">akka.stream.scaladsl.Sink</span><span class="o">[</span><span class="kt">Nothing</span>,<span class="kt">akka.stream.scaladsl.SinkQueue</span><span class="o">[</span><span class="kt">Nothing</span><span class="o">]]</span>
-</span><span class='line'><span class="o">[</span><span class="kt">error</span><span class="o">]</span>  <span class="n">required</span><span class="k">:</span>
-</span><span class='line'><span class="kt">akka.stream.Graph</span><span class="o">[</span><span class="kt">akka.stream.SinkShape</span><span class="o">[</span><span class="kt">akka.http.scaladsl.model.ws.Message</span><span class="o">]</span>,<span class="kt">akka.stream.scaladsl.SinkQueue</span><span class="o">[</span><span class="kt">akka.http.scaladsl.model.ws.Message</span><span class="o">]]</span>
-</span><span class='line'><span class="o">[</span><span class="kt">error</span><span class="o">]</span>     <span class="n">outgoing</span><span class="o">.</span><span class="n">via</span><span class="o">(</span><span class="n">webSocketFlow</span><span class="o">).</span><span class="n">runWith</span><span class="o">(</span><span class="nc">Sink</span><span class="o">.</span><span class="n">queue</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code>[error] (...)/TradingApiClient.scala:118: type mismatch;
+[error]  found:
+akka.stream.scaladsl.Sink[Nothing,akka.stream.scaladsl.SinkQueue[Nothing]]
+[error]  required:
+akka.stream.Graph[akka.stream.SinkShape[akka.http.scaladsl.model.ws.Message],akka.stream.scaladsl.SinkQueue[akka.http.scaladsl.model.ws.Message]]
+[error]     outgoing.via(webSocketFlow).runWith(Sink.queue)
+</code></pre>
 
 <p>It&rsquo;s not the end of the world as I worked out the need for a type parameter (i.e., <code>Sink.queue[Message]</code>) but there a
 lot of examples like this where the errors and tutorials are not exactly intuitive.  I can see this being a huge
@@ -881,9 +481,6 @@ deterrent to folks who are new to the ecosystem, to the concepts, or to Scala in
 cargo-culted in by a harried developer on a deadline and carried on as the software version of the <a href="http://c2.com/cgi/wiki?TheFiveMonkeys">five monkeys</a>.
 (This is not to say I could do any better.  Documentation and API design are some of the most underrated hard problems
 in software today, IMO. :)</p>
-
-
-
 
 <p>All my nitpicking aside, there is a lot to like about <code>akka-http</code>.  In exchange for all the effort involved in learning
 about reactive streams and how to work with them, they provide a nice construct for abstracting away concerns like
@@ -894,15 +491,11 @@ especially nice on the server, where performance is a bigger concern.  I&rsquo;v
 <code>spray</code> previously, and it&rsquo;s always been fairly performant without excessive tuning on my part.  In addition, I&rsquo;ve found
 the concept of Directives and the server-side routing DSL to be quite nice to work with in the past.</p>
 
-
-
-
 <p>Overall I would recommend <code>akka-http</code> unreservedly for writing web services and business applications.  My experience
 with it on the server side has been quite good.  I would also use it again on the client side, mostly because there
 don&rsquo;t seem to be any better options.  I had looked into some alternatives, but e.g. play-ws has the same overloaded
 baggage problem and dispatch is like the poster-child of unintelligible symbolic operators (and seems unmaintained to
 boot).  So until a better http client surfaces in the Scala ecosystem, one could do a lot worse.</p>
-
 ]]></content>
   </entry>
   
@@ -915,191 +508,98 @@ boot).  So until a better http client surfaces in the Scala ecosystem, one could
 that and the fact that I&rsquo;ve been hearing increasing mentions of it in the company at large, I figured this week I&rsquo;d plug
 a neat feature of Scala and a recent use case where I found it extremely handy.</p>
 
-
-
-
 <h3>The Feature</h3>
-
-
-
 
 <p>Anyone who&rsquo;s worked with The AWS SDK (or just Java code in general) will be familiar with the builder pattern.
 Recently, I was writing some code to automate setup of CloudWatch alarms for a DynamoDB table.  The alarm request
 started looking something like:</p>
 
+<pre><code class="scala">val req = new PutMetricsAlarmRequest()
+  .withNamespace("DynamoDB")
+  .withDimensions(dimensionsForTableName)
+  .withStatistic("Sum")
+  .withComparisonOperator(GreaterThanThreshold)
+  .withThreshold(thresholdNumber)
+  .withMetricName(throttledMetricName)
+  .withEvaluationPeriods(periods)
+  .withPeriod(periodDuration.toSeconds.toInt)
+  .withAlarmActions(idMappingSNS)
+  .withAlarmName(alarmNameFor(tableName, throttledMetric, throttledThreshold))
 
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">req</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PutMetricsAlarmRequest</span><span class="o">()</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withNamespace</span><span class="o">(</span><span class="s">&quot;DynamoDB&quot;</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withDimensions</span><span class="o">(</span><span class="n">dimensionsForTableName</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withStatistic</span><span class="o">(</span><span class="s">&quot;Sum&quot;</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withComparisonOperator</span><span class="o">(</span><span class="nc">GreaterThanThreshold</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withThreshold</span><span class="o">(</span><span class="n">thresholdNumber</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withMetricName</span><span class="o">(</span><span class="n">throttledMetricName</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withEvaluationPeriods</span><span class="o">(</span><span class="n">periods</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withPeriod</span><span class="o">(</span><span class="n">periodDuration</span><span class="o">.</span><span class="n">toSeconds</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmActions</span><span class="o">(</span><span class="n">idMappingSNS</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmName</span><span class="o">(</span><span class="n">alarmNameFor</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">cloudwatchClient</span><span class="o">.</span><span class="n">putMetricAlarm</span><span class="o">(</span><span class="n">req</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+cloudwatchClient.putMetricAlarm(req)
+</code></pre>
 
 <p>Which is serviceable, but less than ideal given that I had multiple alarms of roughly the same nature.  Plus, I felt
 like it left something to be desired in terms of readability and communicating the intent of the alarm in a succinct
 way.  Enter <code>implicit class</code>s and the &ldquo;enrichment&rdquo;* pattern!  Basically, it lets us turn the above into something more
 like this:</p>
 
+<pre><code class="scala">val req = new PutMetricAlarmRequest()
+  .forTable(tableName)
+  .triggerOnSumGreaterThan(throttledMetric, throttledThreshold)
+  .afterEvaluationPeriods(evaluationPeriodDuration, evaluationPeriods)
+  .withAlarmActions(idMappingSNS)
+  .withAlarmName(alarmNameFor(tableName, throttledMetric, throttledThreshold))
 
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">req</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PutMetricAlarmRequest</span><span class="o">()</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">forTable</span><span class="o">(</span><span class="n">tableName</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">triggerOnSumGreaterThan</span><span class="o">(</span><span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">afterEvaluationPeriods</span><span class="o">(</span><span class="n">evaluationPeriodDuration</span><span class="o">,</span> <span class="n">evaluationPeriods</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmActions</span><span class="o">(</span><span class="n">idMappingSNS</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">.</span><span class="n">withAlarmName</span><span class="o">(</span><span class="n">alarmNameFor</span><span class="o">(</span><span class="n">tableName</span><span class="o">,</span> <span class="n">throttledMetric</span><span class="o">,</span> <span class="n">throttledThreshold</span><span class="o">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">cloudwatchClient</span><span class="o">.</span><span class="n">putMetricAlarm</span><span class="o">(</span><span class="n">req</span><span class="o">)</span> <span class="cm">/** Can still pass req back into AWS API! */</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+cloudwatchClient.putMetricAlarm(req) /** Can still pass req back into AWS API! */
+</code></pre>
 
 <p>With the addition of this:</p>
 
+<pre><code class="scala">implicit class MetricAlarmRequestHelper(req: PutMetricAlarmRequest) {
+  def forTable(tableName: String) = {
+    req.withNamespace("DynamoDB").withDimensions(tableMetricDimensions(tableName).asJava)
+  }
 
+  def triggerOnSumGreaterThan(metricName: String, threshold: Int) = {
+    req.withStatistic("Sum").withComparisonOperator(GreaterThanThreshold).withThreshold(threshold).withMetricName(metricName)
+  }
 
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">implicit</span> <span class="k">class</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>  <span class="k">def</span> <span class="n">forTable</span><span class="o">(</span><span class="n">tableName</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withNamespace</span><span class="o">(</span><span class="s">&quot;DynamoDB&quot;</span><span class="o">).</span><span class="n">withDimensions</span><span class="o">(</span><span class="n">tableMetricDimensions</span><span class="o">(</span><span class="n">tableName</span><span class="o">).</span><span class="n">asJava</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="n">triggerOnSumGreaterThan</span><span class="o">(</span><span class="n">metricName</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">threshold</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withStatistic</span><span class="o">(</span><span class="s">&quot;Sum&quot;</span><span class="o">).</span><span class="n">withComparisonOperator</span><span class="o">(</span><span class="nc">GreaterThanThreshold</span><span class="o">).</span><span class="n">withThreshold</span><span class="o">(</span><span class="n">threshold</span><span class="o">).</span><span class="n">withMetricName</span><span class="o">(</span><span class="n">metricName</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="n">afterEvaluationPeriods</span><span class="o">(</span><span class="n">periodDuration</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">periods</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">req</span><span class="o">.</span><span class="n">withEvaluationPeriods</span><span class="o">(</span><span class="n">periods</span><span class="o">).</span><span class="n">withPeriod</span><span class="o">(</span><span class="n">periodDuration</span><span class="o">.</span><span class="n">toSeconds</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+  def afterEvaluationPeriods(periodDuration: Duration, periods: Int) = {
+    req.withEvaluationPeriods(periods).withPeriod(periodDuration.toSeconds.toInt)
+  }
+}
+</code></pre>
 
 <!-- more -->
 
 
-
-
 <h3>How It Works</h3>
-
-
-
 
 <p>One of the coolest&ndash;and probably most confusing&ndash;keywords in scala is <code>implicit</code>, which can refer to many different
 things.  For now, let&rsquo;s limit the discussion to implicit conversions.  A grossly oversimplified tl;dr is that there can
 be some def of the form:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">foo2bar</span><span class="o">(</span><span class="n">foo</span><span class="k">:</span> <span class="kt">Foo</span><span class="o">)</span><span class="k">:</span> <span class="kt">Bar</span> <span class="o">=</span> <span class="o">{</span> <span class="err">…</span> <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+<pre><code class="scala">implicit def foo2bar(foo: Foo): Bar = { … }
+</code></pre>
 
 <p>And as long as that def is in scope, the code will convert anything of type Foo into type Bar without having to re-write
 that logic or call some conversion method.  For more information on implicits in general, see this excellent answer by
 Daniel Sobral, who is basically the Jon Skeet of the Scala world:
 <a href="http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits/5598107#5598107">http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits/5598107#5598107</a></p>
 
-
-
-
 <p>Extending the use of implicits, that means that if you do something like, for the above use-case:</p>
 
+<pre><code class="scala">class MetricAlarmRequestHelper(req: PutMetricAlarmRequest) = { /** Same function defs as above */ }
 
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span> <span class="cm">/** Same function defs as above */</span> <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">vanillaRequest2Helper</span><span class="o">(</span><span class="n">req</span><span class="k">:</span> <span class="kt">PutMetricAlarmRequest</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">MetricAlarmRequestHelper</span><span class="o">(</span><span class="n">req</span><span class="o">)</span>
-</span><span class='line'><span class="k">implicit</span> <span class="k">def</span> <span class="n">helper2vanillaRequest</span><span class="o">(</span><span class="n">helper</span><span class="k">:</span> <span class="kt">MetricAlarmRequestHelper</span><span class="o">)</span> <span class="k">=</span> <span class="n">helper</span><span class="o">.</span><span class="n">req</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+implicit def vanillaRequest2Helper(req: PutMetricAlarmRequest) = new MetricAlarmRequestHelper(req)
+implicit def helper2vanillaRequest(helper: MetricAlarmRequestHelper) = helper.req
+</code></pre>
 
 <p>then scala will be able to magically convert from the vanilla request to the helper for use in your client code, and
 then from the helper back to the vanilla request for passing to other parts of the Amazon API. <code>implicit class</code> is just
 short-hand introduced in Scala 2.10 that does the above for you in one convenient construct that makes things even more
 concise.  For more info, see the scala docs: <a href="http://docs.scala-lang.org/overviews/core/implicit-classes.html">http://docs.scala-lang.org/overviews/core/implicit-classes.html</a></p>
 
-
-
-
 <p>Beyond use cases like wrapping builders, this kind of enrichment using <code>implicit</code> can be extremely powerful, especially
 for extending functionality where it&rsquo;s not practical to alter the original code.  Though as with all advanced features
 of anything, it&rsquo;s probably best not to go overboard.  :)</p>
 
-
-
-
 <h3>Naming</h3>
-
-
-
 
 <p>Quick bit of bonus trivia&hellip;  When the pattern first rose into prominence, it was known colloquially as &ldquo;pimp my class&rdquo;.
 Then folks got all up in arms about the political correctness of the word &ldquo;pimp&rdquo;, so now the common term is
 &ldquo;enrichment&rdquo;.</p>
-
 ]]></content>
   </entry>
   
@@ -1115,13 +615,7 @@ lot of discussion both productive and inflammatory out there already, but I thou
 common points as someone who: 1. picked scala up relatively recently (2.9.2 and 2.10), 2. has worked with it for a few
 months on the side, and 3. comes from a background of dynamic languages.</p>
 
-
-
-
 <h4>Long Compile Times</h4>
-
-
-
 
 <p>I can definitely see where this is coming from.  Scala&rsquo;s compile times can be pretty long, though I had pegged that as
 the cost of using a compiled language anyway.  I, at least, felt a marked increase in times upgrading from <code>2.9.2</code> to
@@ -1132,25 +626,14 @@ judicious use of some of Scala&rsquo;s heavier features (such as implicits) keep
 compilation, and they do offer a personal Scala license for free.  Without JRebel my life as a scala user would have
 been a lot harder.</p>
 
-
-
-
 <h4>Opaque Syntax</h4>
-
-
-
 
 <p>I agree completely here.  Scala&rsquo;s flexibility in parsing + its allowance of symbolic method names obviously allows for a
 lot of flexibility.  This allows the construction of all sorts of DSLs; whether these DSLs end up being expressive or
 just plain confusing, is another thing altogether.  In this case, I&rsquo;d have to say that just because something is
 possible does not mean it should be done all the time.</p>
 
-
-
-
 <!-- more -->
-
-
 
 
 <p>The original post mentions that their build script&rsquo;s syntax seemed to be all over the place; I&rsquo;m assuming they were
@@ -1158,55 +641,34 @@ referring to the de facto scala build tool, <a href="http://www.scala-sbt.org/">
 personally am not a big fan of their heavy use of symbolic names either.  Just as an example, a relatively simple build
 file for one of my personal projects already has all of the following:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>build.sbt </span></figcaption>
+<p><figure class='code'><figcaption><span>build.sbt </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span> <span class="o">&amp;</span><span class="n">hellip</span><span class="o">;</span> <span class="o">)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">testOptions</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">+=</span> <span class="o">(...)</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">testOptions</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">+=</span> <span class="o">(&amp;</span><span class="n">hellip</span><span class="o">;)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">resourceGenerators</span> <span class="n">in</span> <span class="nc">Compile</span> <span class="o">&lt;+=</span> <span class="o">(...)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">resourceGenerators</span> <span class="n">in</span> <span class="nc">Compile</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;+=</span> <span class="o">(&amp;</span><span class="n">hellip</span><span class="o">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>All of them are obviously for adding to some sort of sequence, but still different enough to trip you up.  And this is
 still relatively shallow territory&ndash;I haven&rsquo;t even mentioned the insanity that comes with more advanced libraries, like
 the <a href="http://stackoverflow.com/questions/14472310/pronounceable-names-for-scalaz-operators">fish operator</a>.</p>
 
-
-
-
 <p>In Odersky&rsquo;s google groups thread, he mentions a proposal for requiring an equivalent alphabetical alias for all
 symbolic methods.  I hope that goes through.  If nothing else, it&rsquo;ll make the methods easier to google.</p>
 
-
-
-
 <h4>Documentation</h4>
-
-
-
 
 <p>As with any budding technology, documentation tends to lag behind development.  However, language and core library
 documentation has improved immensely even in the time since I picked up Scala, so many kudos to the typesafe team for
 that.  However, the third-party libraries still have a way to go; as helpful and educational as it may be, source code
 should <em>not</em> be the go-to method for research.</p>
 
-
-
-
 <h4>Types and Case Classes</h4>
-
-
-
 
 <p>Here&rsquo;s where I have to respectfully disagree completely with the original post.  I <em>love</em> types and case classes.  Being
 able to encode logic in your types that would otherwise have ended up as boilerplate-y edge case checking, <em>and</em> having
@@ -1214,17 +676,11 @@ the compiler do it for you instead of maintaining the extra tests, is a win in m
 background, having a compiler do some of these checks for me was a breath of fresh air, especially since it doesn&rsquo;t come
 at the cost of extreme clunkiness a la Java.</p>
 
-
-
-
 <p>And case classes / <a href="http://learnyouahaskell.com/making-our-own-types-and-typeclasses">algebraic data types</a> are the
 bee&rsquo;s knees.  Between the <code>copy</code> method and the free pattern matching, I don&rsquo;t see how case classes do anything but get
 rid of repetition.  Forgive the simplistic example:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1235,35 +691,26 @@ rid of repetition.  Forgive the simplistic example:</p>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">model</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">version</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">model</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">version</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">// Extraction, conditionals, and assignment, all done succinctly</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;//</span> <span class="nc">Extraction</span><span class="o">,</span> <span class="n">conditionals</span><span class="o">,</span> <span class="n">and</span> <span class="n">assignment</span><span class="o">,</span> <span class="n">all</span> <span class="n">done</span> <span class="n">succinctly</span>
 </span><span class='line'><span class="k">def</span> <span class="n">calcType</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span> <span class="k">match</span> <span class="o">{</span>
-</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="s">&quot;hp&quot;</span><span class="o">,</span> <span class="s">&quot;20B&quot;</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">&quot;financial&quot;</span>
-</span><span class='line'>  <span class="c1">// ...</span>
-</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">&quot;Calculator: %s %s %s is of unknown type&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span>
-</span><span class='line'><span class="o">}</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="n">hp</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="mi">20</span><span class="n">B</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;,</span> <span class="mi">1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="n">financial</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;</span>
+</span><span class='line'>  <span class="c1">// &amp;hellip;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="nc">Calculator</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="nc">Calculator</span><span class="k">:</span> <span class="kt">%s</span> <span class="kt">%s</span> <span class="kt">%s</span> <span class="kt">is</span> <span class="kt">of</span> <span class="kt">unknown</span> <span class="k">type</span><span class="kt">&amp;rdquo</span><span class="o">;.</span><span class="n">format</span><span class="o">(</span><span class="n">brand</span><span class="o">,</span> <span class="n">model</span><span class="o">,</span> <span class="n">version</span><span class="o">)</span>
+</span><span class='line'><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">// No custom methods/etc needed</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;//</span> <span class="nc">No</span> <span class="n">custom</span> <span class="n">methods</span><span class="o">/</span><span class="n">etc</span> <span class="n">needed</span>
 </span><span class='line'><span class="k">def</span> <span class="n">upgrade</span><span class="o">(</span><span class="n">calc</span><span class="k">:</span> <span class="kt">Calculator</span><span class="o">)</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">version</span> <span class="k">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">version</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h4>Overall impressions</h4>
-
-
-
 
 <p>Despite its flaws, I&rsquo;ve really enjoyed working with Scala and it will probably remain a part of my toolbox.  Its
 flexibility and power makes it a great gen-purpose language, especially in its type system and ability to combine
 functional programming with OO.  It sits in the JVM, which means interoperability with the existing mammoth Java
 ecosystem comes with just a little bit of glue code.  And more importantly, it means that if I should pick up Clojure in
 the future, interoperability with THAT will not be too far off either, knock on wood.</p>
-
-
-
 
 <p>That said, it&rsquo;s not by any means a perfect language.  The same flexibility that makes it great to use can often result
 in convoluted APIs, and it&rsquo;s very easy to shoot yourself in the foot.  Living in the JVM also means the language has to
@@ -1273,12 +720,8 @@ to me, is one of those tools that feels natural once you&rsquo;re used to it, bu
 grok&ndash;I wouldn&rsquo;t want to be plopped into scala on a fresh project with a one month deadline.  Ideally, there should be
 some better documentation to help bridge that gap.</p>
 
-
-
-
 <p>Luckily, if that mailing list thread is any indication, the community is aware of these shortcomings.  And as the
 language and ecosystem mature, they will hopefully become less and less of a problem.</p>
-
 ]]></content>
   </entry>
   
@@ -1291,10 +734,7 @@ language and ecosystem mature, they will hopefully become less and less of a pro
 to test is <a href="https://groups.google.com/forum/#!topic/octopress/y1IlHmFYydQ">not available in master</a> and I&rsquo;m far too lazy
 to sync to 2.1 at the moment.  As such, everyone will have to settle for this plain jane snippet:</p>
 
-
-
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1304,21 +744,14 @@ to sync to 2.1 at the moment.  As such, everyone will have to settle for this pl
 </span><span class='line'>  <span class="k">def</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev1</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">,</span> <span class="n">prev2</span><span class="k">:</span> <span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">BigInt</span><span class="o">]</span> <span class="k">=</span> <span class="n">prev1</span> <span class="o">#::</span> <span class="n">loop</span><span class="o">(</span><span class="n">prev2</span><span class="o">,</span> <span class="n">prev1</span> <span class="o">+</span> <span class="n">prev2</span><span class="o">)</span>
 </span><span class='line'>  <span class="n">loop</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Nothing fancy, just one of many possible variations of the fibonacci sequence.  This one is done via a <code>Stream</code>,
 which is Scala&rsquo;s memoized lazily evaluated list.  (<a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream">More here</a>).</p>
 
-
-
-
 <p>Will probably write more about the why/how of the nested loop <code>def</code> (mostly for my own reference), but for now I think
 the codeblock looks pretty neat.  It&rsquo;s still a shame I didn&rsquo;t get to play with funny line numbers/highlighting stuff
 though.</p>
-
 ]]></content>
   </entry>
   
