@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scala | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2016-05-20T09:02:32-04:00</updated>
+  <updated>2016-05-20T09:05:00-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -30,9 +30,8 @@ making sense but I&rsquo;m really not.  Sure, sometimes that friend is a bit den
 understand what I&rsquo;m trying to say, but in the case of a language like Scala I find that the compiler is right more often
 than not.  In fact, I had a whole giant wall of text geared up to talk about the value in using <code>Option</code> over <code>null</code>, in
 using <code>Either</code> instead of exceptions, in capturing values without using Stringly-Typed data&hellip;  But then Li Haoyi beat
-me to it with another addition to his wonderful Strategic Scala Style series: <a href="http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html">Practical Type
-Safety</a>.  I highly recommend reading it (and
-the rest of the Strategic Scala Style series) before coming back.</p>
+me to it with another addition to his wonderful Strategic Scala Style series: <a href="http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html">Practical Type Safety</a>.
+I highly recommend reading it (and the rest of the Strategic Scala Style series) before coming back.</p>
 
 <p>Still here?  That post covers a lot of what I wanted to say, but I wanted to put some extra emphasis on one particular
 topic:</p>
