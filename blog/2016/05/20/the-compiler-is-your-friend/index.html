@@ -236,6 +236,7 @@ archived or soft-deleted and when that state transition happened.</p>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
+<span class='line-number'>17</span>
 </pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">ListStatus</span>
 </span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">object</span> <span class="nc">Pending</span> <span class="k">extends</span> <span class="nc">ListStatus</span>
 </span><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">object</span> <span class="nc">Active</span> <span class="k">extends</span> <span class="nc">ListStatus</span>
@@ -247,6 +248,7 @@ archived or soft-deleted and when that state transition happened.</p>
 </span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">UserList</span><span class="o">(</span>
 </span><span class='line'>  <span class="n">id</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
 </span><span class='line'>  <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+</span><span class='line'>  <span class="n">platform</span><span class="k">:</span> <span class="kt">Platform</span><span class="o">,</span>
 </span><span class='line'>  <span class="n">status</span><span class="k">:</span> <span class="kt">ListStatus</span><span class="o">,</span>
 </span><span class='line'>  <span class="n">createdTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
 </span><span class='line'>  <span class="n">archivedTime</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Long</span><span class="o">],</span>
@@ -270,9 +272,11 @@ it is possible to construct an internally inconsistent list:</p>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
+<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">list</span> <span class="k">=</span> <span class="nc">UserList</span><span class="o">(</span>
 </span><span class='line'>  <span class="n">id</span> <span class="k">=</span> <span class="mi">1</span><span class="o">,</span>
 </span><span class='line'>  <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;website visitors&quot;</span><span class="o">,</span>
+</span><span class='line'>  <span class="n">platform</span> <span class="k">=</span> <span class="nc">Facebook</span><span class="o">,</span>
 </span><span class='line'>  <span class="n">status</span> <span class="k">=</span> <span class="nc">Active</span><span class="o">,</span>
 </span><span class='line'>  <span class="n">createdTime</span> <span class="k">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span><span class="o">,</span>
 </span><span class='line'>  <span class="n">archivedTime</span> <span class="k">=</span> <span class="nc">None</span><span class="o">,</span>
@@ -316,7 +320,7 @@ at the best of times) and read the code <em>really really</em> carefully every t
 </span><span class='line'>        <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalStateException</span><span class="o">(</span><span class="s">&quot;Downstream id not found for active list&quot;</span><span class="o">)</span>
 </span><span class='line'>      <span class="o">}</span>
 </span><span class='line'>
-</span><span class='line'>      <span class="n">platformClient</span><span class="o">.</span><span class="n">sendUsers</span><span class="o">(</span><span class="n">platformId</span><span class="o">,</span> <span class="n">users</span><span class="o">)</span>
+</span><span class='line'>      <span class="n">platformClient</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="n">platform</span><span class="o">).</span><span class="n">sendUsers</span><span class="o">(</span><span class="n">platformId</span><span class="o">,</span> <span class="n">users</span><span class="o">)</span>
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'>    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;Cannot onboard users for non-active list&quot;</span><span class="o">)</span>
 </span><span class='line'>  <span class="o">}</span>
@@ -342,7 +346,7 @@ handling into our business logic&rdquo;.  Apparently, this sort of thing is
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">UserListMetadata</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">createdTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">UserListMetadata</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">platform</span><span class="k">:</span> <span class="kt">Platform</span><span class="o">,</span> <span class="n">createdTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">UserList</span> <span class="o">{</span> <span class="n">metadata</span><span class="k">:</span> <span class="kt">UserListMetadata</span> <span class="o">}</span>
 </span><span class='line'>
@@ -358,7 +362,7 @@ handling into our business logic&rdquo;.  Apparently, this sort of thing is
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">def</span> <span class="n">onboardUsersToList</span><span class="o">(</span><span class="n">list</span><span class="k">:</span> <span class="kt">ActiveList</span><span class="o">,</span> <span class="n">users</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">User</span><span class="o">])</span> <span class="o">{</span>
-</span><span class='line'>  <span class="n">platformClient</span><span class="o">.</span><span class="n">sendUsers</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="n">downstreamId</span><span class="o">,</span> <span class="n">users</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">platformClient</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">platform</span><span class="o">).</span><span class="n">sendUsers</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="n">downstreamId</span><span class="o">,</span> <span class="n">users</span><span class="o">)</span>
 </span><span class='line'><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 

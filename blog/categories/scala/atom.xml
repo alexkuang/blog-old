@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scala | alex kuang]]></title>
   <link href="http://alexkuang.github.io/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://alexkuang.github.io/"/>
-  <updated>2016-05-20T09:05:00-04:00</updated>
+  <updated>2016-05-20T09:29:31-04:00</updated>
   <id>http://alexkuang.github.io/</id>
   <author>
     <name><![CDATA[Alex Kuang]]></name>
@@ -119,6 +119,7 @@ final case object Facebook extends Platform // And so on and so forth
 case class UserList(
   id: Long,
   name: String,
+  platform: Platform,
   status: ListStatus,
   createdTime: Long,
   archivedTime: Option[Long],
@@ -136,6 +137,7 @@ it is possible to construct an internally inconsistent list:</p>
 <pre><code class="scala">val list = UserList(
   id = 1,
   name = "website visitors",
+  platform = Facebook,
   status = Active,
   createdTime = System.currentTimeMillis,
   archivedTime = None,
@@ -164,7 +166,7 @@ def onboardUsersToList(list: UserList, users: Seq[User]) {
         throw new IllegalStateException("Downstream id not found for active list")
       }
 
-      platformClient.sendUsers(platformId, users)
+      platformClient(list.platform).sendUsers(platformId, users)
     }
     case _ =&gt; throw new IllegalArgumentException("Cannot onboard users for non-active list")
   }
@@ -182,7 +184,7 @@ handling into our business logic&rdquo;.  Apparently, this sort of thing is
 
 <p>One possible remedy is to refactor <code>UserList</code> to encode some of the constraints into the type:</p>
 
-<pre><code class="scala">final case class UserListMetadata(id: Long, name: String, createdTime: Long)
+<pre><code class="scala">final case class UserListMetadata(id: Long, name: String, platform: Platform, createdTime: Long)
 
 sealed trait UserList { metadata: UserListMetadata }
 
@@ -194,7 +196,7 @@ final case class ArchivedList(metadata: UserListMetadata, archivedTime: Long) ex
 <p>This lets us rewrite the above method as:</p>
 
 <pre><code class="scala">def onboardUsersToList(list: ActiveList, users: Seq[User]) {
-  platformClient.sendUsers(list.downstreamId, users)
+  platformClient(list.metadata.platform).sendUsers(list.downstreamId, users)
 }
 </code></pre>
 
