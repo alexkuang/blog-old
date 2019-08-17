@@ -1,0 +1,42 @@
+---
+layout: post
+title: "`gn` in Vim"
+date: 2015-01-24 11:53:51 -0500
+comments: true
+categories:
+- vim
+- totw
+---
+
+Back to vim this week!  This one might be a bit esoteric--apologies in advance--but it’s such a useful feature that I
+had to share.
+
+`gn` is a kinda-sorta-but-not-really-motion that selects the matches of the current search pattern.  It’s kind of like
+`n` (go to next match in search), except it also selects the contents of the match in visual mode.  But where it really
+shines is when used with operators like `c` (change), etc to operate on the match.  Quick demo to see it in action,
+before continuing:
+
+<script type="text/javascript" src="https://asciinema.org/a/15656.js" id="asciicast-15656" async></script>
+
+So this is nice for a few reasons.  First, it’s neat to be able to operate on just the match of a search.  I remember a
+few times before I found `gn` where I was doing something similar to the demo, tried to use `cw`, and got mildly annoyed
+that I had to retype half the word because the `w` motion was too aggressive.
+
+Another nice thing is that with `gn`, the dot command will both move to the next match and repeat whatever operation you
+did, instead of having to do the movement and operation separately using `n.`.  It seems petty, but hey it’s a full 50%
+keystroke savings!!
+
+Arguably, the demo above could have been done with an ex command like `:%s/test/actual` (universal search and replace),
+but I think `gn` still offers a lot.  It works on all operators, so `ygn` would yank the match, `gUgn` would uppercase
+the match, and so on.  Plus, it allows an easy on-the-fly workflow that’s still decently fast without the “crap I have
+to tune all the edge cases in my expression”: for example, if you want to only change some instances of `test` to
+`actual`, but others to `sandbox`.
+
+As always, see `:h gn` for more details.  Also note that gn has only been available since vim 7.4 or something like
+that, but there’s no reason anyone shouldn’t be using the latest on their personal boxes…
+
+### Bonus
+
+This email also generated some additional discussion, which led to my discovery of the multi-select feature in Sublime,
+and the [associated vim plugin](https://github.com/terryma/vim-multiple-cursors).  It seems like it's in a different
+spirit than `gn`, but still a very cool way of thinking about operating on search results that I had not seen before.
