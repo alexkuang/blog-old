@@ -46,3 +46,12 @@
 .related-post-title {
   border-bottom: thin solid #f3f3f3;
 }
+
+.posts .post-continue-reading a {
+  color: $header-color;
+  background-image: none; /** who uses bg image for link underlines?? */
+}
+
+.posts .post-continue-reading a:hover {
+  text-decoration: underline;
+}
