@@ -7,7 +7,7 @@ tags: about
 
 ### Me
 
-Startup person, software developer, and serial hobbyist.  Currently interested in:
+Startup janitor, software developer, and serial hobbyist.  Currently interested in:
 
 - Online communities
 - Passion economy
