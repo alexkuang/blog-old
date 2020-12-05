@@ -10,7 +10,7 @@ tags: about
 Startup janitor, software developer, and serial hobbyist.  Currently interested in:
 
 - Online communities
-- Passion economy
+- Creator / passion economy
 - Elixir
 - Handstands
 
