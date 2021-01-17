@@ -9,8 +9,9 @@ tags: about
 
 Startup janitor, software developer, and serial hobbyist.  Currently interested in:
 
+- Future of work
 - Online communities
-- Creator / passion economy
+- Building great software
 - Elixir
 - Handstands
 
