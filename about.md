@@ -11,8 +11,8 @@ Startup janitor, software developer, and serial hobbyist.  Currently interested 
 
 - Future of work
 - Online communities
-- Building great software
-- Elixir
+- Building great software + teams
+- Elixir (the programming language)
 - Handstands
 
 ### This Site
