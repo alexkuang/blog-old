@@ -3,8 +3,7 @@ layout: page
 title: About
 ---
 
-Janitor, software developer, and serial hobbyist.  Publicly noodling on things
-[here](https://publish.obsidian.md/alexkuang/home).
+Janitor, software developer, and serial hobbyist.  Public [notes](https://publish.obsidian.md/alexkuang/home)
 
 ### Contact
 
