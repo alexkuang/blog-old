@@ -5,8 +5,6 @@ title: About
 
 Janitor, software developer, and serial hobbyist.
 
-[my public notes](https://publish.obsidian.md/alexkuang/home)
-
 ### Contact
 
 - [twitter](https://twitter.com/klhxela)
