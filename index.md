@@ -2,7 +2,6 @@
 layout: page
 title: About
 ---
-
 Software developer + Janitor.  On sabbatical building stuff.
 
 ### contact
