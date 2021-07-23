@@ -3,9 +3,9 @@ layout: page
 title: About
 ---
 
-Janitor, software developer, and serial hobbyist.
+Software developer + Janitor.  On sabbatical building stuff.
 
-### Contact
+### contact
 
 - [twitter](https://twitter.com/klhxela)
 - [github](https://github.com/alexkuang)
